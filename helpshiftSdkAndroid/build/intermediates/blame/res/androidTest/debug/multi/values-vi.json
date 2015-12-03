@@ -1,0 +1,3342 @@
+[
+    {
+        "outputFile": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-vi\\values-vi.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 5,
+                    "endColumn": 12,
+                    "endOffset": 235
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 5,
+                        "endColumn": 12,
+                        "endOffset": 235
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 240,
+                    "endLine": 9,
+                    "endColumn": 12,
+                    "endOffset": 437
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 240,
+                        "endLine": 9,
+                        "endColumn": 12,
+                        "endOffset": 437
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 442,
+                    "endColumn": 80,
+                    "endOffset": 518
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 442,
+                        "endColumn": 80,
+                        "endOffset": 518
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 523,
+                    "endColumn": 74,
+                    "endOffset": 593
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 523,
+                        "endColumn": 74,
+                        "endOffset": 593
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 598,
+                    "endColumn": 51,
+                    "endOffset": 645
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 598,
+                        "endColumn": 51,
+                        "endOffset": 645
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 650,
+                    "endColumn": 63,
+                    "endOffset": 709
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 650,
+                        "endColumn": 63,
+                        "endOffset": 709
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 714,
+                    "endColumn": 93,
+                    "endOffset": 803
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 714,
+                        "endColumn": 93,
+                        "endOffset": 803
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 808,
+                    "endColumn": 104,
+                    "endOffset": 908
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 808,
+                        "endColumn": 104,
+                        "endOffset": 908
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 913,
+                    "endColumn": 54,
+                    "endOffset": 963
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 913,
+                        "endColumn": 54,
+                        "endOffset": 963
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 968,
+                    "endColumn": 87,
+                    "endOffset": 1051
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 968,
+                        "endColumn": 87,
+                        "endOffset": 1051
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1056,
+                    "endColumn": 85,
+                    "endOffset": 1137
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1056,
+                        "endColumn": 85,
+                        "endOffset": 1137
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1142,
+                    "endColumn": 62,
+                    "endOffset": 1200
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1142,
+                        "endColumn": 62,
+                        "endOffset": 1200
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1205,
+                    "endLine": 22,
+                    "endColumn": 11,
+                    "endOffset": 1337
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1205,
+                        "endLine": 22,
+                        "endColumn": 11,
+                        "endOffset": 1337
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1342,
+                    "endColumn": 111,
+                    "endOffset": 1449
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1342,
+                        "endColumn": 111,
+                        "endOffset": 1449
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1454,
+                    "endColumn": 82,
+                    "endOffset": 1532
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1454,
+                        "endColumn": 82,
+                        "endOffset": 1532
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1537,
+                    "endColumn": 88,
+                    "endOffset": 1621
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 1537,
+                        "endColumn": 88,
+                        "endOffset": 1621
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1626,
+                    "endColumn": 108,
+                    "endOffset": 1730
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1626,
+                        "endColumn": 108,
+                        "endOffset": 1730
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 1735,
+                    "endColumn": 57,
+                    "endOffset": 1788
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1735,
+                        "endColumn": 57,
+                        "endOffset": 1788
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 1793,
+                    "endColumn": 55,
+                    "endOffset": 1844
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1793,
+                        "endColumn": 55,
+                        "endOffset": 1844
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 1849,
+                    "endColumn": 108,
+                    "endOffset": 1953
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1849,
+                        "endColumn": 108,
+                        "endOffset": 1953
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 1958,
+                    "endColumn": 56,
+                    "endOffset": 2010
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 1958,
+                        "endColumn": 56,
+                        "endOffset": 2010
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 31,
+                    "startColumn": 4,
+                    "startOffset": 2015,
+                    "endColumn": 87,
+                    "endOffset": 2098
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 2015,
+                        "endColumn": 87,
+                        "endOffset": 2098
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 2103,
+                    "endColumn": 87,
+                    "endOffset": 2186
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 2103,
+                        "endColumn": 87,
+                        "endOffset": 2186
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 33,
+                    "startColumn": 4,
+                    "startOffset": 2191,
+                    "endColumn": 73,
+                    "endOffset": 2260
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 33,
+                        "startColumn": 4,
+                        "startOffset": 2191,
+                        "endColumn": 73,
+                        "endOffset": 2260
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 34,
+                    "startColumn": 4,
+                    "startOffset": 2265,
+                    "endColumn": 73,
+                    "endOffset": 2334
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 2265,
+                        "endColumn": 73,
+                        "endOffset": 2334
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 35,
+                    "startColumn": 4,
+                    "startOffset": 2339,
+                    "endLine": 37,
+                    "endColumn": 11,
+                    "endOffset": 2464
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 35,
+                        "startColumn": 4,
+                        "startOffset": 2339,
+                        "endLine": 37,
+                        "endColumn": 11,
+                        "endOffset": 2464
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 2469,
+                    "endColumn": 64,
+                    "endOffset": 2529
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 2469,
+                        "endColumn": 64,
+                        "endOffset": 2529
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 2534,
+                    "endColumn": 49,
+                    "endOffset": 2579
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 39,
+                        "startColumn": 4,
+                        "startOffset": 2534,
+                        "endColumn": 49,
+                        "endOffset": 2579
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 2584,
+                    "endColumn": 65,
+                    "endOffset": 2645
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 40,
+                        "startColumn": 4,
+                        "startOffset": 2584,
+                        "endColumn": 65,
+                        "endOffset": 2645
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 2650,
+                    "endColumn": 57,
+                    "endOffset": 2703
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 41,
+                        "startColumn": 4,
+                        "startOffset": 2650,
+                        "endColumn": 57,
+                        "endOffset": 2703
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 2708,
+                    "endColumn": 90,
+                    "endOffset": 2794
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 2708,
+                        "endColumn": 90,
+                        "endOffset": 2794
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 43,
+                    "startColumn": 4,
+                    "startOffset": 2799,
+                    "endColumn": 50,
+                    "endOffset": 2845
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 43,
+                        "startColumn": 4,
+                        "startOffset": 2799,
+                        "endColumn": 50,
+                        "endOffset": 2845
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 44,
+                    "startColumn": 4,
+                    "startOffset": 2850,
+                    "endColumn": 81,
+                    "endOffset": 2927
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 44,
+                        "startColumn": 4,
+                        "startOffset": 2850,
+                        "endColumn": 81,
+                        "endOffset": 2927
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 45,
+                    "startColumn": 4,
+                    "startOffset": 2932,
+                    "endColumn": 60,
+                    "endOffset": 2988
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 45,
+                        "startColumn": 4,
+                        "startOffset": 2932,
+                        "endColumn": 60,
+                        "endOffset": 2988
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 2993,
+                    "endColumn": 73,
+                    "endOffset": 3062
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 2993,
+                        "endColumn": 73,
+                        "endOffset": 3062
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 47,
+                    "startColumn": 4,
+                    "startOffset": 3067,
+                    "endColumn": 56,
+                    "endOffset": 3119
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 47,
+                        "startColumn": 4,
+                        "startOffset": 3067,
+                        "endColumn": 56,
+                        "endOffset": 3119
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 48,
+                    "startColumn": 4,
+                    "startOffset": 3124,
+                    "endColumn": 49,
+                    "endOffset": 3169
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 48,
+                        "startColumn": 4,
+                        "startOffset": 3124,
+                        "endColumn": 49,
+                        "endOffset": 3169
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 49,
+                    "startColumn": 4,
+                    "startOffset": 3174,
+                    "endColumn": 67,
+                    "endOffset": 3237
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 49,
+                        "startColumn": 4,
+                        "startOffset": 3174,
+                        "endColumn": 67,
+                        "endOffset": 3237
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 50,
+                    "startColumn": 4,
+                    "startOffset": 3242,
+                    "endColumn": 49,
+                    "endOffset": 3287
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 50,
+                        "startColumn": 4,
+                        "startOffset": 3242,
+                        "endColumn": 49,
+                        "endOffset": 3287
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 51,
+                    "startColumn": 4,
+                    "startOffset": 3292,
+                    "endColumn": 49,
+                    "endOffset": 3337
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 51,
+                        "startColumn": 4,
+                        "startOffset": 3292,
+                        "endColumn": 49,
+                        "endOffset": 3337
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 52,
+                    "startColumn": 4,
+                    "startOffset": 3342,
+                    "endColumn": 50,
+                    "endOffset": 3388
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 52,
+                        "startColumn": 4,
+                        "startOffset": 3342,
+                        "endColumn": 50,
+                        "endOffset": 3388
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 53,
+                    "startColumn": 4,
+                    "startOffset": 3393,
+                    "endColumn": 57,
+                    "endOffset": 3446
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 53,
+                        "startColumn": 4,
+                        "startOffset": 3393,
+                        "endColumn": 57,
+                        "endOffset": 3446
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 54,
+                    "startColumn": 4,
+                    "startOffset": 3451,
+                    "endColumn": 53,
+                    "endOffset": 3500
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 54,
+                        "startColumn": 4,
+                        "startOffset": 3451,
+                        "endColumn": 53,
+                        "endOffset": 3500
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 55,
+                    "startColumn": 4,
+                    "startOffset": 3505,
+                    "endColumn": 52,
+                    "endOffset": 3553
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 55,
+                        "startColumn": 4,
+                        "startOffset": 3505,
+                        "endColumn": 52,
+                        "endOffset": 3553
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 56,
+                    "startColumn": 4,
+                    "startOffset": 3558,
+                    "endColumn": 76,
+                    "endOffset": 3630
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 56,
+                        "startColumn": 4,
+                        "startOffset": 3558,
+                        "endColumn": 76,
+                        "endOffset": 3630
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 57,
+                    "startColumn": 4,
+                    "startOffset": 3635,
+                    "endColumn": 78,
+                    "endOffset": 3709
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 57,
+                        "startColumn": 4,
+                        "startOffset": 3635,
+                        "endColumn": 78,
+                        "endOffset": 3709
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 58,
+                    "startColumn": 4,
+                    "startOffset": 3714,
+                    "endColumn": 86,
+                    "endOffset": 3796
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 58,
+                        "startColumn": 4,
+                        "startOffset": 3714,
+                        "endColumn": 86,
+                        "endOffset": 3796
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 59,
+                    "startColumn": 4,
+                    "startOffset": 3801,
+                    "endColumn": 45,
+                    "endOffset": 3842
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 59,
+                        "startColumn": 4,
+                        "startOffset": 3801,
+                        "endColumn": 45,
+                        "endOffset": 3842
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 60,
+                    "startColumn": 4,
+                    "startOffset": 3847,
+                    "endColumn": 94,
+                    "endOffset": 3937
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 60,
+                        "startColumn": 4,
+                        "startOffset": 3847,
+                        "endColumn": 94,
+                        "endOffset": 3937
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 61,
+                    "startColumn": 4,
+                    "startOffset": 3942,
+                    "endColumn": 43,
+                    "endOffset": 3981
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 61,
+                        "startColumn": 4,
+                        "startOffset": 3942,
+                        "endColumn": 43,
+                        "endOffset": 3981
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 62,
+                    "startColumn": 4,
+                    "startOffset": 3986,
+                    "endColumn": 90,
+                    "endOffset": 4072
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 62,
+                        "startColumn": 4,
+                        "startOffset": 3986,
+                        "endColumn": 90,
+                        "endOffset": 4072
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 63,
+                    "startColumn": 4,
+                    "startOffset": 4077,
+                    "endColumn": 83,
+                    "endOffset": 4156
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 63,
+                        "startColumn": 4,
+                        "startOffset": 4077,
+                        "endColumn": 83,
+                        "endOffset": 4156
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 64,
+                    "startColumn": 4,
+                    "startOffset": 4161,
+                    "endColumn": 70,
+                    "endOffset": 4227
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 64,
+                        "startColumn": 4,
+                        "startOffset": 4161,
+                        "endColumn": 70,
+                        "endOffset": 4227
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 65,
+                    "startColumn": 4,
+                    "startOffset": 4232,
+                    "endColumn": 80,
+                    "endOffset": 4308
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 65,
+                        "startColumn": 4,
+                        "startOffset": 4232,
+                        "endColumn": 80,
+                        "endOffset": 4308
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 66,
+                    "startColumn": 4,
+                    "startOffset": 4313,
+                    "endColumn": 75,
+                    "endOffset": 4384
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 66,
+                        "startColumn": 4,
+                        "startOffset": 4313,
+                        "endColumn": 75,
+                        "endOffset": 4384
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 67,
+                    "startColumn": 4,
+                    "startOffset": 4389,
+                    "endColumn": 84,
+                    "endOffset": 4469
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 67,
+                        "startColumn": 4,
+                        "startOffset": 4389,
+                        "endColumn": 84,
+                        "endOffset": 4469
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 68,
+                    "startColumn": 4,
+                    "startOffset": 4474,
+                    "endColumn": 65,
+                    "endOffset": 4535
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 68,
+                        "startColumn": 4,
+                        "startOffset": 4474,
+                        "endColumn": 65,
+                        "endOffset": 4535
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 69,
+                    "startColumn": 4,
+                    "startOffset": 4540,
+                    "endColumn": 55,
+                    "endOffset": 4591
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 69,
+                        "startColumn": 4,
+                        "startOffset": 4540,
+                        "endColumn": 55,
+                        "endOffset": 4591
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 70,
+                    "startColumn": 4,
+                    "startOffset": 4596,
+                    "endColumn": 94,
+                    "endOffset": 4686
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 70,
+                        "startColumn": 4,
+                        "startOffset": 4596,
+                        "endColumn": 94,
+                        "endOffset": 4686
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 71,
+                    "startColumn": 4,
+                    "startOffset": 4691,
+                    "endColumn": 99,
+                    "endOffset": 4786
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 71,
+                        "startColumn": 4,
+                        "startOffset": 4691,
+                        "endColumn": 99,
+                        "endOffset": 4786
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 72,
+                    "startColumn": 4,
+                    "startOffset": 4791,
+                    "endColumn": 52,
+                    "endOffset": 4839
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 72,
+                        "startColumn": 4,
+                        "startOffset": 4791,
+                        "endColumn": 52,
+                        "endOffset": 4839
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 73,
+                    "startColumn": 4,
+                    "startOffset": 4844,
+                    "endColumn": 74,
+                    "endOffset": 4914
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 73,
+                        "startColumn": 4,
+                        "startOffset": 4844,
+                        "endColumn": 74,
+                        "endOffset": 4914
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 74,
+                    "startColumn": 4,
+                    "startOffset": 4919,
+                    "endColumn": 82,
+                    "endOffset": 4997
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 74,
+                        "startColumn": 4,
+                        "startOffset": 4919,
+                        "endColumn": 82,
+                        "endOffset": 4997
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 75,
+                    "startColumn": 4,
+                    "startOffset": 5002,
+                    "endColumn": 56,
+                    "endOffset": 5054
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 75,
+                        "startColumn": 4,
+                        "startOffset": 5002,
+                        "endColumn": 56,
+                        "endOffset": 5054
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 76,
+                    "startColumn": 4,
+                    "startOffset": 5059,
+                    "endLine": 78,
+                    "endColumn": 11,
+                    "endOffset": 5188
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 76,
+                        "startColumn": 4,
+                        "startOffset": 5059,
+                        "endLine": 78,
+                        "endColumn": 11,
+                        "endOffset": 5188
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 79,
+                    "startColumn": 4,
+                    "startOffset": 5193,
+                    "endColumn": 91,
+                    "endOffset": 5280
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 79,
+                        "startColumn": 4,
+                        "startOffset": 5193,
+                        "endColumn": 91,
+                        "endOffset": 5280
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 80,
+                    "startColumn": 4,
+                    "startOffset": 5285,
+                    "endColumn": 76,
+                    "endOffset": 5357
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 80,
+                        "startColumn": 4,
+                        "startOffset": 5285,
+                        "endColumn": 76,
+                        "endOffset": 5357
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 81,
+                    "startColumn": 4,
+                    "startOffset": 5362,
+                    "endColumn": 51,
+                    "endOffset": 5409
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 81,
+                        "startColumn": 4,
+                        "startOffset": 5362,
+                        "endColumn": 51,
+                        "endOffset": 5409
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 82,
+                    "startColumn": 4,
+                    "startOffset": 5414,
+                    "endLine": 84,
+                    "endColumn": 11,
+                    "endOffset": 5565
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 82,
+                        "startColumn": 4,
+                        "startOffset": 5414,
+                        "endLine": 84,
+                        "endColumn": 11,
+                        "endOffset": 5565
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 85,
+                    "startColumn": 4,
+                    "startOffset": 5570,
+                    "endColumn": 111,
+                    "endOffset": 5677
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 85,
+                        "startColumn": 4,
+                        "startOffset": 5570,
+                        "endColumn": 111,
+                        "endOffset": 5677
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 86,
+                    "startColumn": 4,
+                    "startOffset": 5682,
+                    "endColumn": 53,
+                    "endOffset": 5731
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 86,
+                        "startColumn": 4,
+                        "startOffset": 5682,
+                        "endColumn": 53,
+                        "endOffset": 5731
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 87,
+                    "startColumn": 4,
+                    "startOffset": 5736,
+                    "endColumn": 76,
+                    "endOffset": 5808
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 87,
+                        "startColumn": 4,
+                        "startOffset": 5736,
+                        "endColumn": 76,
+                        "endOffset": 5808
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 88,
+                    "startColumn": 4,
+                    "startOffset": 5813,
+                    "endColumn": 89,
+                    "endOffset": 5898
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 88,
+                        "startColumn": 4,
+                        "startOffset": 5813,
+                        "endColumn": 89,
+                        "endOffset": 5898
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 89,
+                    "startColumn": 4,
+                    "startOffset": 5903,
+                    "endColumn": 88,
+                    "endOffset": 5987
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 89,
+                        "startColumn": 4,
+                        "startOffset": 5903,
+                        "endColumn": 88,
+                        "endOffset": 5987
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 90,
+                    "startColumn": 4,
+                    "startOffset": 5992,
+                    "endColumn": 68,
+                    "endOffset": 6056
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 90,
+                        "startColumn": 4,
+                        "startOffset": 5992,
+                        "endColumn": 68,
+                        "endOffset": 6056
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 91,
+                    "startColumn": 4,
+                    "startOffset": 6061,
+                    "endColumn": 94,
+                    "endOffset": 6151
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 91,
+                        "startColumn": 4,
+                        "startOffset": 6061,
+                        "endColumn": 94,
+                        "endOffset": 6151
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 92,
+                    "startColumn": 4,
+                    "startOffset": 6156,
+                    "endColumn": 59,
+                    "endOffset": 6211
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 92,
+                        "startColumn": 4,
+                        "startOffset": 6156,
+                        "endColumn": 59,
+                        "endOffset": 6211
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 93,
+                    "startColumn": 4,
+                    "startOffset": 6216,
+                    "endColumn": 53,
+                    "endOffset": 6265
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 93,
+                        "startColumn": 4,
+                        "startOffset": 6216,
+                        "endColumn": 53,
+                        "endOffset": 6265
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 94,
+                    "startColumn": 4,
+                    "startOffset": 6270,
+                    "endColumn": 50,
+                    "endOffset": 6316
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 94,
+                        "startColumn": 4,
+                        "startOffset": 6270,
+                        "endColumn": 50,
+                        "endOffset": 6316
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 95,
+                    "startColumn": 4,
+                    "startOffset": 6321,
+                    "endColumn": 48,
+                    "endOffset": 6365
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 95,
+                        "startColumn": 4,
+                        "startOffset": 6321,
+                        "endColumn": 48,
+                        "endOffset": 6365
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 96,
+                    "startColumn": 4,
+                    "startOffset": 6370,
+                    "endColumn": 84,
+                    "endOffset": 6450
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 96,
+                        "startColumn": 4,
+                        "startOffset": 6370,
+                        "endColumn": 84,
+                        "endOffset": 6450
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 97,
+                    "startColumn": 4,
+                    "startOffset": 6455,
+                    "endColumn": 53,
+                    "endOffset": 6504
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 97,
+                        "startColumn": 4,
+                        "startOffset": 6455,
+                        "endColumn": 53,
+                        "endOffset": 6504
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 98,
+                    "startColumn": 4,
+                    "startOffset": 6509,
+                    "endColumn": 68,
+                    "endOffset": 6573
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 98,
+                        "startColumn": 4,
+                        "startOffset": 6509,
+                        "endColumn": 68,
+                        "endOffset": 6573
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 99,
+                    "startColumn": 4,
+                    "startOffset": 6578,
+                    "endColumn": 59,
+                    "endOffset": 6633
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 99,
+                        "startColumn": 4,
+                        "startOffset": 6578,
+                        "endColumn": 59,
+                        "endOffset": 6633
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 100,
+                    "startColumn": 4,
+                    "startOffset": 6638,
+                    "endColumn": 72,
+                    "endOffset": 6706
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 100,
+                        "startColumn": 4,
+                        "startOffset": 6638,
+                        "endColumn": 72,
+                        "endOffset": 6706
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 101,
+                    "startColumn": 4,
+                    "startOffset": 6711,
+                    "endColumn": 77,
+                    "endOffset": 6784
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 101,
+                        "startColumn": 4,
+                        "startOffset": 6711,
+                        "endColumn": 77,
+                        "endOffset": 6784
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 102,
+                    "startColumn": 4,
+                    "startOffset": 6789,
+                    "endColumn": 49,
+                    "endOffset": 6834
+                },
+                "from": {
+                    "file": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 102,
+                        "startColumn": 4,
+                        "startOffset": 6789,
+                        "endColumn": 49,
+                        "endOffset": 6834
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-vi\\values-vi.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 5,
+                    "endColumn": 12,
+                    "endOffset": 235
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 5,
+                        "endColumn": 12,
+                        "endOffset": 235
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 240,
+                    "endLine": 9,
+                    "endColumn": 12,
+                    "endOffset": 437
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 240,
+                        "endLine": 9,
+                        "endColumn": 12,
+                        "endOffset": 437
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 442,
+                    "endColumn": 80,
+                    "endOffset": 518
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 442,
+                        "endColumn": 80,
+                        "endOffset": 518
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 523,
+                    "endColumn": 74,
+                    "endOffset": 593
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 523,
+                        "endColumn": 74,
+                        "endOffset": 593
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 598,
+                    "endColumn": 51,
+                    "endOffset": 645
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 598,
+                        "endColumn": 51,
+                        "endOffset": 645
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 650,
+                    "endColumn": 63,
+                    "endOffset": 709
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 650,
+                        "endColumn": 63,
+                        "endOffset": 709
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 714,
+                    "endColumn": 93,
+                    "endOffset": 803
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 714,
+                        "endColumn": 93,
+                        "endOffset": 803
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 808,
+                    "endColumn": 104,
+                    "endOffset": 908
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 808,
+                        "endColumn": 104,
+                        "endOffset": 908
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 913,
+                    "endColumn": 54,
+                    "endOffset": 963
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 913,
+                        "endColumn": 54,
+                        "endOffset": 963
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 968,
+                    "endColumn": 87,
+                    "endOffset": 1051
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 968,
+                        "endColumn": 87,
+                        "endOffset": 1051
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1056,
+                    "endColumn": 85,
+                    "endOffset": 1137
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1056,
+                        "endColumn": 85,
+                        "endOffset": 1137
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1142,
+                    "endColumn": 62,
+                    "endOffset": 1200
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1142,
+                        "endColumn": 62,
+                        "endOffset": 1200
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1205,
+                    "endLine": 22,
+                    "endColumn": 11,
+                    "endOffset": 1337
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1205,
+                        "endLine": 22,
+                        "endColumn": 11,
+                        "endOffset": 1337
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1342,
+                    "endColumn": 111,
+                    "endOffset": 1449
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1342,
+                        "endColumn": 111,
+                        "endOffset": 1449
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1454,
+                    "endColumn": 82,
+                    "endOffset": 1532
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1454,
+                        "endColumn": 82,
+                        "endOffset": 1532
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1537,
+                    "endColumn": 88,
+                    "endOffset": 1621
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 1537,
+                        "endColumn": 88,
+                        "endOffset": 1621
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1626,
+                    "endColumn": 108,
+                    "endOffset": 1730
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1626,
+                        "endColumn": 108,
+                        "endOffset": 1730
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 1735,
+                    "endColumn": 57,
+                    "endOffset": 1788
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1735,
+                        "endColumn": 57,
+                        "endOffset": 1788
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 1793,
+                    "endColumn": 55,
+                    "endOffset": 1844
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1793,
+                        "endColumn": 55,
+                        "endOffset": 1844
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 1849,
+                    "endColumn": 108,
+                    "endOffset": 1953
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1849,
+                        "endColumn": 108,
+                        "endOffset": 1953
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 1958,
+                    "endColumn": 56,
+                    "endOffset": 2010
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 1958,
+                        "endColumn": 56,
+                        "endOffset": 2010
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 31,
+                    "startColumn": 4,
+                    "startOffset": 2015,
+                    "endColumn": 87,
+                    "endOffset": 2098
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 2015,
+                        "endColumn": 87,
+                        "endOffset": 2098
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 2103,
+                    "endColumn": 87,
+                    "endOffset": 2186
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 2103,
+                        "endColumn": 87,
+                        "endOffset": 2186
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 33,
+                    "startColumn": 4,
+                    "startOffset": 2191,
+                    "endColumn": 73,
+                    "endOffset": 2260
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 33,
+                        "startColumn": 4,
+                        "startOffset": 2191,
+                        "endColumn": 73,
+                        "endOffset": 2260
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 34,
+                    "startColumn": 4,
+                    "startOffset": 2265,
+                    "endColumn": 73,
+                    "endOffset": 2334
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 2265,
+                        "endColumn": 73,
+                        "endOffset": 2334
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 35,
+                    "startColumn": 4,
+                    "startOffset": 2339,
+                    "endLine": 37,
+                    "endColumn": 11,
+                    "endOffset": 2464
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 35,
+                        "startColumn": 4,
+                        "startOffset": 2339,
+                        "endLine": 37,
+                        "endColumn": 11,
+                        "endOffset": 2464
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 2469,
+                    "endColumn": 64,
+                    "endOffset": 2529
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 2469,
+                        "endColumn": 64,
+                        "endOffset": 2529
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 2534,
+                    "endColumn": 49,
+                    "endOffset": 2579
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 39,
+                        "startColumn": 4,
+                        "startOffset": 2534,
+                        "endColumn": 49,
+                        "endOffset": 2579
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 2584,
+                    "endColumn": 65,
+                    "endOffset": 2645
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 40,
+                        "startColumn": 4,
+                        "startOffset": 2584,
+                        "endColumn": 65,
+                        "endOffset": 2645
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 2650,
+                    "endColumn": 57,
+                    "endOffset": 2703
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 41,
+                        "startColumn": 4,
+                        "startOffset": 2650,
+                        "endColumn": 57,
+                        "endOffset": 2703
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 2708,
+                    "endColumn": 90,
+                    "endOffset": 2794
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 2708,
+                        "endColumn": 90,
+                        "endOffset": 2794
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 43,
+                    "startColumn": 4,
+                    "startOffset": 2799,
+                    "endColumn": 50,
+                    "endOffset": 2845
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 43,
+                        "startColumn": 4,
+                        "startOffset": 2799,
+                        "endColumn": 50,
+                        "endOffset": 2845
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 44,
+                    "startColumn": 4,
+                    "startOffset": 2850,
+                    "endColumn": 81,
+                    "endOffset": 2927
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 44,
+                        "startColumn": 4,
+                        "startOffset": 2850,
+                        "endColumn": 81,
+                        "endOffset": 2927
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 45,
+                    "startColumn": 4,
+                    "startOffset": 2932,
+                    "endColumn": 60,
+                    "endOffset": 2988
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 45,
+                        "startColumn": 4,
+                        "startOffset": 2932,
+                        "endColumn": 60,
+                        "endOffset": 2988
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 2993,
+                    "endColumn": 73,
+                    "endOffset": 3062
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 2993,
+                        "endColumn": 73,
+                        "endOffset": 3062
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 47,
+                    "startColumn": 4,
+                    "startOffset": 3067,
+                    "endColumn": 56,
+                    "endOffset": 3119
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 47,
+                        "startColumn": 4,
+                        "startOffset": 3067,
+                        "endColumn": 56,
+                        "endOffset": 3119
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 48,
+                    "startColumn": 4,
+                    "startOffset": 3124,
+                    "endColumn": 49,
+                    "endOffset": 3169
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 48,
+                        "startColumn": 4,
+                        "startOffset": 3124,
+                        "endColumn": 49,
+                        "endOffset": 3169
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 49,
+                    "startColumn": 4,
+                    "startOffset": 3174,
+                    "endColumn": 67,
+                    "endOffset": 3237
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 49,
+                        "startColumn": 4,
+                        "startOffset": 3174,
+                        "endColumn": 67,
+                        "endOffset": 3237
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 50,
+                    "startColumn": 4,
+                    "startOffset": 3242,
+                    "endColumn": 49,
+                    "endOffset": 3287
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 50,
+                        "startColumn": 4,
+                        "startOffset": 3242,
+                        "endColumn": 49,
+                        "endOffset": 3287
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 51,
+                    "startColumn": 4,
+                    "startOffset": 3292,
+                    "endColumn": 49,
+                    "endOffset": 3337
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 51,
+                        "startColumn": 4,
+                        "startOffset": 3292,
+                        "endColumn": 49,
+                        "endOffset": 3337
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 52,
+                    "startColumn": 4,
+                    "startOffset": 3342,
+                    "endColumn": 50,
+                    "endOffset": 3388
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 52,
+                        "startColumn": 4,
+                        "startOffset": 3342,
+                        "endColumn": 50,
+                        "endOffset": 3388
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 53,
+                    "startColumn": 4,
+                    "startOffset": 3393,
+                    "endColumn": 57,
+                    "endOffset": 3446
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 53,
+                        "startColumn": 4,
+                        "startOffset": 3393,
+                        "endColumn": 57,
+                        "endOffset": 3446
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 54,
+                    "startColumn": 4,
+                    "startOffset": 3451,
+                    "endColumn": 53,
+                    "endOffset": 3500
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 54,
+                        "startColumn": 4,
+                        "startOffset": 3451,
+                        "endColumn": 53,
+                        "endOffset": 3500
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 55,
+                    "startColumn": 4,
+                    "startOffset": 3505,
+                    "endColumn": 52,
+                    "endOffset": 3553
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 55,
+                        "startColumn": 4,
+                        "startOffset": 3505,
+                        "endColumn": 52,
+                        "endOffset": 3553
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 56,
+                    "startColumn": 4,
+                    "startOffset": 3558,
+                    "endColumn": 76,
+                    "endOffset": 3630
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 56,
+                        "startColumn": 4,
+                        "startOffset": 3558,
+                        "endColumn": 76,
+                        "endOffset": 3630
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 57,
+                    "startColumn": 4,
+                    "startOffset": 3635,
+                    "endColumn": 78,
+                    "endOffset": 3709
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 57,
+                        "startColumn": 4,
+                        "startOffset": 3635,
+                        "endColumn": 78,
+                        "endOffset": 3709
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 58,
+                    "startColumn": 4,
+                    "startOffset": 3714,
+                    "endColumn": 86,
+                    "endOffset": 3796
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 58,
+                        "startColumn": 4,
+                        "startOffset": 3714,
+                        "endColumn": 86,
+                        "endOffset": 3796
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 59,
+                    "startColumn": 4,
+                    "startOffset": 3801,
+                    "endColumn": 45,
+                    "endOffset": 3842
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 59,
+                        "startColumn": 4,
+                        "startOffset": 3801,
+                        "endColumn": 45,
+                        "endOffset": 3842
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 60,
+                    "startColumn": 4,
+                    "startOffset": 3847,
+                    "endColumn": 94,
+                    "endOffset": 3937
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 60,
+                        "startColumn": 4,
+                        "startOffset": 3847,
+                        "endColumn": 94,
+                        "endOffset": 3937
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 61,
+                    "startColumn": 4,
+                    "startOffset": 3942,
+                    "endColumn": 43,
+                    "endOffset": 3981
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 61,
+                        "startColumn": 4,
+                        "startOffset": 3942,
+                        "endColumn": 43,
+                        "endOffset": 3981
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 62,
+                    "startColumn": 4,
+                    "startOffset": 3986,
+                    "endColumn": 90,
+                    "endOffset": 4072
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 62,
+                        "startColumn": 4,
+                        "startOffset": 3986,
+                        "endColumn": 90,
+                        "endOffset": 4072
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 63,
+                    "startColumn": 4,
+                    "startOffset": 4077,
+                    "endColumn": 83,
+                    "endOffset": 4156
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 63,
+                        "startColumn": 4,
+                        "startOffset": 4077,
+                        "endColumn": 83,
+                        "endOffset": 4156
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 64,
+                    "startColumn": 4,
+                    "startOffset": 4161,
+                    "endColumn": 70,
+                    "endOffset": 4227
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 64,
+                        "startColumn": 4,
+                        "startOffset": 4161,
+                        "endColumn": 70,
+                        "endOffset": 4227
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 65,
+                    "startColumn": 4,
+                    "startOffset": 4232,
+                    "endColumn": 80,
+                    "endOffset": 4308
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 65,
+                        "startColumn": 4,
+                        "startOffset": 4232,
+                        "endColumn": 80,
+                        "endOffset": 4308
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 66,
+                    "startColumn": 4,
+                    "startOffset": 4313,
+                    "endColumn": 75,
+                    "endOffset": 4384
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 66,
+                        "startColumn": 4,
+                        "startOffset": 4313,
+                        "endColumn": 75,
+                        "endOffset": 4384
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 67,
+                    "startColumn": 4,
+                    "startOffset": 4389,
+                    "endColumn": 84,
+                    "endOffset": 4469
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 67,
+                        "startColumn": 4,
+                        "startOffset": 4389,
+                        "endColumn": 84,
+                        "endOffset": 4469
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 68,
+                    "startColumn": 4,
+                    "startOffset": 4474,
+                    "endColumn": 65,
+                    "endOffset": 4535
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 68,
+                        "startColumn": 4,
+                        "startOffset": 4474,
+                        "endColumn": 65,
+                        "endOffset": 4535
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 69,
+                    "startColumn": 4,
+                    "startOffset": 4540,
+                    "endColumn": 55,
+                    "endOffset": 4591
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 69,
+                        "startColumn": 4,
+                        "startOffset": 4540,
+                        "endColumn": 55,
+                        "endOffset": 4591
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 70,
+                    "startColumn": 4,
+                    "startOffset": 4596,
+                    "endColumn": 94,
+                    "endOffset": 4686
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 70,
+                        "startColumn": 4,
+                        "startOffset": 4596,
+                        "endColumn": 94,
+                        "endOffset": 4686
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 71,
+                    "startColumn": 4,
+                    "startOffset": 4691,
+                    "endColumn": 99,
+                    "endOffset": 4786
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 71,
+                        "startColumn": 4,
+                        "startOffset": 4691,
+                        "endColumn": 99,
+                        "endOffset": 4786
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 72,
+                    "startColumn": 4,
+                    "startOffset": 4791,
+                    "endColumn": 52,
+                    "endOffset": 4839
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 72,
+                        "startColumn": 4,
+                        "startOffset": 4791,
+                        "endColumn": 52,
+                        "endOffset": 4839
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 73,
+                    "startColumn": 4,
+                    "startOffset": 4844,
+                    "endColumn": 74,
+                    "endOffset": 4914
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 73,
+                        "startColumn": 4,
+                        "startOffset": 4844,
+                        "endColumn": 74,
+                        "endOffset": 4914
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 74,
+                    "startColumn": 4,
+                    "startOffset": 4919,
+                    "endColumn": 82,
+                    "endOffset": 4997
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 74,
+                        "startColumn": 4,
+                        "startOffset": 4919,
+                        "endColumn": 82,
+                        "endOffset": 4997
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 75,
+                    "startColumn": 4,
+                    "startOffset": 5002,
+                    "endColumn": 56,
+                    "endOffset": 5054
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 75,
+                        "startColumn": 4,
+                        "startOffset": 5002,
+                        "endColumn": 56,
+                        "endOffset": 5054
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 76,
+                    "startColumn": 4,
+                    "startOffset": 5059,
+                    "endLine": 78,
+                    "endColumn": 11,
+                    "endOffset": 5188
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 76,
+                        "startColumn": 4,
+                        "startOffset": 5059,
+                        "endLine": 78,
+                        "endColumn": 11,
+                        "endOffset": 5188
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 79,
+                    "startColumn": 4,
+                    "startOffset": 5193,
+                    "endColumn": 91,
+                    "endOffset": 5280
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 79,
+                        "startColumn": 4,
+                        "startOffset": 5193,
+                        "endColumn": 91,
+                        "endOffset": 5280
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 80,
+                    "startColumn": 4,
+                    "startOffset": 5285,
+                    "endColumn": 76,
+                    "endOffset": 5357
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 80,
+                        "startColumn": 4,
+                        "startOffset": 5285,
+                        "endColumn": 76,
+                        "endOffset": 5357
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 81,
+                    "startColumn": 4,
+                    "startOffset": 5362,
+                    "endColumn": 51,
+                    "endOffset": 5409
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 81,
+                        "startColumn": 4,
+                        "startOffset": 5362,
+                        "endColumn": 51,
+                        "endOffset": 5409
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 82,
+                    "startColumn": 4,
+                    "startOffset": 5414,
+                    "endLine": 84,
+                    "endColumn": 11,
+                    "endOffset": 5565
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 82,
+                        "startColumn": 4,
+                        "startOffset": 5414,
+                        "endLine": 84,
+                        "endColumn": 11,
+                        "endOffset": 5565
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 85,
+                    "startColumn": 4,
+                    "startOffset": 5570,
+                    "endColumn": 111,
+                    "endOffset": 5677
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 85,
+                        "startColumn": 4,
+                        "startOffset": 5570,
+                        "endColumn": 111,
+                        "endOffset": 5677
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 86,
+                    "startColumn": 4,
+                    "startOffset": 5682,
+                    "endColumn": 53,
+                    "endOffset": 5731
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 86,
+                        "startColumn": 4,
+                        "startOffset": 5682,
+                        "endColumn": 53,
+                        "endOffset": 5731
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 87,
+                    "startColumn": 4,
+                    "startOffset": 5736,
+                    "endColumn": 76,
+                    "endOffset": 5808
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 87,
+                        "startColumn": 4,
+                        "startOffset": 5736,
+                        "endColumn": 76,
+                        "endOffset": 5808
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 88,
+                    "startColumn": 4,
+                    "startOffset": 5813,
+                    "endColumn": 89,
+                    "endOffset": 5898
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 88,
+                        "startColumn": 4,
+                        "startOffset": 5813,
+                        "endColumn": 89,
+                        "endOffset": 5898
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 89,
+                    "startColumn": 4,
+                    "startOffset": 5903,
+                    "endColumn": 88,
+                    "endOffset": 5987
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 89,
+                        "startColumn": 4,
+                        "startOffset": 5903,
+                        "endColumn": 88,
+                        "endOffset": 5987
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 90,
+                    "startColumn": 4,
+                    "startOffset": 5992,
+                    "endColumn": 68,
+                    "endOffset": 6056
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 90,
+                        "startColumn": 4,
+                        "startOffset": 5992,
+                        "endColumn": 68,
+                        "endOffset": 6056
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 91,
+                    "startColumn": 4,
+                    "startOffset": 6061,
+                    "endColumn": 94,
+                    "endOffset": 6151
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 91,
+                        "startColumn": 4,
+                        "startOffset": 6061,
+                        "endColumn": 94,
+                        "endOffset": 6151
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 92,
+                    "startColumn": 4,
+                    "startOffset": 6156,
+                    "endColumn": 59,
+                    "endOffset": 6211
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 92,
+                        "startColumn": 4,
+                        "startOffset": 6156,
+                        "endColumn": 59,
+                        "endOffset": 6211
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 93,
+                    "startColumn": 4,
+                    "startOffset": 6216,
+                    "endColumn": 53,
+                    "endOffset": 6265
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 93,
+                        "startColumn": 4,
+                        "startOffset": 6216,
+                        "endColumn": 53,
+                        "endOffset": 6265
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 94,
+                    "startColumn": 4,
+                    "startOffset": 6270,
+                    "endColumn": 50,
+                    "endOffset": 6316
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 94,
+                        "startColumn": 4,
+                        "startOffset": 6270,
+                        "endColumn": 50,
+                        "endOffset": 6316
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 95,
+                    "startColumn": 4,
+                    "startOffset": 6321,
+                    "endColumn": 48,
+                    "endOffset": 6365
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 95,
+                        "startColumn": 4,
+                        "startOffset": 6321,
+                        "endColumn": 48,
+                        "endOffset": 6365
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 96,
+                    "startColumn": 4,
+                    "startOffset": 6370,
+                    "endColumn": 84,
+                    "endOffset": 6450
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 96,
+                        "startColumn": 4,
+                        "startOffset": 6370,
+                        "endColumn": 84,
+                        "endOffset": 6450
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 97,
+                    "startColumn": 4,
+                    "startOffset": 6455,
+                    "endColumn": 53,
+                    "endOffset": 6504
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 97,
+                        "startColumn": 4,
+                        "startOffset": 6455,
+                        "endColumn": 53,
+                        "endOffset": 6504
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 98,
+                    "startColumn": 4,
+                    "startOffset": 6509,
+                    "endColumn": 68,
+                    "endOffset": 6573
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 98,
+                        "startColumn": 4,
+                        "startOffset": 6509,
+                        "endColumn": 68,
+                        "endOffset": 6573
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 99,
+                    "startColumn": 4,
+                    "startOffset": 6578,
+                    "endColumn": 59,
+                    "endOffset": 6633
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 99,
+                        "startColumn": 4,
+                        "startOffset": 6578,
+                        "endColumn": 59,
+                        "endOffset": 6633
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 100,
+                    "startColumn": 4,
+                    "startOffset": 6638,
+                    "endColumn": 72,
+                    "endOffset": 6706
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 100,
+                        "startColumn": 4,
+                        "startOffset": 6638,
+                        "endColumn": 72,
+                        "endOffset": 6706
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 101,
+                    "startColumn": 4,
+                    "startOffset": 6711,
+                    "endColumn": 77,
+                    "endOffset": 6784
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 101,
+                        "startColumn": 4,
+                        "startOffset": 6711,
+                        "endColumn": 77,
+                        "endOffset": 6784
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 102,
+                    "startColumn": 4,
+                    "startOffset": 6789,
+                    "endColumn": 49,
+                    "endOffset": 6834
+                },
+                "from": {
+                    "file": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-vi\\values-vi.xml",
+                    "position": {
+                        "startLine": 102,
+                        "startColumn": 4,
+                        "startOffset": 6789,
+                        "endColumn": 49,
+                        "endOffset": 6834
+                    }
+                }
+            }
+        ]
+    }
+]

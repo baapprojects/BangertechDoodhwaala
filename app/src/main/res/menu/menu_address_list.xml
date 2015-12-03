@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.doodhwaala.Activity.ProfileActivity">
+
+    <item android:id="@+id/action_add_address" android:title="@string/action_add"
+        android:icon="@drawable/ic_content_add"
+        android:orderInCategory="100" app:showAsAction="always" />
+    <item android:id="@+id/action_edit_address" android:title="@string/action_edit"
+        android:icon="@drawable/ic_action_image_edit"
+        android:orderInCategory="101" app:showAsAction="always"
+        android:visible="false"
+        />
+    <item android:id="@+id/action_save_default_address" android:title="@string/action_save_default"
+        android:icon="@drawable/ic_action_content_save"
+        android:orderInCategory="102" app:showAsAction="always" />
+</menu>

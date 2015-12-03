@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">DoodhWaala</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_add">Add</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_save_default">Save Default</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+    <string name="facebook_app_id">424807571052604</string>
+    <string name="play_services_error">Google Play services is not available.  This application will close.</string>
+    <string name="close">Close</string>
+    <string name="configuration_error">Error: the value of WEB_CLIENT_ID or SERVER_BASE_URL is not  set correctly. This will cause errors when requesting a server auth code.</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+
+    <string name="ok_btn">OK</string>
+    <string name="cancel">cancel</string>
+    <string name="logout">logout</string>
+    <string name="logout_message">We\'re not good with break-ups! Are you sure you want to logout?</string>
+    <string name="logout_title">Logout?</string>
+    <string name="confirm_signin">An account already exists with this e-mail.</string>
+    <string name="sign_in">Sign in</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_up">Sigh up</string>
+    <string name="addresses">Addresses</string>
+    <string name="order_history">Order History</string>
+    <string name="filters">Filters</string>
+    <string name="save">Save</string>
+    <string name="filters_applied">Filters Applied</string>
+    <string name="hint_flat_or_house_number">Flat/House Number</string>
+    <string name="hint_building_or_society_name">Building/Society Name</string>
+    <string name="hint_street_details">Street Details</string>
+    <string name="hint_landmarks">Landmarks</string>
+    <string name="hint_pincode">Pin code</string>
+    <string name="please_enter_flat_or_house_number">Please enter Flat/House Number</string>
+    <string name="please_enter_building_or_society_name">Please enter Building/Society Name</string>
+    <string name="please_enter_street_details">Please enter Street Details</string>
+    <string name="please_enter_landmarks">Please enter Landmarks</string>
+    <string name="please_enter_pincode">Please enter Pincode</string>
+    <string name="new_address_added_successfully">New address added successfully.</string>
+    <string name="address_updated_successfully">Address updated successfully.</string>
+    <string name="default_address_updated_successfully">Default Address updated successfully.</string>
+
+    <string name="deliver_at">Deliver at: </string>
+    <string name="edit">Edit</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="today">Today</string>
+    <string name="order_history_balance">Balance : </string>
+    <string name="previous_day">Previous Day</string>
+    <string name="next_day">Next Day</string>
+    <string name="do_you_want_to_pause_the_plan">Do you want to pause the plan ?</string>
+    <string name="do_you_want_to_resume_the_plan">Do you want to resume the plan ?</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="edit_plan">Edit Plan</string>
+
+
+</resources>

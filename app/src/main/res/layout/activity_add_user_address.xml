@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar_add_user_address" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+
+        android:nestedScrollingEnabled="true">
+
+        <Spinner
+            android:id="@+id/spCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+            android:entries="@array/city_array" />
+
+        <Spinner
+            android:id="@+id/spLocality"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:entries="@array/city_array" />
+
+        <EditText
+            android:id="@+id/editTextFlat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/hint_flat_or_house_number"
+            android:maxLength="50"
+            android:singleLine="true"
+            />
+
+        <EditText
+            android:id="@+id/editTextBuilding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/hint_building_or_society_name"
+            android:maxLength="50"
+            android:singleLine="true"/>
+
+        <EditText
+            android:id="@+id/editTextStreet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/hint_street_details"
+            android:maxLength="50"
+            android:singleLine="true"
+           />
+
+        <EditText
+            android:id="@+id/editTextLandmark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/hint_landmarks"
+            android:maxLength="50"
+            android:singleLine="true"/>
+        <EditText
+            android:id="@+id/editTextPincode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:maxLength="10"
+            android:singleLine="true"
+            android:hint="@string/hint_pincode"
+            android:inputType="number" />
+
+    </LinearLayout>
+</LinearLayout>

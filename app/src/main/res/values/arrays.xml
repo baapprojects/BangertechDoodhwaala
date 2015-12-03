@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="home_options" >
+        <item>Flat No 402,DCS County Muneeswara Temple Road,Khodihalli Main Rd,HAL 3rdstage.Hal,Banglore,Karnataka-560008</item>
+        <item>Flat No 402,DCS County Muneeswara Temple Road,Khodihalli Main Rd,HAL 3rdstage.Hal,Banglore,Karnataka-560008</item>
+    </string-array>
+    <string-array name="city_array">
+        <item>City</item>
+        <item>Bangalore</item>
+        <item>Mysore</item>
+        <item>Salem</item>
+        <item>Anantapur</item>
+        <item>Tiruppur</item>
+    </string-array>
+    <string-array name="locality_array">
+        <item>Locality</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+    </string-array>
+    <string-array name="home_tab_array">
+        <item>Milk Bar</item>
+        <item>My Milk</item>
+        <item>Me</item>
+    </string-array>
+
+</resources>

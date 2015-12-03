@@ -1,0 +1,72 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+
+    <style name="AppTheme" parent="DoodhwaalaMyTheme" />
+    <style name="DoodhwaalaMyTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="colorAccent">@color/accentColor</item>
+        <item name="colorControlNormal">@color/grey_edit_text_color</item>
+       <!-- <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@color/white</item>-->
+        <!--<item name="android:navigationBarColor" tools:targetApi='21'>@color/primaryColor</item>-->
+
+    </style>
+
+    <style name="Dialog_No_Border">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="TitleHeading" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">1dip</item>
+    </style>
+
+    <style name="MyCustomHelpshiftTheme" parent="Helpshift.Theme.Light.DarkActionBar" >
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:actionBarStyle">@style/ActionBarStyle</item>
+        <item name="hs__actionButtonIconColor">@color/white</item>
+        <item name="hs__adminChatBubbleColor">@color/gray</item>
+
+    </style>
+
+    <style name="ActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/primaryColor</item>
+        <item name="android:titleTextStyle">@style/ActionBarTitleStyle</item>
+    </style>
+
+    <style name="ActionBarTitleStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Helpshift.Theme.Base" parent="MyCustomHelpshiftTheme" />
+
+
+    <style name="MyMaterialThemeB" parent="MyMaterialTheme.BaseB">
+    </style>
+
+    <style name="MyMaterialTheme.BaseB" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="colorAccent">@color/accentColor</item>
+        <item name="colorControlNormal">@color/grey_edit_text_color</item>
+        <!-- <item name="android:windowTranslucentStatus" tools:targetApi='21'>true</item>-->
+        <!--<item name="android:navigationBarColor" tools:targetApi='21'>@color/primaryColor</item>-->
+    </style>
+
+    <style name="Theme.App.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">#c5c5c5</item>
+        <item name="colorControlActivated">@color/accentColor</item>
+        <item name="colorControlHighlight">@color/accentColor</item>
+    </style>
+
+
+</resources>

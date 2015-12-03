@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryColor"
+        android:minHeight="?android:attr/actionBarSize"
+        android:paddingTop="16dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        />
+    <LinearLayout
+        android:id="@+id/llEditPlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:visibility="invisible"
+        >
+        <TextView
+            android:id="@+id/textViewProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="true"
+            android:text=""
+            android:textStyle="bold"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+
+            />
+
+        <TextView
+            android:id="@+id/textViewPlanSummery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text=""
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:singleLine="false"
+
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            >
+            <Button
+                android:id="@+id/butDecreaseQty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                />
+
+
+            <TextView
+                android:id="@+id/txtViewSelectedQuantity"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:gravity="center_horizontal"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:layout_marginLeft="10dp"
+                />
+            <Button
+                android:id="@+id/butIncreaseQty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:layout_marginLeft="10dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+
+            android:layout_marginTop="50dp"
+            >
+            <ImageView
+                android:id="@+id/imageViewProduct"
+                android:layout_width="@dimen/image_width_in_detail_screen"
+                android:layout_height="@dimen/image_height_in_detail_screen"
+                android:src="@drawable/nandini"
+                />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/butCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="CANCEL PLAN"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:background="@drawable/select_but_pink"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:onClick="gotoCancel"
+            />
+
+        <Button
+            android:id="@+id/butSaveChanges"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="SAVE CHANGES"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:background="@drawable/select_but_pink"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:onClick="gotoSaveChanges"
+            />
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
