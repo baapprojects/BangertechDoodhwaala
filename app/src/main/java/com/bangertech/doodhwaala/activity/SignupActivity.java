@@ -56,7 +56,6 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
     private Activity mActivity;
     private General general;
     private MyAsynTaskManager myAsyncTask;
-    private Button btnSignup;
 
     @Required(order = 1)
     @Email(order = 2, message = "Please Check and Enter a valid Email Address")
