@@ -17,6 +17,9 @@
     <color name="grey_edit_text_color">#c5c5c5</color>
     <color name="black">#000000</color>
     <color name="ripple_material_dark">#4dffffff</color>
+    <color name="grey_product_title_color">#707070</color>
+    <color name="grey_product_name_color">#5d5d5d</color>
+    <color name="grey_product_amount_color">#9b9b9b</color>
 
 
 </resources>

@@ -134,5 +134,73 @@
                 }
             }
         ]
+    },
+    {
+        "outputFile": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-v14\\values-v14.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 41,
+                    "endColumn": 10,
+                    "endOffset": 3686
+                },
+                "from": {
+                    "file": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-v14\\values-v14.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 41,
+                        "endColumn": 10,
+                        "endOffset": 3686
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 3691,
+                    "endLine": 81,
+                    "endColumn": 10,
+                    "endOffset": 7353
+                },
+                "from": {
+                    "file": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-v14\\values-v14.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 3691,
+                        "endLine": 81,
+                        "endColumn": 10,
+                        "endOffset": 7353
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 82,
+                    "startColumn": 4,
+                    "startOffset": 7358,
+                    "endLine": 121,
+                    "endColumn": 10,
+                    "endOffset": 11044
+                },
+                "from": {
+                    "file": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\values-v14\\values-v14.xml",
+                    "position": {
+                        "startLine": 82,
+                        "startColumn": 4,
+                        "startOffset": 7358,
+                        "endLine": 121,
+                        "endColumn": 10,
+                        "endOffset": 11044
+                    }
+                }
+            }
+        ]
     }
 ]

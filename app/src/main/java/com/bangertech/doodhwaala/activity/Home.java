@@ -27,6 +27,7 @@ import com.bangertech.doodhwaala.beans.BeanBrand;
 import com.bangertech.doodhwaala.beans.BeanDayPlan;
 import com.bangertech.doodhwaala.beans.BeanProduct;
 import com.bangertech.doodhwaala.beans.BeanProductType;
+import com.bangertech.doodhwaala.customcontrols.CustomViewPager;
 import com.bangertech.doodhwaala.customcontrols.SlidingTabLayout;
 import com.bangertech.doodhwaala.fragment.MeFragment;
 import com.bangertech.doodhwaala.fragment.MilkbarFragment;
@@ -51,7 +52,7 @@ import java.util.List;
  * Created by annutech on 9/22/2015.
  */
 public class Home extends AppCompatActivity implements AsyncResponse {
-    ViewPager pager;
+    CustomViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout slidingTabLayout;
 
@@ -72,6 +73,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     private TextView txtViewMilkBarOnToolbarTitle;
     private HorizontalScrollView hsFilterMilkBarOnToolbar;
     private int pauseOrResumeIndex=-1;
+    private Toolbar mToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,26 +84,28 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         Helpshift.install(getApplication(), ConstantVariables.ACCESS_KEY_HELP_SHIFT, "bash.helpshift.com", ConstantVariables.APP_ID_HELP_SHIFT);
         //END
         setContentView(R.layout.lay_home);
-        app_bar = (Toolbar) findViewById(R.id.app_bar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        // setSupportActionBar(mToolbar);
+        mToolbar.setTitle("");
+        mToolbar.setMinimumHeight(CUtils.getStatusBarHeight(Home.this));
+        mToolbar.setVisibility(View.GONE);
 
         //txtViewMilkBarOnToolbarTitle = (TextView) app_bar.findViewById(R.id.txtViewMilkBarOnToolbarTitle);
         llFilterMilkBarOnToolbar = (LinearLayout)findViewById(R.id.llFilterMilkBarOnToolbar);
         hsFilterMilkBarOnToolbar = (HorizontalScrollView) findViewById(R.id.hsFilterMilkBarOnToolbar);
-        setSupportActionBar(app_bar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-       // txtViewMilkBarOnToolbarTitle.setText(R.string.app_name);
+        // txtViewMilkBarOnToolbarTitle.setText(R.string.app_name);
 
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
 
         myPagerAdapter=new MyFragmentPagerAdapter(getSupportFragmentManager(),getResources().getStringArray(R.array.home_tab_array));
         // Assigning ViewPager View and setting the adapter
-        pager = (ViewPager) findViewById(R.id.pager);
+        pager = (CustomViewPager) findViewById(R.id.pager);
         //pager.setAdapter(adapter);
+        pager.setPagingEnabled(false);
         pager.setAdapter(myPagerAdapter);
 
-        // Assiging the Sliding Tab Layout View
+        // Assigning the Sliding Tab Layout View
         slidingTabLayout = (SlidingTabLayout) findViewById(R.id.tabs);
         slidingTabLayout.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
 
@@ -118,7 +122,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
 
            @Override
            public void onPageSelected(int position) {
-               hideShowSearchOption(position);
+             //  hideShowSearchOption(position);
            }
 
            @Override
@@ -126,6 +130,8 @@ public class Home extends AppCompatActivity implements AsyncResponse {
 
            }
        });
+
+
         fetchProductType();
 
     }

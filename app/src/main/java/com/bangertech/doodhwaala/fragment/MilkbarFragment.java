@@ -7,33 +7,33 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bangertech.doodhwaala.activity.BrandAllProduct;
 import com.bangertech.doodhwaala.activity.FilterProduct;
 import com.bangertech.doodhwaala.activity.FiltersAppliedByFilterProduct;
 import com.bangertech.doodhwaala.activity.Home;
 import com.bangertech.doodhwaala.activity.ProductDetail;
 import com.bangertech.doodhwaala.adapter.MostSellingBrandAdapter;
 import com.bangertech.doodhwaala.beans.BeanBrand;
-import com.bangertech.doodhwaala.beans.BeanProduct;
 import com.bangertech.doodhwaala.beans.BeanProductType;
 import com.bangertech.doodhwaala.cinterfaces.IBrandAllProduct;
 import com.bangertech.doodhwaala.cinterfaces.ISelectedProduct;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
-import com.bangertech.doodhwaala.utils.CUtils;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
 
 import java.util.ArrayList;
 import java.util.List;
 import android.support.design.widget.FloatingActionButton;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -53,6 +53,7 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private FloatingActionButton     fabFilterProduct;
+    private ImageView search;
 
     public static MilkbarFragment newInstance() {
 
@@ -81,13 +82,16 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view =inflater.inflate(R.layout.fragment_milkbar, container, false);
+        view = inflater.inflate(R.layout.fragment_milkbar, container, false);
+        search=(ImageView) view.findViewById(R.id.searchProductType);
         gridProductType=(GridView)view.findViewById(R.id.gridProductType);
         fabFilterProduct=(FloatingActionButton)view.findViewById(R.id.fabFilterProduct);
         mRecyclerView= (RecyclerView)view.findViewById(R.id.my_recycler_view);
+
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
+
 
         fabFilterProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,6 +210,7 @@ public void reDrawFragment(List<BeanProductType> lstBeanProductType,List<BeanBra
         intent.putExtra(ConstantVariables.PRODUCT_MAPPING_ID_KEY,productMappingId);
         startActivity(intent);
     }
+
 
     class ProductTypeAdapter extends BaseAdapter
     {

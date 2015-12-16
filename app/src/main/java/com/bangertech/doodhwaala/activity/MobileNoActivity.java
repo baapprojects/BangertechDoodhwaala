@@ -80,8 +80,6 @@ public class MobileNoActivity extends AppCompatActivity implements View.OnClickL
         mContext = MobileNoActivity.this;
         mActivity = MobileNoActivity.this;
         general = new General();
-
-
     }
 
 
