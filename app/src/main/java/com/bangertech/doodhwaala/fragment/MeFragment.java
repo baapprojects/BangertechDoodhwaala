@@ -67,6 +67,7 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
                 customLogoutDialogbox(getActivity());
             }
         });
+
         return mRootView;
     }
 
@@ -151,4 +152,9 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
         }
 
     }*/
+
+    public void reDrawFragment()
+    {
+
+    }
 }

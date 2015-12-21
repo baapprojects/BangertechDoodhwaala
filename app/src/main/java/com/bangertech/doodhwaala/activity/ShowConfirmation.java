@@ -12,6 +12,7 @@ import com.bangertech.doodhwaala.beans.BeanAddress;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CGlobal;
 import com.bangertech.doodhwaala.utils.CUtils;
@@ -71,7 +72,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
         myAsyncTask.delegate=this;
         myAsyncTask.setupParamsAndUrl("getUserDefaultAddress", ShowConfirmation.this, AppUrlList.ACTION_URL,
                 new String[]{"module", "action", "user_id"},
-                new String[]{"user", "fetchAddresses", CGlobal.getCGlobalObject().getUserId()});
+                new String[]{"user", "fetchAddresses", PreferenceManager.getInstance().getUserId()});
         myAsyncTask.execute();
 
 
@@ -85,7 +86,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
         myAsyncTask.delegate=this;
         myAsyncTask.setupParamsAndUrl("insertUserPlan", ShowConfirmation.this, AppUrlList.ACTION_URL,
                 new String[]{"module", "action", "user_id","product_id","product_mapping_id","quantity","frequency_id","duration_id","subscription_date","address_id","paid_amount"},
-                new String[]{"plans", "insertUserPlan", CGlobal.getCGlobalObject().getUserId(),product_id,product_mapping_id,product_quantity,frequency_id,duration_id,fromDate,
+                new String[]{"plans", "insertUserPlan", PreferenceManager.getInstance().getUserId(),product_id,product_mapping_id,product_quantity,frequency_id,duration_id,fromDate,
                 CGlobal.getCGlobalObject().getAddressId(),paid_amount});
         myAsyncTask.execute();
 

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CGlobal;
 import com.bangertech.doodhwaala.utils.CUtils;
@@ -112,7 +113,7 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse {
         myAsyncTask.setupParamsAndUrl("addOrEditAddress", AddEditAddress.this, AppUrlList.ACTION_URL,
                 new String[]{"module", "action","new_address","address_id","user_id","city_id","locality_id","flat_number",
                         "building_or_society_name","street_details","landmark","pincode"},
-                new String[]{"user", "addOrEditAddress",isNewAddress?"true":"false",address_id, CGlobal.getCGlobalObject().getUserId(),
+                new String[]{"user", "addOrEditAddress",isNewAddress?"true":"false",address_id, PreferenceManager.getInstance().getUserId(),
                         bucketCityAndLocality.get(cityIndex).getCityId(),bucketLocality.get(localityIndex).getLocalityId(),
                         editTextFlat.getText().toString(),
                         editTextBuilding.getText().toString(),

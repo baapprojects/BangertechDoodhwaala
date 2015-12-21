@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DoodhWaala</string>
+    <string name="app_name">DoodhWala</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_add">Add</string>
@@ -44,7 +44,7 @@
 
     <string name="deliver_at">Deliver at: </string>
     <string name="edit">Edit</string>
-    <string name="tomorrow">Tomorrow</string>
+    <string name="tomorrow">Order for Tomorrow</string>
     <string name="today">Today</string>
     <string name="order_history_balance">Balance : </string>
     <string name="previous_day">Previous Day</string>
@@ -52,8 +52,14 @@
     <string name="do_you_want_to_pause_the_plan">Do you want to pause the plan ?</string>
     <string name="do_you_want_to_resume_the_plan">Do you want to resume the plan ?</string>
     <string name="pause">Pause</string>
+    <string name="active">Active</string>
     <string name="resume">Resume</string>
+    <string name="paused">Paused</string>
+    <string name="view_plan">View Plan</string>
+    <string name="change_plan">Change Plan</string>
     <string name="edit_plan">Edit Plan</string>
 
-
+    <string name="agreement">By continuing, I agree to Doodhwalla\'s</string>
+    <string name="Terms"><u>Terms and Condition</u></string>
+    <string name="policy"><u>Private Policy</u></string>
 </resources>

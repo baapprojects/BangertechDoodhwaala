@@ -1,6 +1,8 @@
 package com.bangertech.doodhwaala.adapter;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -26,12 +28,12 @@ import com.bangertech.doodhwaala.utils.ConstantVariables;
  */
 public class MostSellingBrandAdapter extends RecyclerView.Adapter<MostSellingBrandViewHolder>{
     private List<BeanBrand> lstMostSellingProducts;
-    private Activity activity;
+    private Context context;
     private IBrandAllProduct iBrandAllProduct;
     private ISelectedProduct iSelectedProduct;
-    public MostSellingBrandAdapter(Fragment fragment,List<BeanBrand> lstMostSellingProducts)
+    public MostSellingBrandAdapter(Context context, Fragment fragment,List<BeanBrand> lstMostSellingProducts)
     {
-
+        this.context = context;
         this.lstMostSellingProducts=lstMostSellingProducts;
         iBrandAllProduct=(IBrandAllProduct)fragment;
         iSelectedProduct=(ISelectedProduct)fragment;
@@ -49,6 +51,7 @@ public class MostSellingBrandAdapter extends RecyclerView.Adapter<MostSellingBra
 
 
         BeanBrand beanBrand= this.lstMostSellingProducts.get(position);
+        holder.BrandName.setTypeface(CUtils.RegularTypeFace(context));
         holder.BrandName.setText(beanBrand.getBrandName());
         holder.Products.setAdapter(new ProductAdapter(beanBrand.getProducts()));
         holder.ViewAll.setTag(String.valueOf(position));
@@ -102,13 +105,17 @@ public class MostSellingBrandAdapter extends RecyclerView.Adapter<MostSellingBra
                     inflate(R.layout.row_brand_product_card, parent, false);
 
 
+
             TextView textViewProductName = (TextView) view.findViewById(R.id.textViewProductName);
             TextView TextViewProductPrice = (TextView) view.findViewById(R.id.textViewProductPrice);
             ImageView imageViewProduct= (ImageView) view.findViewById(R.id.imageViewProduct);
 
+            textViewProductName.setTypeface(CUtils.LightTypeFace(context));
+            TextViewProductPrice.setTypeface(CUtils.LightTypeFace(context));
+
             BeanProduct beanProduct= this.lstBeanProduct.get(position);
             textViewProductName.setText(beanProduct.getProductName());
-            TextViewProductPrice.setText(beanProduct.getPrice());
+            TextViewProductPrice.setText("Rs "+beanProduct.getPrice());
             view.setTag(position);
 
             CUtils.downloadImageFromServer(parent.getContext(), imageViewProduct, beanProduct.getProductImage());

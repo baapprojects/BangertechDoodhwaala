@@ -26,7 +26,7 @@ public class DialogManager {
 //    		.setPositiveButton("Close", dialogClickListener)
 //    	    .show();
 
-		customFont = Typeface.createFromAsset(parentActivity.getAssets(), "myriad.ttf");
+		customFont = Typeface.createFromAsset(parentActivity.getAssets(), "fonts/myriad.ttf");
 		final Dialog dialog = new Dialog(parentActivity);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.custom_alert_dialog);
@@ -54,7 +54,7 @@ public class DialogManager {
 //    		.setPositiveButton("Close", dialogClickListener)
 //    	    .show();
 
-		customFont = Typeface.createFromAsset(parentActivity.getAssets(), "myriad.ttf");
+		customFont = Typeface.createFromAsset(parentActivity.getAssets(), "fonts/myriad.ttf");
 		final Dialog dialog = new Dialog(parentActivity);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.custom_alert_dialog);

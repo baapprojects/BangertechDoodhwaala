@@ -1,67 +1,15 @@
 [
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\com_facebook_button_like_icon_selected.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\com_facebook_button_like_icon_selected.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_button_send_round_shadow.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_button_send_round_shadow.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_large_blue.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_large_blue.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\com_facebook_button_send_icon.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\com_facebook_button_send_icon.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\com_facebook_button_send_icon.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\com_facebook_button_send_icon.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\com_facebook_button_like_icon_selected.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\com_facebook_button_like_icon_selected.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_small_blue.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_small_blue.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\com_facebook_button_icon.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\com_facebook_button_icon.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_button_send_round_shadow.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_button_send_round_shadow.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_small_white.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_small_white.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\com_facebook_button_icon.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\com_facebook_button_icon.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_large_white.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_large_white.png"
-    },
-    {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_button_send_round_shadow.png",
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_button_send_round_shadow.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_large_blue.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_large_blue.png"
     },
     {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\com_facebook_button_icon.png",
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\com_facebook_button_icon.png"
     },
     {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\com_facebook_button_like_icon_selected.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\com_facebook_button_like_icon_selected.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_large_blue.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_large_blue.png"
     },
     {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_large_white.png",
@@ -72,24 +20,12 @@
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_small_white.png"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_large_white.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_large_white.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\com_facebook_button_like_icon_selected.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\com_facebook_button_like_icon_selected.png"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_small_blue.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_small_blue.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_small_white.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_small_white.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_small_blue.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_small_blue.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_large_blue.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_large_blue.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\messenger_bubble_small_blue.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\messenger_bubble_small_blue.png"
     },
     {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\com_facebook_button_send_icon.png",

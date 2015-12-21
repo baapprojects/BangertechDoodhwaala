@@ -2,6 +2,7 @@ package com.bangertech.doodhwaala.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.provider.Settings;
@@ -50,6 +51,20 @@ public class CUtils {
         matcher = pattern.matcher(hex);
         return matcher.matches();
 
+    }
+
+    public static Typeface LightTypeFace(Context context)
+    {
+        Typeface customFontLight = Typeface.createFromAsset(context.getAssets(), "fonts/montserrat_light.otf");
+
+        return customFontLight;
+    }
+
+    public static Typeface RegularTypeFace(Context context)
+    {
+        Typeface customFontRegular = Typeface.createFromAsset(context.getAssets(), "fonts/montserrat_regular.otf");
+
+        return customFontRegular;
     }
 
     public static boolean isNetworkAvailable(Context mContext) {

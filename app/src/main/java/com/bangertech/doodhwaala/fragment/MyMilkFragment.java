@@ -1,10 +1,14 @@
 package com.bangertech.doodhwaala.fragment;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,8 +16,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.activity.EditMyPlan;
@@ -37,6 +48,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
@@ -48,12 +60,16 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
     public static final int CHANGE_PLAN=0;
     public static final int PAUSE_OR_RESUME_PLAN=1;
     private boolean isTomorrow=false,isPreviousDate=false,isNextDate=false;
-    String date_string="",plan_date="";
-    private TextView textViewDate,textViewDayHeading;
+    public static String date_string="",plan_date="";
+    public static TextView textViewDate,textViewDayHeading;
     private ImageView imageViewNext,imageViewPrevious;
     int moveIndex=ConstantVariables.MY_PLAN_TOMORROW;
     private boolean showChangeOrPausePlan=true;
     private int editMyPlanIndex=-1;
+    private String flagPause;
+    private ImageView datePicker;
+    private int year, month, day;
+    private Calendar calendar;
     public static MyMilkFragment newInstance() {
         return new MyMilkFragment();
     }
@@ -89,11 +105,13 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
         imageViewPrevious= (ImageView)view.findViewById(R.id.imageViewPrevious);
         imageViewNext= (ImageView)view.findViewById(R.id.imageViewNext);
         mRecyclerView= (RecyclerView)view.findViewById(R.id.my_recycler_view);
+        datePicker = (ImageView) view.findViewById(R.id.datePicker);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter=new DayPlanAdapter(this,lstDayPlan);
+        mAdapter=new DayPlanAdapter(getActivity(), this, lstDayPlan);
         mRecyclerView.setAdapter(mAdapter);
+
         imageViewNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,6 +125,7 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
 
             }
         });
+
         imageViewPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,8 +140,15 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
             }
         });
 
-        return view;
+        datePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment newFragment = new DatePickerFragment();
+                newFragment.show(getFragmentManager(), "datePicker");
+            }
+        });
 
+        return view;
     }
 
 
@@ -137,10 +163,11 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                 JSONArray jsonArrayProducts=new JSONArray(jsonObject.getString("products"));
                 isTomorrow=jsonObject.getBoolean("tomorrow");
                 isPreviousDate=jsonObject.getBoolean("previous_date");
-                isNextDate=jsonObject.getBoolean("previous_date");
+                isNextDate=jsonObject.getBoolean("next_date");
                 date_string=jsonObject.getString("date_string");
                 plan_date=jsonObject.getString("date");
                 showChangeOrPausePlan=isShowChangeOrPausePlan();
+
                 int size=jsonArrayProducts.length();
                 if(size>0)
                 {
@@ -151,6 +178,11 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                         if(jsonObjectProduct!=null)
                         {
                             beanDayPlan=new BeanDayPlan();
+                            if(jsonObjectProduct.getString("paused").equals(flagPause)) {
+                                beanDayPlan.setFlagPaused("");
+                            } else {
+                                beanDayPlan.setFlagPaused(jsonObjectProduct.getString("paused"));
+                            }
                             beanDayPlan.setPlanId(jsonObjectProduct.getString("plan_id"));
                             beanDayPlan.setProductName(jsonObjectProduct.getString("product_name"));
                             beanDayPlan.setQuantity(jsonObjectProduct.getString("quantity"));
@@ -158,6 +190,7 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                             beanDayPlan.setPaused(jsonObjectProduct.getBoolean("paused"));
                             beanDayPlan.setDateId(jsonObjectProduct.getString("date_id"));
                             beanDayPlan.setShowChangeOrPausePlan(showChangeOrPausePlan);
+                            flagPause = jsonObjectProduct.getString("paused");
                             lstDayPlan.add(beanDayPlan);
                         }
                     }
@@ -219,8 +252,13 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
     }
     private void showDateLabelHeading()
     {
-        if(isTomorrow)
+        if(isTomorrow) {
+            textViewDayHeading.setVisibility(View.VISIBLE);
             textViewDayHeading.setText(getActivity().getResources().getString(R.string.tomorrow));
+
+            imageViewPrevious.setVisibility(View.INVISIBLE);
+            imageViewNext.setVisibility(View.VISIBLE);
+        }
         else
         {
             try
@@ -232,13 +270,28 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                 Calendar todayCal=Calendar.getInstance();
                 Date date=new Date();
                 todayCal.setTime(format.parse(format.format(date)));
-                if(todayCal.equals(calPlanDate))
-                    textViewDayHeading.setText(getActivity().getResources().getString(R.string.today));
-                else
-                    if(todayCal.after(calPlanDate))
-                        textViewDayHeading.setText(getActivity().getResources().getString(R.string.previous_day));
-                else
-                        textViewDayHeading.setText(getActivity().getResources().getString(R.string.next_day));
+
+                if(todayCal.equals(calPlanDate)) {
+                    textViewDayHeading.setVisibility(View.VISIBLE);
+                    textViewDayHeading.setText(""+getActivity().getResources().getString(R.string.today));
+                }
+                else {
+                    if (todayCal.after(calPlanDate)) {
+                        //textViewDayHeading.setVisibility(View.GONE);
+                        textViewDayHeading.setText(""+getActivity().getResources().getString(R.string.previous_day));
+                    }
+                    else {
+                        textViewDayHeading.setVisibility(View.GONE);
+                        textViewDayHeading.setText(""+getActivity().getResources().getString(R.string.next_day));
+                        if(isNextDate){
+                            imageViewPrevious.setVisibility(View.VISIBLE);
+                            imageViewNext.setVisibility(View.VISIBLE);
+                        } else {
+                            imageViewPrevious.setVisibility(View.VISIBLE);
+                            imageViewNext.setVisibility(View.INVISIBLE);
+                        }
+                    }
+                }
 
             } catch (ParseException e) {
                 // TODO Auto-generated catch block
@@ -291,5 +344,95 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                 .setPositiveButton("Yes", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
     }
+
+    /*public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(), "datePicker");
+    }*/
+
+    public static class DatePickerFragment extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener {
+        static String[] suffixes =
+                //    0     1     2     3     4     5     6     7     8     9
+                { "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th",
+                        //    10    11    12    13    14    15    16    17    18    19
+                        "th", "th", "th", "th", "th", "th", "th", "th", "th", "th",
+                        //    20    21    22    23    24    25    26    27    28    29
+                        "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th",
+                        //    30    31
+                        "th", "st" };
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), this, year, month, day+1);
+            datePickerDialog.getDatePicker().setMinDate((System.currentTimeMillis() - 1000)+1);
+            return datePickerDialog;
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            // Do something with the date chosen by the user
+            view.setMinDate(System.currentTimeMillis() - 1000);
+            String set_date = String.valueOf(day)+"-"+String.valueOf(month+1)+"-"+String.valueOf(year);
+
+            SimpleDateFormat form  = new SimpleDateFormat("dd-MM-yyyy");
+            Date ver_date = null;
+            String Strver = "";
+            try {
+                ver_date = form.parse(set_date);
+                form = new SimpleDateFormat("yyyy-MM-dd");
+                Strver = form.format(ver_date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
+            SimpleDateFormat formatter  = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat formatter2 = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat formatter3 = new SimpleDateFormat("dd-MM-yyyy");
+
+            if(Strver.equals(plan_date) || Strver.compareTo(plan_date)>0)
+            {
+                Date newDate, newDate2, newDate3 = null;
+                String monthStr = "";
+                String dayStr = "";
+                String yearStr = "";
+                try {
+                    newDate = formatter.parse(set_date);
+                    newDate2 = formatter2.parse(set_date);
+                    newDate3 = formatter3.parse(set_date);
+                    //formatter = new SimpleDateFormat("MMM d yyyy");
+                    formatter = new SimpleDateFormat("d");
+                    formatter2 = new SimpleDateFormat("MMM");
+                    formatter3 = new SimpleDateFormat("yyyy");
+                    int days = Integer.parseInt(formatter.format(newDate));
+                    dayStr = days + suffixes[days];
+                    monthStr = formatter2.format(newDate2);
+                    yearStr = formatter3.format(newDate3);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                String sel_date = monthStr+" "+dayStr+" "+yearStr;
+                textViewDate.setText(sel_date);
+                if(!sel_date.equals(date_string)) {
+                    textViewDayHeading.setVisibility(View.GONE);
+                } else {
+                    textViewDayHeading.setVisibility(View.VISIBLE);
+                }
+            }
+            else {
+                Toast.makeText(getActivity(),"No Orders available",Toast.LENGTH_LONG).show();
+            }
+
+
+
+        }
+    }
+
 
 }

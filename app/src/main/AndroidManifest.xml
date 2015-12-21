@@ -22,7 +22,7 @@
             android:name=".activity.SplashScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialThemeB">
+            android:theme="@style/TransparentStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,6 +49,11 @@
             android:name=".activity.SigninActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialThemeB" />
+
+        <activity
+            android:name=".activity.PrivatePolicy"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait"

@@ -1,35 +1,11 @@
 [
     {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\hs__actionbar_compat_item_focused.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable\\hs__actionbar_compat_item_focused.xml"
-    },
-    {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\hs__actionbar_compat_item_focused.xml",
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable\\hs__actionbar_compat_item_focused.xml"
     },
     {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\hs__actionbar_compat_selectable_item_background.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable\\hs__actionbar_compat_selectable_item_background.xml"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\hs__edit_text_compat_background.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable\\hs__edit_text_compat_background.xml"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\hs__actionbar_compat_selectable_item_background.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable\\hs__actionbar_compat_selectable_item_background.xml"
-    },
-    {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\hs__actionbar_compat_selectable_item_background.xml",
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable\\hs__actionbar_compat_selectable_item_background.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\hs__edit_text_compat_background.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable\\hs__edit_text_compat_background.xml"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\hs__actionbar_compat_item_focused.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable\\hs__actionbar_compat_item_focused.xml"
     },
     {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\hs__edit_text_compat_background.xml",

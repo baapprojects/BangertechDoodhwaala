@@ -16,6 +16,7 @@ import com.bangertech.doodhwaala.beans.BeanOrderedHistory;
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
+import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CGlobal;
 import com.bangertech.doodhwaala.utils.CUtils;
@@ -89,7 +90,7 @@ public class OrderHistory extends AppCompatActivity implements AsyncResponse {
         myAsyncTask.delegate=this;
         myAsyncTask.setupParamsAndUrl("fetchOrderHistory", OrderHistory.this, AppUrlList.ACTION_URL,
                 new String[]{"module", "action", "user_id"},
-                new String[]{"plans", "orderHistory", CGlobal.getCGlobalObject().getUserId()});
+                new String[]{"plans", "orderHistory", PreferenceManager.getInstance().getUserId()});
         myAsyncTask.execute();
     }
     private void showOrderedHistory()

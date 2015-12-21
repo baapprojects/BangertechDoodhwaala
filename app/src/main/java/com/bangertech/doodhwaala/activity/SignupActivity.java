@@ -79,7 +79,7 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
     private Toolbar toolbar;
     private Button tvSave;
     private Validator validator;
-
+    private TextView terms_services, policy;
     private GcmCreatingClass gcm;
 
     @Override
@@ -87,11 +87,11 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setPadding(0, CUtils.getStatusBarHeight(SignupActivity.this), 0, 0);
+        // toolbar.setPadding(0, CUtils.getStatusBarHeight(SigninActivity.this), 0, 0);
         getSupportActionBar().setTitle("Sign up");
 
         tvSave = (Button) toolbar.findViewById(R.id.tvSave);
@@ -139,9 +139,13 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
         txtName = (EditText) findViewById(R.id.txtName);
         txtPhonenumber = (EditText) findViewById(R.id.txtPhoneNumber);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
+        terms_services = (TextView) findViewById(R.id.terms_services);
+        policy = (TextView) findViewById(R.id.policy);
        // btnSignup = (Button) findViewById(R.id.btnSignup);
 
         tvSave.setOnClickListener(clickListener);
+        terms_services.setOnClickListener(clickListener);
+        policy.setOnClickListener(clickListener);
 
 
         txtEmailAddress.addTextChangedListener(new TextWatcher() {
@@ -301,6 +305,18 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
                     validator.validate();
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    break;
+
+                case R.id.terms_services:
+                    Intent intent= new Intent(SignupActivity.this, PrivatePolicy.class);
+                    intent.putExtra("terms","Terms and Condition");
+                    startActivity(intent);
+                    break;
+
+                case R.id.policy:
+                    Intent navigation= new Intent(SignupActivity.this, PrivatePolicy.class);
+                    navigation.putExtra("terms","Private Policy");
+                    startActivity(navigation);
                     break;
             }
         }

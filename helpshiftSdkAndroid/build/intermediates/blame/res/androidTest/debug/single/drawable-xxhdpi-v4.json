@@ -1,65 +1,5 @@
 [
     {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled_focused.9.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled_focused.9.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled.9.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled.9.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_review.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_review.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__chat_new.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__chat_new.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__attach_screenshot_action_button.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__attach_screenshot_action_button.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_no.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_no.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__search_on_conversation_done.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__search_on_conversation_done.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_yes.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_yes.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_download.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_download.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_default.9.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_default.9.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled_focused.9.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled_focused.9.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_back.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_back.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_activated.9.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_activated.9.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_launch.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_launch.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_new_picture.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_new_picture.png"
-    },
-    {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__chat_new.png",
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__chat_new.png"
     },
@@ -68,140 +8,16 @@
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_search.png"
     },
     {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_back.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_back.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled_focused.9.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled_focused.9.png"
     },
     {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__screenshot_clear.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__screenshot_clear.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__report_issue.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__report_issue.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__search_on_conversation_done.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__search_on_conversation_done.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__actionbar_compat_item_pressed.9.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__actionbar_compat_item_pressed.9.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_cancel.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_cancel.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_download.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_download.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__attach_screenshot_action_button.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__attach_screenshot_action_button.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_new_picture.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_new_picture.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_yes.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_yes.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__report_issue.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__report_issue.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_review.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_review.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__search_on_conversation_done.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__search_on_conversation_done.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_cancel.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_cancel.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_search.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_search.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled.9.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled.9.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled.9.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled.9.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__screenshot_clear.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__screenshot_clear.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_default.9.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_default.9.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_focused.9.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_focused.9.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__chat_new.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__chat_new.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled.9.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled.9.png"
     },
     {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_download.png",
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_download.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__report_issue.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__report_issue.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__chat_notif.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__chat_notif.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_activated.9.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_activated.9.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_back.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_back.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_new_picture.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_new_picture.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_launch.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_launch.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__chat_notif.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__chat_notif.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_cancel.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_cancel.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__send.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__send.png"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_review.png",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_review.png"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_yes.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_yes.png"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_launch.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_launch.png"
     },
     {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__actionbar_compat_item_pressed.9.png",
@@ -212,55 +28,63 @@
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_focused.9.png"
     },
     {
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__chat_notif.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__chat_notif.png"
+    },
+    {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__send.png",
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__send.png"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled_focused.9.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_disabled_focused.9.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_activated.9.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_activated.9.png"
     },
     {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_search.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_search.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__report_issue.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__report_issue.png"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_activated.9.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_activated.9.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__search_on_conversation_done.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__search_on_conversation_done.png"
     },
     {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_focused.9.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_focused.9.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_no.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_no.png"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__screenshot_clear.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__screenshot_clear.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__attach_screenshot_action_button.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__attach_screenshot_action_button.png"
     },
     {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__chat_notif.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__chat_notif.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_new_picture.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_new_picture.png"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_default.9.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_default.9.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__text_field_compat_default.9.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__text_field_compat_default.9.png"
     },
     {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__send.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__send.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_yes.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_yes.png"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_no.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_no.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_back.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_back.png"
     },
     {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__actionbar_compat_item_pressed.9.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__actionbar_compat_item_pressed.9.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_cancel.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_cancel.png"
     },
     {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_no.png",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_no.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_review.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_review.png"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__attach_screenshot_action_button.png",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__attach_screenshot_action_button.png"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__action_launch.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__action_launch.png"
+    },
+    {
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\hs__screenshot_clear.png",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\hs__screenshot_clear.png"
     }
 ]

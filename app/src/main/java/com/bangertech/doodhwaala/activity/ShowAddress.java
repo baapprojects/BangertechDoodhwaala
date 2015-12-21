@@ -27,6 +27,7 @@ import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 
 import com.bangertech.doodhwaala.adapter.UserAddressListAdapter;
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CGlobal;
 import com.bangertech.doodhwaala.utils.CUtils;
@@ -95,7 +96,7 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
         myAsyncTask.delegate=this;
         myAsyncTask.setupParamsAndUrl("showUserAddressList", ShowAddress.this, AppUrlList.ACTION_URL,
                 new String[]{"module", "action", "user_id"},
-                new String[]{"user", "fetchAddresses", CGlobal.getCGlobalObject().getUserId()});
+                new String[]{"user", "fetchAddresses", PreferenceManager.getInstance().getUserId()});
         myAsyncTask.execute();
     }
     @Override
@@ -142,7 +143,7 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
         myAsyncTask.delegate=this;
         myAsyncTask.setupParamsAndUrl("makeDefaultAddress", ShowAddress.this, AppUrlList.ACTION_URL,
                 new String[]{"module", "action", "user_id","address_id"},
-                new String[]{"user", "makeDefaultAddress", CGlobal.getCGlobalObject().getUserId(),
+                new String[]{"user", "makeDefaultAddress", PreferenceManager.getInstance().getUserId(),
                         listAddress.get(newSelectedAddressIndex).getAddressId()});
         myAsyncTask.execute();
     }

@@ -1,37 +1,5 @@
 [
     {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__search_on_conversation.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__search_on_conversation.xml"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__add_conversation_menu.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__add_conversation_menu.xml"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__actionbar_indeterminate_progress.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__actionbar_indeterminate_progress.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__add_conversation_menu.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__add_conversation_menu.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__faqs_fragment.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__faqs_fragment.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__messages_menu.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__messages_menu.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__show_conversation.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__show_conversation.xml"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__show_conversation.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__show_conversation.xml"
-    },
-    {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__actionbar_indeterminate_progress.xml",
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__actionbar_indeterminate_progress.xml"
     },
@@ -48,27 +16,11 @@
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__add_conversation_menu.xml"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__search_on_conversation.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__search_on_conversation.xml"
-    },
-    {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__show_conversation.xml",
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__show_conversation.xml"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__faqs_fragment.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__faqs_fragment.xml"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__messages_menu.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__messages_menu.xml"
-    },
-    {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__search_on_conversation.xml",
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__search_on_conversation.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\hs__actionbar_indeterminate_progress.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\helpshiftSdkAndroid\\build\\intermediates\\bundles\\debug\\res\\menu\\hs__actionbar_indeterminate_progress.xml"
     }
 ]

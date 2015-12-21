@@ -20,6 +20,7 @@
     <color name="grey_product_title_color">#707070</color>
     <color name="grey_product_name_color">#5d5d5d</color>
     <color name="grey_product_amount_color">#9b9b9b</color>
+    <color name="light_background_color">#f7f7f7</color>
 
 
 </resources>

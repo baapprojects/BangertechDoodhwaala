@@ -10,6 +10,8 @@ public class BeanDayPlan {
     private String quantity="";
     private boolean paused=false;
     private String image="";
+    private String Fpaused="";
+    private boolean flagPaused=false;
 
     public boolean isShowChangeOrPausePlan() {
         return showChangeOrPausePlan;
@@ -67,5 +69,13 @@ public class BeanDayPlan {
 
     public void setPaused(boolean paused) {
         this.paused = paused;
+    }
+
+    public String getFlagPaused() {
+        return Fpaused;
+    }
+
+    public void setFlagPaused(String Fpaused) {
+        this.Fpaused = Fpaused;
     }
 }

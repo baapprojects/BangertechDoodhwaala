@@ -35,6 +35,7 @@ import com.bangertech.doodhwaala.fragment.MyMilkFragment;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CGlobal;
 import com.bangertech.doodhwaala.utils.CUtils;
@@ -74,6 +75,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     private HorizontalScrollView hsFilterMilkBarOnToolbar;
     private int pauseOrResumeIndex=-1;
     private Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,7 +104,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         // Assigning ViewPager View and setting the adapter
         pager = (CustomViewPager) findViewById(R.id.pager);
         //pager.setAdapter(adapter);
-        pager.setPagingEnabled(false);
+        pager.setPagingEnabled(true);
         pager.setAdapter(myPagerAdapter);
 
         // Assigning the Sliding Tab Layout View
@@ -114,6 +116,8 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         // Setting the ViewPager For the SlidingTabsLayout
         slidingTabLayout.setViewPager(pager);
 
+        fetchProductType();
+
        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
            @Override
            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -122,7 +126,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
 
            @Override
            public void onPageSelected(int position) {
-             //  hideShowSearchOption(position);
+               hideShowSearchOption(position);
            }
 
            @Override
@@ -132,7 +136,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
        });
 
 
-        fetchProductType();
+
 
     }
 
@@ -227,12 +231,16 @@ public class Home extends AppCompatActivity implements AsyncResponse {
      */
     private void hideShowSearchOption(int position)
     {
-       if(position==MILK_BAR)
-           menuItemSearch.setVisible(true);
-        if(position==MY_MILK)
-            menuItemSearch.setVisible(false);
-        if(position==ME)
-            menuItemSearch.setVisible(false);
+       if(position==MILK_BAR) {
+
+       }
+        if(position==MY_MILK) {
+            MyMilkFragment.textViewDate.setText(MyMilkFragment.date_string);
+            MyMilkFragment.textViewDayHeading.setVisibility(View.VISIBLE);
+        }
+        if(position==ME) {
+
+        }
     }
 
     @Override
@@ -281,8 +289,9 @@ public class Home extends AppCompatActivity implements AsyncResponse {
             fetchDayPlanFromServer("", 0);
 
         }
-        if (from.equalsIgnoreCase("fetchDayPlan"))
+        if (from.equalsIgnoreCase("fetchDayPlan")) {
             myMilkFragment.reDrawFragment(output);
+        }
 
         if (from.equalsIgnoreCase("updatePauseOrResumePlan"))
         {
@@ -300,6 +309,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
             }
             pauseOrResumeIndex=-1;
         }
+        meFragment.reDrawFragment();
 
     }
 
@@ -506,7 +516,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         myAsyncTask.delegate = this;
         myAsyncTask.setupParamsAndUrl("fetchDayPlan", Home.this, AppUrlList.ACTION_URL,
                 new String[]{"module", "action","user_id","move","move_date"},
-                new String[]{"plans", "fetchDayPlan", CGlobal.getCGlobalObject().getUserId(),String.valueOf(moveIndex),strDate});
+                new String[]{"plans", "fetchDayPlan", PreferenceManager.getInstance().getUserId(),String.valueOf(moveIndex),strDate});
         myAsyncTask.execute();
     }
 

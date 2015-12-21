@@ -1,67 +1,7 @@
 [
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\com_facebook_login_fragment.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\com_facebook_login_fragment.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\com_facebook_activity_layout.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\com_facebook_activity_layout.xml"
-    },
-    {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_white_small.xml",
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_white_small.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_white_large.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_white_large.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_white_small.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_white_small.xml"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_white_small.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_white_small.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\com_facebook_login_fragment.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\com_facebook_login_fragment.xml"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_blue_large.xml",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_blue_large.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_blue_large.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_blue_large.xml"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_blue_small.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_blue_small.xml"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_blue_round.xml",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_blue_round.xml"
-    },
-    {
-        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\com_facebook_login_fragment.xml",
-        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\com_facebook_login_fragment.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_blue_round.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_blue_round.xml"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\com_facebook_activity_layout.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\com_facebook_activity_layout.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_white_round.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_white_round.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_blue_small.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_blue_small.xml"
     },
     {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\com_facebook_activity_layout.xml",
@@ -72,32 +12,20 @@
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_blue_small.xml"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_blue_round.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_blue_round.xml"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_white_round.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_white_round.xml"
-    },
-    {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\com_facebook_tooltip_bubble.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\com_facebook_tooltip_bubble.xml"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_blue_large.xml",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_blue_large.xml"
     },
     {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_white_round.xml",
         "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_white_round.xml"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_white_large.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_white_large.xml"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_blue_round.xml",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_blue_round.xml"
     },
     {
-        "merged": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_blue_large.xml",
-        "source": "D:\\DoodhwaalaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\messenger_button_send_blue_large.xml"
-    },
-    {
-        "merged": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\com_facebook_tooltip_bubble.xml",
-        "source": "D:\\Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\com_facebook_tooltip_bubble.xml"
+        "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\com_facebook_login_fragment.xml",
+        "source": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\layout\\com_facebook_login_fragment.xml"
     },
     {
         "merged": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\messenger_button_send_white_large.xml",

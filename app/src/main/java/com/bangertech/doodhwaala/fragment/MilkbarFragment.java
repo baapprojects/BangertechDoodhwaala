@@ -84,7 +84,7 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_milkbar, container, false);
         search=(ImageView) view.findViewById(R.id.searchProductType);
-        gridProductType=(GridView)view.findViewById(R.id.gridProductType);
+        gridProductType=(GridView) view.findViewById(R.id.gridProductType);
         fabFilterProduct=(FloatingActionButton)view.findViewById(R.id.fabFilterProduct);
         mRecyclerView= (RecyclerView)view.findViewById(R.id.my_recycler_view);
 
@@ -103,7 +103,6 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
              /*  Toast.makeText(getActivity(),"FAB clicked",Toast.LENGTH_SHORT).show();*/
             }
         });
-
         return view;
     }
 
@@ -131,7 +130,7 @@ public void reDrawFragment(List<BeanProductType> lstBeanProductType,List<BeanBra
       if (this.lstProducts.size()>0)
       {
 
-          mAdapter=new MostSellingBrandAdapter(this,this.lstProducts);
+          mAdapter=new MostSellingBrandAdapter(getActivity(),this,this.lstProducts);
           mRecyclerView.setAdapter(mAdapter);
           mRecyclerView.setVisibility(View.VISIBLE);
       }
@@ -143,9 +142,10 @@ public void reDrawFragment(List<BeanProductType> lstBeanProductType,List<BeanBra
  private void initProductType()
  {
 
-     if(lstBeanProductType.size()>0) {
-         productTypeAdapter = new ProductTypeAdapter();
+     if(this.lstBeanProductType.size()>0) {
+         productTypeAdapter = new ProductTypeAdapter(getActivity(),this,this.lstBeanProductType);
          gridProductType.setAdapter(productTypeAdapter);
+         gridProductType.setVisibility(View.VISIBLE);
      }
      initProducts();
  }
@@ -212,9 +212,14 @@ public void reDrawFragment(List<BeanProductType> lstBeanProductType,List<BeanBra
     }
 
 
-    class ProductTypeAdapter extends BaseAdapter
+    public class ProductTypeAdapter extends BaseAdapter
     {
-
+        private Context context;
+        private List<BeanProductType> lstProductsType;
+        public ProductTypeAdapter(Context context, Fragment fragment,List<BeanProductType> lstProductsType) {
+            this.context = context;
+            this.lstProductsType=lstProductsType;
+        }
         @Override
         public int getCount() {
             return lstBeanProductType.size();
@@ -236,10 +241,10 @@ public void reDrawFragment(List<BeanProductType> lstBeanProductType,List<BeanBra
             LayoutInflater inflater = (LayoutInflater) getActivity()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-
             grid = inflater.inflate(R.layout.row_product_type, null);
+            BeanProductType beanType= this.lstProductsType.get(position);
             TextView textView = (TextView) grid.findViewById(R.id.textViewProduct);
-            textView.setText(lstBeanProductType.get(position).getTagName());
+            textView.setText(beanType.getTagName());
             textView.setTag(position);
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
