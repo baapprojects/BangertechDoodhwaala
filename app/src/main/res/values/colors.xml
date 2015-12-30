@@ -3,6 +3,7 @@
 
     <color name="primaryColor">#E91E63</color>
     <color name="primaryColorDark">#C2185B</color>
+    <color name="primaryColorTransparent">#30E91E63</color>
     <!-- <color name="accentColor"></color>-->
     <color name="accentColor">#00bfc9</color>
     <color name="accentRippleColor">#2feef5</color>
@@ -21,6 +22,6 @@
     <color name="grey_product_name_color">#5d5d5d</color>
     <color name="grey_product_amount_color">#9b9b9b</color>
     <color name="light_background_color">#f7f7f7</color>
-
+    <color name="subscription_grey_color">#363636</color>
 
 </resources>

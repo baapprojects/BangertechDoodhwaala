@@ -56,12 +56,13 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_filter_product);
-        app_bar = (Toolbar) findViewById(R.id.app_bar);//gridProductType
-        butSave = (Button)app_bar.findViewById(R.id.butSave);
+        app_bar = (Toolbar) findViewById(R.id.toolbar);//gridProductType
+        butSave = (Button)app_bar.findViewById(R.id.tvSave);
         setSupportActionBar(app_bar);
+        butSave.setVisibility(View.GONE);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        app_bar.setPadding(0, CUtils.getStatusBarHeight(FilterProduct.this), 0, 0);
+        //app_bar.setPadding(0, CUtils.getStatusBarHeight(FilterProduct.this), 0, 0);
         getSupportActionBar().setTitle(getString(R.string.filters));
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_cancel);
         gridProductType = (GridView) findViewById(R.id.gridProductType);

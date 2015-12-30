@@ -46,7 +46,7 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:text="Nandini Skimmed Milk"
-               android:textSize="15sp"
+               android:textSize="12sp"
                android:paddingLeft="5dp"
                android:layout_marginTop="5dp"/>
 
@@ -62,11 +62,11 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="Change"
-                   android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                   android:textSize="12sp"
                    android:textColor="@color/accentColor"
                    android:background="?attr/selectableItemBackgroundBorderless"
                    android:paddingLeft="5dp"
-                   android:layout_marginTop="10dp"/>
+                   android:layout_marginTop="20dp"/>
 
                <TextView
                    android:id="@+id/textViewPausePlan"
@@ -74,11 +74,11 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="Pause"
-                   android:layout_marginLeft="30dp"
-                   android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                   android:layout_marginLeft="20dp"
+                   android:textSize="12sp"
                    android:textColor="@color/accentColor"
                    android:background="?attr/selectableItemBackgroundBorderless"
-                   android:layout_marginTop="10dp"/>
+                   android:layout_marginTop="20dp"/>
 
            </RelativeLayout>
 
@@ -110,7 +110,7 @@
                    android:layout_height="wrap_content"
                    android:src="@drawable/minus"
                    android:layout_centerVertical="true"
-                   android:padding="6dp"
+                   android:padding="10dp"
                    android:background="?attr/selectableItemBackgroundBorderless"/>
 
                <TextView
@@ -121,8 +121,8 @@
                    android:text="3"
                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                    android:layout_centerVertical="true"
-                   android:layout_marginLeft="20dp"
-                   android:layout_marginRight="20dp"/>
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginRight="10dp"/>
 
                <ImageView
                    android:id="@+id/ivplus"

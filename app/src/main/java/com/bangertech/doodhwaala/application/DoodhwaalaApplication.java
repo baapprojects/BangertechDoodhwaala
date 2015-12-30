@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.support.multidex.MultiDex;
 import android.util.Base64;
 import android.util.Log;
 
@@ -78,5 +79,11 @@ public class DoodhwaalaApplication extends Application {
 
     public static synchronized DoodhwaalaApplication getInstance() {
         return mInstance;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }

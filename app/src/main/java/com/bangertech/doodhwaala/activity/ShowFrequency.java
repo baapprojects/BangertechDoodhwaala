@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
@@ -106,14 +107,18 @@ public class ShowFrequency  extends AppCompatActivity implements AsyncResponse {
         {
 
         }
+        float density = getResources().getDisplayMetrics().density;
         RadioGroup.LayoutParams rprms;
-        rprms= new RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT);
-        int size=bucketFrequency.size();
-        for(int index=0;index<size;index++)
-        {
+        rprms= new RadioGroup.LayoutParams((int)(216*density),
+                (int)(50*density));
+        /*RelativeLayout.LayoutParams layoutParams =
+                (RelativeLayout.LayoutParams)radioGroupFrequency.getLayoutParams();
+        layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);*/
+        int size = bucketFrequency.size();
+        for (int index=0;index<size;index++) {
 
             RadioButton radioButton = new RadioButton(this);
-            radioButton.setTextAppearance(this,android.R.style.TextAppearance_Medium);
+            radioButton.setTextAppearance(this, android.R.style.TextAppearance_Medium);
             radioButton.setPadding(10, 10, 10, 10);
             radioButton.setText(bucketFrequency.get(index).getFrequencyName());
             radioButton.setTag(index);
@@ -121,6 +126,7 @@ public class ShowFrequency  extends AppCompatActivity implements AsyncResponse {
             radioGroupFrequency.addView(radioButton,index,rprms);
 
         }
+        //radioGroupFrequency.setLayoutParams(layoutParams);
 
     }
 
@@ -186,4 +192,5 @@ public class ShowFrequency  extends AppCompatActivity implements AsyncResponse {
           CUtils.showUserMessage(this,"Please select frequency");
 
     }
+
 }

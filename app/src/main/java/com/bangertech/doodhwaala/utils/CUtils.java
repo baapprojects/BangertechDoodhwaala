@@ -83,12 +83,18 @@ public class CUtils {
     {
         if(ConstantVariables.IS_DEBUG)
         {
-            if(TYPE==ConstantVariables.LOG_TYPE.ERROR)
+            if(TYPE==ConstantVariables.LOG_TYPE.ERROR) {
+                if(msg!=null)
                 Log.e(TAG, msg);
-            if(TYPE==ConstantVariables.LOG_TYPE.INFO)
+            }
+            if(TYPE==ConstantVariables.LOG_TYPE.INFO) {
+                if(msg!=null)
                 Log.i(TAG, msg);
-            if(TYPE==ConstantVariables.LOG_TYPE.WARNING)
+            }
+            if(TYPE==ConstantVariables.LOG_TYPE.WARNING) {
+                if(msg!=null)
                 Log.w(TAG, msg);
+            }
         }
     }
    /* public static void donwloadImageFromServer(Context context,ImageView imageView,String url)

@@ -1,9 +1,13 @@
 package com.bangertech.doodhwaala.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -23,6 +27,7 @@ public class PrivatePolicy extends AppCompatActivity {
     private Toolbar mToolbar;
     private String data,url;
     private WebView webView;
+    private ProgressDialog progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_PROGRESS);
@@ -51,22 +56,42 @@ public class PrivatePolicy extends AppCompatActivity {
 
         webView.getSettings().setJavaScriptEnabled(true);
 
-        final Activity activity = this;
-        webView.setWebChromeClient(new WebChromeClient() {
-            public void onProgressChanged(WebView view, int progress) {
-                // Activities and WebViews measure progress with different scales.
-                // The progress meter will automatically disappear when we reach 100%
-                activity.setTitle("Loading...");
-                activity.setProgress(progress * 100);
-            }
-        });
-        webView.setWebViewClient(new WebViewClient() {
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                Toast.makeText(activity, "Sorry couldn't load the url!" + description, Toast.LENGTH_SHORT).show();
-            }
-        });
+        startWebView(url);
+    }
 
+    private void startWebView(String url) {
+
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        progressBar = ProgressDialog.show(PrivatePolicy.this, "", "Loading...");
+        webView.setWebViewClient(new WebViewClient() {
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                Log.i("TAG", "Processing webview url click...");
+                view.loadUrl(url);
+                return true;
+            }
+
+            public void onPageFinished(WebView view, String url) {
+                Log.i("TAG", "Finished loading URL: " + url);
+                if (progressBar.isShowing()) {
+                    progressBar.dismiss();
+                }
+            }
+
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                Log.e("TAG", "Error: " + description);
+                //Toast.makeText(activity, "Oh no! " + description, Toast.LENGTH_SHORT).show();
+                alertDialog.setTitle("Error");
+                alertDialog.setMessage(description);
+                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
+                alertDialog.show();
+            }
+        });
         webView.loadUrl(url);
+
 
     }
 
@@ -81,10 +106,17 @@ public class PrivatePolicy extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
+                    finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void onBackPressed() {
+       /* if(webView.canGoBack()) {
+            webView.goBack();
+        } */
+        super.onBackPressed();
     }
 }

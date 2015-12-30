@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="56dp"
     android:background="?attr/colorPrimary"
-    android:elevation="10dp"
+    android:elevation="@dimen/toolbar_elevation"
     local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     local:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 

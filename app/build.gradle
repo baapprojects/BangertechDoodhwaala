@@ -35,6 +35,8 @@ dependencies {
     compile 'com.android.support:cardview-v7:22.2.1'
     compile 'com.github.bumptech.glide:glide:3.5.2'
     compile 'com.mobsandgeeks:android-saripaar:1.0.3'
+    //compile 'org.robolectric:shadows-multidex:3.0'
+    //compile 'com.android.support:multidex:1.0.0'
     compile project(':facebook')
     compile project(':helpshiftSdkAndroid')
 }

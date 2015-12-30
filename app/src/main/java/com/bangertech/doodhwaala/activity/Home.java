@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -44,6 +45,7 @@ import com.helpshift.D;
 import com.helpshift.Helpshift;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -53,7 +55,7 @@ import java.util.List;
  * Created by annutech on 9/22/2015.
  */
 public class Home extends AppCompatActivity implements AsyncResponse {
-    CustomViewPager pager;
+    public static CustomViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout slidingTabLayout;
 
@@ -89,7 +91,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         // setSupportActionBar(mToolbar);
         mToolbar.setTitle("");
-        mToolbar.setMinimumHeight(CUtils.getStatusBarHeight(Home.this));
+        //mToolbar.setMinimumHeight(CUtils.getStatusBarHeight(Home.this));
         mToolbar.setVisibility(View.GONE);
 
         //txtViewMilkBarOnToolbarTitle = (TextView) app_bar.findViewById(R.id.txtViewMilkBarOnToolbarTitle);
@@ -112,11 +114,9 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         slidingTabLayout.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
 
 
-
         // Setting the ViewPager For the SlidingTabsLayout
         slidingTabLayout.setViewPager(pager);
 
-        fetchProductType();
 
        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
            @Override
@@ -136,7 +136,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
        });
 
 
-
+        fetchProductType();
 
     }
 
@@ -246,7 +246,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     @Override
     protected void onResume() {
         super.onResume();
-
+        //fetchProductType();
     }
 
     @Override
@@ -272,7 +272,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     }
 
     @Override
-    public void backgroundProcessFinish(String from, String output) {
+    public void backgroundProcessFinish(String from, final String output) {
         if(from.equalsIgnoreCase("fetchProductType")) {
             if(!parseAndFormateProductTypeList(output))
                 lstBeanProductType.clear();
@@ -285,12 +285,30 @@ public class Home extends AppCompatActivity implements AsyncResponse {
             if(!parseAndFormateMostSellingProductsList(output))
                 lstMostSellingProducts.clear();
 
-            milkbarFragment.reDrawFragment(lstBeanProductType,lstMostSellingProducts);
+            milkbarFragment.reDrawFragment(lstBeanProductType, lstMostSellingProducts);
             fetchDayPlanFromServer("", 0);
-
         }
         if (from.equalsIgnoreCase("fetchDayPlan")) {
             myMilkFragment.reDrawFragment(output);
+            /*new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(output);
+                        if (jsonObject.getBoolean("result")){
+                            myMilkFragment.reDrawFragment(output);
+
+                        } else {
+
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, 100);*/
+
+
         }
 
         if (from.equalsIgnoreCase("updatePauseOrResumePlan"))

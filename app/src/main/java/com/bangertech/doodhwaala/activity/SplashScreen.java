@@ -1,6 +1,7 @@
 package com.bangertech.doodhwaala.activity;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,9 +18,9 @@ import com.bangertech.doodhwaala.manager.PreferenceManager;
 /**
  * Created by annutech on 11/30/2015.
  */
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends Activity {
 
-    private GcmCreatingClass gcm;
+    //private GcmCreatingClass gcm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +46,13 @@ public class SplashScreen extends AppCompatActivity {
         }
         setContentView(R.layout.splash_screen);
 
-        gcm = new GcmCreatingClass(SplashScreen.this, SplashScreen.this);
+        //gcm = new GcmCreatingClass(SplashScreen.this, SplashScreen.this);
 
-        gcm.registerGCM();
+        //gcm.registerGCM();
 
-        gcm.registerInBackground();
+       // gcm.registerInBackground();
 
-        System.out.println("SplashScreen " + gcm.registerGCM() + " " + gcm.registerInBackground());
+       // System.out.println("SplashScreen " + gcm.registerGCM() + " " + gcm.registerInBackground());
 
         new Handler().postDelayed(new Runnable() {
 

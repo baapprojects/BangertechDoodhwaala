@@ -45,7 +45,7 @@ public class DialogManager {
 
 	}
 
-	public static void showAndFinishDialog(final Activity parentActivity, String message)
+	public static void showOptionsDialog(final Activity parentActivity, String message)
 	{
 
 
@@ -57,13 +57,13 @@ public class DialogManager {
 		customFont = Typeface.createFromAsset(parentActivity.getAssets(), "fonts/myriad.ttf");
 		final Dialog dialog = new Dialog(parentActivity);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		dialog.setContentView(R.layout.custom_alert_dialog);
+		dialog.setContentView(R.layout.custom_alert_dialog_option);
 
 		TextView msgText=(TextView)dialog.findViewById(R.id.body);
 		msgText.setText(message);
 		Button btn_ok=(Button)dialog.findViewById(R.id.btn_ok);
+		Button btn_cancel=(Button)dialog.findViewById(R.id.btn_cancel);
 
-		dialog.show();
 		btn_ok.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -71,6 +71,16 @@ public class DialogManager {
 				dialog.dismiss();
 			}
 		});
+
+		btn_cancel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				parentActivity.finish();
+				dialog.dismiss();
+			}
+		});
+
+		dialog.show();
 
 	}
 	

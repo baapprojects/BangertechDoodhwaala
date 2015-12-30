@@ -195,8 +195,10 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                         }
                     }
                 }
+                Home.pager.setCurrentItem(1);
             }
             else
+                Home.pager.setCurrentItem(0);
                 CUtils.showUserMessage(getActivity(),jsonObject.getString("msg"));
         }
         catch (Exception e)
@@ -398,31 +400,35 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
 
             if(Strver.equals(plan_date) || Strver.compareTo(plan_date)>0)
             {
-                Date newDate, newDate2, newDate3 = null;
-                String monthStr = "";
-                String dayStr = "";
-                String yearStr = "";
-                try {
-                    newDate = formatter.parse(set_date);
-                    newDate2 = formatter2.parse(set_date);
-                    newDate3 = formatter3.parse(set_date);
-                    //formatter = new SimpleDateFormat("MMM d yyyy");
-                    formatter = new SimpleDateFormat("d");
-                    formatter2 = new SimpleDateFormat("MMM");
-                    formatter3 = new SimpleDateFormat("yyyy");
-                    int days = Integer.parseInt(formatter.format(newDate));
-                    dayStr = days + suffixes[days];
-                    monthStr = formatter2.format(newDate2);
-                    yearStr = formatter3.format(newDate3);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                String sel_date = monthStr+" "+dayStr+" "+yearStr;
-                textViewDate.setText(sel_date);
-                if(!sel_date.equals(date_string)) {
-                    textViewDayHeading.setVisibility(View.GONE);
+                if(!textViewDayHeading.getText().toString().equals("No Orders Placed")) {
+                    Date newDate, newDate2, newDate3 = null;
+                    String monthStr = "";
+                    String dayStr = "";
+                    String yearStr = "";
+                    try {
+                        newDate = formatter.parse(set_date);
+                        newDate2 = formatter2.parse(set_date);
+                        newDate3 = formatter3.parse(set_date);
+                        //formatter = new SimpleDateFormat("MMM d yyyy");
+                        formatter = new SimpleDateFormat("d");
+                        formatter2 = new SimpleDateFormat("MMM");
+                        formatter3 = new SimpleDateFormat("yyyy");
+                        int days = Integer.parseInt(formatter.format(newDate));
+                        dayStr = days + suffixes[days];
+                        monthStr = formatter2.format(newDate2);
+                        yearStr = formatter3.format(newDate3);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    String sel_date = monthStr + " " + dayStr + " " + yearStr;
+                    textViewDate.setText(sel_date);
+                    if (!sel_date.equals(date_string)) {
+                        textViewDayHeading.setVisibility(View.GONE);
+                    } else {
+                        textViewDayHeading.setVisibility(View.VISIBLE);
+                    }
                 } else {
-                    textViewDayHeading.setVisibility(View.VISIBLE);
+                    Toast.makeText(getActivity(),"No Orders available",Toast.LENGTH_LONG).show();
                 }
             }
             else {

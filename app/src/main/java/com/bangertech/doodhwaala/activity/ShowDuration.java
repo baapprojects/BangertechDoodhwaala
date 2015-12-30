@@ -122,8 +122,10 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
         {
 
         }
+        float density = getResources().getDisplayMetrics().density;
         RadioGroup.LayoutParams rprms;
-        rprms= new RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT);
+        rprms= new RadioGroup.LayoutParams((int)(216*density),
+                (int)(50*density));
         int size=bucketDuration.size();
         for(int index=0;index<size;index++)
         {

@@ -3,6 +3,7 @@ package com.bangertech.doodhwaala.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.bangertech.doodhwaala.manager.AsyncResponse;
@@ -33,10 +35,9 @@ import java.util.List;
  * Created by annutech on 10/8/2015.
  */
 public class ProductDetail extends AppCompatActivity implements AsyncResponse {
-    private Toolbar app_bar;
+    //private Toolbar app_bar;
 
-    private int selectedQuantity=1;
-    private TextView txtViewSelectedQuantity,txtViewProductName,txtViewProductPrice,txtViewProductDesc;
+    private TextView txtViewProductName,txtViewProductPrice,txtViewProductDesc, txtViewtitleTwo, txtViewRecoDesc;
     private ImageView imageViewProduct;
     private RecyclerView recyclerViewPackaging,recyclerViewPackQty,recyclerViewAttribute;
     private RecyclerView.LayoutManager mLayoutManagerPackaging,mLayoutManagerPackQty,mLayoutManagerAttribute;
@@ -46,24 +47,34 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
 
     private static final int PACKAGING_LIST=0;
     private static final int PACK_QUANTITY_LIST=1;
-    private String productId,productName,brandId,productTypeId,productDescription,productPrice="38.00",productMappingId, productImageUrl,quantityId;
+    private String productId,productName,brandId,productTypeId,productDescription, productReco, productPrice="38.00",productMappingId, productImageUrl,quantityId;
     private PackagingAndQtyAdapter bucketPackagingAdapter, bucketPackagingAndQtyAdapter;
     private BeanPackagingAndQty  beanPackagingAndQtyDefault;
+    private TextView txtViewPackaging, txtViewtitle, tviCurrency;
+    private ImageView ic_close;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_product_detail);
-        txtViewSelectedQuantity = (TextView) findViewById(R.id.txtViewSelectedQuantity);
+       // txtViewSelectedQuantity = (TextView) findViewById(R.id.txtViewSelectedQuantity);
         txtViewProductName = (TextView) findViewById(R.id.txtViewProductName);
         txtViewProductPrice = (TextView) findViewById(R.id.txtViewProductPrice);
         txtViewProductDesc = (TextView) findViewById(R.id.txtViewProductDesc);
+        txtViewPackaging = (TextView) findViewById(R.id.txtViewPackaging);
+        tviCurrency      = (TextView) findViewById(R.id.tviCurrency);
+        txtViewtitle     = (TextView) findViewById(R.id.txtViewtitle);
         imageViewProduct = (ImageView) findViewById(R.id.imageViewProduct);
+        ic_close = (ImageView) findViewById(R.id.ic_close);
+        txtViewtitleTwo = (TextView) findViewById(R.id.txtViewtitleTwo);
+        txtViewRecoDesc = (TextView) findViewById(R.id.txtViewRecoDesc);
+
 
         recyclerViewPackaging = (RecyclerView) findViewById(R.id.recyclerViewPackaging);
         recyclerViewPackQty = (RecyclerView) findViewById(R.id.recyclerViewPackQty);
         recyclerViewAttribute = (RecyclerView) findViewById(R.id.recyclerViewAttribute);
+
 
         recyclerViewPackaging.setHasFixedSize(true);
         mLayoutManagerPackaging = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -82,17 +93,25 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
         mLayoutManagerAttribute = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerViewAttribute.setLayoutManager(mLayoutManagerAttribute);
 
-        app_bar = (Toolbar) findViewById(R.id.app_bar);
+        ic_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        /*app_bar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(app_bar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_cross_black);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_cross_black);*/
+
         productId=getIntent().getStringExtra(ConstantVariables.PRODUCT_ID_KEY);
         productMappingId=getIntent().getStringExtra(ConstantVariables.PRODUCT_MAPPING_ID_KEY);
         if((!TextUtils.isEmpty(productId))&&(!TextUtils.isEmpty(productMappingId)))
             fetchProductDetailFromServer(productId,productMappingId);
 
-        ((Button) findViewById(R.id.butDecreaseQty)).setOnClickListener(new View.OnClickListener() {
+        /*((Button) findViewById(R.id.butDecreaseQty)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(selectedQuantity>1) {
@@ -108,25 +127,31 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                 ++selectedQuantity;
                 txtViewSelectedQuantity.setText(String.valueOf(selectedQuantity));
             }
-        });
+        });*/
        // initForTesting();
+
+        ((FloatingActionButton) findViewById(R.id.fabSubscribe)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoSubscribe(v);
+            }
+        });
     }
 
     public void gotoSubscribe(View view)
     {
         try {
 
-            JSONObject obj = new JSONObject();
-            obj.put("product_name",productName);
-            obj.put("product_id",productId);
-            obj.put("product_mapping_id",productMappingId);
-            obj.put("quantity_id",beanPackagingAndQtyDefault.getQuantityId());
-            obj.put("product_price",beanPackagingAndQtyDefault.getPrice());
-            obj.put("product_quantity",String.valueOf(selectedQuantity));
-            obj.put("product_image_url",beanPackagingAndQtyDefault.getProductImage());
-            startActivity(new Intent(ProductDetail.this, ShowFrequency.class).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY,obj.toString()));
-            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
-            finish();
+                JSONObject obj = new JSONObject();
+                obj.put("product_name",productName);
+                obj.put("product_id",productId);
+                obj.put("product_mapping_id",productMappingId);
+                obj.put("quantity_id",beanPackagingAndQtyDefault.getQuantityId());
+                obj.put("product_price",beanPackagingAndQtyDefault.getPrice());
+                obj.put("product_image_url",beanPackagingAndQtyDefault.getProductImage());
+                startActivity(new Intent(ProductDetail.this, ShowQuantity.class).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY,obj.toString()));
+                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+                finish();
         }
         catch(Exception e)
         {
@@ -178,11 +203,12 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                 brandId=jsonObjectProduct.getString("brand_id");
                 productTypeId=jsonObjectProduct.getString("product_type_id");
                 productDescription=jsonObjectProduct.getString("description");
+                productReco = jsonObjectProduct.getString("recommended_for");
 
                 //INITIALIZE PRODUCT  ATTRIBUTE
-                JSONObject jsonObjectProductAttribute=new JSONObject(jsonObjectProduct.getString("product_attributes"));
+                /*JSONObject jsonObjectProductAttribute=new JSONObject(jsonObjectProduct.getString("product_attributes"));
                 CUtils.printLog("attributes",jsonObjectProductAttribute.toString(), ConstantVariables.LOG_TYPE.ERROR);
-               /* if (jsonObjectProductAttribute.getString("result").equalsIgnoreCase("true"))*/
+               *//* if (jsonObjectProductAttribute.getString("result").equalsIgnoreCase("true"))*//*
                 if (jsonObjectProductAttribute.getBoolean("result"))
                 {
                     JSONArray jsonArrayAttributes=new JSONArray(jsonObjectProductAttribute.getString("attributes"));
@@ -208,11 +234,9 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                         }
 
                     }
-                  /*  recyclerViewAttribute.setAdapter(new ProductAttributeAdapter(bucketAttribute));
-                    //bucketAttribute*/
-                   // CUtils.printLog("bucketAttribute",String.valueOf(bucketAttribute.size()), ConstantVariables.LOG_TYPE.ERROR);
 
-                }
+
+                }*/
                     //INITIALIZE PACKAGING AND
                 JSONArray jsonArrayOptions=new JSONArray(jsonObjectProduct.getString("options"));
                 //CUtils.printLog("BIJEMDRA", jsonArrayOptions.toString(), ConstantVariables.LOG_TYPE.ERROR);
@@ -259,9 +283,35 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
             bucketPackagingAndQty.clear();
 
             productPrice = beanPackagingAndQty.getPrice();
+            txtViewProductName.setTypeface(CUtils.RegularTypeFace(ProductDetail.this));
             txtViewProductName.setText(productName);
+            txtViewProductPrice.setTypeface(CUtils.RegularTypeFace(ProductDetail.this));
+            tviCurrency.setTypeface(CUtils.LightTypeFace(ProductDetail.this));
             txtViewProductPrice.setText(productPrice);
+            txtViewPackaging.setTypeface(CUtils.RegularTypeFace(ProductDetail.this));
+
+            if(productDescription.equals("") || productDescription==null) {
+                txtViewtitle.setVisibility(View.GONE);
+                txtViewProductDesc.setVisibility(View.GONE);
+            } else {
+                txtViewtitle.setVisibility(View.VISIBLE);
+                txtViewProductDesc.setVisibility(View.VISIBLE);
+            }
+            if(productReco.equals("") || productReco==null) {
+                txtViewtitleTwo.setVisibility(View.GONE);
+                txtViewRecoDesc.setVisibility(View.GONE);
+            } else {
+                txtViewtitleTwo.setVisibility(View.VISIBLE);
+                txtViewRecoDesc.setVisibility(View.VISIBLE);
+            }
+            txtViewtitle.setTypeface(CUtils.RegularTypeFace(ProductDetail.this));
+            txtViewProductDesc.setTypeface(CUtils.LightTypeFace(ProductDetail.this));
             txtViewProductDesc.setText(productDescription);
+
+            txtViewtitleTwo.setTypeface(CUtils.RegularTypeFace(ProductDetail.this));
+            txtViewRecoDesc.setTypeface(CUtils.LightTypeFace(ProductDetail.this));
+            txtViewRecoDesc.setText(productReco);
+
             productImageUrl =beanPackagingAndQty.getProductImage();
             CUtils.downloadImageFromServer(this, imageViewProduct, beanPackagingAndQty.getProductImage());
 
@@ -518,6 +568,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
         public void onBindViewHolder(PackagingAndQtyViewHolder holder, int position) {
             try {
                     BeanPackagingAndQty beanPackagingAndQty= this._bucket.get(position);
+                    holder.PackagingAnQty.setTypeface(CUtils.LightTypeFace(ProductDetail.this));
                     if(_listType==PACKAGING_LIST) {
                         holder.PackagingAnQty.setText(beanPackagingAndQty.getQuantity());
 
@@ -525,10 +576,14 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                     if(_listType==PACK_QUANTITY_LIST) {
                         holder.PackagingAnQty.setText(beanPackagingAndQty.getPackagingName());
                     }
-                if(beanPackagingAndQty.isDefault())
-                    holder.PackagingAnQty.setTextColor(Color.BLUE);
-                else
+                if(beanPackagingAndQty.isDefault()) {
+                    holder.PackagingAnQty.setTextColor(getResources().getColor(R.color.primaryColor));
+                    holder.PackagingAnQty.setBackgroundColor(getResources().getColor(R.color.primaryColorTransparent));
+                }
+                else {
                     holder.PackagingAnQty.setTextColor(Color.BLACK);
+                    holder.PackagingAnQty.setBackgroundColor(getResources().getColor(R.color.white));
+                }
 
                 holder.PackagingAnQty.setTag(String.valueOf(_listType)+"|"+String.valueOf(position));
                 holder.PackagingAnQty.setOnClickListener(new View.OnClickListener() {
@@ -576,7 +631,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
         public void onBindViewHolder(ProductAttributeViewHolder holder, int position) {
             try {
                 bean=this._bucketAttribute.get(position);
-                holder.Attribute.setText(bean.getAttributeName());
+                //holder.Attribute.setText(bean.getAttributeName());
                CUtils.downloadImageFromServer(ProductDetail.this,holder.ImageDisplay,bean.getAttributeImage());
              }
             catch(Exception e)
@@ -594,13 +649,13 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
 
 
     public class ProductAttributeViewHolder extends RecyclerView.ViewHolder {
-        protected TextView Attribute;//txtViewAttribute
+        //protected TextView Attribute;//txtViewAttribute
         protected ImageView ImageDisplay;//imageViewAttribute
 
 
         public ProductAttributeViewHolder(View v) {
             super(v);
-            Attribute = (TextView) v.findViewById(R.id.txtViewAttribute);
+            //Attribute = (TextView) v.findViewById(R.id.txtViewAttribute);
             ImageDisplay = (ImageView) v.findViewById(R.id.imageViewAttribute);
         }
     }

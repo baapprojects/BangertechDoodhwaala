@@ -48,16 +48,22 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
 
     private FilteredTagAdapter filteredTagAdapter;
     private ImageView imageViewBack;
+    private TextView tviNoResults, globalNoResults;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tagsandproducts);
+        tviNoResults   = (TextView) findViewById(R.id.tviNoResults);
+        globalNoResults = (TextView) findViewById(R.id.globalNoResults);
         llSelectedTags = (LinearLayout)findViewById(R.id.llSelectedTags);
         hsSelectedTags = (HorizontalScrollView) findViewById(R.id.hsSelectedTags);
         gridFilteredTagList = (GridView) findViewById(R.id.gridFilteredTagList);
         gridFilteredProductsList = (GridView) findViewById(R.id.gridFilteredProductsList);
         imageViewBack = (ImageView) findViewById(R.id.imageViewBack);
         filteredTagAdapter=new FilteredTagAdapter();
+
+        tviNoResults.setVisibility(View.GONE);
+        gridFilteredProductsList.setVisibility(View.VISIBLE);
 
 
         filterBucket.clear();
@@ -187,7 +193,10 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
             //if(jsonObject.getString("result").equalsIgnoreCase("true"))
             if(jsonObject.getBoolean("result"))
             {
-
+                globalNoResults.setVisibility(View.GONE);
+                tviNoResults.setVisibility(View.GONE);
+                gridFilteredProductsList.setVisibility(View.VISIBLE);
+                gridFilteredTagList.setVisibility(View.VISIBLE);
                 filteredTagList.clear();
                 if(Integer.parseInt(jsonObject.getString("no_of_tags"))>0) {
                     JSONArray array = jsonObject.getJSONArray("tags");
@@ -216,6 +225,41 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
                 }
 
 
+            } else {
+                if(jsonObject.getString("msg").equals("no products")) {
+                    globalNoResults.setVisibility(View.GONE);
+                    tviNoResults.setVisibility(View.VISIBLE);
+                    gridFilteredProductsList.setVisibility(View.GONE);
+                    filteredTagList.clear();
+                    if(Integer.parseInt(jsonObject.getString("no_of_tags"))>0) {
+                        JSONArray array = jsonObject.getJSONArray("tags");
+                        if (array.length() > 0) {
+                            BeanProductType beanProductType;
+                            JSONObject obj;
+                            for (int i = 0; i < array.length(); i++) {
+
+                                obj = array.getJSONObject(i);
+                                if (obj != null) {
+
+                                    beanProductType = new BeanProductType();
+                                    beanProductType.setTagId(obj.getString("tag_id"));
+                                    beanProductType.setTagName(obj.getString("tag_name"));
+                                    beanProductType.setTagType(obj.getString("tag_type"));
+                                    filteredTagList.add(beanProductType);
+                                }
+                            }
+                            //gridFilterList.setAdapter(productTypeAdapter);
+
+                        }
+                    }
+                    filteredTagAdapter.notifyDataSetChanged();
+                } else {
+                    filteredTagList.clear();
+                    filteredTagAdapter.notifyDataSetChanged();
+                    globalNoResults.setVisibility(View.VISIBLE);
+                    gridFilteredProductsList.setVisibility(View.GONE);
+                    gridFilteredTagList.setVisibility(View.GONE);
+                }
             }
         }
         catch (Exception e) {
@@ -321,6 +365,7 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
                     reFilterProduct(Integer.valueOf(v.getTag().toString()));
                 }
             });
+
             return grid;
         }
     }

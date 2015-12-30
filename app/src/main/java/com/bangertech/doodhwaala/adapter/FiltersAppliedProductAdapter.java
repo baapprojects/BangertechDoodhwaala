@@ -20,11 +20,13 @@ import java.util.List;
  * Created by annutech on 10/8/2015.
  */
 public class FiltersAppliedProductAdapter extends BaseAdapter {
+    private Activity activity;
     private ISelectedProduct iSelectedProduct;
 
     private List<BeanFilteredProduct> _filtersAppliedProductList=null;
     public FiltersAppliedProductAdapter(Activity activity,List<BeanFilteredProduct> filtersAppliedProductList)
     {
+        this.activity = activity;
         iSelectedProduct=(ISelectedProduct)activity;
         this._filtersAppliedProductList=filtersAppliedProductList;
     }
@@ -56,8 +58,10 @@ public class FiltersAppliedProductAdapter extends BaseAdapter {
         ImageView imageViewProduct= (ImageView) view.findViewById(R.id.imageViewProduct);
 
         BeanFilteredProduct beanFilteredProduct= _filtersAppliedProductList.get(position);
+        textViewProductName.setTypeface(CUtils.LightTypeFace(activity));
+        TextViewProductPrice.setTypeface(CUtils.LightTypeFace(activity));
         textViewProductName.setText(beanFilteredProduct.getProductName());
-        TextViewProductPrice.setText(beanFilteredProduct.getPrice());
+        TextViewProductPrice.setText("Rs "+beanFilteredProduct.getPrice());
 
         view.setTag(position);
         CUtils.downloadImageFromServer(parent.getContext(), imageViewProduct, beanFilteredProduct.getProductImage());

@@ -62,4 +62,71 @@
     <string name="agreement">By continuing, I agree to Doodhwalla\'s</string>
     <string name="Terms"><u>Terms and Condition</u></string>
     <string name="policy"><u>Private Policy</u></string>
+
+
+    <string-array name="Qty">
+        <item>One packet</item>
+        <item>Two packets</item>
+        <item>Three packets</item>
+        <item>Four packets</item>
+        <item>Five packets</item>
+        <item>Six packets</item>
+        <item>Seven packets</item>
+        <item>Eight packets</item>
+        <item>Nine packets</item>
+        <item>Ten packets</item>
+        <item>Eleven packets</item>
+        <item>Twelve packets</item>
+        <item>Thirteen packets</item>
+        <item>Fourteen packets</item>
+        <item>Fifteen packets</item>
+        <item>Sixteen packets</item>
+        <item>Seventeen packets</item>
+        <item>Eighteen packets</item>
+        <item>Nineteen packets</item>
+        <item>Twenty packets</item>
+        <item>Twenty-one packets</item>
+        <item>Twenty-two packets</item>
+        <item>Twenty-three packets</item>
+        <item>Twenty-four packets</item>
+        <item>Twenty-five packets</item>
+        <item>Twenty-six packets</item>
+        <item>Twenty-seven packets</item>
+        <item>Twenty-eight packets</item>
+        <item>Twenty-nine packets</item>
+        <item>Thirty packets</item>
+        <item>Thirty-one packets</item>
+        <item>Thirty-two packets</item>
+        <item>Thirty-three packets</item>
+        <item>Thirty-four packets</item>
+        <item>Thirty-five packets</item>
+        <item>Thirty-six packets</item>
+        <item>Thirty-seven packets</item>
+        <item>Thirty-eight packets</item>
+        <item>Thirty-nine packets</item>
+        <item>Forty packets</item>
+        <item>Forty-one packets</item>
+        <item>Forty-two packets</item>
+        <item>Forty-three packets</item>
+        <item>Forty-four packets</item>
+        <item>Forty-five packets</item>
+        <item>Forty-six packets</item>
+        <item>Forty-seven packets</item>
+        <item>Forty-eight packets</item>
+        <item>Forty-nine packets</item>
+        <item>Fifty packets</item>
+    </string-array>
+
+    <string-array name="DurationName">
+    <item>One week</item>
+    <item>Two weeks</item>
+    <item>Four weeks</item>
+    </string-array>
+
+    <string-array name="FreqName">
+        <item>Everyday</item>
+        <item>Four times a week</item>
+        <item>Four weeks</item>
+    </string-array>
+
 </resources>

@@ -129,7 +129,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:textColor="@android:color/holo_blue_light"
+            android:textColor="@drawable/text_color_change_blue_to_black"
             android:text="@string/Terms"/>
 
         <TextView
@@ -149,7 +149,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:textColor="@android:color/holo_blue_light"
+            android:textColor="@drawable/text_color_change_blue_to_black"
             android:text="@string/policy"/>
 
         </RelativeLayout>

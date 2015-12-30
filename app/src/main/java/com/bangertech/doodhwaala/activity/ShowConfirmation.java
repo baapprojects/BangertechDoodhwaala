@@ -1,14 +1,28 @@
 package com.bangertech.doodhwaala.activity;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bangertech.doodhwaala.beans.BeanAddress;
+import com.bangertech.doodhwaala.general.General;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
@@ -17,6 +31,11 @@ import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CGlobal;
 import com.bangertech.doodhwaala.utils.CUtils;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
+import com.mobsandgeeks.saripaar.Rule;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.NumberRule;
+import com.mobsandgeeks.saripaar.annotation.Required;
+import com.mobsandgeeks.saripaar.annotation.TextRule;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,18 +45,35 @@ import java.util.Date;
 /**
  * Created by annutech on 10/12/2015.
  */
-public class ShowConfirmation extends AppCompatActivity implements AsyncResponse {
+public class ShowConfirmation extends AppCompatActivity implements AsyncResponse, Validator.ValidationListener {
     private TextView txtViewProductName,txtViewProductPrice,txtViewFrequency,
             txtViewFrequencyPrice,txtViewDuration, txtViewDurationPrice,txtViewAddress;
     private ImageView imageViewProduct;
     private String   product_id,product_mapping_id,quantity_id,from_date,to_date,address_id="0",paid_amount,status;
     private String product_price,product_image_url,frequency_id,frequency_name,duration_id,duration_name,product_quantity,product_name,quantity;
+    private LinearLayout lldiscount, llcoupon;
+    private TextView tviCouponText, txtViewDiscountPrice;
+    private Dialog dialog;
 
+    @Required(order = 1)
+    @TextRule(order = 2, minLength = 4, message = "Enter valid Coupon Code with minimum 4 chars")
+    private EditText editCoupon;
+
+    private String couponCode;
+    private Validator validator;
+    private General general;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
+
+        general = new General();
+
+        lldiscount = (LinearLayout) findViewById(R.id.lldiscount);
+        llcoupon = (LinearLayout) findViewById(R.id.llcoupon);
+        tviCouponText = (TextView) findViewById(R.id.tviCouponText);
+        txtViewDiscountPrice = (TextView) findViewById(R.id.txtViewDiscountPrice);
 
         imageViewProduct=(ImageView)findViewById(R.id.imageViewProduct);
         txtViewProductName=(TextView)findViewById(R.id.txtViewProductName);
@@ -47,6 +83,16 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
         txtViewDuration=(TextView)findViewById(R.id.txtViewDuration);
         txtViewDurationPrice=(TextView)findViewById(R.id.txtViewDurationPrice);
         txtViewAddress=(TextView)findViewById(R.id.txtViewAddress);
+
+        validator = new Validator(this);
+        validator.setValidationListener(this);
+
+        tviCouponText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customCouponDialogbox(ShowConfirmation.this);
+            }
+        });
 
         ((TextView)findViewById(R.id.txtViewEditAddress)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +141,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     @Override
     public void backgroundProcessFinish(String from, String output) {
 
-        CUtils.printLog(from,output, ConstantVariables.LOG_TYPE.ERROR);
+        CUtils.printLog(from, output, ConstantVariables.LOG_TYPE.ERROR);
         if(from.equalsIgnoreCase("getUserDefaultAddress"))
             parseAddress(output);
         if(from.equalsIgnoreCase("insertUserPlan"))
@@ -108,7 +154,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
             if(jsonObject.getBoolean("result"))
             {
               CUtils.showUserMessage(ShowConfirmation.this,"Thanks for subscription");
-              this.finish();
+                startActivity(new Intent(ShowConfirmation.this, Home.class));
             }
             else
                 CUtils.showUserMessage(ShowConfirmation.this,jsonObject.getString("msg"));
@@ -212,5 +258,98 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
 
         }
 
+    }
+
+    public void customCouponDialogbox(Activity context) {
+        dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.coupon_dialog);
+
+        //TextView header = (TextView) dialog.findViewById(R.id.title);
+        //header.setText(title);
+        //TextView text = (TextView) dialog.findViewById(R.id.text);
+        //text.setText(message);
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+        editCoupon = (EditText) dialog.findViewById(R.id.editCoupon);
+        couponCode = editCoupon.getText().toString();
+        Button btn_ok=(Button)dialog.findViewById(R.id.btn_ok);
+        Button btn_cancel=(Button)dialog.findViewById(R.id.btn_cancel);
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(editCoupon, InputMethodManager.SHOW_IMPLICIT);
+            }
+        });
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                validator.validate();
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        editCoupon.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    validator.validate();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+                return false;
+            }
+
+        });
+
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+
+        //dialog.getWindow().setLayout((6 * width) / 7, ViewGroup.LayoutParams.WRAP_CONTENT);
+    }
+
+    public void couponCheckValid(String couponCode) {
+        if(couponCode.equals("ABCDE")) {
+            lldiscount.setVisibility(View.VISIBLE);
+            llcoupon.setVisibility(View.GONE);
+        } else {
+            lldiscount.setVisibility(View.GONE);
+            llcoupon.setVisibility(View.VISIBLE);
+            Toast.makeText(getApplicationContext(),"Sorry coupon code is not valid.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onValidationSucceeded() {
+        if(general.isNetworkAvailable(ShowConfirmation.this)) {
+            couponCheckValid(editCoupon.getText().toString());
+            dialog.dismiss();
+        }
+
+    }
+
+    @Override
+    public void onValidationFailed(View failedView, Rule<?> failedRule) {
+        String message = failedRule.getFailureMessage();
+        if (failedView instanceof EditText) {
+            failedView.requestFocus();
+            ((EditText) failedView).setError(message);
+            //((EditText) failedView).setError(Html.fromHtml("<font color='black'>" + message + "</font>"));
+        }
     }
 }

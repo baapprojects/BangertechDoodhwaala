@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.activity.Home;
 import com.bangertech.doodhwaala.beans.BeanBrand;
 import com.bangertech.doodhwaala.beans.BeanDayPlan;
 import com.bangertech.doodhwaala.cinterfaces.IMyMilkDayPlan;
@@ -39,6 +40,7 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
     private Activity activity;
     private int selectedQuantity=1;
     private int index;
+    private DayPlanViewHolder gHolder;
     private String product_name,quantity,frequency_name,frequency_id,duration_id,duration_name,plan_id,imageUrl;
 
     public DayPlanAdapter(Activity activity, Fragment fragment,List<BeanDayPlan> lstDayPlan)
@@ -59,7 +61,29 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
     }
 
     @Override
-    public void onBindViewHolder(final DayPlanViewHolder holder, int position) {
+    public void onBindViewHolder(final DayPlanViewHolder holder, final int position) {
+        if(!TextUtils.isEmpty(lstDayPlan.get(position).getPlanId())) {
+            fetchPlanDetailsFromServer(lstDayPlan.get(position).getPlanId());
+            holder.ivminus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    gHolder = holder;
+                    if (selectedQuantity > 1) {
+                        --selectedQuantity;
+                        updateQuantityDayPlan(beanDayPlan.getDateId(), selectedQuantity);
+                    }
+
+                }
+            });
+            holder.ivplus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    gHolder = holder;
+                    ++selectedQuantity;
+                    updateQuantityDayPlan(beanDayPlan.getDateId(), selectedQuantity);
+                }
+            });
+        }
         if(this.lstDayPlan.size()>0) {
                       beanDayPlan = this.lstDayPlan.get(position);
             holder.txtActiveOrPaused.setVisibility(View.GONE);
@@ -112,26 +136,7 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
                 }
             });
 
-            if(!TextUtils.isEmpty(lstDayPlan.get(position).getPlanId())) {
-                fetchPlanDetailsFromServer(lstDayPlan.get(position).getPlanId());
-                holder.ivminus.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (selectedQuantity > 1) {
-                            --selectedQuantity;
-                            holder.Quantity.setText(String.valueOf(selectedQuantity));
-                        }
-
-                    }
-                });
-                holder.ivplus.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ++selectedQuantity;
-                        holder.Quantity.setText(String.valueOf(selectedQuantity));
-                    }
-                });
-            }
+            holder.Quantity.setText(beanDayPlan.getQuantity());
 
         }
     }
@@ -153,6 +158,15 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
 
     }
 
+    private void updateQuantityDayPlan(String dateId, int selectedQuantity) {
+        MyAsynTaskManager myAsyncTask=new MyAsynTaskManager();
+        myAsyncTask.delegate=this;
+        myAsyncTask.setupParamsAndUrl("updateQuantityDayPlan", activity, AppUrlList.ACTION_URL,
+                new String[]{"module", "action","date_id","quantity"},
+                new String[]{"plans", "updateQuantityDayPlan",dateId,String.valueOf(selectedQuantity)});
+        myAsyncTask.execute();
+    }
+
     @Override
     public void backgroundProcessFinish(String from, String output) {
         if(from.equalsIgnoreCase("fetchPlanDetails"))//cancelUserPlan
@@ -160,12 +174,16 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
             parseOutputValues(output);
             CUtils.printLog("fetchPlanDetails",output, ConstantVariables.LOG_TYPE.ERROR);
         }
-        else
+
         if(from.equalsIgnoreCase("cancelUserPlan"))
         {
             /*setResult(RESULT_OK);
             this.finish();*/
 
+        }
+
+        if(from.equalsIgnoreCase("updateQuantityDayPlan")) {
+            parseUpdateQuantityDayPlan(output);
         }
     }
 
@@ -192,6 +210,19 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
                     //showPlanDetail();
                 }
             }
+        }
+        catch(Exception e )
+        {
+
+        }
+    }
+
+    private void parseUpdateQuantityDayPlan(String output) {
+        try {
+
+            JSONObject jsonObject = new JSONObject(output);
+
+            gHolder.Quantity.setText(String.valueOf(jsonObject.getString("quantity")));
         }
         catch(Exception e )
         {

@@ -15,12 +15,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bangertech.doodhwaala.activity.FilterProduct;
 import com.bangertech.doodhwaala.activity.FiltersAppliedByFilterProduct;
 import com.bangertech.doodhwaala.activity.Home;
 import com.bangertech.doodhwaala.activity.ProductDetail;
+import com.bangertech.doodhwaala.activity.SearchActivity;
 import com.bangertech.doodhwaala.adapter.MostSellingBrandAdapter;
 import com.bangertech.doodhwaala.beans.BeanBrand;
 import com.bangertech.doodhwaala.beans.BeanProductType;
@@ -53,7 +55,7 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private FloatingActionButton     fabFilterProduct;
-    private ImageView search;
+    private ImageView searchProductType;
 
     public static MilkbarFragment newInstance() {
 
@@ -83,7 +85,8 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_milkbar, container, false);
-        search=(ImageView) view.findViewById(R.id.searchProductType);
+
+        searchProductType = (ImageView) view.findViewById(R.id.searchProductType);
         gridProductType=(GridView) view.findViewById(R.id.gridProductType);
         fabFilterProduct=(FloatingActionButton)view.findViewById(R.id.fabFilterProduct);
         mRecyclerView= (RecyclerView)view.findViewById(R.id.my_recycler_view);
@@ -92,11 +95,18 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        searchProductType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SearchActivity.class));
+                getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+            }
+        });
+
 
         fabFilterProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 startActivityForResult(new Intent(getActivity(), FilterProduct.class), ConstantVariables.SUB_ACTIVITY_FILTER_OPENED_ON_MILKBAR);
                 getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
@@ -236,21 +246,22 @@ public void reDrawFragment(List<BeanProductType> lstBeanProductType,List<BeanBra
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
             View grid;
             LayoutInflater inflater = (LayoutInflater) getActivity()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             grid = inflater.inflate(R.layout.row_product_type, null);
             BeanProductType beanType= this.lstProductsType.get(position);
+            LinearLayout lltextViewProduct = (LinearLayout) grid.findViewById(R.id.lltextViewProduct);
             TextView textView = (TextView) grid.findViewById(R.id.textViewProduct);
             textView.setText(beanType.getTagName());
             textView.setTag(position);
-            textView.setOnClickListener(new View.OnClickListener() {
+
+            lltextViewProduct.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Toast.makeText(getActivity(), String.valueOf(v.getTag()), Toast.LENGTH_SHORT).show();
-                    setOnFilter(Integer.valueOf(v.getTag().toString()));
+                    setOnFilter(position);
                 }
             });
             return grid;

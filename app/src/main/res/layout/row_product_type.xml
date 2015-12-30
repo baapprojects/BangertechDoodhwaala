@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:background="@drawable/rounded_corner_product_type"
-    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/lltextViewProduct"
+    android:layout_width="match_parent"
+    android:background="@drawable/rounded_background_white_to_blue"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:layout_centerInParent="true"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:layout_margin="10dp">
     <TextView
         android:id="@+id/textViewProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Product Type"
-        android:textColor="@color/accentColor"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="@drawable/text_color_change_blue_to_white"
         android:layout_gravity="center"/>
 
 </LinearLayout>

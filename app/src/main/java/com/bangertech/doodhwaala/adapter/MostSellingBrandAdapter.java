@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bangertech.doodhwaala.activity.Home;
 import com.bangertech.doodhwaala.beans.BeanBrand;
 
 import java.util.List;
@@ -34,9 +36,10 @@ public class MostSellingBrandAdapter extends RecyclerView.Adapter<MostSellingBra
     public MostSellingBrandAdapter(Context context, Fragment fragment,List<BeanBrand> lstMostSellingProducts)
     {
         this.context = context;
-        this.lstMostSellingProducts=lstMostSellingProducts;
+        this.lstMostSellingProducts = lstMostSellingProducts;
         iBrandAllProduct=(IBrandAllProduct)fragment;
         iSelectedProduct=(ISelectedProduct)fragment;
+
     }
     @Override
     public MostSellingBrandViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -105,7 +108,6 @@ public class MostSellingBrandAdapter extends RecyclerView.Adapter<MostSellingBra
                     inflate(R.layout.row_brand_product_card, parent, false);
 
 
-
             TextView textViewProductName = (TextView) view.findViewById(R.id.textViewProductName);
             TextView TextViewProductPrice = (TextView) view.findViewById(R.id.textViewProductPrice);
             ImageView imageViewProduct= (ImageView) view.findViewById(R.id.imageViewProduct);
@@ -122,10 +124,11 @@ public class MostSellingBrandAdapter extends RecyclerView.Adapter<MostSellingBra
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    BeanProduct beanProduct=lstBeanProduct.get(Integer.parseInt(v.getTag().toString()));
-                    iSelectedProduct.onSelectProduct(beanProduct.getProductId(),beanProduct.getProductMappingId());
+                    BeanProduct beanProduct = lstBeanProduct.get(Integer.parseInt(v.getTag().toString()));
+                    iSelectedProduct.onSelectProduct(beanProduct.getProductId(), beanProduct.getProductMappingId());
                 }
             });
+
 
             return view;
         }

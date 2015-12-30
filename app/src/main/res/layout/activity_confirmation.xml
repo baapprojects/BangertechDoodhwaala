@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/activity_vertical_margin"
+    android:background="@color/white">
 
-    >
-    <android.support.v7.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/white"
-        app:cardElevation="1dp"
-        app:cardCornerRadius="0dp"
-        android:layout_marginTop="16dp"
-        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="4"
             android:orientation="horizontal"
-            >
+            android:layout_marginTop="10dp">
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -36,9 +26,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Checkout"
+                    android:text="Quantity"
                     android:layout_marginTop="10dp"
-                    />
+                    android:textSize="12sp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -57,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:text="Frequency"
                     android:layout_marginTop="10dp"
-                    />
+                    android:textSize="12sp"/>
 
 
             </LinearLayout>
@@ -79,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:text="Duration"
                     android:layout_marginTop="10dp"
-                    />
+                    android:textSize="12sp"/>
 
 
             </LinearLayout>
@@ -100,64 +90,86 @@
                     android:layout_height="wrap_content"
                     android:text="Confirmation"
                     android:layout_marginTop="10dp"
-                    />
-
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
 
             </LinearLayout>
 
-
         </LinearLayout>
-    </android.support.v7.widget.CardView>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/grey_edit_text_color"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        >
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".1"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/location"/>
 
         <TextView
             android:id="@+id/txtViewAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight=".87"
+            android:layout_weight=".75"
             android:singleLine="false"
             android:text="Deliver at:Flat No 402,DCS County Muneeswara Temple raod,Kodihalli Main Rd,kodihalli,HAL 3rd"
-            />
+            android:gravity="left"
+            android:textAppearance="@android:style/TextAppearance.Small"/>
         <TextView
             android:id="@+id/txtViewEditAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight=".13"
+            android:layout_weight=".1"
             android:textColor="@color/accentColor"
             android:text="@string/edit"
             android:textSize="14sp"
             android:clickable="true"
-            android:textStyle="bold"
+            android:textStyle="normal"
             android:layout_gravity="right"
+            android:gravity="center"
+            android:textAllCaps="true"
             android:background="?attr/selectableItemBackgroundBorderless"
-            />
+            android:layout_marginTop="10dp"/>
 
 
     </LinearLayout>
     <ImageView
         android:id="@+id/imageViewProduct"
-        android:layout_width="@dimen/image_height_in_detail_screen"
-        android:layout_height="@dimen/image_width_in_detail_screen"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:src="@drawable/nandini"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        />
+        android:layout_margin="10dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal"
-        >
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal">
 
         <TextView
             android:id="@+id/txtViewProductName"
@@ -165,16 +177,17 @@
             android:layout_height="wrap_content"
             android:layout_weight=".6"
             android:text="Nandini full tone x 1"
-            />
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:layout_marginLeft="50dp"/>
+
         <TextView
             android:id="@+id/txtViewProductPrice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight=".4"
             android:text="= $ 28.00"
-            android:gravity="left"
-
-            />
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:gravity="left" />
 
     </LinearLayout>
     <LinearLayout
@@ -182,9 +195,8 @@
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal"
-        >
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal">
 
         <TextView
             android:id="@+id/txtViewFrequency"
@@ -192,35 +204,68 @@
             android:layout_height="wrap_content"
             android:layout_weight=".6"
             android:text="3 times a weeks"
-            />
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:layout_marginLeft="50dp"/>
+
         <TextView
             android:id="@+id/txtViewFrequencyPrice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight=".4"
             android:text="= $ 84.00"
-            android:gravity="left"
-
-            />
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:gravity="left"/>
 
     </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lldiscount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/txtViewDiscount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:layout_marginLeft="50dp"
+                android:textAppearance="@android:style/TextAppearance.Small"
+                android:text="Discount applied" />
+
+            <TextView
+                android:id="@+id/txtViewDiscountPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".4"
+                android:text="= $ 36.00"
+                android:gravity="left"
+                android:textAppearance="@android:style/TextAppearance.Small"
+                android:textStyle="normal" />
+
+        </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal"
-        >
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal">
 
         <TextView
             android:id="@+id/txtViewDuration"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight=".6"
-            android:text="Total for 4 weeks"
-            />
+            android:layout_marginLeft="50dp"
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:text="Total for 4 weeks" />
+
         <TextView
             android:id="@+id/txtViewDurationPrice"
             android:layout_width="0dp"
@@ -228,39 +273,61 @@
             android:layout_weight=".4"
             android:text="= $ 336.00"
             android:gravity="left"
-            android:textColor="@color/accentColor"
-            android:textStyle="bold"
-
-            />
+            android:textColor="#d7658f"
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:textStyle="bold" />
 
     </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llcoupon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/tviCouponText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@drawable/text_color_change_blue_to_black"
+                android:text="Apply coupon code"/>
+
+        </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
 
     <Button
         android:id="@+id/butPayOnline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         android:text="PAY ONLINE"
-        android:textColor="@color/white"
+        android:textColor="@color/grey_edit_text_color"
         android:layout_gravity="center"
-        android:background="@drawable/select_but_pink"
-        android:textAppearance="@android:style/TextAppearance.Medium"
-        />
+        android:background="@drawable/button"
+        android:textAppearance="@android:style/TextAppearance.Small"
+        android:enabled="false"/>
     <Button
         android:id="@+id/butPayWithCash"
+        android:layout_below="@+id/butPayOnline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         android:text="PAY WITH CASH"
         android:textColor="@color/white"
         android:layout_gravity="center"
-        android:background="@drawable/select_but_pink"
-        android:textAppearance="@android:style/TextAppearance.Medium"
-        />
+        android:background="@drawable/button"
+        android:textAppearance="@android:style/TextAppearance.Small" />
 
+    </RelativeLayout>
 
+</LinearLayout>
+    </ScrollView>
 </LinearLayout>

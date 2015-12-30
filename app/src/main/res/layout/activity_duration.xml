@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/activity_vertical_margin"
-    >
-    <android.support.v7.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        card_view:cardBackgroundColor="@color/white"
-        card_view:cardElevation="1dp"
-        card_view:cardCornerRadius="0dp"
-        android:layout_marginTop="16dp"
-        >
+    android:background="@color/white">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="4"
             android:orientation="horizontal"
-            >
+            android:layout_marginTop="10dp">
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -35,9 +27,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Checkout"
+                    android:text="Quantity"
                     android:layout_marginTop="10dp"
-                    />
+                    android:textSize="12sp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -56,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:text="Frequency"
                     android:layout_marginTop="10dp"
-                    />
+                    android:textSize="12sp"/>
 
 
             </LinearLayout>
@@ -78,7 +70,8 @@
                     android:layout_height="wrap_content"
                     android:text="Duration"
                     android:layout_marginTop="10dp"
-                    />
+                    android:textSize="12sp"
+                    android:textColor="@color/black"/>
 
 
             </LinearLayout>
@@ -99,14 +92,30 @@
                     android:layout_height="wrap_content"
                     android:text="Confirmation"
                     android:layout_marginTop="10dp"
-                    />
+                    android:textSize="12sp"/>
 
 
             </LinearLayout>
 
 
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/grey_edit_text_color"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -120,25 +129,39 @@
             android:id="@+id/radioGroupDuration"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="60dp"
 
             />
-        <Button
-            android:id="@+id/butContinueDuration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:text="CONTINUE"
-            android:textColor="@color/white"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@drawable/select_but_pink"
-            android:textAppearance="@android:style/TextAppearance.Medium"
-            android:layout_marginTop="60dp"
-            android:onClick="gotoContinueDuration"
-            />
 
     </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/rlBelow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp">
+        <Button
+            android:id="@+id/butContinueDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONTINUE"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button"
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:layout_alignParentBottom="true"
+            android:onClick="gotoContinueDuration" />
+
+    </RelativeLayout>
+</LinearLayout>
+    </ScrollView>
+
+
 </LinearLayout>
