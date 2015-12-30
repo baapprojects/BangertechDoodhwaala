@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -75,8 +76,10 @@ public class SearchActivity extends AppCompatActivity implements AsyncResponse,I
 
         if (search != null) {
             searchView = (SearchView) search.getActionView();
-            searchView.setIconifiedByDefault(false);
-            searchView.clearFocus();
+            searchView.setIconified(false);
+            //searchView.clearFocus();
+            search.expandActionView();
+            setupSearchView(search);
         }
 
         SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
@@ -111,15 +114,25 @@ public class SearchActivity extends AppCompatActivity implements AsyncResponse,I
         }
     }
 
+    private void setupSearchView(MenuItem searchItem) {
+
+        if (isAlwaysExpanded()) {
+            searchView.setIconifiedByDefault(false);
+        } else {
+            searchItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM
+                    | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        }
+    }
+
     private void fetchFiltersAppliedProductList(String searchString)
     {
 
         if(searchString!=null) {
             MyAsynTaskManager myAsyncTask = new MyAsynTaskManager();
             myAsyncTask.delegate = this;
-            myAsyncTask.setupParamsAndUrl("fetchProductsBasedFilter", SearchActivity.this, AppUrlList.ACTION_URL,
-                    new String[]{"module", "action","filter_information"},
-                    new String[]{"products", "fetchProductsBasedFilter",searchString});
+            myAsyncTask.setupParamsAndUrl("fetchProductsBasedSearch", SearchActivity.this, AppUrlList.ACTION_URL,
+                    new String[]{"module", "action","search_string"},
+                    new String[]{"products", "fetchProductsBasedSearch",searchString});
             myAsyncTask.execute();
         }
 
@@ -127,15 +140,14 @@ public class SearchActivity extends AppCompatActivity implements AsyncResponse,I
 
     @Override
     public void backgroundProcessFinish(String from, String output) {
-        if(from.equalsIgnoreCase("fetchProductsBasedFilter")) {
+        if(from.equalsIgnoreCase("fetchProductsBasedSearch")) {
             lstProductsFiltersApplied.clear();
             if(isProductListExists(output)) {
                 no_result.setVisibility(View.GONE);
                 gridFiltersAppliedProductList.setVisibility(View.VISIBLE);
                 parseAndFormateFilteredProductList(output);
             } else {
-                no_result.setVisibility(View.VISIBLE);
-                gridFiltersAppliedProductList.setVisibility(View.GONE);
+
             }
         }
         filtersAppliedProductAdapter.notifyDataSetChanged();
@@ -148,7 +160,7 @@ public class SearchActivity extends AppCompatActivity implements AsyncResponse,I
         try {
             JSONObject jsonObject = new JSONObject(filtersAppliedProductList);
 
-            JSONArray array = jsonObject.getJSONArray("products");
+            JSONArray array = jsonObject.getJSONArray("products_information");
             if (array.length() > 0) {
                 BeanFilteredProduct beanFilteredProduct;
                 JSONObject obj;
@@ -198,8 +210,12 @@ public class SearchActivity extends AppCompatActivity implements AsyncResponse,I
             //if(jsonObject.getString("result").equalsIgnoreCase("true"))
             if(jsonObject.getBoolean("result"))
             {
-                if(Integer.parseInt(jsonObject.getString("no_of_products"))>0)
+                if (Integer.parseInt(jsonObject.getString("no_of_products"))>0)
                     return true;
+            }
+            else {
+                no_result.setVisibility(View.VISIBLE);
+                gridFiltersAppliedProductList.setVisibility(View.GONE);
             }
         }
         catch (Exception e) {
@@ -218,5 +234,9 @@ public class SearchActivity extends AppCompatActivity implements AsyncResponse,I
         intent.putExtra(ConstantVariables.PRODUCT_MAPPING_ID_KEY,productMappingId);
         startActivity(intent);
 
+    }
+
+    protected boolean isAlwaysExpanded() {
+        return true;
     }
 }

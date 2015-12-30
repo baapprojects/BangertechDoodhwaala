@@ -62,6 +62,9 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     private String couponCode;
     private Validator validator;
     private General general;
+    private double  paidAmount;
+
+    private String gross_price, discount_price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,12 +107,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
 
             }
         });
-        ((Button)findViewById(R.id.butPayWithCash)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                insertUserPlanOnsServer();
-            }
-        });
+
         initValues(getIntent().getStringExtra(ConstantVariables.SELECTED_USER_PLAN_KEY));
     }
     private void fetchAddressFromServer() {
@@ -124,7 +122,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
 
     }
 
-    private void insertUserPlanOnsServer() {
+    private void insertUserPlanOnsServer(String paid_amount) {
         String fromDate= CUtils.formatMyDate(new Date());
        // CUtils.printLog("fromDate",fromDate, ConstantVariables.LOG_TYPE.ERROR);
 
@@ -146,6 +144,9 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
             parseAddress(output);
         if(from.equalsIgnoreCase("insertUserPlan"))
             parseValuesAfterInsertPlanOnServer(output);
+
+        if(from.equalsIgnoreCase("applyCouponCode"))
+            parseValidCoupon(output);
     }
     private void parseValuesAfterInsertPlanOnServer(String addressList)
     {
@@ -235,23 +236,28 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
             //
             double dailyPrice=Double.valueOf(product_price) * Double.valueOf(product_quantity);
             txtViewProductName.setText(product_name +" x "+product_quantity);
-            txtViewProductPrice.setText("= $ "+String.valueOf(dailyPrice));
+            txtViewProductPrice.setText("= Rs "+String.valueOf(dailyPrice));
            // double priceForAWeek=dailyPrice*daysForAWeek;
 
             txtViewFrequency.setText(frequency_name);
 
             double frequencyPrice=dailyPrice*daysForAWeek;;
-            txtViewFrequencyPrice.setText("= $ "+String.valueOf(frequencyPrice));
+            txtViewFrequencyPrice.setText("= Rs "+String.valueOf(frequencyPrice));
 
 
             txtViewDuration.setText(duration_name);
            // double  paidAmount=frequencyPrice*Double.valueOf(duration);
-            double  paidAmount=frequencyPrice* Double.valueOf(obj.getString("duration_weightage"));
+            paidAmount=frequencyPrice* Double.valueOf(obj.getString("duration_weightage"));
             paid_amount=String.valueOf(paidAmount);
 
-            txtViewDurationPrice.setText("= $ "+String.valueOf(paidAmount));
-            CUtils.downloadImageFromServer(ShowConfirmation.this,imageViewProduct,CUtils.getFormattedImage(product_image_url));
-
+            txtViewDurationPrice.setText("= Rs "+String.valueOf(paidAmount));
+            CUtils.downloadImageFromServer(ShowConfirmation.this, imageViewProduct, CUtils.getFormattedImage(product_image_url));
+            ((Button)findViewById(R.id.butPayWithCash)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    insertUserPlanOnsServer(paid_amount);
+                }
+            });
         }
         catch(Exception e)
         {
@@ -324,13 +330,45 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     }
 
     public void couponCheckValid(String couponCode) {
-        if(couponCode.equals("ABCDE")) {
-            lldiscount.setVisibility(View.VISIBLE);
-            llcoupon.setVisibility(View.GONE);
-        } else {
-            lldiscount.setVisibility(View.GONE);
-            llcoupon.setVisibility(View.VISIBLE);
-            Toast.makeText(getApplicationContext(),"Sorry coupon code is not valid.", Toast.LENGTH_LONG).show();
+        MyAsynTaskManager myAsyncTask=new MyAsynTaskManager();
+        myAsyncTask.delegate=this;
+        myAsyncTask.setupParamsAndUrl("applyCouponCode", ShowConfirmation.this, AppUrlList.ACTION_URL,
+                new String[]{"module", "action", "coupon_code", "list_price"},
+                new String[]{"products_search", "applyCouponCode", couponCode, String.valueOf(paidAmount)});
+        myAsyncTask.execute();
+    }
+
+    public void parseValidCoupon(String output) {
+        try {
+            JSONObject jsonObject = new JSONObject(output);
+            if(jsonObject.getBoolean("result")) {
+                jsonObject.getDouble("list_price");
+                jsonObject.getDouble("discount_price");
+                paidAmount = jsonObject.getDouble("gross_price");
+
+                lldiscount.setVisibility(View.VISIBLE);
+                llcoupon.setVisibility(View.GONE);
+                txtViewDurationPrice.setText("= Rs " + String.valueOf(paidAmount));
+                txtViewDiscountPrice.setText("= Rs "+jsonObject.getDouble("discount_price"));
+
+                ((Button)findViewById(R.id.butPayWithCash)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        insertUserPlanOnsServer(String.valueOf(paidAmount));
+                    }
+                });
+            }
+            else {
+                lldiscount.setVisibility(View.GONE);
+                llcoupon.setVisibility(View.VISIBLE);
+                CUtils.showUserMessage(ShowConfirmation.this, jsonObject.getString("msg"));
+            }
+
+        }
+        catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+
         }
     }
 

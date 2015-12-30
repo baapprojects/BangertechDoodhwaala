@@ -534,7 +534,7 @@ private void parseChoosedFilterOption(String tag,boolean isChecked)
             SwitchCompat swicthFilter = (SwitchCompat) view.findViewById(R.id.swicthFilter);
             swicthFilter.setText(beanFilter.getName());
             swicthFilter.setChecked(beanFilter.isChecked());
-            String tag=String.valueOf(listType)+"|"+beanFilter.getId()+"|"+String.valueOf(position);
+            final String tag=String.valueOf(listType)+"|"+beanFilter.getId()+"|"+String.valueOf(position);
             swicthFilter.setTag(tag);
 
             swicthFilter.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -542,12 +542,16 @@ private void parseChoosedFilterOption(String tag,boolean isChecked)
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                     try {
-                        parseChoosedFilterOption(buttonView.getTag().toString(), isChecked);
+                        parseChoosedFilterOption(tag, isChecked);
                     } catch (Exception e) {
 
                     }
                 }
             });
+
+            gridProductType.deferNotifyDataSetChanged();
+            gridBrand.deferNotifyDataSetChanged();
+            gridPackaging.deferNotifyDataSetChanged();
 
             return view;
         }

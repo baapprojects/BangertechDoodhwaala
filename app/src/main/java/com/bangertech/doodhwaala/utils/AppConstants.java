@@ -8,4 +8,5 @@ public class AppConstants {
     public static final String FILE_DIR = "DoodhDatas";
     public static final String USER_ID = "user_id";
     public static final String USER_EMAILID = "email";
+    public static final String USER_FILTER = "filter";
 }
