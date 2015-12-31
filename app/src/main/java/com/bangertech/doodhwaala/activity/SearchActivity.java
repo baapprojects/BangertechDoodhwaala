@@ -233,6 +233,7 @@ public class SearchActivity extends AppCompatActivity implements AsyncResponse,I
         intent.putExtra(ConstantVariables.PRODUCT_ID_KEY,productId);
         intent.putExtra(ConstantVariables.PRODUCT_MAPPING_ID_KEY,productMappingId);
         startActivity(intent);
+        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
     }
 

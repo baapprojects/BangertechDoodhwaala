@@ -76,6 +76,7 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
 
                 }
                      startActivityForResult(intent,ConstantVariables.SUB_ACTIVITY_FILTER_OPENED_ON_FILTERS_APPLIED);
+                    overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             }
         });
 
@@ -294,6 +295,7 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
         intent.putExtra(ConstantVariables.PRODUCT_ID_KEY,productId);
         intent.putExtra(ConstantVariables.PRODUCT_MAPPING_ID_KEY,productMappingId);
         startActivity(intent);
+        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
     }
 }

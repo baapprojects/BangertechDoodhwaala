@@ -54,6 +54,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".activity.TutorialScreens"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".activity.SearchActivity"
             android:screenOrientation="portrait" >
         <!--<intent-filter>

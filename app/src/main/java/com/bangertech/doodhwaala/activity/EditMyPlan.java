@@ -365,6 +365,7 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
                 CUtils.printLog("cancelUserPlan-bijendra", output, ConstantVariables.LOG_TYPE.ERROR);
                 CUtils.showUserMessage(EditMyPlan.this, "Plan Cancel Successfully");
                 startActivity(new Intent(EditMyPlan.this, Home.class));
+                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             } else {
                 CUtils.showUserMessage(EditMyPlan.this, "Failed to cancel your plan. Try again!");
             }
@@ -380,6 +381,7 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
             if(jsonObject.getBoolean("result")) {
                 CUtils.showUserMessage(EditMyPlan.this, "Plan Updated Successfully");
                 startActivity(new Intent(EditMyPlan.this, Home.class));
+                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             } else {
                 CUtils.showUserMessage(EditMyPlan.this, "Failed to update your plan. Try again!");
             }

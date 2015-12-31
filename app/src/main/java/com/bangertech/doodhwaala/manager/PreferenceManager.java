@@ -58,14 +58,20 @@ public class PreferenceManager {
         DoodhwaalaApplication.getSharedPreferences().edit().putString(AppConstants.USER_EMAILID, null).commit();
     }
 
-    /*public List<String> getFilterList()
-    {
-        return DoodhwaalaApplication.getSharedPreferences().getStringSet(AppConstants.USER_FILTER, null);
+    public boolean getMilkBarTutorial() {
+        return DoodhwaalaApplication.getSharedPreferences().getBoolean(AppConstants.TUT_MILKBAR, false);
     }
-    public void setFilterListItem(int listType,String outPut)
-    {
-        Set<String> filterList=new HashSet<String>();
-        filterList.addAll(outPut);
-        DoodhwaalaApplication.getSharedPreferences().edit().putStringSet(AppConstants.USER_FILTER, filterList).commit();
-    }*/
+
+    public void setMilkBarTutorial(boolean flag){
+        DoodhwaalaApplication.getSharedPreferences().edit().putBoolean(AppConstants.TUT_MILKBAR, flag).commit();
+    }
+
+    public boolean getMyMilkTutorial() {
+        return DoodhwaalaApplication.getSharedPreferences().getBoolean(AppConstants.TUT_MYMILK, false);
+    }
+
+    public void setMyMilkTutorial(boolean flag){
+        DoodhwaalaApplication.getSharedPreferences().edit().putBoolean(AppConstants.TUT_MYMILK, flag).commit();
+    }
+
 }

@@ -104,7 +104,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
                 Bundle bundle = new Bundle();
                 bundle.putBoolean("IS_FROM_CONFIRMATION_SCREEN", true);
                 startActivityForResult(new Intent(ShowConfirmation.this, ShowAddress.class).putExtras(bundle), ConstantVariables.SUB_ACTIVITY_EDIT_ADDRESS_FROM_CONFIRMATION);
-
+                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             }
         });
 
@@ -156,6 +156,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
             {
               CUtils.showUserMessage(ShowConfirmation.this,"Thanks for subscription");
                 startActivity(new Intent(ShowConfirmation.this, Home.class));
+                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             }
             else
                 CUtils.showUserMessage(ShowConfirmation.this,jsonObject.getString("msg"));

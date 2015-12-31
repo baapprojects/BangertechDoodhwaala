@@ -46,7 +46,7 @@
     <string name="edit">Edit</string>
     <string name="tomorrow">Order for Tomorrow</string>
     <string name="today">Today</string>
-    <string name="order_history_balance">Balance : </string>
+    <string name="order_history_balance">Balance: </string>
     <string name="previous_day">Previous Day</string>
     <string name="next_day">Next Day</string>
     <string name="do_you_want_to_pause_the_plan">Do you want to pause the plan ?</string>

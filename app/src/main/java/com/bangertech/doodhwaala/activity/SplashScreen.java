@@ -70,7 +70,7 @@ public class SplashScreen extends Activity {
                         finish();
                     } else {
                         DoodhwaalaApplication.isUserLoggedIn = false;
-                        Intent mobileIntent = new Intent(SplashScreen.this, LoginActivity.class);
+                        Intent mobileIntent = new Intent(SplashScreen.this, TutorialScreens.class);
                         startActivity(mobileIntent);
                         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                     }

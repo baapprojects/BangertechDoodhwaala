@@ -1,1 +1,1 @@
-include ':app', ':helpshiftSdkAndroid', ':facebook'
+include ':app', ':helpshiftSdkAndroid', ':facebook', ':libraries:viewPagerIndicator'

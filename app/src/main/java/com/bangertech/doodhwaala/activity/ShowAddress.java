@@ -220,6 +220,13 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
                         }
                     }
                 }
+            } else {
+                /*BeanAddress bua;
+                bua = new BeanAddress();
+                bua.setAddressId("-1");
+                bua.setFullAddress("Add your address");
+                bua.setDefaultAddress(false);
+                listAddress.add(bua);*/
             }
         }
         catch (Exception e) {
@@ -277,7 +284,7 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
     {
         Bundle bundle=new Bundle();
         bundle.putBoolean("ADD_ADDRESS",isAdd);
-        bundle.putString("ADDRESS_ID", listAddress.get(newSelectedAddressIndex).getAddressId());
+        //bundle.putString("ADDRESS_ID", listAddress.get(newSelectedAddressIndex).getAddressId());
         return bundle;
     }
 

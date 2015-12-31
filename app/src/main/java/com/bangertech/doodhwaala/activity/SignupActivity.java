@@ -311,12 +311,14 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
                     Intent intent= new Intent(SignupActivity.this, PrivatePolicy.class);
                     intent.putExtra("terms","Terms and Condition");
                     startActivity(intent);
+                    overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                     break;
 
                 case R.id.policy:
                     Intent navigation= new Intent(SignupActivity.this, PrivatePolicy.class);
                     navigation.putExtra("terms","Private Policy");
                     startActivity(navigation);
+                    overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                     break;
             }
         }
@@ -402,6 +404,7 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
                 intent.putExtra("email", txtEmailAddress.getText().toString());
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
                 startActivity(intent);
+                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                 finish();
                 Log.e("Saisheshan", "SignIn");
                 dialog.dismiss();

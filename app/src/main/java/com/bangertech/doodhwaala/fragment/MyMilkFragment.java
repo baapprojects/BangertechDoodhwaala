@@ -34,6 +34,7 @@ import com.bangertech.doodhwaala.beans.BeanDayPlan;
 import com.bangertech.doodhwaala.cinterfaces.IMyMilkDayPlan;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
+import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CGlobal;
 import com.bangertech.doodhwaala.utils.CUtils;
@@ -70,6 +71,7 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
     private ImageView datePicker;
     private int year, month, day;
     private Calendar calendar;
+    private ImageView myMilkPauseTutorial, myMilkQuantityTutorial, myMilkResumeTutorial;
     public static MyMilkFragment newInstance() {
         return new MyMilkFragment();
     }
@@ -100,6 +102,9 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view =inflater.inflate(R.layout.fragment_my_milk, container, false);
+        myMilkPauseTutorial = (ImageView) view.findViewById(R.id.myMilkPauseTutorial);
+        myMilkQuantityTutorial = (ImageView) view.findViewById(R.id.myMilkQuantityTutorial);
+        myMilkResumeTutorial = (ImageView) view.findViewById(R.id.myMilkResumeTutorial);
         textViewDate= (TextView)view.findViewById(R.id.textViewDate);
         textViewDayHeading= (TextView)view.findViewById(R.id.textViewDayHeading);
         imageViewPrevious= (ImageView)view.findViewById(R.id.imageViewPrevious);
@@ -195,11 +200,14 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                         }
                     }
                 }
+                if(!PreferenceManager.getInstance().getMyMilkTutorial()) {
+                    pauseTutorial();
+                }
                 Home.pager.setCurrentItem(1);
             }
             else
                 Home.pager.setCurrentItem(0);
-                CUtils.showUserMessage(getActivity(),jsonObject.getString("msg"));
+                CUtils.showUserMessage(getActivity(), jsonObject.getString("msg"));
         }
         catch (Exception e)
         {
@@ -313,7 +321,8 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
             editMyPlanIndex=index;
             Intent intent=new Intent(getActivity(),EditMyPlan.class);
             intent.putExtra("PLAN_ID",beanDayPlan.getPlanId());
-            startActivityForResult(intent,ConstantVariables.SUB_ACTIVITY_EDIT_MY_PLAN);
+            startActivityForResult(intent, ConstantVariables.SUB_ACTIVITY_EDIT_MY_PLAN);
+            getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         }
 
     }
@@ -351,6 +360,48 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
     }*/
+
+    public void pauseTutorial() {
+        myMilkPauseTutorial.setVisibility(View.VISIBLE);
+        myMilkQuantityTutorial.setVisibility(View.GONE);
+        myMilkResumeTutorial.setVisibility(View.GONE);
+
+        myMilkPauseTutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantityTutorial();
+            }
+        });
+    }
+
+    public void quantityTutorial() {
+        myMilkPauseTutorial.setVisibility(View.GONE);
+        myMilkQuantityTutorial.setVisibility(View.VISIBLE);
+        myMilkResumeTutorial.setVisibility(View.GONE);
+
+        myMilkQuantityTutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resumeTutorial();
+            }
+        });
+    }
+
+    public void resumeTutorial() {
+        myMilkPauseTutorial.setVisibility(View.GONE);
+        myMilkQuantityTutorial.setVisibility(View.GONE);
+        myMilkResumeTutorial.setVisibility(View.VISIBLE);
+
+        myMilkResumeTutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PreferenceManager.getInstance().setMyMilkTutorial(true);
+                myMilkPauseTutorial.setVisibility(View.GONE);
+                myMilkQuantityTutorial.setVisibility(View.GONE);
+                myMilkResumeTutorial.setVisibility(View.GONE);
+            }
+        });
+    }
 
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {

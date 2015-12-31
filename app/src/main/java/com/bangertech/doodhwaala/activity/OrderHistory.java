@@ -48,7 +48,7 @@ public class OrderHistory extends AppCompatActivity implements AsyncResponse {
         setContentView(R.layout.activity_order_history);
 
         tvBalance = (TextView) findViewById(R.id.tvBalance);
-        app_bar = (Toolbar) findViewById(R.id.app_bar);
+        app_bar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(app_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.order_history));
@@ -97,7 +97,7 @@ public class OrderHistory extends AppCompatActivity implements AsyncResponse {
     {
         mAdapter=new OrderHistoryListAdapter(OrderHistory.this,bucketOrderedHistory);
         mRecyclerView.setAdapter(mAdapter);
-        balance=getResources().getString(R.string.order_history_balance)+ConstantVariables.RUPEE_SIGN+balance;
+        balance=getResources().getString(R.string.order_history_balance)+" Rs "+balance;
         tvBalance.setText(balance);
     }
 

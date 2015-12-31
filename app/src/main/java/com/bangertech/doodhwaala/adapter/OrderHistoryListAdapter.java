@@ -42,7 +42,7 @@ public void onBindViewHolder(OrderHistoryViewHolder contactViewHolder, int i) {
 
     BeanOrderedHistory beanOrderedHistory=_orderedHistory.get(i);
     contactViewHolder.orderDate.setText(beanOrderedHistory.getOrderedDate());
-    contactViewHolder.orderAmount.setText(ConstantVariables.RUPEE_SIGN+beanOrderedHistory.getOrderedAmount());
+    contactViewHolder.orderAmount.setText("Rs "+beanOrderedHistory.getOrderedAmount());
     List<String> items=beanOrderedHistory.getOrderedItems();
     StringBuilder sb=new StringBuilder();
     for(String itemName:items)

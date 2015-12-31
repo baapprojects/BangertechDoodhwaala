@@ -30,6 +30,7 @@ import com.bangertech.doodhwaala.cinterfaces.IBrandAllProduct;
 import com.bangertech.doodhwaala.cinterfaces.ISelectedProduct;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private FloatingActionButton     fabFilterProduct;
-    private ImageView searchProductType;
+    private ImageView searchProductType, milkStoreTutorial;
 
     public static MilkbarFragment newInstance() {
 
@@ -86,14 +87,29 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_milkbar, container, false);
 
+        milkStoreTutorial = (ImageView) view.findViewById(R.id.milkStoreTutorial);
         searchProductType = (ImageView) view.findViewById(R.id.searchProductType);
         gridProductType=(GridView) view.findViewById(R.id.gridProductType);
         fabFilterProduct=(FloatingActionButton)view.findViewById(R.id.fabFilterProduct);
         mRecyclerView= (RecyclerView)view.findViewById(R.id.my_recycler_view);
 
+        if(PreferenceManager.getInstance().getMilkBarTutorial()) {
+            milkStoreTutorial.setVisibility(View.GONE);
+        } else {
+            milkStoreTutorial.setVisibility(View.VISIBLE);
+        }
+
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        milkStoreTutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PreferenceManager.getInstance().setMilkBarTutorial(true);
+                milkStoreTutorial.setVisibility(View.GONE);
+            }
+        });
 
         searchProductType.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,6 +201,7 @@ public void reDrawFragment(List<BeanProductType> lstBeanProductType,List<BeanBra
             Intent data = new Intent();
             data.putExtra(ConstantVariables.SELECTED_FILTER_KEY, brandParameter);
             startActivity(new Intent(getActivity(), FiltersAppliedByFilterProduct.class).putExtras(data));
+            getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         }
     }
     private String  getBrandParameterToSend(BeanBrand beanBrand)
@@ -219,6 +236,7 @@ public void reDrawFragment(List<BeanProductType> lstBeanProductType,List<BeanBra
         intent.putExtra(ConstantVariables.PRODUCT_ID_KEY,productId);
         intent.putExtra(ConstantVariables.PRODUCT_MAPPING_ID_KEY,productMappingId);
         startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
     }
 
 
