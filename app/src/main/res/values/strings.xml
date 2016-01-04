@@ -7,7 +7,7 @@
     <string name="action_save_default">Save Default</string>
     <string name="action_settings">Settings</string>
     <string name="action_search">Search</string>
-    <string name="facebook_app_id">424807571052604</string>
+    <string name="facebook_app_id">1537479513232095</string>
     <string name="play_services_error">Google Play services is not available.  This application will close.</string>
     <string name="close">Close</string>
     <string name="configuration_error">Error: the value of WEB_CLIENT_ID or SERVER_BASE_URL is not  set correctly. This will cause errors when requesting a server auth code.</string>
@@ -42,7 +42,8 @@
     <string name="address_updated_successfully">Address updated successfully.</string>
     <string name="default_address_updated_successfully">Default Address updated successfully.</string>
 
-    <string name="deliver_at">Deliver at: </string>
+    <string name="deliver_at">Deliver at:</string>
+    <string name="deliver_at_default">Deliver at: Add your delivery address</string>
     <string name="edit">Edit</string>
     <string name="tomorrow">Order for Tomorrow</string>
     <string name="today">Today</string>

@@ -64,6 +64,8 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     private General general;
     private double  paidAmount;
 
+    private ImageView ivConfirmationScreen;
+
     private String gross_price, discount_price;
 
     @Override
@@ -86,6 +88,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
         txtViewDuration=(TextView)findViewById(R.id.txtViewDuration);
         txtViewDurationPrice=(TextView)findViewById(R.id.txtViewDurationPrice);
         txtViewAddress=(TextView)findViewById(R.id.txtViewAddress);
+        ivConfirmationScreen = (ImageView) findViewById(R.id.ivConfirmationScreen);
 
         validator = new Validator(this);
         validator.setValidationListener(this);
@@ -109,7 +112,15 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
         });
 
         initValues(getIntent().getStringExtra(ConstantVariables.SELECTED_USER_PLAN_KEY));
+        fetchAddressFromServer();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchAddressFromServer();
+    }
+
     private void fetchAddressFromServer() {
 
         MyAsynTaskManager  myAsyncTask=new MyAsynTaskManager();
@@ -154,9 +165,16 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
             JSONObject jsonObject = new JSONObject(addressList);
             if(jsonObject.getBoolean("result"))
             {
-              CUtils.showUserMessage(ShowConfirmation.this,"Thanks for subscription");
-                startActivity(new Intent(ShowConfirmation.this, Home.class));
-                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+              //CUtils.showUserMessage(ShowConfirmation.this, "Thanks for subscription");
+                ivConfirmationScreen.setVisibility(View.VISIBLE);
+                ivConfirmationScreen.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(ShowConfirmation.this, Home.class));
+                        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+                    }
+                });
+
             }
             else
                 CUtils.showUserMessage(ShowConfirmation.this,jsonObject.getString("msg"));
@@ -184,14 +202,19 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
 
                         obj=array.getJSONObject(i);
                         if(obj!=null) {
-                            if(obj.getString("address_id").equalsIgnoreCase(address_id)) {
+                            //if(obj.getString("address_id").equalsIgnoreCase(address_id))
+                                if(obj.getBoolean("default_address")){
                                 txtViewAddress.setText(getString(R.string.deliver_at)+obj.getString("address"));
                                 break;
                             }
 
                         }
                     }
+                } else {
+                    txtViewAddress.setText(getString(R.string.deliver_at_default));
                 }
+            } else {
+                txtViewAddress.setText(getString(R.string.deliver_at_default));
             }
         }
         catch (Exception e) {
@@ -242,7 +265,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
 
             txtViewFrequency.setText(frequency_name);
 
-            double frequencyPrice=dailyPrice*daysForAWeek;;
+            double frequencyPrice=dailyPrice*daysForAWeek;
             txtViewFrequencyPrice.setText("= Rs "+String.valueOf(frequencyPrice));
 
 
@@ -256,7 +279,10 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
             ((Button)findViewById(R.id.butPayWithCash)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    insertUserPlanOnsServer(paid_amount);
+                    if(txtViewAddress.getText().toString().equals(getString(R.string.deliver_at_default)))
+                        CUtils.showUserMessage(getApplicationContext(), "Please select your address to checkout.");
+                    else
+                        insertUserPlanOnsServer(paid_amount);
                 }
             });
         }
@@ -355,7 +381,10 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
                 ((Button)findViewById(R.id.butPayWithCash)).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        insertUserPlanOnsServer(String.valueOf(paidAmount));
+                        if(txtViewAddress.getText().toString().equals(getString(R.string.deliver_at_default)))
+                            CUtils.showUserMessage(getApplicationContext(), "Please select your address to checkout.");
+                        else
+                            insertUserPlanOnsServer(String.valueOf(paidAmount));
                     }
                 });
             }

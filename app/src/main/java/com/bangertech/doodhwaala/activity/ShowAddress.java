@@ -283,8 +283,10 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
     private Bundle getBundleForAddEditAddress(boolean isAdd)
     {
         Bundle bundle=new Bundle();
-        bundle.putBoolean("ADD_ADDRESS",isAdd);
-        //bundle.putString("ADDRESS_ID", listAddress.get(newSelectedAddressIndex).getAddressId());
+        bundle.putBoolean("ADD_ADDRESS", isAdd);
+        if(listAddress.size()>0) {
+            bundle.putString("ADDRESS_ID", listAddress.get(newSelectedAddressIndex).getAddressId());
+        }
         return bundle;
     }
 

@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <ImageView
+        android:id="@+id/ivConfirmationScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/confirmation"
+        android:visibility="gone"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".1"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:src="@drawable/location"/>
 
         <TextView
@@ -134,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_weight=".75"
             android:singleLine="false"
-            android:text="Deliver at:Flat No 402,DCS County Muneeswara Temple raod,Kodihalli Main Rd,kodihalli,HAL 3rd"
+            android:text="@string/deliver_at_default"
             android:gravity="left"
             android:textAppearance="@android:style/TextAppearance.Small"/>
         <TextView

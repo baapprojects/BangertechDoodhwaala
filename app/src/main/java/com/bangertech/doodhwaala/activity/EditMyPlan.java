@@ -57,6 +57,7 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
     private int webqty;
     private int durationPos, freqPos;
     private int qtyPos;
+    private ImageView ivCancellationScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
 
         textViewProductName=(TextView)findViewById(R.id.textViewProductName);
         imageViewProduct=(ImageView)findViewById(R.id.imageViewProduct);
+        ivCancellationScreen = (ImageView) findViewById(R.id.ivCancellationScreen);
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -363,9 +365,16 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
             JSONObject jsonObject = new JSONObject(output);
             if(jsonObject.getBoolean("result")) {
                 CUtils.printLog("cancelUserPlan-bijendra", output, ConstantVariables.LOG_TYPE.ERROR);
-                CUtils.showUserMessage(EditMyPlan.this, "Plan Cancel Successfully");
-                startActivity(new Intent(EditMyPlan.this, Home.class));
-                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+                //CUtils.showUserMessage(EditMyPlan.this, "Plan Cancel Successfully");
+                ivCancellationScreen.setVisibility(View.VISIBLE);
+                ivCancellationScreen.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(EditMyPlan.this, Home.class));
+                        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+                    }
+                });
+
             } else {
                 CUtils.showUserMessage(EditMyPlan.this, "Failed to cancel your plan. Try again!");
             }

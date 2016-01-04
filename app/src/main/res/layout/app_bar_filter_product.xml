@@ -19,7 +19,7 @@
         android:layout_alignParentRight="true"
         android:textColor="#FFF"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:drawableLeft="@drawable/div_app"
+        android:drawableLeft="@drawable/appbar_div"
         android:visibility="gone"
         android:text="@string/save"/>
 

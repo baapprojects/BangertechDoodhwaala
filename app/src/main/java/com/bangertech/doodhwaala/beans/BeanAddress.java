@@ -4,7 +4,7 @@ package com.bangertech.doodhwaala.beans;
  * Created by annutech on 10/14/2015.
  */
 public class BeanAddress {
-    private String address_id;
+    private String address_id = null;
     private String full_address;
     boolean default_address=false;
     public String getAddressId() {
