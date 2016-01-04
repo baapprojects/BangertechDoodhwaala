@@ -1,13 +1,17 @@
 package com.bangertech.doodhwaala.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -24,6 +28,11 @@ import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CGlobal;
 import com.bangertech.doodhwaala.utils.CUtils;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
+import com.mobsandgeeks.saripaar.Rule;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.NumberRule;
+import com.mobsandgeeks.saripaar.annotation.Required;
+import com.mobsandgeeks.saripaar.annotation.TextRule;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,13 +43,33 @@ import java.util.List;
 /**
  * Created by annutech on 9/23/2015.
  */
-public class AddEditAddress extends AppCompatActivity implements AsyncResponse {
+public class AddEditAddress extends AppCompatActivity implements AsyncResponse, Validator.ValidationListener{
     private Toolbar app_bar;
     private List<BeanCity> bucketCityAndLocality = new ArrayList<BeanCity>();
     private List<BeanLocality> bucketLocality = new ArrayList<BeanLocality>();
     private Spinner spCity, spLocality;
 
-    private EditText editTextFlat,editTextBuilding,editTextStreet,editTextLandmark,editTextPincode;
+    @Required(order = 1)
+    @NumberRule(order = 2, message = "Enter Flat Number in Numeric", type = NumberRule.NumberType.LONG)
+    @TextRule(order = 3, message = "Enter valid Flat Number", minLength = 1, maxLength = 5)
+    private EditText editTextFlat;
+
+    @Required(order = 4)
+    @TextRule(order = 5, minLength = 2, message = "Enter valid Building name with minimum 2 chars")
+    private EditText editTextBuilding;
+
+    @Required(order = 6)
+    @TextRule(order = 7, minLength = 2, message = "Enter valid Street name with minimum 2 chars")
+    private EditText editTextStreet;
+
+    @Required(order = 8)
+    @TextRule(order = 9, minLength = 2, message = "Enter valid Landmark name with minimum 2 chars")
+    private EditText editTextLandmark;
+
+    @Required(order = 10)
+    @NumberRule(order = 11, message = "Enter Pin code in Numeric", type = NumberRule.NumberType.LONG)
+    @TextRule(order = 12, message = "Enter valid Pin code Number", minLength = 6, maxLength = 6)
+    private EditText editTextPincode;
     private CityAndLocalityAdapter localityAdapter;
 
     private static final int LIST_CITIES = 0;
@@ -48,12 +77,16 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse {
     private boolean isNewAddress=true;
     private String address_id="";
     private int localityIndex=0;
-
+    private Validator validator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user_address);
+
+        validator = new Validator(this);
+        validator.setValidationListener(this);
+
         app_bar = (Toolbar) findViewById(R.id.app_bar);
         spCity = (Spinner) findViewById(R.id.spCity);
         spLocality = (Spinner) findViewById(R.id.spLocality);
@@ -72,9 +105,25 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse {
         ((Button) app_bar.findViewById(R.id.butSave)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addEditCityOnServer();
+                validator.validate();
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
             }
         });
+
+        editTextPincode.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    validator.validate();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+                return false;
+            }
+
+        });
+
         bucketCityAndLocality.clear();
         bucketLocality.clear();
         isNewAddress=getIntent().getExtras().getBoolean("ADD_ADDRESS");
@@ -355,6 +404,44 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse {
 
         }
 
+
+    }
+
+    @Override
+    public void onValidationSucceeded() {
+        if(editTextBuilding.getText().toString().matches("[a-zA-Z.? ]*")) {
+
+            if(editTextStreet.getText().toString().matches("[a-zA-Z.? ]*")) {
+
+                if(editTextLandmark.getText().toString().matches("[a-zA-Z.? ]*")) {
+                    addEditCityOnServer();
+                }
+                else {
+                    editTextLandmark.requestFocus();
+                    editTextLandmark.setError("Special chars not allowed");
+                }
+            }
+            else {
+                editTextStreet.requestFocus();
+                editTextStreet.setError("Special chars not allowed");
+            }
+        }
+        else {
+            editTextBuilding.requestFocus();
+            editTextBuilding.setError("Special chars not allowed");
+        }
+
+
+    }
+
+    @Override
+    public void onValidationFailed(View failedView, Rule<?> failedRule) {
+        String message = failedRule.getFailureMessage();
+        if (failedView instanceof EditText) {
+            failedView.requestFocus();
+            ((EditText) failedView).setError(message);
+            //((EditText) failedView).setError(Html.fromHtml("<font color='black'>" + message + "</font>"));
+        }
 
     }
 

@@ -126,7 +126,7 @@
 
     <string-array name="FreqName">
         <item>Everyday</item>
-        <item>Four times a week</item>
+        <item>Three times a week</item>
         <item>Four weeks</item>
     </string-array>
 

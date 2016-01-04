@@ -8,6 +8,11 @@
         android:id="@+id/app_bar"
         layout="@layout/app_bar_add_user_address" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,7 +43,7 @@
             android:hint="@string/hint_flat_or_house_number"
             android:maxLength="50"
             android:singleLine="true"
-            />
+            android:inputType="number"/>
 
         <EditText
             android:id="@+id/editTextBuilding"
@@ -47,7 +52,8 @@
             android:layout_marginTop="10dp"
             android:hint="@string/hint_building_or_society_name"
             android:maxLength="50"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:inputType="textPostalAddress"/>
 
         <EditText
             android:id="@+id/editTextStreet"
@@ -57,7 +63,7 @@
             android:hint="@string/hint_street_details"
             android:maxLength="50"
             android:singleLine="true"
-           />
+            android:inputType="textPostalAddress"/>
 
         <EditText
             android:id="@+id/editTextLandmark"
@@ -66,7 +72,8 @@
             android:layout_marginTop="10dp"
             android:hint="@string/hint_landmarks"
             android:maxLength="50"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:inputType="textPostalAddress"/>
         <EditText
             android:id="@+id/editTextPincode"
             android:layout_width="match_parent"
@@ -78,4 +85,5 @@
             android:inputType="number" />
 
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>

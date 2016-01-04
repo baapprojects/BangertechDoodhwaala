@@ -556,7 +556,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     public void updatePauseOrResumePlanOnServer(BeanDayPlan beanDayPlan,int prIndex)
     {
         pauseOrResumeIndex=prIndex;
-        String action=beanDayPlan.isPaused()?"resumeUserPlan":"pauseUserPlan2";
+        String action=beanDayPlan.isPaused()?"resumeUserPlan2":"pauseUserPlan3";
         MyAsynTaskManager myAsyncTask = new MyAsynTaskManager();
         myAsyncTask.delegate = this;
         myAsyncTask.setupParamsAndUrl("updatePauseOrResumePlan", Home.this, AppUrlList.ACTION_URL,
