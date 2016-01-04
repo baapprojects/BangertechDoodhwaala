@@ -25,7 +25,7 @@ public class SplashScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT < 16) {
+        /*if (Build.VERSION.SDK_INT < 16) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
@@ -43,7 +43,7 @@ public class SplashScreen extends Activity {
             int uiOptions2 = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                     | View.SYSTEM_UI_FLAG_FULLSCREEN;
             decorView.setSystemUiVisibility(uiOptions2);
-        }
+        }*/
         setContentView(R.layout.splash_screen);
 
         //gcm = new GcmCreatingClass(SplashScreen.this, SplashScreen.this);

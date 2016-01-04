@@ -119,7 +119,7 @@ public class GcmIntentService extends IntentService {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                 .setColor(color)
                         //.setSmallIcon(R.drawable.ic_launcher)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.logo)
                 .setContentTitle(context.getString(R.string.app_name))
                         //.setNumber(Notification.C)
                 .setContentIntent(contentIntent)
