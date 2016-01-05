@@ -72,6 +72,7 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
     private int year, month, day;
     private Calendar calendar;
     private ImageView myMilkPauseTutorial, myMilkQuantityTutorial, myMilkResumeTutorial;
+    private ImageView myMilkPending;
     public static MyMilkFragment newInstance() {
         return new MyMilkFragment();
     }
@@ -102,6 +103,7 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view =inflater.inflate(R.layout.fragment_my_milk, container, false);
+        myMilkPending = (ImageView) view.findViewById(R.id.myMilkPending);
         myMilkPauseTutorial = (ImageView) view.findViewById(R.id.myMilkPauseTutorial);
         myMilkQuantityTutorial = (ImageView) view.findViewById(R.id.myMilkQuantityTutorial);
         myMilkResumeTutorial = (ImageView) view.findViewById(R.id.myMilkResumeTutorial);
@@ -177,33 +179,50 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                 if(size>0)
                 {
                     JSONObject jsonObjectProduct=null;
-                    for(int index=0;index<size;index++)
-                    {
-                        jsonObjectProduct=jsonArrayProducts.getJSONObject(index);
-                        if(jsonObjectProduct!=null)
-                        {
-                            beanDayPlan=new BeanDayPlan();
-                            if(jsonObjectProduct.getString("paused").equals(flagPause)) {
-                                beanDayPlan.setFlagPaused("");
+                    if(size == 1) {
+                        for(int index=0;index<size;index++) {
+                            if (jsonObjectProduct.getBoolean("date_assigned")) {
+                                myMilkPending.setVisibility(View.GONE);
+                                if(!PreferenceManager.getInstance().getMyMilkTutorial()) {
+                                    pauseTutorial();
+                                }
+                                Home.pager.setCurrentItem(1);
                             } else {
-                                beanDayPlan.setFlagPaused(jsonObjectProduct.getString("paused"));
+                                myMilkPending.setVisibility(View.VISIBLE);
                             }
-                            beanDayPlan.setPlanId(jsonObjectProduct.getString("plan_id"));
-                            beanDayPlan.setProductName(jsonObjectProduct.getString("product_name"));
-                            beanDayPlan.setQuantity(jsonObjectProduct.getString("quantity"));
-                            beanDayPlan.setImage(jsonObjectProduct.getString("image"));
-                            beanDayPlan.setPaused(jsonObjectProduct.getBoolean("paused"));
-                            beanDayPlan.setDateId(jsonObjectProduct.getString("date_id"));
-                            beanDayPlan.setShowChangeOrPausePlan(showChangeOrPausePlan);
-                            flagPause = jsonObjectProduct.getString("paused");
-                            lstDayPlan.add(beanDayPlan);
                         }
                     }
+                    else {
+                        for (int index = 0; index < size; index++) {
+                            jsonObjectProduct = jsonArrayProducts.getJSONObject(index);
+
+                            if (jsonObjectProduct != null) {
+                                beanDayPlan = new BeanDayPlan();
+                                if (jsonObjectProduct.getString("paused").equals(flagPause)) {
+                                    beanDayPlan.setFlagPaused("");
+                                } else {
+                                    beanDayPlan.setFlagPaused(jsonObjectProduct.getString("paused"));
+                                }
+                                beanDayPlan.setPlanId(jsonObjectProduct.getString("plan_id"));
+                                beanDayPlan.setProductName(jsonObjectProduct.getString("product_name"));
+                                beanDayPlan.setQuantity(jsonObjectProduct.getString("quantity"));
+                                beanDayPlan.setImage(jsonObjectProduct.getString("image"));
+                                beanDayPlan.setPaused(jsonObjectProduct.getBoolean("paused"));
+                                beanDayPlan.setDateId(jsonObjectProduct.getString("date_id"));
+                                beanDayPlan.setFrequencyId(jsonObjectProduct.getString("frequency_id"));
+                                beanDayPlan.setDateAvailable(jsonObjectProduct.getBoolean("date_assigned"));
+                                beanDayPlan.setShowChangeOrPausePlan(showChangeOrPausePlan);
+                                flagPause = jsonObjectProduct.getString("paused");
+                                lstDayPlan.add(beanDayPlan);
+                            }
+                        }
+                        if(!PreferenceManager.getInstance().getMyMilkTutorial()) {
+                            pauseTutorial();
+                        }
+                        Home.pager.setCurrentItem(1);
+                    }
                 }
-                if(!PreferenceManager.getInstance().getMyMilkTutorial()) {
-                    pauseTutorial();
-                }
-                Home.pager.setCurrentItem(1);
+
             }
             else
                 Home.pager.setCurrentItem(0);

@@ -22,6 +22,7 @@ import com.bangertech.doodhwaala.cinterfaces.ISelectedProduct;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CUtils;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
@@ -165,6 +166,7 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
         switch (item.getItemId()) {
 
             case android.R.id.home:
+                PreferenceManager.getInstance().resetFilterPositions();
                 onBackPressed();
                 return true;
 
@@ -297,5 +299,11 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
         startActivity(intent);
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        PreferenceManager.getInstance().resetFilterPositions();
+        super.onBackPressed();
     }
 }

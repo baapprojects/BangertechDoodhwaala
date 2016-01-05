@@ -25,8 +25,9 @@
         android:id="@+id/txtActiveOrPaused"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Active"
-        android:layout_margin="10dp"/>
+        android:text="Dates will be allocated soon"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"/>
 
        <RelativeLayout
            android:layout_width="match_parent"

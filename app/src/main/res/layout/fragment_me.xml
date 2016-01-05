@@ -101,7 +101,7 @@
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="60dp"
-                android:text="Support" />
+                android:text="Chat Support" />
 
         </RelativeLayout>
 

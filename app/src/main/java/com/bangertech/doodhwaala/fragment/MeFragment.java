@@ -86,6 +86,7 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PreferenceManager.getInstance().resetFilterPositions();
                 PreferenceManager.getInstance().resetUserDetails();
                 DoodhwaalaApplication.isUserLoggedIn = false;
                 Intent intent = new Intent(getActivity(), LoginActivity.class);

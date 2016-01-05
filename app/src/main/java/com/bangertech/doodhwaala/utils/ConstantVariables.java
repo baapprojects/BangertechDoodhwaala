@@ -12,8 +12,8 @@ public class ConstantVariables {
         ERROR,
         WARNING
     }
-    public static String ACCESS_KEY_HELP_SHIFT="c2e46640ff70bbc54e3ecd18a843fc49";
-    public static String APP_ID_HELP_SHIFT="bash_platform_20150924035053378-735651d63f93c7b";
+    public static String ACCESS_KEY_HELP_SHIFT="761c8c1ce27416e8b1846998cd081e71";
+    public static String APP_ID_HELP_SHIFT="doodhwala_platform_20160105042459315-c72cc02d8a4e152";
     public static final  int SUB_ACTIVITY_FILTER_OPENED_ON_MILKBAR=1001;
     public static final  int SUB_ACTIVITY_FILTER_OPENED_ON_FILTERS_APPLIED=1002;
     public static final  int SUB_ACTIVITY_ADD_EDIT_ADDRESS=1003;

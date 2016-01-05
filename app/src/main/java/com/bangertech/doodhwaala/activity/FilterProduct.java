@@ -20,6 +20,7 @@ import com.bangertech.doodhwaala.beans.BeanFilter;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CGlobal;
 import com.bangertech.doodhwaala.utils.CUtils;
@@ -114,7 +115,7 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
 
             }
         });
-
+        enableDisableSaveButton();
     }
     private void initSelectedFilterIndex(String value)
     {
@@ -133,13 +134,14 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
                     switch(tag_type)
                     {
                         case ConstantVariables.PRODUCT_TAG_TYPE:
-                            productFilterIndex=Integer.valueOf(obj.get("tag_id").toString());
+                            //productFilterIndex=Integer.valueOf(obj.get("tag_id").toString());
+                            //productFilterIndex = PreferenceManager.getInstance().getProductFilterPosition();
                             break;
                         case ConstantVariables.BRAND_TAG_TYPE:
-                            brandFilterIndex=Integer.valueOf(obj.get("tag_id").toString());
+                            //brandFilterIndex=Integer.valueOf(obj.get("tag_id").toString());
                             break;
                         case ConstantVariables.PACKAGING_TAG_TYPE:
-                            packagingFilterIndex=Integer.valueOf(obj.get("tag_id").toString());
+                            //packagingFilterIndex=Integer.valueOf(obj.get("tag_id").toString());
                             break;
 
                     }
@@ -163,27 +165,27 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
         JSONArray jsonArray=null;
         try {
              jsonArray=new JSONArray();
-            if(productFilterIndex>-1) {
+            if(PreferenceManager.getInstance().getProductFilterPosition()>=0) {
                 obj = new JSONObject();//FOR PRODUCT TYPE
-                 beanFilter=lstBeanProductType.get(productFilterIndex);
+                 beanFilter=lstBeanProductType.get(PreferenceManager.getInstance().getProductFilterPosition());
                 obj.put("tag_id",beanFilter.getId());
                 obj.put("tag_name",beanFilter.getName());
                 obj.put("tag_type",beanFilter.getTagType());
                 jsonArray.put(obj);
 
             }
-            if(brandFilterIndex>-1) {
+            if(PreferenceManager.getInstance().getBrandFilterPosition()>=0) {
                 obj = new JSONObject();//FOR PRODUCT TYPE
-                beanFilter=lstBeanFilterBrand.get(brandFilterIndex);
+                beanFilter=lstBeanFilterBrand.get(PreferenceManager.getInstance().getBrandFilterPosition());
                 obj.put("tag_id",beanFilter.getId());
                 obj.put("tag_name",beanFilter.getName());
                 obj.put("tag_type",beanFilter.getTagType());
                 jsonArray.put(obj);
 
             }
-            if(packagingFilterIndex>-1) {
+            if(PreferenceManager.getInstance().getPackagingFilterPosition()>=0) {
                 obj = new JSONObject();//FOR PRODUCT TYPE
-                beanFilter=lstBeanFilterPackaging.get(packagingFilterIndex);
+                beanFilter=lstBeanFilterPackaging.get(PreferenceManager.getInstance().getPackagingFilterPosition());
                 obj.put("tag_id",beanFilter.getId());
                 obj.put("tag_name",beanFilter.getName());
                 obj.put("tag_type",beanFilter.getTagType());
@@ -207,6 +209,7 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                PreferenceManager.getInstance().resetFilterPositions();
                  onBackPressed();
                 return true;
 
@@ -224,7 +227,7 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
     private void enableDisableSaveButton()
     {
 
-        if(productFilterIndex>-1||brandFilterIndex>-1||packagingFilterIndex>-1)
+        if(PreferenceManager.getInstance().getProductFilterPosition()>-1||PreferenceManager.getInstance().getBrandFilterPosition()>-1||PreferenceManager.getInstance().getPackagingFilterPosition()>-1)
             butSave.setVisibility(View.VISIBLE);
         else
             butSave.setVisibility(View.GONE);
@@ -336,7 +339,7 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
                             beanFilter.setId(obj.getString("tag_id"));
                             beanFilter.setName(obj.getString("tag_name"));
                             beanFilter.setTagType(obj.getString("tag_type"));
-                            if(Integer.parseInt(beanFilter.getId())==productFilterIndex)
+                            if(i==PreferenceManager.getInstance().getProductFilterPosition())
                                 beanFilter.setIsChecked(true);
 
                             lstFilterProductType.add(beanFilter);
@@ -378,7 +381,7 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
                             beanFilter.setId(obj.getString("tag_id"));
                             beanFilter.setName(obj.getString("tag_name"));
                             beanFilter.setTagType(obj.getString("tag_type"));
-                            if(Integer.parseInt(beanFilter.getId())==brandFilterIndex)
+                            if(i==PreferenceManager.getInstance().getBrandFilterPosition())
                                 beanFilter.setIsChecked(true);
 
                             lstBeanFilterBrand.add(beanFilter);
@@ -419,7 +422,7 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
                             beanFilter.setId(obj.getString("tag_id"));
                             beanFilter.setName(obj.getString("tag_name"));
                             beanFilter.setTagType(obj.getString("tag_type"));
-                            if(Integer.parseInt(beanFilter.getId())==packagingFilterIndex)
+                            if(i==PreferenceManager.getInstance().getPackagingFilterPosition())
                                beanFilter.setIsChecked(true);
 
                             lstFilterPackaging.add(beanFilter);
@@ -445,10 +448,11 @@ private void parseChoosedFilterOption(String tag,boolean isChecked)
     int listType=Integer.valueOf(tokens[0]);
     int itemPosition=Integer.valueOf(tokens[2]);
     boolean isItemChecked=false;
-    int selectedIndex=-1;
+
     switch(listType)
     {
         case ConstantVariables.PRODUCT_TYPE:
+            int selectedIndexProduct=-1;
             for(int i=0;i<lstBeanProductType.size();i++)
             {
                 if(itemPosition==i)
@@ -457,14 +461,15 @@ private void parseChoosedFilterOption(String tag,boolean isChecked)
                     lstBeanProductType.get(i).setIsChecked(false);
 
                 if(lstBeanProductType.get(i).isChecked())
-                    selectedIndex=i;
-
+                    selectedIndexProduct=i;
             }
-            productFilterIndex=selectedIndex;
+            PreferenceManager.getInstance().setProductFilterPosition(selectedIndexProduct);
+            productFilterIndex=selectedIndexProduct;
             filterAdapterProductType.notifyDataSetChanged();
 
             break;
         case ConstantVariables.BRAND_TYPE:
+            int selectedIndexBrand=-1;
             for(int i=0;i<lstBeanFilterBrand.size();i++)
             {
                 if(itemPosition==i)
@@ -472,14 +477,14 @@ private void parseChoosedFilterOption(String tag,boolean isChecked)
                 else
                     lstBeanFilterBrand.get(i).setIsChecked(false);
                 if(lstBeanFilterBrand.get(i).isChecked())
-                    selectedIndex=i;
-
-
+                    selectedIndexBrand=i;
             }
-            brandFilterIndex=selectedIndex;
+            PreferenceManager.getInstance().setBrandFilterPosition(selectedIndexBrand);
+            brandFilterIndex=selectedIndexBrand;
             filterAdapterBrand.notifyDataSetChanged();
             break;
         case ConstantVariables.PACKAGING_TYPE:
+            int selectedIndexPackage=-1;
             for(int i=0;i<lstBeanFilterPackaging.size();i++)
             {
                 if(itemPosition==i)
@@ -488,10 +493,10 @@ private void parseChoosedFilterOption(String tag,boolean isChecked)
                     lstBeanFilterPackaging.get(i).setIsChecked(false);
 
                 if(lstBeanFilterPackaging.get(i).isChecked())
-                    selectedIndex=i;
-
+                    selectedIndexPackage=i;
             }
-            packagingFilterIndex=selectedIndex;
+            PreferenceManager.getInstance().setPackagingFilterPosition(selectedIndexPackage);
+            packagingFilterIndex=selectedIndexPackage;
             filterAdapterPackaging.notifyDataSetChanged();
             break;
 
@@ -555,6 +560,12 @@ private void parseChoosedFilterOption(String tag,boolean isChecked)
 
             return view;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        PreferenceManager.getInstance().resetFilterPositions();
+        super.onBackPressed();
     }
 }
 

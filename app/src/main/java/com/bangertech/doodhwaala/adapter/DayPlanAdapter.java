@@ -62,31 +62,47 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
 
     @Override
     public void onBindViewHolder(final DayPlanViewHolder holder, final int position) {
-        if(!TextUtils.isEmpty(lstDayPlan.get(position).getPlanId())) {
-            fetchPlanDetailsFromServer(lstDayPlan.get(position).getPlanId());
-            holder.ivminus.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    gHolder = holder;
-                    if (selectedQuantity > 1) {
-                        --selectedQuantity;
-                        updateQuantityDayPlan(beanDayPlan.getDateId(), selectedQuantity);
-                    }
 
-                }
-            });
-            holder.ivplus.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    gHolder = holder;
-                    ++selectedQuantity;
-                    updateQuantityDayPlan(beanDayPlan.getDateId(), selectedQuantity);
-                }
-            });
-        }
         if(this.lstDayPlan.size()>0) {
                       beanDayPlan = this.lstDayPlan.get(position);
             holder.txtActiveOrPaused.setVisibility(View.GONE);
+
+            if(!lstDayPlan.get(position).getFrequencyId().equals("1")) {
+                holder.ChangePlan.setEnabled(false);
+            } else {
+                holder.ChangePlan.setEnabled(true);
+            }
+
+            if(!TextUtils.isEmpty(lstDayPlan.get(position).getPlanId())) {
+                //fetchPlanDetailsFromServer(lstDayPlan.get(position).getPlanId());
+                holder.ivminus.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        gHolder = holder;
+                        selectedQuantity = Integer.valueOf(holder.Quantity.getText().toString());
+                        if (selectedQuantity > 1) {
+                            selectedQuantity = selectedQuantity-1;
+                            holder.ivminus.setEnabled(false);
+                            holder.ivplus.setEnabled(false);
+                            updateQuantityDayPlan(lstDayPlan.get(position).getDateId(), selectedQuantity);
+
+                        }
+
+                    }
+                });
+                holder.ivplus.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        gHolder = holder;
+                        selectedQuantity = Integer.valueOf(holder.Quantity.getText().toString());
+                        selectedQuantity = selectedQuantity+1;
+                        holder.ivminus.setEnabled(false);
+                        holder.ivplus.setEnabled(false);
+                        updateQuantityDayPlan(lstDayPlan.get(position).getDateId(), selectedQuantity);
+
+                    }
+                });
+            }
             /*if(beanDayPlan.getFlagPaused().equals(""))
             {
                 holder.txtActiveOrPaused.setVisibility(View.GONE);
@@ -105,20 +121,35 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
             holder.ProductName.setText(beanDayPlan.getProductName());
             holder.Quantity.setText(beanDayPlan.getQuantity());
             CUtils.downloadImageFromServer(this.fragment.getActivity(), holder.image, beanDayPlan.getImage());
-            if(!beanDayPlan.isPaused()) {
-                holder.PausePlan.setText(context.getString(R.string.pause));
-                holder.ChangePlan.setText(context.getString(R.string.change_plan));
-                //holder.txtActiveOrPaused.setText(context.getString(R.string.active));
-                holder.txtPaused.setVisibility(View.GONE);
+
+            if(beanDayPlan.isDateAvailable()) {
+                holder.ChangePlan.setEnabled(true);
                 holder.rlcounter.setVisibility(View.VISIBLE);
-            }
-            else {
-                holder.PausePlan.setText(context.getString(R.string.resume));
-                holder.ChangePlan.setText(context.getString(R.string.view_plan));
-                //holder.txtActiveOrPaused.setText(context.getString(R.string.paused));
+                holder.txtActiveOrPaused.setVisibility(View.GONE);
+                holder.txtPaused.setVisibility(View.VISIBLE);
+
+                if(!beanDayPlan.isPaused()) {
+                    holder.PausePlan.setText(context.getString(R.string.pause));
+                    holder.ChangePlan.setText(context.getString(R.string.change_plan));
+                    //holder.txtActiveOrPaused.setText(context.getString(R.string.active));
+                    holder.txtPaused.setVisibility(View.GONE);
+                    holder.rlcounter.setVisibility(View.VISIBLE);
+                }
+                else {
+                    holder.PausePlan.setText(context.getString(R.string.resume));
+                    holder.ChangePlan.setText(context.getString(R.string.view_plan));
+                    //holder.txtActiveOrPaused.setText(context.getString(R.string.paused));
+                    holder.txtPaused.setVisibility(View.VISIBLE);
+                    holder.rlcounter.setVisibility(View.GONE);
+                }
+
+            } else {
                 holder.txtPaused.setVisibility(View.VISIBLE);
                 holder.rlcounter.setVisibility(View.GONE);
+                holder.ChangePlan.setEnabled(false);
+                holder.txtActiveOrPaused.setVisibility(View.VISIBLE);
             }
+
             holder.ChangePlan.setTag(position);
             holder.PausePlan.setTag(position);
             holder.ChangePlan.setOnClickListener(new View.OnClickListener() {
@@ -228,6 +259,9 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
         {
 
         }
+
+        gHolder.ivplus.setEnabled(true);
+        gHolder.ivminus.setEnabled(true);
     }
 
 }

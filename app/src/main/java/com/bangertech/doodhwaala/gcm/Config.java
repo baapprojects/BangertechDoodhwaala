@@ -16,7 +16,7 @@ public interface Config {
     // "http://192.168.1.17:8080/GCM-App-Server/GCMNotification?shareRegId=1";
 
     // Google Project Number
-    static final String GOOGLE_PROJECT_ID = "1025506914787";
+    static final String GOOGLE_PROJECT_ID = "580124821862";
     static final String MESSAGE_KEY = "message";
 
 }

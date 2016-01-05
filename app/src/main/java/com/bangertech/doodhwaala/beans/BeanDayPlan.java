@@ -9,8 +9,10 @@ public class BeanDayPlan {
     private String product_name="";
     private String quantity="";
     private boolean paused=false;
+    private boolean date=false;
     private String image="";
     private String Fpaused="";
+    private String freq_id = "";
     private boolean flagPaused=false;
 
     public boolean isShowChangeOrPausePlan() {
@@ -69,6 +71,22 @@ public class BeanDayPlan {
 
     public void setPaused(boolean paused) {
         this.paused = paused;
+    }
+
+    public String getFrequencyId() {
+        return freq_id;
+    }
+
+    public void setFrequencyId(String date) {
+        this.freq_id = freq_id;
+    }
+
+    public boolean isDateAvailable() {
+        return date;
+    }
+
+    public void setDateAvailable(boolean date) {
+        this.date = date;
     }
 
     public String getFlagPaused() {

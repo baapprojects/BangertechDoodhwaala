@@ -371,6 +371,11 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
             if(jsonObject.getBoolean("result")) {
                 jsonObject.getDouble("list_price");
                 jsonObject.getDouble("discount_price");
+
+                jsonObject.getString("coupon_id");
+                jsonObject.getString("discount_type");
+                jsonObject.getString("discount");
+
                 paidAmount = jsonObject.getDouble("gross_price");
 
                 lldiscount.setVisibility(View.VISIBLE);

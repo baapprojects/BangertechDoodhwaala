@@ -74,4 +74,34 @@ public class PreferenceManager {
         DoodhwaalaApplication.getSharedPreferences().edit().putBoolean(AppConstants.TUT_MYMILK, flag).commit();
     }
 
+    public int getProductFilterPosition() {
+        return DoodhwaalaApplication.getSharedPreferences().getInt(AppConstants.PRODUCT_FILTER_POSITION, -1);
+    }
+
+    public void setProductFilterPosition(int position){
+        DoodhwaalaApplication.getSharedPreferences().edit().putInt(AppConstants.PRODUCT_FILTER_POSITION, position).commit();
+    }
+
+    public int getBrandFilterPosition() {
+        return DoodhwaalaApplication.getSharedPreferences().getInt(AppConstants.BRAND_FILTER_POSITION, -1);
+    }
+
+    public void setBrandFilterPosition(int position){
+        DoodhwaalaApplication.getSharedPreferences().edit().putInt(AppConstants.BRAND_FILTER_POSITION, position).commit();
+    }
+
+    public int getPackagingFilterPosition() {
+        return DoodhwaalaApplication.getSharedPreferences().getInt(AppConstants.PACKAGE_FILTER_POSITION, -1);
+    }
+
+    public void setPackagingFilterPosition(int position){
+        DoodhwaalaApplication.getSharedPreferences().edit().putInt(AppConstants.PACKAGE_FILTER_POSITION, position).commit();
+    }
+
+    public void resetFilterPositions(){
+        DoodhwaalaApplication.getSharedPreferences().edit().putInt(AppConstants.PRODUCT_FILTER_POSITION, -1).commit();
+        DoodhwaalaApplication.getSharedPreferences().edit().putInt(AppConstants.BRAND_FILTER_POSITION, -1).commit();
+        DoodhwaalaApplication.getSharedPreferences().edit().putInt(AppConstants.PACKAGE_FILTER_POSITION, -1).commit();
+    }
+
 }

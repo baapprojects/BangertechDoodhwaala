@@ -62,13 +62,13 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
     @TextRule(order = 7, minLength = 2, message = "Enter valid Street name with minimum 2 chars")
     private EditText editTextStreet;
 
-    @Required(order = 8)
-    @TextRule(order = 9, minLength = 2, message = "Enter valid Landmark name with minimum 2 chars")
+    /*@Required(order = 8)
+    @TextRule(order = 9, minLength = 2, message = "Enter valid Landmark name with minimum 2 chars")*/
     private EditText editTextLandmark;
 
-    @Required(order = 10)
-    @NumberRule(order = 11, message = "Enter Pin code in Numeric", type = NumberRule.NumberType.LONG)
-    @TextRule(order = 12, message = "Enter valid Pin code Number", minLength = 6, maxLength = 6)
+    @Required(order = 8)
+    @NumberRule(order = 9, message = "Enter Pin code in Numeric", type = NumberRule.NumberType.LONG)
+    @TextRule(order = 10, message = "Enter valid Pin code Number", minLength = 6, maxLength = 6)
     private EditText editTextPincode;
     private CityAndLocalityAdapter localityAdapter;
 
@@ -201,10 +201,10 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
             editTextStreet.setError(getString(R.string.please_enter_street_details));
             isValid=false;
         }
-        if(TextUtils.isEmpty(editTextLandmark.getText().toString())) {
+        /*if(TextUtils.isEmpty(editTextLandmark.getText().toString())) {
             editTextLandmark.setError(getString(R.string.please_enter_landmarks));
             isValid=false;
-        }
+        }*/
         if(TextUtils.isEmpty(editTextPincode.getText().toString())) {
             editTextPincode.setError(getString(R.string.please_enter_pincode));
             isValid=false;
@@ -409,26 +409,26 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
 
     @Override
     public void onValidationSucceeded() {
-        if(editTextBuilding.getText().toString().matches("[a-zA-Z.? ]*")) {
+        if(editTextBuilding.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
 
-            if(editTextStreet.getText().toString().matches("[a-zA-Z.? ]*")) {
+            if(editTextStreet.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
 
-                if(editTextLandmark.getText().toString().matches("[a-zA-Z.? ]*")) {
+                if(editTextLandmark.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
                     addEditCityOnServer();
                 }
                 else {
                     editTextLandmark.requestFocus();
-                    editTextLandmark.setError("Special chars not allowed");
+                    editTextLandmark.setError("Enter alphanumeric chars only");
                 }
             }
             else {
                 editTextStreet.requestFocus();
-                editTextStreet.setError("Special chars not allowed");
+                editTextStreet.setError("Enter alphanumeric chars only");
             }
         }
         else {
             editTextBuilding.requestFocus();
-            editTextBuilding.setError("Special chars not allowed");
+            editTextBuilding.setError("Enter alphanumeric chars only");
         }
 
 

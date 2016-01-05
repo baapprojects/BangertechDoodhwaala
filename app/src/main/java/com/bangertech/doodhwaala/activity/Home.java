@@ -85,7 +85,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         lstMostSellingProducts=new ArrayList<BeanBrand>();
         lstBeanProductTypeOnToolBar=new ArrayList<BeanProductType>();
         //INSTALLING HELPSHIFT SDK TO USE IN CHAT SUPPORT
-        Helpshift.install(getApplication(), ConstantVariables.ACCESS_KEY_HELP_SHIFT, "bash.helpshift.com", ConstantVariables.APP_ID_HELP_SHIFT);
+        Helpshift.install(getApplication(), ConstantVariables.ACCESS_KEY_HELP_SHIFT, "doodhwala.helpshift.com", ConstantVariables.APP_ID_HELP_SHIFT);
         //END
         setContentView(R.layout.lay_home);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
