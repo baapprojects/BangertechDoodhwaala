@@ -8,6 +8,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -203,7 +206,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mToolbar.setVisibility(View.GONE);
 
         //  Sarvesh Generate SHA key
-        /*try {
+        try {
             PackageInfo info = getPackageManager().getPackageInfo(
                     getPackageName(), PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures){
@@ -214,7 +217,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         } catch (PackageManager.NameNotFoundException e){
         }catch (NoSuchAlgorithmException e){
-        }*/
+        }
         init();
 
         this.mGoogleApiClient = new GoogleApiClient.Builder(mContext)

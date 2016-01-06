@@ -291,6 +291,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
             txtViewProductName.setTypeface(CUtils.RegularTypeFace(ProductDetail.this));
             txtViewProductName.setText(productName);
             txtViewProductPrice.setTypeface(CUtils.RegularTypeFace(ProductDetail.this));
+            tviCurrency.setText("Rs");
             tviCurrency.setTypeface(CUtils.LightTypeFace(ProductDetail.this));
             txtViewProductPrice.setText(productPrice);
             txtViewPackaging.setTypeface(CUtils.RegularTypeFace(ProductDetail.this));
@@ -299,6 +300,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                 txtViewtitle.setVisibility(View.GONE);
                 txtViewProductDesc.setVisibility(View.GONE);
             } else {
+                txtViewtitle.setText("Nutritionist's Advice:");
                 txtViewtitle.setVisibility(View.VISIBLE);
                 txtViewProductDesc.setVisibility(View.VISIBLE);
             }
@@ -306,6 +308,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                 txtViewtitleTwo.setVisibility(View.GONE);
                 txtViewRecoDesc.setVisibility(View.GONE);
             } else {
+                txtViewtitleTwo.setText("Recommended for:");
                 txtViewtitleTwo.setVisibility(View.VISIBLE);
                 txtViewRecoDesc.setVisibility(View.VISIBLE);
             }

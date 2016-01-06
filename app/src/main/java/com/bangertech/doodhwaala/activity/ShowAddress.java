@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bangertech.doodhwaala.beans.BeanAddress;
@@ -49,6 +50,7 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
     private RecyclerView.LayoutManager mLayoutManager;
     //private String userId="1";
     private List<BeanAddress> listAddress=new ArrayList<BeanAddress>();
+    private TextView no_address;
 
     private int selectedAddressIndex=0,
             newSelectedAddressIndex=0;
@@ -71,6 +73,7 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
         setSupportActionBar(app_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.addresses));
+        no_address = (TextView) findViewById(R.id.no_address);
         mRecyclerView= (RecyclerView)findViewById(R.id.my_recycler_view);
 
         mRecyclerView.setHasFixedSize(true);
@@ -199,6 +202,8 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
            /* if(jsonObject.getString("result").equalsIgnoreCase("true"))*/
             if(jsonObject.getBoolean("result"))
             {
+                no_address.setVisibility(View.GONE);
+                mRecyclerView.setVisibility(View.VISIBLE);
                 listAddress.clear();
                 JSONArray array=jsonObject.getJSONArray("addresses");
                 if(array.length()>0) {
@@ -222,12 +227,8 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
                     }
                 }
             } else {
-                /*BeanAddress bua;
-                bua = new BeanAddress();
-                bua.setAddressId("-1");
-                bua.setFullAddress("Add your address");
-                bua.setDefaultAddress(false);
-                listAddress.add(bua);*/
+                no_address.setVisibility(View.VISIBLE);
+                mRecyclerView.setVisibility(View.GONE);
             }
         }
         catch (Exception e) {

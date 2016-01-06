@@ -85,7 +85,7 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
                             selectedQuantity = selectedQuantity-1;
                             holder.ivminus.setEnabled(false);
                             holder.ivplus.setEnabled(false);
-                            updateQuantityDayPlan(lstDayPlan.get(position).getDateId(), selectedQuantity);
+                            updateQuantityDayPlan(lstDayPlan.get(position).getDateId(), selectedQuantity, lstDayPlan.get(position).getPlanId());
 
                         }
 
@@ -99,7 +99,7 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
                         selectedQuantity = selectedQuantity+1;
                         holder.ivminus.setEnabled(false);
                         holder.ivplus.setEnabled(false);
-                        updateQuantityDayPlan(lstDayPlan.get(position).getDateId(), selectedQuantity);
+                        updateQuantityDayPlan(lstDayPlan.get(position).getDateId(), selectedQuantity, lstDayPlan.get(position).getPlanId());
 
                     }
                 });
@@ -194,12 +194,12 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
 
     }
 
-    private void updateQuantityDayPlan(String dateId, int selectedQuantity) {
+    private void updateQuantityDayPlan(String dateId, int selectedQuantity, String plan_id) {
         MyAsynTaskManager myAsyncTask=new MyAsynTaskManager();
         myAsyncTask.delegate=this;
         myAsyncTask.setupParamsAndUrl("updateQuantityDayPlan", activity, AppUrlList.ACTION_URL,
-                new String[]{"module", "action","date_id","quantity"},
-                new String[]{"plans", "updateQuantityDayPlan",dateId,String.valueOf(selectedQuantity)});
+                new String[]{"module", "action","date_id","quantity", "plan_id"},
+                new String[]{"plans", "updateQuantityDayPlan",dateId,String.valueOf(selectedQuantity), plan_id});
         myAsyncTask.execute();
     }
 

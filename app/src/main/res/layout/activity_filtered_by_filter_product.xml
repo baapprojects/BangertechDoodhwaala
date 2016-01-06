@@ -33,6 +33,14 @@
             android:layout_weight="1"
             android:layout_height="0dp">
 
+            <TextView
+                android:id="@+id/no_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="No Products found."/>
+
 
             <GridView
                 android:id="@+id/gridFiltersAppliedProductList"
@@ -44,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
                 android:background="@color/white"
-                android:verticalSpacing="10dp"/>
+                android:verticalSpacing="10dp" />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fabFiltersApplied"

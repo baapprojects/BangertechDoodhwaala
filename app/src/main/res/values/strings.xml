@@ -13,6 +13,7 @@
     <string name="configuration_error">Error: the value of WEB_CLIENT_ID or SERVER_BASE_URL is not  set correctly. This will cause errors when requesting a server auth code.</string>
     <string name="title_activity_profile">ProfileActivity</string>
 
+    <string name="add_address">Press \"+\" to add address.</string>
     <string name="ok_btn">OK</string>
     <string name="cancel">cancel</string>
     <string name="logout">logout</string>

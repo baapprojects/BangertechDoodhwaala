@@ -55,6 +55,10 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     private LinearLayout lldiscount, llcoupon;
     private TextView tviCouponText, txtViewDiscountPrice;
     private Dialog dialog;
+    private String coupon_applied = "0";
+    private String coupon_id = "";
+    private String listPrice;
+    private String discountPrice = "0.00";
 
     @Required(order = 1)
     @TextRule(order = 2, minLength = 4, message = "Enter valid Coupon Code with minimum 4 chars")
@@ -66,8 +70,6 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     private double  paidAmount;
 
     private ImageView ivConfirmationScreen;
-
-    private String gross_price, discount_price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,16 +136,18 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
 
     }
 
-    private void insertUserPlanOnsServer(String paid_amount) {
+    private void insertUserPlanOnsServer(String paid_amount, String list_price, String discount_price, String coupon_applied, String coupon_id, String product_price) {
         String fromDate= CUtils.formatMyDate(new Date());
        // CUtils.printLog("fromDate",fromDate, ConstantVariables.LOG_TYPE.ERROR);
 
         MyAsynTaskManager  myAsyncTask=new MyAsynTaskManager();
         myAsyncTask.delegate=this;
         myAsyncTask.setupParamsAndUrl("insertUserPlan", ShowConfirmation.this, AppUrlList.ACTION_URL,
-                new String[]{"module", "action", "user_id", "product_id", "product_mapping_id", "quantity", "frequency_id", "duration_id", "subscription_date", "address_id", "paid_amount"},
+                new String[]{"module", "action", "user_id", "product_id", "product_mapping_id", "quantity", "frequency_id", "duration_id", "subscription_date", "address_id",
+                        "coupon_applied", "coupon_id", "list_price", "discount_price", "gross_price","price"},
                 new String[]{"plans", "insertUserPlan", PreferenceManager.getInstance().getUserId(), product_id, product_mapping_id, product_quantity, frequency_id, duration_id, fromDate,
-                        CGlobal.getCGlobalObject().getAddressId(), paid_amount});
+                        CGlobal.getCGlobalObject().getAddressId(),
+                        coupon_applied,coupon_id,list_price,discount_price,paid_amount,product_price});
         myAsyncTask.execute();
 
 
@@ -301,8 +305,10 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
                     if(txtViewAddress.getText().toString().equals(getString(R.string.deliver_at_default)))
                         DialogManager.showDialog(ShowConfirmation.this, "Address not found. Please set your address by clicking EDIT and then checkout.");
                         //CUtils.showUserMessage(getApplicationContext(), "Please select your address to checkout.");
-                    else
-                        insertUserPlanOnsServer(paid_amount);
+                    else {
+                        listPrice = paid_amount;
+                        insertUserPlanOnsServer(paid_amount, listPrice, discountPrice, coupon_applied, coupon_id, product_price);
+                    }
                 }
             });
         }
@@ -381,7 +387,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
         myAsyncTask.delegate=this;
         myAsyncTask.setupParamsAndUrl("applyCouponCode", ShowConfirmation.this, AppUrlList.ACTION_URL,
                 new String[]{"module", "action", "coupon_code", "list_price"},
-                new String[]{"products_search", "applyCouponCode", couponCode, String.valueOf(paidAmount)});
+                new String[]{"products", "applyCouponCode", couponCode, String.valueOf(paidAmount)});
         myAsyncTask.execute();
     }
 
@@ -390,14 +396,14 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
             try {
                 JSONObject jsonObject = new JSONObject(output);
                 if (jsonObject.getBoolean("result")) {
-                    jsonObject.getDouble("list_price");
-                    jsonObject.getDouble("discount_price");
+                    listPrice = jsonObject.getString("list_price");
+                    discountPrice = jsonObject.getString("discount_price");
+                    final double paidAmount = jsonObject.getDouble("gross_price");
+                    /*jsonObject.getString("discount_type");
+                    jsonObject.getString("discount");*/
+                    coupon_applied = jsonObject.getString("coupon_applied");
+                    coupon_id = jsonObject.getString("coupon_id");
 
-                    jsonObject.getString("coupon_id");
-                    jsonObject.getString("discount_type");
-                    jsonObject.getString("discount");
-
-                    paidAmount = jsonObject.getDouble("gross_price");
 
                     lldiscount.setVisibility(View.VISIBLE);
                     llcoupon.setVisibility(View.GONE);
@@ -410,8 +416,9 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
                             if (txtViewAddress.getText().toString().equals(getString(R.string.deliver_at_default)))
                                 DialogManager.showDialog(ShowConfirmation.this, "Address not found. Please set your address by clicking EDIT and then checkout.");
                                 //CUtils.showUserMessage(getApplicationContext(), "Please select your address to checkout.");
-                            else
-                                insertUserPlanOnsServer(String.valueOf(paidAmount));
+                            else {
+                                insertUserPlanOnsServer(String.valueOf(paidAmount), listPrice, discountPrice, coupon_applied, coupon_id, product_price);
+                            }
                         }
                     });
                 } else {

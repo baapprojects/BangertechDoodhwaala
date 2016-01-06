@@ -177,22 +177,20 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                     plan_date = jsonObject.getString("date");
                     showChangeOrPausePlan = isShowChangeOrPausePlan();
 
-                    int size = jsonArrayProducts.length();
-                    if (size > 0) {
-                        JSONObject jsonObjectProduct = null;
-                        if (size == 1) {
-                            for (int index = 0; index < size; index++) {
-                                if (jsonObjectProduct.getBoolean("date_assigned")) {
-                                    myMilkPending.setVisibility(View.GONE);
-                                    if (!PreferenceManager.getInstance().getMyMilkTutorial()) {
-                                        pauseTutorial();
-                                    }
-                                    Home.pager.setCurrentItem(1);
-                                } else {
-                                    myMilkPending.setVisibility(View.VISIBLE);
-                                }
-                            }
-                        } else {
+                    if(jsonObject.getBoolean("all_pending")) {
+                        myMilkPending.setVisibility(View.VISIBLE);
+                        Home.pager.setCurrentItem(1);
+
+                    } else {
+                        myMilkPending.setVisibility(View.GONE);
+                        if (!PreferenceManager.getInstance().getMyMilkTutorial()) {
+                            pauseTutorial();
+                        }
+
+                        int size = jsonArrayProducts.length();
+                        if (size > 0) {
+                            JSONObject jsonObjectProduct = null;
+
                             for (int index = 0; index < size; index++) {
                                 jsonObjectProduct = jsonArrayProducts.getJSONObject(index);
 
@@ -216,15 +214,13 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                                     lstDayPlan.add(beanDayPlan);
                                 }
                             }
-                            if (!PreferenceManager.getInstance().getMyMilkTutorial()) {
-                                pauseTutorial();
-                            }
-                            Home.pager.setCurrentItem(1);
                         }
+                        Home.pager.setCurrentItem(1);
                     }
 
-                } else
+                } else {
                     Home.pager.setCurrentItem(0);
+                }
                 //CUtils.showUserMessage(getActivity(), jsonObject.getString("msg"));
             } catch (Exception e) {
 

@@ -16,7 +16,7 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("doodhwala.keystore")
+            storeFile file("D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\keystore\\doodhwala.jks")
             storePassword "password"
             keyAlias "Doodhwala"
             keyPassword "password"

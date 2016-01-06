@@ -15,12 +15,22 @@
         android:gravity="center"
         android:layout_below="@+id/app_bar"
         >
+
+        <TextView
+            android:id="@+id/no_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="@string/add_address"/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/my_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:visibility="visible"/>
     </LinearLayout>
 
 </LinearLayout>

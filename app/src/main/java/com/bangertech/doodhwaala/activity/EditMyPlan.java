@@ -47,7 +47,7 @@ import java.util.List;
 public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
     private Toolbar app_bar;
 
-    private String product_name,quantity,frequency_name,frequency_id,duration_id,duration_name,plan_id,imageUrl;
+    private String product_name,quantity,frequency_name,frequency_id,duration_id,duration_name,plan_id,imageUrl, price;
     private TextView textViewProductName;
     private ImageView imageViewProduct;
     private int selectedQuantity=1;
@@ -91,18 +91,6 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
             }
         }
 
-        tvSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!TextUtils.isEmpty(plan_id)) {
-                    if (general.isNetworkAvailable(EditMyPlan.this)) {
-                        saveViewPlan(plan_id);
-                    } else {
-                        DialogManager.showDialog(EditMyPlan.this, "Please Check your internet connection.");
-                    }
-                }
-            }
-        });
 
     }
 
@@ -123,13 +111,13 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
         myAsyncTask.execute();
 
     }
-    private void saveViewPlan(String planId)
+    private void saveViewPlan(String planId, String price)
     {
         MyAsynTaskManager myAsyncTask=new MyAsynTaskManager();
         myAsyncTask.delegate=this;
         myAsyncTask.setupParamsAndUrl("editUserPlan", EditMyPlan.this, AppUrlList.ACTION_URL,
-                new String[]{"module", "action","plan_id","quantity","frequency_id","duration_id"},
-                new String[]{"plans", "editUserPlan",planId,String.valueOf(qtyPos+1),String.valueOf(freqPos+1),String.valueOf(durationPos+1)});
+                new String[]{"module", "action","plan_id","quantity","frequency_id","duration_id", "price"},
+                new String[]{"plans", "editUserPlan",planId,String.valueOf(qtyPos+1),String.valueOf(freqPos+1),String.valueOf(durationPos+1), price});
         myAsyncTask.execute();
     }
     private void cancelMyPlan()
@@ -309,6 +297,21 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
                         selectedQuantity = Integer.parseInt(quantity);
                         webqty = Integer.parseInt(quantity);
                         imageUrl = jsonPlan.getString("image");
+                        price = jsonPlan.getString("price");
+
+                        tvSave.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if(!TextUtils.isEmpty(plan_id)) {
+                                    if (general.isNetworkAvailable(EditMyPlan.this)) {
+                                        saveViewPlan(plan_id, price);
+                                    } else {
+                                        DialogManager.showDialog(EditMyPlan.this, "Please Check your internet connection.");
+                                    }
+                                }
+                            }
+                        });
+
                         if (this.imageUrl.length() > 0)
                             this.imageUrl = this.imageUrl.replace("\\/", "/");
                         showPlanDetail();

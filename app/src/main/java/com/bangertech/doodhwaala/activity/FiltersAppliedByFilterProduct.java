@@ -46,6 +46,7 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
     private GridView gridFiltersAppliedProductList;
     private FiltersAppliedProductAdapter filtersAppliedProductAdapter;
     private String selectedFiltersKey=null;
+    private TextView no_result;
 
 
     @Override
@@ -56,6 +57,8 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
         app_bar = (Toolbar) findViewById(R.id.app_bar);
         llSelectedFilter = (LinearLayout) findViewById(R.id.llSelectedFilter);
         gridFiltersAppliedProductList = (GridView) findViewById(R.id.gridFiltersAppliedProductList);
+
+        no_result = (TextView) findViewById(R.id.no_result);
 
         setSupportActionBar(app_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -238,6 +241,10 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
                     if (Integer.parseInt(jsonObject.getString("no_of_products")) > 0)
                         return true;
                 }
+                else {
+                    gridFiltersAppliedProductList.setVisibility(View.GONE);
+                    no_result.setVisibility(View.VISIBLE);
+                }
             } catch (Exception e) {
                 // TODO: handle exception
                 e.printStackTrace();
@@ -255,35 +262,44 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
         if(filtersAppliedProductList!=null) {
             try {
                 JSONObject jsonObject = new JSONObject(filtersAppliedProductList);
+                if(jsonObject.getBoolean("result")) {
+                    JSONArray array = jsonObject.getJSONArray("products");
+                    if (array.length() > 0) {
+                        gridFiltersAppliedProductList.setVisibility(View.VISIBLE);
+                        no_result.setVisibility(View.GONE);
+                        BeanFilteredProduct beanFilteredProduct;
+                        JSONObject obj;
+                        for (int i = 0; i < array.length(); i++) {
 
-                JSONArray array = jsonObject.getJSONArray("products");
-                if (array.length() > 0) {
-                    BeanFilteredProduct beanFilteredProduct;
-                    JSONObject obj;
-                    for (int i = 0; i < array.length(); i++) {
+                            obj = array.getJSONObject(i);
+                            if (obj != null) {
 
-                        obj = array.getJSONObject(i);
-                        if (obj != null) {
+                                beanFilteredProduct = new BeanFilteredProduct();
+                                beanFilteredProduct.setPrice(obj.getString("price"));
+                                beanFilteredProduct.setAvailable(obj.getString("available"));
+                                beanFilteredProduct.setBrandId(obj.getString("brand_id"));
+                                beanFilteredProduct.setDescription(obj.getString("description"));
+                                beanFilteredProduct.setNoOfPurchases(obj.getString("no_of_purchases"));
+                                beanFilteredProduct.setPackagingId(obj.getString("packaging_id"));
+                                beanFilteredProduct.setProductId(obj.getString("product_id"));
+                                beanFilteredProduct.setProductImage(obj.getString("product_image"));
+                                beanFilteredProduct.setProductMappingId(obj.getString("product_mapping_id"));
+                                beanFilteredProduct.setProductName(obj.getString("product_name"));
+                                beanFilteredProduct.setQuantityId(obj.getString("quantity_id"));
+                                beanFilteredProduct.setProductTypeId(obj.getString("product_type_id"));
 
-                            beanFilteredProduct = new BeanFilteredProduct();
-                            beanFilteredProduct.setPrice(obj.getString("price"));
-                            beanFilteredProduct.setAvailable(obj.getString("available"));
-                            beanFilteredProduct.setBrandId(obj.getString("brand_id"));
-                            beanFilteredProduct.setDescription(obj.getString("description"));
-                            beanFilteredProduct.setNoOfPurchases(obj.getString("no_of_purchases"));
-                            beanFilteredProduct.setPackagingId(obj.getString("packaging_id"));
-                            beanFilteredProduct.setProductId(obj.getString("product_id"));
-                            beanFilteredProduct.setProductImage(obj.getString("product_image"));
-                            beanFilteredProduct.setProductMappingId(obj.getString("product_mapping_id"));
-                            beanFilteredProduct.setProductName(obj.getString("product_name"));
-                            beanFilteredProduct.setQuantityId(obj.getString("quantity_id"));
-                            beanFilteredProduct.setProductTypeId(obj.getString("product_type_id"));
-
-                            lstProductsFiltersApplied.add(beanFilteredProduct);
+                                lstProductsFiltersApplied.add(beanFilteredProduct);
+                            }
                         }
-                    }
-                    gridFiltersAppliedProductList.setAdapter(filtersAppliedProductAdapter);
+                        gridFiltersAppliedProductList.setAdapter(filtersAppliedProductAdapter);
 
+                    } else {
+                        gridFiltersAppliedProductList.setVisibility(View.GONE);
+                        no_result.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    gridFiltersAppliedProductList.setVisibility(View.GONE);
+                    no_result.setVisibility(View.VISIBLE);
                 }
 
 
