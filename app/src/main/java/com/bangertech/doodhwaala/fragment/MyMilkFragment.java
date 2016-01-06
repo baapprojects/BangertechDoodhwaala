@@ -33,6 +33,7 @@ import com.bangertech.doodhwaala.adapter.DayPlanAdapter;
 import com.bangertech.doodhwaala.beans.BeanDayPlan;
 import com.bangertech.doodhwaala.cinterfaces.IMyMilkDayPlan;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
@@ -127,8 +128,8 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                     moveIndex = ConstantVariables.MY_PLAN_NEXT;
                     ((Home) getActivity()).fetchPreviousOrNextDayMyPlan(plan_date, moveIndex);
                 }
-                else
-                    CUtils.showUserMessage(getActivity(), "Next does not exists");
+                //else
+                    //CUtils.showUserMessage(getActivity(), "Next does not exists");
 
             }
         });
@@ -141,8 +142,8 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                     moveIndex = ConstantVariables.MY_PLAN_PREVIOUS;
                     ((Home) getActivity()).fetchPreviousOrNextDayMyPlan(plan_date, moveIndex);
                 }
-                else
-                    CUtils.showUserMessage(getActivity(), "Previous does not exists");
+                //else
+                    //CUtils.showUserMessage(getActivity(), "Previous does not exists");
 
             }
         });
@@ -164,73 +165,72 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
 
         lstDayPlan.clear();
         BeanDayPlan beanDayPlan;
-        try {
-            JSONObject jsonObject = new JSONObject(output);
-            if (jsonObject.getBoolean("result")) {
-                JSONArray jsonArrayProducts=new JSONArray(jsonObject.getString("products"));
-                isTomorrow=jsonObject.getBoolean("tomorrow");
-                isPreviousDate=jsonObject.getBoolean("previous_date");
-                isNextDate=jsonObject.getBoolean("next_date");
-                date_string=jsonObject.getString("date_string");
-                plan_date=jsonObject.getString("date");
-                showChangeOrPausePlan=isShowChangeOrPausePlan();
+        if(output!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(output);
+                if (jsonObject.getBoolean("result")) {
+                    JSONArray jsonArrayProducts = new JSONArray(jsonObject.getString("products"));
+                    isTomorrow = jsonObject.getBoolean("tomorrow");
+                    isPreviousDate = jsonObject.getBoolean("previous_date");
+                    isNextDate = jsonObject.getBoolean("next_date");
+                    date_string = jsonObject.getString("date_string");
+                    plan_date = jsonObject.getString("date");
+                    showChangeOrPausePlan = isShowChangeOrPausePlan();
 
-                int size=jsonArrayProducts.length();
-                if(size>0)
-                {
-                    JSONObject jsonObjectProduct=null;
-                    if(size == 1) {
-                        for(int index=0;index<size;index++) {
-                            if (jsonObjectProduct.getBoolean("date_assigned")) {
-                                myMilkPending.setVisibility(View.GONE);
-                                if(!PreferenceManager.getInstance().getMyMilkTutorial()) {
-                                    pauseTutorial();
-                                }
-                                Home.pager.setCurrentItem(1);
-                            } else {
-                                myMilkPending.setVisibility(View.VISIBLE);
-                            }
-                        }
-                    }
-                    else {
-                        for (int index = 0; index < size; index++) {
-                            jsonObjectProduct = jsonArrayProducts.getJSONObject(index);
-
-                            if (jsonObjectProduct != null) {
-                                beanDayPlan = new BeanDayPlan();
-                                if (jsonObjectProduct.getString("paused").equals(flagPause)) {
-                                    beanDayPlan.setFlagPaused("");
+                    int size = jsonArrayProducts.length();
+                    if (size > 0) {
+                        JSONObject jsonObjectProduct = null;
+                        if (size == 1) {
+                            for (int index = 0; index < size; index++) {
+                                if (jsonObjectProduct.getBoolean("date_assigned")) {
+                                    myMilkPending.setVisibility(View.GONE);
+                                    if (!PreferenceManager.getInstance().getMyMilkTutorial()) {
+                                        pauseTutorial();
+                                    }
+                                    Home.pager.setCurrentItem(1);
                                 } else {
-                                    beanDayPlan.setFlagPaused(jsonObjectProduct.getString("paused"));
+                                    myMilkPending.setVisibility(View.VISIBLE);
                                 }
-                                beanDayPlan.setPlanId(jsonObjectProduct.getString("plan_id"));
-                                beanDayPlan.setProductName(jsonObjectProduct.getString("product_name"));
-                                beanDayPlan.setQuantity(jsonObjectProduct.getString("quantity"));
-                                beanDayPlan.setImage(jsonObjectProduct.getString("image"));
-                                beanDayPlan.setPaused(jsonObjectProduct.getBoolean("paused"));
-                                beanDayPlan.setDateId(jsonObjectProduct.getString("date_id"));
-                                beanDayPlan.setFrequencyId(jsonObjectProduct.getString("frequency_id"));
-                                beanDayPlan.setDateAvailable(jsonObjectProduct.getBoolean("date_assigned"));
-                                beanDayPlan.setShowChangeOrPausePlan(showChangeOrPausePlan);
-                                flagPause = jsonObjectProduct.getString("paused");
-                                lstDayPlan.add(beanDayPlan);
                             }
+                        } else {
+                            for (int index = 0; index < size; index++) {
+                                jsonObjectProduct = jsonArrayProducts.getJSONObject(index);
+
+                                if (jsonObjectProduct != null) {
+                                    beanDayPlan = new BeanDayPlan();
+                                    if (jsonObjectProduct.getString("paused").equals(flagPause)) {
+                                        beanDayPlan.setFlagPaused("");
+                                    } else {
+                                        beanDayPlan.setFlagPaused(jsonObjectProduct.getString("paused"));
+                                    }
+                                    beanDayPlan.setPlanId(jsonObjectProduct.getString("plan_id"));
+                                    beanDayPlan.setProductName(jsonObjectProduct.getString("product_name"));
+                                    beanDayPlan.setQuantity(jsonObjectProduct.getString("quantity"));
+                                    beanDayPlan.setImage(jsonObjectProduct.getString("image"));
+                                    beanDayPlan.setPaused(jsonObjectProduct.getBoolean("paused"));
+                                    beanDayPlan.setDateId(jsonObjectProduct.getString("date_id"));
+                                    beanDayPlan.setFrequencyId(jsonObjectProduct.getString("frequency_id"));
+                                    beanDayPlan.setDateAvailable(jsonObjectProduct.getBoolean("date_assigned"));
+                                    beanDayPlan.setShowChangeOrPausePlan(showChangeOrPausePlan);
+                                    flagPause = jsonObjectProduct.getString("paused");
+                                    lstDayPlan.add(beanDayPlan);
+                                }
+                            }
+                            if (!PreferenceManager.getInstance().getMyMilkTutorial()) {
+                                pauseTutorial();
+                            }
+                            Home.pager.setCurrentItem(1);
                         }
-                        if(!PreferenceManager.getInstance().getMyMilkTutorial()) {
-                            pauseTutorial();
-                        }
-                        Home.pager.setCurrentItem(1);
                     }
-                }
+
+                } else
+                    Home.pager.setCurrentItem(0);
+                //CUtils.showUserMessage(getActivity(), jsonObject.getString("msg"));
+            } catch (Exception e) {
 
             }
-            else
-                Home.pager.setCurrentItem(0);
-                CUtils.showUserMessage(getActivity(), jsonObject.getString("msg"));
-        }
-        catch (Exception e)
-        {
-
+        } else {
+            DialogManager.showDialog(getActivity(), "Server Error Occurred! Try Again!");
         }
      /*   if(lstDayPlan.size()>0) {
             textViewDate.setText(date_string);
@@ -339,6 +339,7 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
         {
             editMyPlanIndex=index;
             Intent intent=new Intent(getActivity(),EditMyPlan.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.putExtra("PLAN_ID",beanDayPlan.getPlanId());
             startActivityForResult(intent, ConstantVariables.SUB_ACTIVITY_EDIT_MY_PLAN);
             getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);

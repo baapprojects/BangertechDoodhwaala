@@ -8,6 +8,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.utils.AppUrlList;
@@ -58,7 +59,7 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
                 obj.put("duration_name",  bucketDuration.get(selectedIndex).getDurationName());
                 obj.put("duration_weightage",  bucketDuration.get(selectedIndex).getDurationWeightage());
 
-                startActivity(new Intent(ShowDuration.this, ShowConfirmation.class).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
+                startActivity(new Intent(ShowDuration.this, ShowConfirmation.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
                 overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                 finish();
             } catch (Exception e) {
@@ -66,7 +67,8 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
             }
         }
         else
-            CUtils.showUserMessage(this,"Please select duration");
+            DialogManager.showDialog(ShowDuration.this, "Please select duration");
+            //CUtils.showUserMessage(this,"Please select duration");
 
     }
     private void fetchDurationsFromServer() {
@@ -147,7 +149,11 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
     public void backgroundProcessFinish(String from, String output) {
         if(from.equalsIgnoreCase("getDurations"))
         {
-            parseDuration(output);
+            if (output != null) {
+                parseDuration(output);
+            } else {
+                DialogManager.showDialog(ShowDuration.this, "Server Error Occurred! Try Again!");
+            }
             //CUtils.printLog("FREQUENCY",output, ConstantVariables.LOG_TYPE.ERROR);
         }
 

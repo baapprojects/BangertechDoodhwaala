@@ -65,12 +65,14 @@ public class SplashScreen extends Activity {
                 try {
                     if (PreferenceManager.getInstance().getUserId() != null) {
                         Intent mainIntent = new Intent(SplashScreen.this, Home.class);
+                        mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mainIntent);
                         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                         finish();
                     } else {
                         DoodhwaalaApplication.isUserLoggedIn = false;
                         Intent mobileIntent = new Intent(SplashScreen.this, TutorialScreens.class);
+                        mobileIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mobileIntent);
                         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                     }

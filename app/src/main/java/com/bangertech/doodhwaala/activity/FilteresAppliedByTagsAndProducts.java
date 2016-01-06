@@ -22,6 +22,7 @@ import com.bangertech.doodhwaala.beans.BeanProduct;
 import com.bangertech.doodhwaala.beans.BeanProductType;
 import com.bangertech.doodhwaala.cinterfaces.ISelectedProduct;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.utils.AppUrlList;
@@ -90,7 +91,7 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
     }
 
 
-    private  String getInputInformationToFetchTagListFromServer()
+    private String getInputInformationToFetchTagListFromServer()
     {
         JSONArray array=new JSONArray();
         JSONObject obj=null;
@@ -163,7 +164,6 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
     private void fetchFilteredTags()
     {
 
-
         String pType=getInputInformationToFetchTagListFromServer();
         if(pType!=null) {
             MyAsynTaskManager myAsyncTask = new MyAsynTaskManager();
@@ -187,51 +187,17 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
     private boolean parseAndFormateFilteredTagList(String productTypeList)
     {
         boolean isSuccess=true;
-
-        try {
-            JSONObject jsonObject = new JSONObject(productTypeList);
-            //if(jsonObject.getString("result").equalsIgnoreCase("true"))
-            if(jsonObject.getBoolean("result"))
-            {
-                globalNoResults.setVisibility(View.GONE);
-                tviNoResults.setVisibility(View.GONE);
-                gridFilteredProductsList.setVisibility(View.VISIBLE);
-                gridFilteredTagList.setVisibility(View.VISIBLE);
-                filteredTagList.clear();
-                if(Integer.parseInt(jsonObject.getString("no_of_tags"))>0) {
-                    JSONArray array = jsonObject.getJSONArray("tags");
-                    if (array.length() > 0) {
-                        BeanProductType beanProductType;
-                        JSONObject obj;
-                        for (int i = 0; i < array.length(); i++) {
-
-                            obj = array.getJSONObject(i);
-                            if (obj != null) {
-
-                                beanProductType = new BeanProductType();
-                                beanProductType.setTagId(obj.getString("tag_id"));
-                                beanProductType.setTagName(obj.getString("tag_name"));
-                                beanProductType.setTagType(obj.getString("tag_type"));
-                                filteredTagList.add(beanProductType);
-                            }
-                        }
-                        //gridFilterList.setAdapter(productTypeAdapter);
-
-                    }
-                }
-                filteredTagAdapter.notifyDataSetChanged();
-                if(filteredTagList.size()>0) {
-                    parseAndFormateFilteredProductList(productTypeList);
-                }
-
-
-            } else {
-                if(jsonObject.getString("msg").equals("no products")) {
+        if(productTypeList!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(productTypeList);
+                //if(jsonObject.getString("result").equalsIgnoreCase("true"))
+                if (jsonObject.getBoolean("result")) {
                     globalNoResults.setVisibility(View.GONE);
-                    tviNoResults.setVisibility(View.VISIBLE);
-                    gridFilteredProductsList.setVisibility(View.GONE);
+                    tviNoResults.setVisibility(View.GONE);
+                    gridFilteredProductsList.setVisibility(View.VISIBLE);
+                    gridFilteredTagList.setVisibility(View.VISIBLE);
                     filteredTagList.clear();
-                    if(Integer.parseInt(jsonObject.getString("no_of_tags"))>0) {
+                    if (Integer.parseInt(jsonObject.getString("no_of_tags")) > 0) {
                         JSONArray array = jsonObject.getJSONArray("tags");
                         if (array.length() > 0) {
                             BeanProductType beanProductType;
@@ -253,19 +219,55 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
                         }
                     }
                     filteredTagAdapter.notifyDataSetChanged();
+                    if (filteredTagList.size() > 0) {
+                        parseAndFormateFilteredProductList(productTypeList);
+                    }
+
+
                 } else {
-                    filteredTagList.clear();
-                    filteredTagAdapter.notifyDataSetChanged();
-                    globalNoResults.setVisibility(View.VISIBLE);
-                    gridFilteredProductsList.setVisibility(View.GONE);
-                    gridFilteredTagList.setVisibility(View.GONE);
+                    if (jsonObject.getString("msg").equals("no products")) {
+                        globalNoResults.setVisibility(View.GONE);
+                        tviNoResults.setVisibility(View.VISIBLE);
+                        gridFilteredProductsList.setVisibility(View.GONE);
+                        filteredTagList.clear();
+                        if (Integer.parseInt(jsonObject.getString("no_of_tags")) > 0) {
+                            JSONArray array = jsonObject.getJSONArray("tags");
+                            if (array.length() > 0) {
+                                BeanProductType beanProductType;
+                                JSONObject obj;
+                                for (int i = 0; i < array.length(); i++) {
+
+                                    obj = array.getJSONObject(i);
+                                    if (obj != null) {
+
+                                        beanProductType = new BeanProductType();
+                                        beanProductType.setTagId(obj.getString("tag_id"));
+                                        beanProductType.setTagName(obj.getString("tag_name"));
+                                        beanProductType.setTagType(obj.getString("tag_type"));
+                                        filteredTagList.add(beanProductType);
+                                    }
+                                }
+                                //gridFilterList.setAdapter(productTypeAdapter);
+
+                            }
+                        }
+                        filteredTagAdapter.notifyDataSetChanged();
+                    } else {
+                        filteredTagList.clear();
+                        filteredTagAdapter.notifyDataSetChanged();
+                        globalNoResults.setVisibility(View.VISIBLE);
+                        gridFilteredProductsList.setVisibility(View.GONE);
+                        gridFilteredTagList.setVisibility(View.GONE);
+                    }
                 }
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                isSuccess = false;
             }
-        }
-        catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            isSuccess=false;
+        } else {
+            isSuccess = false;
+            DialogManager.showDialog(FilteresAppliedByTagsAndProducts.this, "Server Error Occurred! Try Again!");
         }
 
         return isSuccess;
@@ -273,13 +275,13 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
     private boolean parseAndFormateFilteredProductList(String productTypeList)
     {
         boolean isSuccess=true;
-
-        try {
-            JSONObject jsonObject = new JSONObject(productTypeList);
+        if(productTypeList!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(productTypeList);
 
 
                 filterProductList.clear();
-                if(Integer.parseInt(jsonObject.getString("no_of_products"))>0) {
+                if (Integer.parseInt(jsonObject.getString("no_of_products")) > 0) {
                     JSONArray array = jsonObject.getJSONArray("products");
                     if (array.length() > 0) {
                         BeanFilteredProduct beanFilteredProduct;
@@ -312,11 +314,14 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
                     }
                 }
 
-        }
-        catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            isSuccess=false;
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                isSuccess = false;
+            }
+        } else {
+            isSuccess = false;
+            DialogManager.showDialog(FilteresAppliedByTagsAndProducts.this, "Server Error Occurred! Try Again!");
         }
 
         return isSuccess;
@@ -327,6 +332,7 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
         Intent intent=new Intent(FilteresAppliedByTagsAndProducts.this, ProductDetail.class);
         intent.putExtra(ConstantVariables.PRODUCT_ID_KEY,productId);
         intent.putExtra(ConstantVariables.PRODUCT_MAPPING_ID_KEY,productMappingId);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
     }

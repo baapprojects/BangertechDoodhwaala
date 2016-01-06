@@ -42,7 +42,7 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getActivity(), ShowAddress.class));
+                startActivity(new Intent(getActivity(), ShowAddress.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
             }
@@ -50,7 +50,7 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
         ((RelativeLayout) mRootView.findViewById(R.id.rlOrderHistory)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), OrderHistory.class));
+                startActivity(new Intent(getActivity(), OrderHistory.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
             }
         });
@@ -90,6 +90,7 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
                 PreferenceManager.getInstance().resetUserDetails();
                 DoodhwaalaApplication.isUserLoggedIn = false;
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("finish", true);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
                 startActivity(intent);

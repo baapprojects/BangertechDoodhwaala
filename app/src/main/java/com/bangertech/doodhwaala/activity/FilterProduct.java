@@ -18,6 +18,7 @@ import android.widget.GridView;
 
 import com.bangertech.doodhwaala.beans.BeanFilter;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.manager.PreferenceManager;
@@ -120,40 +121,39 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
     private void initSelectedFilterIndex(String value)
     {
         CUtils.printLog("initSelectedFilterIndex", value, ConstantVariables.LOG_TYPE.ERROR);
-        try {
-            JSONArray array = new JSONArray(value);
-            JSONObject obj=null;
-            int length=array.length();
-            if(length>0)
-            {
-                int tag_type=-1;
-                for(int index=0;index<length;index++)
-                {
-                    obj=array.getJSONObject(index);
-                    tag_type=Integer.valueOf(obj.get("tag_type").toString());
-                    switch(tag_type)
-                    {
-                        case ConstantVariables.PRODUCT_TAG_TYPE:
-                            //productFilterIndex=Integer.valueOf(obj.get("tag_id").toString());
-                            //productFilterIndex = PreferenceManager.getInstance().getProductFilterPosition();
-                            break;
-                        case ConstantVariables.BRAND_TAG_TYPE:
-                            //brandFilterIndex=Integer.valueOf(obj.get("tag_id").toString());
-                            break;
-                        case ConstantVariables.PACKAGING_TAG_TYPE:
-                            //packagingFilterIndex=Integer.valueOf(obj.get("tag_id").toString());
-                            break;
+        if(value!=null) {
+            try {
+                JSONArray array = new JSONArray(value);
+                JSONObject obj = null;
+                int length = array.length();
+                if (length > 0) {
+                    int tag_type = -1;
+                    for (int index = 0; index < length; index++) {
+                        obj = array.getJSONObject(index);
+                        tag_type = Integer.valueOf(obj.get("tag_type").toString());
+                        switch (tag_type) {
+                            case ConstantVariables.PRODUCT_TAG_TYPE:
+                                //productFilterIndex=Integer.valueOf(obj.get("tag_id").toString());
+                                //productFilterIndex = PreferenceManager.getInstance().getProductFilterPosition();
+                                break;
+                            case ConstantVariables.BRAND_TAG_TYPE:
+                                //brandFilterIndex=Integer.valueOf(obj.get("tag_id").toString());
+                                break;
+                            case ConstantVariables.PACKAGING_TAG_TYPE:
+                                //packagingFilterIndex=Integer.valueOf(obj.get("tag_id").toString());
+                                break;
+
+                        }
 
                     }
-
                 }
+
+
+            } catch (Exception e) {
+
             }
-
-
-        }
-        catch(Exception e)
-        {
-
+        } else {
+            DialogManager.showDialog(FilterProduct.this, "Server Error Occurred! Try Again!");
         }
 
     }
@@ -320,39 +320,41 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
     private List<BeanFilter> parseAndFormateProductTypeList(String productTypeList)
     {
         List<BeanFilter> lstFilterProductType=null;
+        if(productTypeList!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(productTypeList);
+                if (jsonObject.getString("result").equalsIgnoreCase("true")) {
+                    lstFilterProductType = new ArrayList<BeanFilter>();
+                    JSONArray array = jsonObject.getJSONArray("product_types");
+                    if (array.length() > 0) {
+                        BeanFilter beanFilter;
+                        JSONObject obj;
+                        for (int i = 0; i < array.length(); i++) {
 
-        try {
-            JSONObject jsonObject = new JSONObject(productTypeList);
-            if(jsonObject.getString("result").equalsIgnoreCase("true"))
-            {
-                lstFilterProductType=new ArrayList<BeanFilter>();
-                JSONArray array=jsonObject.getJSONArray("product_types");
-                if(array.length()>0) {
-                    BeanFilter beanFilter;
-                    JSONObject obj;
-                    for(int i=0;i<array.length();i++) {
+                            obj = array.getJSONObject(i);
+                            if (obj != null) {
 
-                        obj=array.getJSONObject(i);
-                        if(obj!=null) {
+                                beanFilter = new BeanFilter();
+                                beanFilter.setId(obj.getString("tag_id"));
+                                beanFilter.setName(obj.getString("tag_name"));
+                                beanFilter.setTagType(obj.getString("tag_type"));
+                                if (i == PreferenceManager.getInstance().getProductFilterPosition())
+                                    beanFilter.setIsChecked(true);
 
-                            beanFilter = new BeanFilter();
-                            beanFilter.setId(obj.getString("tag_id"));
-                            beanFilter.setName(obj.getString("tag_name"));
-                            beanFilter.setTagType(obj.getString("tag_type"));
-                            if(i==PreferenceManager.getInstance().getProductFilterPosition())
-                                beanFilter.setIsChecked(true);
-
-                            lstFilterProductType.add(beanFilter);
+                                lstFilterProductType.add(beanFilter);
+                            }
                         }
-                    }
 
+                    }
                 }
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                lstFilterProductType = null;
             }
-        }
-        catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            lstFilterProductType=null;
+        } else {
+            lstFilterProductType = null;
+            DialogManager.showDialog(FilterProduct.this, "Server Error Occurred! Try Again!");
         }
 
         return lstFilterProductType;
@@ -362,39 +364,40 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
     private List<BeanFilter> parseAndFormateBrandList(String outPut)
     {
         List<BeanFilter> lstBeanFilterBrand=null;
+        if(outPut!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(outPut);
+                if (jsonObject.getString("result").equalsIgnoreCase("true")) {
+                    lstBeanFilterBrand = new ArrayList<BeanFilter>();
+                    JSONArray array = jsonObject.getJSONArray("brands");
+                    if (array.length() > 0) {
+                        BeanFilter beanFilter;
+                        JSONObject obj;
+                        for (int i = 0; i < array.length(); i++) {
 
-        try {
-            JSONObject jsonObject = new JSONObject(outPut);
-            if(jsonObject.getString("result").equalsIgnoreCase("true"))
-            {
-                lstBeanFilterBrand=new ArrayList<BeanFilter>();
-                JSONArray array=jsonObject.getJSONArray("brands");
-                if(array.length()>0) {
-                    BeanFilter beanFilter;
-                    JSONObject obj;
-                    for(int i=0;i<array.length();i++) {
+                            obj = array.getJSONObject(i);
+                            if (obj != null) {
 
-                        obj=array.getJSONObject(i);
-                        if(obj!=null) {
+                                beanFilter = new BeanFilter();
+                                beanFilter.setId(obj.getString("tag_id"));
+                                beanFilter.setName(obj.getString("tag_name"));
+                                beanFilter.setTagType(obj.getString("tag_type"));
+                                if (i == PreferenceManager.getInstance().getBrandFilterPosition())
+                                    beanFilter.setIsChecked(true);
 
-                            beanFilter = new BeanFilter();
-                            beanFilter.setId(obj.getString("tag_id"));
-                            beanFilter.setName(obj.getString("tag_name"));
-                            beanFilter.setTagType(obj.getString("tag_type"));
-                            if(i==PreferenceManager.getInstance().getBrandFilterPosition())
-                                beanFilter.setIsChecked(true);
-
-                            lstBeanFilterBrand.add(beanFilter);
+                                lstBeanFilterBrand.add(beanFilter);
+                            }
                         }
-                    }
 
+                    }
                 }
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                lstBeanProductType = null;
             }
-        }
-        catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            lstBeanProductType=null;
+        } else {
+            DialogManager.showDialog(FilterProduct.this, "Server Error Occurred! Try Again!");
         }
 
         return lstBeanFilterBrand;
@@ -403,39 +406,40 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
     private List<BeanFilter> parseAndFormatePackagingList(String outPut)
     {
         List<BeanFilter> lstFilterPackaging=null;
+        if(outPut!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(outPut);
+                if (jsonObject.getString("result").equalsIgnoreCase("true")) {
+                    lstFilterPackaging = new ArrayList<BeanFilter>();
+                    JSONArray array = jsonObject.getJSONArray("packagings");
+                    if (array.length() > 0) {
+                        BeanFilter beanFilter;
+                        JSONObject obj;
+                        for (int i = 0; i < array.length(); i++) {
 
-        try {
-            JSONObject jsonObject = new JSONObject(outPut);
-            if(jsonObject.getString("result").equalsIgnoreCase("true"))
-            {
-                lstFilterPackaging=new ArrayList<BeanFilter>();
-                JSONArray array=jsonObject.getJSONArray("packagings");
-                if(array.length()>0) {
-                    BeanFilter beanFilter;
-                    JSONObject obj;
-                    for(int i=0;i<array.length();i++) {
+                            obj = array.getJSONObject(i);
+                            if (obj != null) {
 
-                        obj=array.getJSONObject(i);
-                        if(obj!=null) {
+                                beanFilter = new BeanFilter();
+                                beanFilter.setId(obj.getString("tag_id"));
+                                beanFilter.setName(obj.getString("tag_name"));
+                                beanFilter.setTagType(obj.getString("tag_type"));
+                                if (i == PreferenceManager.getInstance().getPackagingFilterPosition())
+                                    beanFilter.setIsChecked(true);
 
-                            beanFilter = new BeanFilter();
-                            beanFilter.setId(obj.getString("tag_id"));
-                            beanFilter.setName(obj.getString("tag_name"));
-                            beanFilter.setTagType(obj.getString("tag_type"));
-                            if(i==PreferenceManager.getInstance().getPackagingFilterPosition())
-                               beanFilter.setIsChecked(true);
-
-                            lstFilterPackaging.add(beanFilter);
+                                lstFilterPackaging.add(beanFilter);
+                            }
                         }
-                    }
 
+                    }
                 }
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                lstBeanProductType = null;
             }
-        }
-        catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            lstBeanProductType=null;
+        } else {
+            DialogManager.showDialog(FilterProduct.this, "Server Error Occurred! Try Again!");
         }
 
         return lstFilterPackaging;

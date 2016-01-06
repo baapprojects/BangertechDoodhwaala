@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.general.General;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
@@ -58,10 +59,12 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
     private int durationPos, freqPos;
     private int qtyPos;
     private ImageView ivCancellationScreen;
+    private General general;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        general = new General();
         setContentView(R.layout.activity_edit_my_plan);
         llEditPlan=(LinearLayout)findViewById(R.id.llEditPlan);
 
@@ -81,15 +84,23 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
 
         plan_id=getIntent().getStringExtra("PLAN_ID");
         if(!TextUtils.isEmpty(plan_id)) {
-            fetchPlanDetailsFromServer(plan_id);
+            if (general.isNetworkAvailable(EditMyPlan.this)) {
+                fetchPlanDetailsFromServer(plan_id);
+            } else {
+                DialogManager.showDialog(EditMyPlan.this, "Please Check your internet connection.");
+            }
         }
 
         tvSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!TextUtils.isEmpty(plan_id))
-                    saveViewPlan(plan_id);
-
+                if(!TextUtils.isEmpty(plan_id)) {
+                    if (general.isNetworkAvailable(EditMyPlan.this)) {
+                        saveViewPlan(plan_id);
+                    } else {
+                        DialogManager.showDialog(EditMyPlan.this, "Please Check your internet connection.");
+                    }
+                }
             }
         });
 
@@ -281,32 +292,33 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
     }
     private void parseOutputValues(String output)
     {
+        if(output!=null) {
+            try {
 
-        try {
-
-            JSONObject jsonObject = new JSONObject(output);
-            if(jsonObject.getBoolean("result")) {
-                JSONArray arrayPlan=jsonObject.getJSONArray("plan_details");//BRAND
-                if(arrayPlan.length()>0) {
-                    JSONObject jsonPlan=arrayPlan.getJSONObject(0);
-                    product_name = jsonPlan.getString("product_name");
-                    quantity = jsonPlan.getString("quantity");
-                    frequency_name = jsonPlan.getString("frequency_name");
-                    frequency_id = jsonPlan.getString("frequency_id");
-                    duration_id = jsonPlan.getString("duration_id");
-                    duration_name = jsonPlan.getString("duration_name");
-                    selectedQuantity=Integer.parseInt(quantity);
-                    webqty = Integer.parseInt(quantity);
-                    imageUrl = jsonPlan.getString("image");
-                    if (this.imageUrl.length() > 0)
-                        this.imageUrl = this.imageUrl.replace("\\/", "/");
-                    showPlanDetail();
+                JSONObject jsonObject = new JSONObject(output);
+                if (jsonObject.getBoolean("result")) {
+                    JSONArray arrayPlan = jsonObject.getJSONArray("plan_details");//BRAND
+                    if (arrayPlan.length() > 0) {
+                        JSONObject jsonPlan = arrayPlan.getJSONObject(0);
+                        product_name = jsonPlan.getString("product_name");
+                        quantity = jsonPlan.getString("quantity");
+                        frequency_name = jsonPlan.getString("frequency_name");
+                        frequency_id = jsonPlan.getString("frequency_id");
+                        duration_id = jsonPlan.getString("duration_id");
+                        duration_name = jsonPlan.getString("duration_name");
+                        selectedQuantity = Integer.parseInt(quantity);
+                        webqty = Integer.parseInt(quantity);
+                        imageUrl = jsonPlan.getString("image");
+                        if (this.imageUrl.length() > 0)
+                            this.imageUrl = this.imageUrl.replace("\\/", "/");
+                        showPlanDetail();
+                    }
                 }
-            }
-        }
-        catch(Exception e )
-        {
+            } catch (Exception e) {
 
+            }
+        } else {
+            DialogManager.showDialog(EditMyPlan.this, "Server Error Occurred! Try Again!");
         }
     }
 
@@ -345,7 +357,12 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cancelMyPlan();
+                if(general.isNetworkAvailable(EditMyPlan.this)) {
+                    cancelMyPlan();
+                } else {
+                    DialogManager.showDialog(EditMyPlan.this, "Please Check your internet connection.");
+                }
+
                 dialog.dismiss();
             }
         });
@@ -362,42 +379,49 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
     }
 
    public void parseCancelMilk(String output) {
-        try {
-            JSONObject jsonObject = new JSONObject(output);
-            if(jsonObject.getBoolean("result")) {
-                CUtils.printLog("cancelUserPlan-bijendra", output, ConstantVariables.LOG_TYPE.ERROR);
-                //CUtils.showUserMessage(EditMyPlan.this, "Plan Cancel Successfully");
-                ivCancellationScreen.setVisibility(View.VISIBLE);
-                ivCancellationScreen.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(EditMyPlan.this, Home.class));
-                        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
-                    }
-                });
+       if(output!=null) {
+           try {
+               JSONObject jsonObject = new JSONObject(output);
+               if (jsonObject.getBoolean("result")) {
+                   CUtils.printLog("cancelUserPlan-bijendra", output, ConstantVariables.LOG_TYPE.ERROR);
+                   //CUtils.showUserMessage(EditMyPlan.this, "Plan Cancel Successfully");
+                   ivCancellationScreen.setVisibility(View.VISIBLE);
+                   ivCancellationScreen.setOnClickListener(new View.OnClickListener() {
+                       @Override
+                       public void onClick(View v) {
+                           startActivity(new Intent(EditMyPlan.this, Home.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                           overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+                       }
+                   });
 
-            } else {
-                CUtils.showUserMessage(EditMyPlan.this, "Failed to cancel your plan. Try again!");
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+               } else {
+                   DialogManager.showDialog(EditMyPlan.this, "Failed to cancel your plan. Try again!");
+               }
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+       } else {
+           DialogManager.showDialog(EditMyPlan.this, "Server Error Occurred! Try Again!");
+       }
     }
 
     public void parseEditUserPlan(String output) {
-        try {
-            JSONObject jsonObject = new JSONObject(output);
-            if(jsonObject.getBoolean("result")) {
-                CUtils.showUserMessage(EditMyPlan.this, "Plan Updated Successfully");
-                startActivity(new Intent(EditMyPlan.this, Home.class));
-                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
-            } else {
-                CUtils.showUserMessage(EditMyPlan.this, "Failed to update your plan. Try again!");
+        if(output!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(output);
+                if (jsonObject.getBoolean("result")) {
+                    CUtils.showUserMessage(EditMyPlan.this, "Plan Updated Successfully");
+                    startActivity(new Intent(EditMyPlan.this, Home.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+                } else {
+                    DialogManager.showDialog(EditMyPlan.this, "Failed to update your plan. Try again!");
+                    //CUtils.showUserMessage(EditMyPlan.this, "Failed to update your plan. Try again!");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
+        } else {
+            DialogManager.showDialog(EditMyPlan.this, "Server Error Occurred! Try Again!");
         }
     }
 

@@ -309,6 +309,7 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
 
                 case R.id.terms_services:
                     Intent intent= new Intent(SignupActivity.this, PrivatePolicy.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("terms","Terms and Condition");
                     startActivity(intent);
                     overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
@@ -316,6 +317,7 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
 
                 case R.id.policy:
                     Intent navigation= new Intent(SignupActivity.this, PrivatePolicy.class);
+                    navigation.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     navigation.putExtra("terms","Private Policy");
                     startActivity(navigation);
                     overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
@@ -346,6 +348,7 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
                         CGlobal.getCGlobalObject().setUserId(jsonObject.getString("user_id"));
                        // Intent mobileIntent = new Intent(mContext, ProfileActivity.class);
                         Intent mobileIntent = new Intent(mContext, Home.class);
+                        mobileIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mobileIntent);
                         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                         finish();
@@ -401,6 +404,7 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
                 PreferenceManager.getInstance().resetUserDetails();
                 DoodhwaalaApplication.isUserLoggedIn = false;
                 Intent intent = new Intent(SignupActivity.this, SigninActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("email", txtEmailAddress.getText().toString());
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
                 startActivity(intent);

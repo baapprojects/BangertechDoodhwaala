@@ -22,6 +22,7 @@ import com.bangertech.doodhwaala.beans.BeanProduct;
 import com.bangertech.doodhwaala.beans.BeanSearchProducts;
 import com.bangertech.doodhwaala.cinterfaces.ISelectedProduct;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
@@ -141,16 +142,18 @@ public class SearchActivity extends AppCompatActivity implements AsyncResponse,I
     @Override
     public void backgroundProcessFinish(String from, String output) {
         if(from.equalsIgnoreCase("fetchProductsBasedSearch")) {
-            lstProductsFiltersApplied.clear();
-            if(isProductListExists(output)) {
-                no_result.setVisibility(View.GONE);
-                gridFiltersAppliedProductList.setVisibility(View.VISIBLE);
-                parseAndFormateFilteredProductList(output);
+            if (output != null) {
+                lstProductsFiltersApplied.clear();
+                if (isProductListExists(output)) {
+                    no_result.setVisibility(View.GONE);
+                    gridFiltersAppliedProductList.setVisibility(View.VISIBLE);
+                    parseAndFormateFilteredProductList(output);
+                }
             } else {
-
+                DialogManager.showDialog(SearchActivity.this, "Server Error Occurred! Try Again!");
             }
+            filtersAppliedProductAdapter.notifyDataSetChanged();
         }
-        filtersAppliedProductAdapter.notifyDataSetChanged();
     }
 
 
@@ -232,6 +235,7 @@ public class SearchActivity extends AppCompatActivity implements AsyncResponse,I
         Intent intent=new Intent(SearchActivity.this, ProductDetail.class);
         intent.putExtra(ConstantVariables.PRODUCT_ID_KEY,productId);
         intent.putExtra(ConstantVariables.PRODUCT_MAPPING_ID_KEY,productMappingId);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 

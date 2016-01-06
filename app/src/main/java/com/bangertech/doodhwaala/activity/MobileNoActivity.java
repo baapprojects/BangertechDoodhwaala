@@ -108,6 +108,7 @@ public class MobileNoActivity extends AppCompatActivity implements View.OnClickL
                     JSONObject jsonObject = new JSONObject(output);
                     if (jsonObject.getBoolean("result")) {
                         Intent mainIntent = new Intent(mContext, Home.class);
+                        mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mainIntent);
                         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                         finish();

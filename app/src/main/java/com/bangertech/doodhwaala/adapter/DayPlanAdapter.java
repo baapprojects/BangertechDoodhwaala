@@ -18,6 +18,7 @@ import com.bangertech.doodhwaala.beans.BeanDayPlan;
 import com.bangertech.doodhwaala.cinterfaces.IMyMilkDayPlan;
 import com.bangertech.doodhwaala.fragment.MyMilkFragment;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CUtils;
@@ -124,6 +125,7 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
 
             if(beanDayPlan.isDateAvailable()) {
                 holder.ChangePlan.setEnabled(true);
+                holder.PausePlan.setEnabled(true);
                 holder.rlcounter.setVisibility(View.VISIBLE);
                 holder.txtActiveOrPaused.setVisibility(View.GONE);
                 holder.txtPaused.setVisibility(View.VISIBLE);
@@ -144,11 +146,14 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
                 }
 
             } else {
-                holder.txtPaused.setVisibility(View.VISIBLE);
+                holder.txtPaused.setVisibility(View.GONE);
                 holder.rlcounter.setVisibility(View.GONE);
                 holder.ChangePlan.setEnabled(false);
+                holder.PausePlan.setEnabled(false);
                 holder.txtActiveOrPaused.setVisibility(View.VISIBLE);
             }
+
+
 
             holder.ChangePlan.setTag(position);
             holder.PausePlan.setTag(position);
@@ -202,8 +207,13 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
     public void backgroundProcessFinish(String from, String output) {
         if(from.equalsIgnoreCase("fetchPlanDetails"))//cancelUserPlan
         {
-            parseOutputValues(output);
-            CUtils.printLog("fetchPlanDetails",output, ConstantVariables.LOG_TYPE.ERROR);
+            if (output != null) {
+                parseOutputValues(output);
+                CUtils.printLog("fetchPlanDetails", output, ConstantVariables.LOG_TYPE.ERROR);
+            } else {
+                //DialogManager.showDialog(, "Server Error Occurred! Try Again!");
+            }
+
         }
 
         if(from.equalsIgnoreCase("cancelUserPlan"))

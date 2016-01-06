@@ -66,7 +66,7 @@ public class ShowQuantity extends AppCompatActivity implements AsyncResponse {
 
             JSONObject obj = new JSONObject(previousValue);
             obj.put("product_quantity",String.valueOf(selectedQuantity));
-            startActivity(new Intent(ShowQuantity.this, ShowFrequency.class).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
+            startActivity(new Intent(ShowQuantity.this, ShowFrequency.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
             overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             finish();
         }

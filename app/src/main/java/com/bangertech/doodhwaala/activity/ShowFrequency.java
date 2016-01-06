@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.utils.AppUrlList;
@@ -60,7 +61,12 @@ public class ShowFrequency  extends AppCompatActivity implements AsyncResponse {
     public void backgroundProcessFinish(String from, String output) {
         if(from.equalsIgnoreCase("getFrequencies"))
         {
-            parseFrequency(output);
+            if (output != null) {
+                parseFrequency(output);
+            } else {
+                DialogManager.showDialog(ShowFrequency.this, "Server Error Occurred! Try Again!");
+            }
+
             //CUtils.printLog("FREQUENCY",output, ConstantVariables.LOG_TYPE.ERROR);
         }
 
@@ -181,7 +187,7 @@ public class ShowFrequency  extends AppCompatActivity implements AsyncResponse {
                 obj.put("frequency_name", bucketFrequency.get(selectedIndex).getFrequencyName());
                 obj.put("frequency_days", bucketFrequency.get(selectedIndex).getNumberOfDays());
 
-                startActivity(new Intent(ShowFrequency.this, ShowDuration.class).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
+                startActivity(new Intent(ShowFrequency.this, ShowDuration.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
                 overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                 finish();
             } catch (Exception e) {
@@ -189,7 +195,8 @@ public class ShowFrequency  extends AppCompatActivity implements AsyncResponse {
             }
         }
         else
-          CUtils.showUserMessage(this,"Please select frequency");
+            DialogManager.showDialog(ShowFrequency.this, "Please select frequency");
+          //CUtils.showUserMessage(this,"Please select frequency");
 
     }
 

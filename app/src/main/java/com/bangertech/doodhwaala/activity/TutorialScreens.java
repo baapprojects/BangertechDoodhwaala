@@ -42,6 +42,7 @@ public class TutorialScreens extends AppCompatActivity implements ViewPager.OnPa
             @Override
             public void onClick(View v) {
                 Intent navigation = new Intent(TutorialScreens.this, LoginActivity.class);
+                navigation.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(navigation);
                 finish();
                 overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);

@@ -210,6 +210,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                        // Intent mobileIntent = new Intent(mContext, ProfileActivity.class);
                         CGlobal.getCGlobalObject().setUserId(jsonObject.getString("user_id"));
                         Intent mobileIntent = new Intent(mContext, Home.class);
+                        mobileIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mobileIntent);
                         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                         finish();

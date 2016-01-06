@@ -8,9 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -80,11 +77,18 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -179,6 +183,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private GcmCreatingClass gcm;
     private String googleEmail, fbEmail;
     private Validator validator;
+    private FileInputStream is;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -246,6 +251,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } catch (Exception e) {
             Log.e("exception", e.toString());
         }*/
+
     }
 
     private void init() {
@@ -417,6 +423,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         Intent signupIntent = new Intent(mContext, SignupActivity.class);
                         signupIntent.putExtra("email", txtEmailAddress.getText().toString());
+                        signupIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(signupIntent);
                         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                         finish();
@@ -427,6 +434,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         {
                             Intent signinIntent = new Intent(mContext, SigninActivity.class);
                             signinIntent.putExtra("email", txtEmailAddress.getText().toString());
+                            signinIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(signinIntent);
                             overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                             finish();
@@ -469,6 +477,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     if (jsonObject.getBoolean("result")) {
                         Intent mobileIntent = new Intent(mContext, MobileNoActivity.class);
+                        mobileIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         mobileIntent.putExtra("user_id", user_id);
                         startActivity(mobileIntent);
                         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
@@ -476,6 +485,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     } else {
                         if(jsonObject.getString("mobile").equals("") || jsonObject.getString("mobile")== null) {
                             Intent mobileIntent = new Intent(mContext, MobileNoActivity.class);
+                            mobileIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             mobileIntent.putExtra("user_id", user_id);
                             startActivity(mobileIntent);
                             overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
@@ -493,6 +503,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 DoodhwaalaApplication.isUserLoggedIn = true;
                                 CGlobal.getCGlobalObject().setUserId(jsonObject.getString("user_id"));
                                 Intent mobileIntent = new Intent(mContext, Home.class);
+                                mobileIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(mobileIntent);
                                 overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                                 finish();
@@ -528,6 +539,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     if (jsonObject.getBoolean("result")) {
                         Intent mobileIntent = new Intent(mContext, MobileNoActivity.class);
+                        mobileIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         mobileIntent.putExtra("user_id", user_id);
                         startActivity(mobileIntent);
                         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
@@ -535,6 +547,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     } else {
                         if(jsonObject.getString("mobile").equals("") || jsonObject.getString("mobile")== null) {
                             Intent mobileIntent = new Intent(mContext, MobileNoActivity.class);
+                            mobileIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             mobileIntent.putExtra("user_id", user_id);
                             startActivity(mobileIntent);
                             overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
@@ -553,6 +566,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 DoodhwaalaApplication.isUserLoggedIn = true;
                                 CGlobal.getCGlobalObject().setUserId(jsonObject.getString("user_id"));
                                 Intent mobileIntent = new Intent(mContext, Home.class);
+                                mobileIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(mobileIntent);
                                 overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                                 finish();

@@ -14,10 +14,20 @@ android {
         multiDexEnabled true
 
     }
+    signingConfigs {
+        release {
+            storeFile file("doodhwala.keystore")
+            storePassword "password"
+            keyAlias "Doodhwala"
+            keyPassword "password"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 

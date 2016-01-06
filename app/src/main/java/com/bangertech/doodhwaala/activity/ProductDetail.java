@@ -19,6 +19,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.utils.AppUrlList;
@@ -149,7 +150,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                 obj.put("quantity_id",beanPackagingAndQtyDefault.getQuantityId());
                 obj.put("product_price",beanPackagingAndQtyDefault.getPrice());
                 obj.put("product_image_url",beanPackagingAndQtyDefault.getProductImage());
-                startActivity(new Intent(ProductDetail.this, ShowQuantity.class).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY,obj.toString()));
+                startActivity(new Intent(ProductDetail.this, ShowQuantity.class).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY,obj.toString()).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                 finish();
         }
@@ -182,7 +183,11 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
     @Override
     public void backgroundProcessFinish(String from, String output) {
         if(from.equalsIgnoreCase("fetchProductDetails")) {
-            parseProductDetails(output);
+            if(output!=null) {
+                parseProductDetails(output);
+            } else {
+                DialogManager.showDialog(ProductDetail.this, "Server Error Occurred! Try Again!");
+            }
            /* bucketPackagingAdapter.notifyDataSetChanged();
             bucketPackagingAndQtyAdapter.notifyDataSetChanged();*/
         }

@@ -33,7 +33,9 @@ import com.bangertech.doodhwaala.customcontrols.SlidingTabLayout;
 import com.bangertech.doodhwaala.fragment.MeFragment;
 import com.bangertech.doodhwaala.fragment.MilkbarFragment;
 import com.bangertech.doodhwaala.fragment.MyMilkFragment;
+import com.bangertech.doodhwaala.general.General;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.manager.PreferenceManager;
@@ -77,10 +79,12 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     private HorizontalScrollView hsFilterMilkBarOnToolbar;
     private int pauseOrResumeIndex=-1;
     private Toolbar mToolbar;
+    private General general;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        general = new General();
         lstBeanProductType=new ArrayList<BeanProductType>();
         lstMostSellingProducts=new ArrayList<BeanBrand>();
         lstBeanProductTypeOnToolBar=new ArrayList<BeanProductType>();
@@ -136,7 +140,11 @@ public class Home extends AppCompatActivity implements AsyncResponse {
        });
 
 
-        fetchProductType();
+        if (general.isNetworkAvailable(Home.this)) {
+            fetchProductType();
+        } else {
+            DialogManager.showDialog(Home.this, "Please Check your internet connection.");
+        }
 
     }
 
@@ -155,7 +163,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         bundle.putString("tag_type", beanProductType.getTagType());
         Intent intent=new Intent(this, FilteresAppliedByTagsAndProducts.class);
         intent.putExtras(bundle);
-
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
@@ -274,60 +282,59 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     @Override
     public void backgroundProcessFinish(String from, final String output) {
         if(from.equalsIgnoreCase("fetchProductType")) {
-            if(!parseAndFormateProductTypeList(output))
-                lstBeanProductType.clear();
-
-             fetchMostSellingProducts();
+            if (general.isNetworkAvailable(Home.this)) {
+                if(!parseAndFormateProductTypeList(output))
+                    lstBeanProductType.clear();
+                fetchMostSellingProducts();
+            } else {
+                DialogManager.showDialog(Home.this, "Please Check your internet connection.");
+            }
 
         }
         if(from.equalsIgnoreCase("mostSellingProducts"))
         {
-            if(!parseAndFormateMostSellingProductsList(output))
-                lstMostSellingProducts.clear();
+            if (general.isNetworkAvailable(Home.this)) {
+                if(!parseAndFormateMostSellingProductsList(output))
+                    lstMostSellingProducts.clear();
 
-            milkbarFragment.reDrawFragment(lstBeanProductType, lstMostSellingProducts);
-            fetchDayPlanFromServer("", 0);
+                milkbarFragment.reDrawFragment(lstBeanProductType, lstMostSellingProducts);
+                fetchDayPlanFromServer("", 0);
+            } else {
+                DialogManager.showDialog(Home.this, "Please Check your internet connection.");
+            }
+
         }
         if (from.equalsIgnoreCase("fetchDayPlan")) {
-            myMilkFragment.reDrawFragment(output);
-            /*new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    JSONObject jsonObject = null;
-                    try {
-                        jsonObject = new JSONObject(output);
-                        if (jsonObject.getBoolean("result")){
-                            myMilkFragment.reDrawFragment(output);
-
-                        } else {
-
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }, 100);*/
-
-
+            if (general.isNetworkAvailable(Home.this)) {
+                myMilkFragment.reDrawFragment(output);
+            } else {
+                DialogManager.showDialog(Home.this, "Please Check your internet connection.");
+            }
         }
 
         if (from.equalsIgnoreCase("updatePauseOrResumePlan"))
         {
-            try
-            {
+            if (general.isNetworkAvailable(Home.this)) {
+                if(output!=null) {
+                    try {
 
-                if((new JSONObject(output)).getBoolean("result")) {
-                    myMilkFragment.updatePauseOrResumePlanInList(pauseOrResumeIndex);
+                        if ((new JSONObject(output)).getBoolean("result")) {
+                            myMilkFragment.updatePauseOrResumePlanInList(pauseOrResumeIndex);
 
+                        }
+                    } catch (Exception e) {
+
+                    }
+                } else {
+                    DialogManager.showDialog(Home.this, "Server Error Occurred! Try Again!");
                 }
+                pauseOrResumeIndex=-1;
+            } else {
+                DialogManager.showDialog(Home.this, "Please Check your internet connection.");
             }
-            catch(Exception e)
-            {
+            meFragment.reDrawFragment();
+            }
 
-            }
-            pauseOrResumeIndex=-1;
-        }
-        meFragment.reDrawFragment();
 
     }
 
@@ -335,84 +342,87 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     private boolean parseAndFormateProductTypeList(String productTypeList)
     {
         boolean isSuccess=true;
+        if(productTypeList!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(productTypeList);
+                //if(jsonObject.getString("result").equalsIgnoreCase("true"))
+                if (jsonObject.getBoolean("result")) {
 
-        try {
-            JSONObject jsonObject = new JSONObject(productTypeList);
-            //if(jsonObject.getString("result").equalsIgnoreCase("true"))
-            if(jsonObject.getBoolean("result"))
-            {
+                    lstBeanProductType.clear();
+                    JSONArray array = jsonObject.getJSONArray("product_types");
+                    if (array.length() > 0) {
+                        BeanProductType beanProductType;
+                        JSONObject obj;
+                        for (int i = 0; i < array.length(); i++) {
 
-                lstBeanProductType.clear();
-                JSONArray array=jsonObject.getJSONArray("product_types");
-                if(array.length()>0) {
-                    BeanProductType beanProductType;
-                    JSONObject obj;
-                    for(int i=0;i<array.length();i++) {
+                            obj = array.getJSONObject(i);
+                            if (obj != null) {
 
-                        obj=array.getJSONObject(i);
-                        if(obj!=null) {
-
-                            beanProductType = new BeanProductType();
-                            beanProductType.setTagId(obj.getString("tag_id"));
-                            beanProductType.setTagName(obj.getString("tag_name"));
-                            beanProductType.setTagType(obj.getString("tag_type"));
-                            lstBeanProductType.add(beanProductType);
+                                beanProductType = new BeanProductType();
+                                beanProductType.setTagId(obj.getString("tag_id"));
+                                beanProductType.setTagName(obj.getString("tag_name"));
+                                beanProductType.setTagType(obj.getString("tag_type"));
+                                lstBeanProductType.add(beanProductType);
+                            }
                         }
-                    }
 
+                    }
                 }
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                isSuccess = false;
             }
-        }
-        catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            isSuccess=false;
         }
 
         return isSuccess;
     }
     private boolean parseAndFormateMostSellingProductsList(String mostSellingProducts)
     {
-        boolean isSuccess=true;
-        try {
-            //Toast.makeText(this,mostSellingProducts,Toast.LENGTH_SHORT).show();
-            JSONObject jsonObject = new JSONObject(mostSellingProducts);
-            //if(jsonObject.getString("result").equalsIgnoreCase("true"))
-            if(jsonObject.getBoolean("result"))
-            {
-               // Toast.makeText(this,"true",Toast.LENGTH_SHORT).show();
+        boolean isSuccess = true;
+        if(mostSellingProducts!= null) {
+            try {
+                //Toast.makeText(this,mostSellingProducts,Toast.LENGTH_SHORT).show();
+                JSONObject jsonObject = new JSONObject(mostSellingProducts);
+                //if(jsonObject.getString("result").equalsIgnoreCase("true"))
+                if (jsonObject.getBoolean("result")) {
+                    // Toast.makeText(this,"true",Toast.LENGTH_SHORT).show();
 
-                lstMostSellingProducts.clear();
-                JSONArray arrayBrand=jsonObject.getJSONArray("details");//BRAND
+                    lstMostSellingProducts.clear();
+                    JSONArray arrayBrand = jsonObject.getJSONArray("details");//BRAND
 
-                if(arrayBrand.length()>0) {
-                    BeanBrand  beanBrand=null;
-                    JSONObject objJsonBrand=null;
+                    if (arrayBrand.length() > 0) {
+                        BeanBrand beanBrand = null;
+                        JSONObject objJsonBrand = null;
 
-                    for(int brandIndex=0;brandIndex<arrayBrand.length();brandIndex++)//PARSING BRAND
-                    {
-                        JSONArray arrayProduct=null;
+                        for (int brandIndex = 0; brandIndex < arrayBrand.length(); brandIndex++)//PARSING BRAND
+                        {
+                            JSONArray arrayProduct = null;
 
-                       // objJsonBrand=arrayBrand.getJSONObject(brandIndex);
-                        //HERE CALL BRAND FUNCTION
-                        //beanBrand=getParsedMostSellingBrand(objJsonBrand);
-                        beanBrand=getParsedMostSellingBrand(arrayBrand.getJSONObject(brandIndex));
-                        if(beanBrand!=null)
-                         lstMostSellingProducts.add(beanBrand);//ADDING BRAND OBJECT IN COLLECTION
+                            // objJsonBrand=arrayBrand.getJSONObject(brandIndex);
+                            //HERE CALL BRAND FUNCTION
+                            //beanBrand=getParsedMostSellingBrand(objJsonBrand);
+                            beanBrand = getParsedMostSellingBrand(arrayBrand.getJSONObject(brandIndex));
+                            if (beanBrand != null)
+                                lstMostSellingProducts.add(beanBrand);//ADDING BRAND OBJECT IN COLLECTION
+
+                        }
+
 
                     }
-
-
                 }
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                isSuccess = false;
             }
-        }
-        catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            isSuccess=false;
+            return isSuccess;
+        } else {
+            isSuccess = false;
+            DialogManager.showDialog(Home.this, "Server Error Occurred! Try Again!");
+            return isSuccess;
         }
 
-        return isSuccess;
     }
 
     private BeanBrand getParsedMostSellingBrand(JSONObject jsonBrand)
@@ -547,10 +557,21 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         else
             fetchDayPlanFromServer(_date,moveIndex);*/
 
-        if(TextUtils.isEmpty(strDate))
-            fetchDayPlanFromServer("",ConstantVariables.MY_PLAN_TOMORROW);
-        else
-            fetchDayPlanFromServer(strDate,moveIndex);
+        if(TextUtils.isEmpty(strDate)) {
+            if (general.isNetworkAvailable(Home.this)) {
+                fetchDayPlanFromServer("", ConstantVariables.MY_PLAN_TOMORROW);
+            } else {
+                DialogManager.showDialog(Home.this, "Please Check your internet connection.");
+            }
+
+        }
+        else {
+            if (general.isNetworkAvailable(Home.this)) {
+                fetchDayPlanFromServer(strDate, moveIndex);
+            } else {
+                DialogManager.showDialog(Home.this, "Please Check your internet connection.");
+            }
+        }
     }
 
     public void updatePauseOrResumePlanOnServer(BeanDayPlan beanDayPlan,int prIndex)

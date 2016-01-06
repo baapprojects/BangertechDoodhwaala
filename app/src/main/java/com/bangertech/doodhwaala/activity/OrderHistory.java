@@ -15,6 +15,7 @@ import com.bangertech.doodhwaala.adapter.OrderHistoryListAdapter;
 import com.bangertech.doodhwaala.beans.BeanOrderedHistory;
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
@@ -106,45 +107,43 @@ public class OrderHistory extends AppCompatActivity implements AsyncResponse {
     public void backgroundProcessFinish(String from, String output) {
         if(from.equalsIgnoreCase("fetchOrderHistory"))
         {
-            try {
-                JSONObject jsonObject = new JSONObject(output);
-                if (jsonObject.getBoolean("result"))
-                {
-                    balance=jsonObject.getString("balance");
-                    JSONArray jsonArrayOrders=new JSONArray(jsonObject.getString("orders"));
-                    int orderLength=jsonArrayOrders.length();
-                    JSONObject order=null;
-                    JSONArray jsonArrayProducts=null;
-                    JSONObject product=null;
-                    int productLength=0;
-                    if(orderLength>0)
-                    {
-                        BeanOrderedHistory beanOrderedHistory=null;
-                        for(int index=0;index<orderLength;index++)
-                        {
-                            order=jsonArrayOrders.getJSONObject(index);
-                            beanOrderedHistory=new BeanOrderedHistory();
-                            beanOrderedHistory.setOrderedDate(order.getString("date"));
-                            beanOrderedHistory.setOrderedAmount(order.getString("cost"));
-                            jsonArrayProducts=new JSONArray(order.getString("products"));
-                            productLength=jsonArrayProducts.length();
-                            for(int length=0;length<productLength;length++)
-                            {
-                                product=jsonArrayProducts.getJSONObject(length);
-                                beanOrderedHistory.setOrderedItems(product.getString("product_name")+" x "+product.getString("quantity"));
+            if(output!=null) {
+                try {
+                    JSONObject jsonObject = new JSONObject(output);
+                    if (jsonObject.getBoolean("result")) {
+                        balance = jsonObject.getString("balance");
+                        JSONArray jsonArrayOrders = new JSONArray(jsonObject.getString("orders"));
+                        int orderLength = jsonArrayOrders.length();
+                        JSONObject order = null;
+                        JSONArray jsonArrayProducts = null;
+                        JSONObject product = null;
+                        int productLength = 0;
+                        if (orderLength > 0) {
+                            BeanOrderedHistory beanOrderedHistory = null;
+                            for (int index = 0; index < orderLength; index++) {
+                                order = jsonArrayOrders.getJSONObject(index);
+                                beanOrderedHistory = new BeanOrderedHistory();
+                                beanOrderedHistory.setOrderedDate(order.getString("date"));
+                                beanOrderedHistory.setOrderedAmount(order.getString("cost"));
+                                jsonArrayProducts = new JSONArray(order.getString("products"));
+                                productLength = jsonArrayProducts.length();
+                                for (int length = 0; length < productLength; length++) {
+                                    product = jsonArrayProducts.getJSONObject(length);
+                                    beanOrderedHistory.setOrderedItems(product.getString("product_name") + " x " + product.getString("quantity"));
+
+                                }
+                                bucketOrderedHistory.add(beanOrderedHistory);
+                                // CUtils.printLog("order",order.toString(), ConstantVariables.LOG_TYPE.ERROR);
 
                             }
-                            bucketOrderedHistory.add(beanOrderedHistory);
-                           // CUtils.printLog("order",order.toString(), ConstantVariables.LOG_TYPE.ERROR);
-
                         }
+
                     }
+                } catch (Exception e) {
 
-              }
-            }
-            catch(Exception e)
-            {
-
+                }
+            } else {
+                DialogManager.showDialog(OrderHistory.this, "Server Error Occurred! Try Again!");
             }
             if(bucketOrderedHistory.size()>0)
                  showOrderedHistory();

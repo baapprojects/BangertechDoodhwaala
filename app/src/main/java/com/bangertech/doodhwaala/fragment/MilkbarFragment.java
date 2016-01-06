@@ -68,7 +68,7 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
         //super.onActivityResult(requestCode, resultCode, data);
         //Toast.makeText(getActivity(),"onActivityResult",Toast.LENGTH_SHORT).show();
         if(requestCode==ConstantVariables.SUB_ACTIVITY_FILTER_OPENED_ON_MILKBAR && resultCode== Activity.RESULT_OK) {
-            startActivity(new Intent(getActivity(), FiltersAppliedByFilterProduct.class).putExtras(data));
+            startActivity(new Intent(getActivity(), FiltersAppliedByFilterProduct.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtras(data));
             getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         }
 
@@ -124,7 +124,7 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
             @Override
             public void onClick(View v) {
 
-                startActivityForResult(new Intent(getActivity(), FilterProduct.class), ConstantVariables.SUB_ACTIVITY_FILTER_OPENED_ON_MILKBAR);
+                startActivityForResult(new Intent(getActivity(), FilterProduct.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP), ConstantVariables.SUB_ACTIVITY_FILTER_OPENED_ON_MILKBAR);
                 getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
              /*  Toast.makeText(getActivity(),"FAB clicked",Toast.LENGTH_SHORT).show();*/
             }
@@ -200,7 +200,7 @@ public void reDrawFragment(List<BeanProductType> lstBeanProductType,List<BeanBra
         if(!TextUtils.isEmpty(brandParameter)) {
             Intent data = new Intent();
             data.putExtra(ConstantVariables.SELECTED_FILTER_KEY, brandParameter);
-            startActivity(new Intent(getActivity(), FiltersAppliedByFilterProduct.class).putExtras(data));
+            startActivity(new Intent(getActivity(), FiltersAppliedByFilterProduct.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtras(data));
             getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         }
     }
@@ -233,6 +233,7 @@ public void reDrawFragment(List<BeanProductType> lstBeanProductType,List<BeanBra
     @Override
     public void onSelectProduct(String productId,String productMappingId) {
         Intent intent=new Intent(getActivity(), ProductDetail.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(ConstantVariables.PRODUCT_ID_KEY,productId);
         intent.putExtra(ConstantVariables.PRODUCT_MAPPING_ID_KEY,productMappingId);
         startActivity(intent);

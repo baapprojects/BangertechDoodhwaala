@@ -20,6 +20,7 @@ import com.bangertech.doodhwaala.beans.BeanFilter;
 import com.bangertech.doodhwaala.beans.BeanFilteredProduct;
 import com.bangertech.doodhwaala.cinterfaces.ISelectedProduct;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.manager.PreferenceManager;
@@ -73,6 +74,8 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
                 if(!TextUtils.isEmpty(selectedFiltersKey)) {
                     Intent input = new Intent();
                     input.putExtra(ConstantVariables.SELECTED_FILTER_KEY,selectedFiltersKey);
+                    input.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtras(input);
 
                 }
@@ -225,30 +228,33 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
     }
     private boolean isProductListExists(String filtersAppliedProductList)
     {
-        boolean isSuccess=false;
+        boolean isSuccess = false;
+        if(filtersAppliedProductList!=null) {
 
-        try {
-            JSONObject jsonObject = new JSONObject(filtersAppliedProductList);
-            //if(jsonObject.getString("result").equalsIgnoreCase("true"))
-            if(jsonObject.getBoolean("result"))
-            {
-                if(Integer.parseInt(jsonObject.getString("no_of_products"))>0)
-                    return true;
+            try {
+                JSONObject jsonObject = new JSONObject(filtersAppliedProductList);
+                //if(jsonObject.getString("result").equalsIgnoreCase("true"))
+                if (jsonObject.getBoolean("result")) {
+                    if (Integer.parseInt(jsonObject.getString("no_of_products")) > 0)
+                        return true;
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                isSuccess = false;
             }
-        }
-        catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            isSuccess=false;
+        } else {
+            isSuccess = false;
+            DialogManager.showDialog(FiltersAppliedByFilterProduct.this, "Server Error Occurred! Try Again!");
         }
 
         return false;
     }
     private void parseAndFormateFilteredProductList(String filtersAppliedProductList)
     {
-
-        try {
-            JSONObject jsonObject = new JSONObject(filtersAppliedProductList);
+        if(filtersAppliedProductList!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(filtersAppliedProductList);
 
                 JSONArray array = jsonObject.getJSONArray("products");
                 if (array.length() > 0) {
@@ -281,11 +287,13 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
                 }
 
 
-        }
-        catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
 
+            }
+        } else {
+            DialogManager.showDialog(FiltersAppliedByFilterProduct.this, "Server Error Occurred! Try Again!");
         }
 
 
@@ -296,6 +304,7 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
         Intent intent=new Intent(FiltersAppliedByFilterProduct.this, ProductDetail.class);
         intent.putExtra(ConstantVariables.PRODUCT_ID_KEY,productId);
         intent.putExtra(ConstantVariables.PRODUCT_MAPPING_ID_KEY,productMappingId);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 

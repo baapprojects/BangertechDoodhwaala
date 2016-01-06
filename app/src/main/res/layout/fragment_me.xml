@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".5"
+            android:background="@drawable/ripple_grey"
             android:orientation="horizontal">
 
             <ImageView
@@ -60,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".5"
+            android:background="@drawable/ripple_grey"
             android:orientation="horizontal">
 
             <ImageView
@@ -85,6 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".5"
+            android:background="@drawable/ripple_grey"
             android:orientation="horizontal">
 
             <ImageView
@@ -110,6 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".5"
+            android:background="@drawable/ripple_grey"
             android:orientation="horizontal">
 
             <ImageView

@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.Window;
 
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.general.General;
+import com.bangertech.doodhwaala.utils.CUtils;
+import com.bangertech.doodhwaala.utils.ConstantVariables;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -39,6 +42,7 @@ public class MyAsynTaskManager extends AsyncTask<String, String, String> {
  	public static List<NameValuePair> params = new ArrayList<NameValuePair>();
 	public static String posturl;
 	public static Activity myActivity;
+	public General general;
 	
 //	public MyAsynTaskManager(Activity myActivity, LoadListener loadListener)
 //	{
@@ -50,6 +54,7 @@ public class MyAsynTaskManager extends AsyncTask<String, String, String> {
 	{
 		from=where;
 		myActivity = activity;
+		general = new General();
 		posturl = url;
 		params.clear();
 		for(int i = 0; i < keywords.length; i++)
@@ -173,7 +178,16 @@ public class MyAsynTaskManager extends AsyncTask<String, String, String> {
 		// TODO Auto-generated method stub
 		super.onPostExecute(result);
 		progressDialog.dismiss();
-		delegate.backgroundProcessFinish(from,result);
+		if(general.isNetworkAvailable(myActivity)) {
+			if (result != null) {
+				delegate.backgroundProcessFinish(from, result);
+			} else {
+				DialogManager.showDialog(myActivity, "Server Error Occurred! Try Again!");
+			}
+		} else {
+			DialogManager.showDialog(myActivity, "Please check your internet connection");
+		}
+
 	}
 
 //	abstract public static class LoadListener{

@@ -103,36 +103,37 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
     public void backgroundProcessFinish(String from, String output) {
         if(from.equalsIgnoreCase("showUserAddressList"))
         {
-          if(output!=null)
-             fetchUserAddressList(output);
+          if(output!=null) {
+              fetchUserAddressList(output);
+          } else {
+              DialogManager.showDialog(ShowAddress.this, "Server Error Occurred! Try Again!");
+          }
         }
         if(from.equalsIgnoreCase("makeDefaultAddress"))
         {
-           try
-           {
-               JSONObject jsonObject=new JSONObject(output);
-               if(jsonObject.getBoolean("result"))
-               {
-                   CUtils.showUserMessage(ShowAddress.this, getString(R.string.default_address_updated_successfully));
-                   if(isCalledFromConfirmationScreen)
-                   {
-                       CGlobal.getCGlobalObject().setAddressId(listAddress.get(newSelectedAddressIndex).getAddressId());
-                       setResult(RESULT_OK);
-                       this.finish();
+            if(output!=null) {
+                try {
+                    JSONObject jsonObject = new JSONObject(output);
+                    if (jsonObject.getBoolean("result")) {
+                        CUtils.showUserMessage(ShowAddress.this, getString(R.string.default_address_updated_successfully));
+                        if (isCalledFromConfirmationScreen) {
+                            CGlobal.getCGlobalObject().setAddressId(listAddress.get(newSelectedAddressIndex).getAddressId());
+                            setResult(RESULT_OK);
+                            this.finish();
 
-                   }else
-                       this.finish();
+                        } else
+                            this.finish();
 
 
-               }
-               else
-                   CUtils.showUserMessage(ShowAddress.this,jsonObject.getString("msg"));
+                    } else
+                        CUtils.showUserMessage(ShowAddress.this, jsonObject.getString("msg"));
 
-           }
-           catch(Exception e)
-           {
+                } catch (Exception e) {
 
-           }
+                }
+            } else {
+                DialogManager.showDialog(ShowAddress.this, "Server Error Occurred! Try Again!");
+            }
         }
 
     }
@@ -158,11 +159,11 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add_address:
-                startActivityForResult(new Intent(ShowAddress.this, AddEditAddress.class).putExtras(getBundleForAddEditAddress(true)), ConstantVariables.SUB_ACTIVITY_ADD_EDIT_ADDRESS);
+                startActivityForResult(new Intent(ShowAddress.this, AddEditAddress.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtras(getBundleForAddEditAddress(true)), ConstantVariables.SUB_ACTIVITY_ADD_EDIT_ADDRESS);
                 overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                 break;
             case R.id.action_edit_address://action_save_default_address
-                startActivityForResult(new Intent(ShowAddress.this, AddEditAddress.class).putExtras(getBundleForAddEditAddress(false)), ConstantVariables.SUB_ACTIVITY_ADD_EDIT_ADDRESS);
+                startActivityForResult(new Intent(ShowAddress.this, AddEditAddress.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtras(getBundleForAddEditAddress(false)), ConstantVariables.SUB_ACTIVITY_ADD_EDIT_ADDRESS);
                 overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                 break;
             case R.id.action_save_default_address://action_save_default_address

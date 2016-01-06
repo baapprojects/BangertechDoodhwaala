@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.manager.PreferenceManager;
@@ -49,26 +50,26 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
     private List<BeanLocality> bucketLocality = new ArrayList<BeanLocality>();
     private Spinner spCity, spLocality;
 
-    @Required(order = 1)
+    /*@Required(order = 1)
     @NumberRule(order = 2, message = "Enter Flat Number in Numeric", type = NumberRule.NumberType.LONG)
-    @TextRule(order = 3, message = "Enter valid Flat Number", minLength = 1, maxLength = 5)
+    @TextRule(order = 3, message = "Enter valid Flat Number", minLength = 1, maxLength = 5)*/
     private EditText editTextFlat;
 
-    @Required(order = 4)
-    @TextRule(order = 5, minLength = 2, message = "Enter valid Building name with minimum 2 chars")
+    @Required(order = 1)
+    @TextRule(order = 2, minLength = 2, message = "Enter valid Building name with minimum 2 chars")
     private EditText editTextBuilding;
 
-    @Required(order = 6)
-    @TextRule(order = 7, minLength = 2, message = "Enter valid Street name with minimum 2 chars")
+    @Required(order = 3)
+    @TextRule(order = 4, minLength = 2, message = "Enter valid Street name with minimum 2 chars")
     private EditText editTextStreet;
 
     /*@Required(order = 8)
     @TextRule(order = 9, minLength = 2, message = "Enter valid Landmark name with minimum 2 chars")*/
     private EditText editTextLandmark;
 
-    @Required(order = 8)
-    @NumberRule(order = 9, message = "Enter Pin code in Numeric", type = NumberRule.NumberType.LONG)
-    @TextRule(order = 10, message = "Enter valid Pin code Number", minLength = 6, maxLength = 6)
+    @Required(order = 5)
+    @NumberRule(order = 6, message = "Enter Pin code in Numeric", type = NumberRule.NumberType.LONG)
+    @TextRule(order = 7, message = "Enter valid Pin code Number", minLength = 6, maxLength = 6)
     private EditText editTextPincode;
     private CityAndLocalityAdapter localityAdapter;
 
@@ -190,6 +191,7 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
 
          boolean isValid=true;
         if(TextUtils.isEmpty(editTextFlat.getText().toString())) {
+            editTextFlat.requestFocus();
             editTextFlat.setError(getString(R.string.please_enter_flat_or_house_number));
             isValid=false;
         }
@@ -227,41 +229,41 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
     }
     private void showAddressDetail(String output)
     {
-        try {
-            JSONObject object = new JSONObject(output);
-           // CUtils.printLog("AddressDetail",output, ConstantVariables.LOG_TYPE.ERROR);
-            if (object.getBoolean("result"))
-            {
-                JSONArray  jsonArrayAddress=new JSONArray(object.getString("address_details"));
-                if(jsonArrayAddress.length()>0) {
-                    JSONObject objectAddress = jsonArrayAddress.getJSONObject(0);
+        if(output!=null) {
+            try {
+                JSONObject object = new JSONObject(output);
+                // CUtils.printLog("AddressDetail",output, ConstantVariables.LOG_TYPE.ERROR);
+                if (object.getBoolean("result")) {
+                    JSONArray jsonArrayAddress = new JSONArray(object.getString("address_details"));
+                    if (jsonArrayAddress.length() > 0) {
+                        JSONObject objectAddress = jsonArrayAddress.getJSONObject(0);
 
-                    editTextFlat.setText(objectAddress.getString("flat_number"));
-                    editTextBuilding.setText(objectAddress.getString("building_or_society_name"));
-                    editTextStreet.setText(objectAddress.getString("street_details"));
-                    editTextLandmark.setText(objectAddress.getString("landmark"));
-                    editTextPincode.setText(objectAddress.getString("pincode"));
-                    String cityID = objectAddress.getString("city_id");
-                    String localityId = objectAddress.getString("locality_id");
+                        editTextFlat.setText(objectAddress.getString("flat_number"));
+                        editTextBuilding.setText(objectAddress.getString("building_or_society_name"));
+                        editTextStreet.setText(objectAddress.getString("street_details"));
+                        editTextLandmark.setText(objectAddress.getString("landmark"));
+                        editTextPincode.setText(objectAddress.getString("pincode"));
+                        String cityID = objectAddress.getString("city_id");
+                        String localityId = objectAddress.getString("locality_id");
 
 
-
-                    // spCity.setSelection(Integer.parseInt(cityID));
-                    int citySize = bucketCityAndLocality.size();
-                    for (int index = 0; index < citySize; index++)
-                        if (bucketCityAndLocality.get(index).city_id.equalsIgnoreCase(cityID)) {
-                          spCity.setSelection(index);
-                          displayCityAndLocalityOnEdit(index, localityId);
-                        break;
+                        // spCity.setSelection(Integer.parseInt(cityID));
+                        int citySize = bucketCityAndLocality.size();
+                        for (int index = 0; index < citySize; index++)
+                            if (bucketCityAndLocality.get(index).city_id.equalsIgnoreCase(cityID)) {
+                                spCity.setSelection(index);
+                                displayCityAndLocalityOnEdit(index, localityId);
+                                break;
+                            }
                     }
+
                 }
 
+            } catch (Exception e) {
+
             }
-
-        }
-        catch(Exception e)
-        {
-
+        } else {
+            DialogManager.showDialog(AddEditAddress.this, "Server Error Occurred! Try Again!");
         }
     }
     private void displayCityAndLocalityOnEdit(int cityIndex,String localityId)
@@ -303,23 +305,26 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
             showAddressDetail(output);
 
         if (from.equalsIgnoreCase("addOrEditAddress")) {
-           try {
-                 JSONObject object = new JSONObject(output);
-                 if (object.getBoolean("result")) {
-                     if (isNewAddress)
-                         Toast.makeText(AddEditAddress.this, getString(R.string.new_address_added_successfully), Toast.LENGTH_SHORT).show();
-                     else
-                         Toast.makeText(AddEditAddress.this, getString(R.string.address_updated_successfully), Toast.LENGTH_SHORT).show();
+            if(output!=null) {
+                try {
+                    JSONObject object = new JSONObject(output);
+                    if (object.getBoolean("result")) {
+                        if (isNewAddress)
+                            Toast.makeText(AddEditAddress.this, getString(R.string.new_address_added_successfully), Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(AddEditAddress.this, getString(R.string.address_updated_successfully), Toast.LENGTH_SHORT).show();
 
-                     setResult(RESULT_OK);
-                     AddEditAddress.this.finish();
-                    }
-                 else
-                     Toast.makeText(AddEditAddress.this, object.getString("msg"), Toast.LENGTH_SHORT).show();
+                        setResult(RESULT_OK);
+                        AddEditAddress.this.finish();
+                    } else
+                        Toast.makeText(AddEditAddress.this, object.getString("msg"), Toast.LENGTH_SHORT).show();
 
                 } catch (Exception e) {
 
                 }
+            } else {
+                DialogManager.showDialog(AddEditAddress.this, "Server Error Occurred! Try Again!");
+            }
             }
 
 
@@ -327,44 +332,48 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
     }
 
     private void parseFetchCitiesAndLocalities(String output) {
-        try {
-            JSONObject jsonObject = new JSONObject(output);
-            if (jsonObject.getBoolean("result")) {
-                BeanCity beanCity;
-                BeanLocality beanLocality;
-                JSONObject jsonCity, jsonLocalities, jsonLocality;
-                JSONArray jsonArrayLocalities, jsonArrayLocalitiesInformation;
+        if(output!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(output);
+                if (jsonObject.getBoolean("result")) {
+                    BeanCity beanCity;
+                    BeanLocality beanLocality;
+                    JSONObject jsonCity, jsonLocalities, jsonLocality;
+                    JSONArray jsonArrayLocalities, jsonArrayLocalitiesInformation;
 
-                JSONArray jsonArrayCities = new JSONArray(jsonObject.getString("cities_and_localities"));
-                if (jsonArrayCities.length() > 0) {
-                    //FETCH CITIES
-                    int citySize = jsonArrayCities.length();
-                    for (int index = 0; index < citySize; index++) {
-                        jsonCity = jsonArrayCities.getJSONObject(index);
-                        beanCity = new BeanCity();
-                        beanCity.setCityId(jsonCity.getString("city_id"));
-                        beanCity.setCityName(jsonCity.getString("city_name"));
-                        jsonLocalities = new JSONObject(jsonCity.getString("localities"));
-                        //CHECK LOCALITY EXISTS
-                        if (jsonLocalities.getBoolean("result")) {
-                            jsonArrayLocalitiesInformation = new JSONArray(jsonLocalities.getString("localities_information"));
-                            int localitySize = jsonArrayLocalitiesInformation.length();
-                            JSONObject obj = null;
-                            for (int i = 0; i < localitySize; i++) {
-                                obj = jsonArrayLocalitiesInformation.getJSONObject(i);
-                                beanLocality = new BeanLocality();
-                                beanLocality.setLocalityId(obj.getString("locality_id"));
-                                beanLocality.setLocalityName(obj.getString("locality_name"));
-                                beanCity.setLocality(beanLocality);
+                    JSONArray jsonArrayCities = new JSONArray(jsonObject.getString("cities_and_localities"));
+                    if (jsonArrayCities.length() > 0) {
+                        //FETCH CITIES
+                        int citySize = jsonArrayCities.length();
+                        for (int index = 0; index < citySize; index++) {
+                            jsonCity = jsonArrayCities.getJSONObject(index);
+                            beanCity = new BeanCity();
+                            beanCity.setCityId(jsonCity.getString("city_id"));
+                            beanCity.setCityName(jsonCity.getString("city_name"));
+                            jsonLocalities = new JSONObject(jsonCity.getString("localities"));
+                            //CHECK LOCALITY EXISTS
+                            if (jsonLocalities.getBoolean("result")) {
+                                jsonArrayLocalitiesInformation = new JSONArray(jsonLocalities.getString("localities_information"));
+                                int localitySize = jsonArrayLocalitiesInformation.length();
+                                JSONObject obj = null;
+                                for (int i = 0; i < localitySize; i++) {
+                                    obj = jsonArrayLocalitiesInformation.getJSONObject(i);
+                                    beanLocality = new BeanLocality();
+                                    beanLocality.setLocalityId(obj.getString("locality_id"));
+                                    beanLocality.setLocalityName(obj.getString("locality_name"));
+                                    beanCity.setLocality(beanLocality);
+                                }
+
                             }
-
+                            bucketCityAndLocality.add(beanCity);
                         }
-                        bucketCityAndLocality.add(beanCity);
                     }
                 }
-            }
-        } catch (Exception e) {
+            } catch (Exception e) {
 
+            }
+        } else {
+            DialogManager.showDialog(AddEditAddress.this, "Server Error Occurred! Try Again!");
         }
 
         int bucketLength = bucketCityAndLocality.size();
@@ -409,26 +418,28 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
 
     @Override
     public void onValidationSucceeded() {
-        if(editTextBuilding.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
+        if(editTextFlat.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
+            if (editTextBuilding.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
 
-            if(editTextStreet.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
+                if (editTextStreet.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
 
-                if(editTextLandmark.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
-                    addEditCityOnServer();
+                    if (editTextLandmark.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
+                        addEditCityOnServer();
+                    } else {
+                        editTextLandmark.requestFocus();
+                        editTextLandmark.setError("Enter alphanumeric chars only");
+                    }
+                } else {
+                    editTextStreet.requestFocus();
+                    editTextStreet.setError("Enter alphanumeric chars only");
                 }
-                else {
-                    editTextLandmark.requestFocus();
-                    editTextLandmark.setError("Enter alphanumeric chars only");
-                }
+            } else {
+                editTextBuilding.requestFocus();
+                editTextBuilding.setError("Enter alphanumeric chars only");
             }
-            else {
-                editTextStreet.requestFocus();
-                editTextStreet.setError("Enter alphanumeric chars only");
-            }
-        }
-        else {
-            editTextBuilding.requestFocus();
-            editTextBuilding.setError("Enter alphanumeric chars only");
+        } else {
+            editTextFlat.requestFocus();
+            editTextFlat.setError("Enter alphanumeric chars only");
         }
 
 

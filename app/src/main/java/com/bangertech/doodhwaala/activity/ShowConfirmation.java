@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.bangertech.doodhwaala.beans.BeanAddress;
 import com.bangertech.doodhwaala.general.General;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.manager.PreferenceManager;
@@ -106,7 +107,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
 
                 Bundle bundle = new Bundle();
                 bundle.putBoolean("IS_FROM_CONFIRMATION_SCREEN", true);
-                startActivityForResult(new Intent(ShowConfirmation.this, ShowAddress.class).putExtras(bundle), ConstantVariables.SUB_ACTIVITY_EDIT_ADDRESS_FROM_CONFIRMATION);
+                startActivityForResult(new Intent(ShowConfirmation.this, ShowAddress.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtras(bundle), ConstantVariables.SUB_ACTIVITY_EDIT_ADDRESS_FROM_CONFIRMATION);
                 overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             }
         });
@@ -140,9 +141,9 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
         MyAsynTaskManager  myAsyncTask=new MyAsynTaskManager();
         myAsyncTask.delegate=this;
         myAsyncTask.setupParamsAndUrl("insertUserPlan", ShowConfirmation.this, AppUrlList.ACTION_URL,
-                new String[]{"module", "action", "user_id","product_id","product_mapping_id","quantity","frequency_id","duration_id","subscription_date","address_id","paid_amount"},
-                new String[]{"plans", "insertUserPlan", PreferenceManager.getInstance().getUserId(),product_id,product_mapping_id,product_quantity,frequency_id,duration_id,fromDate,
-                CGlobal.getCGlobalObject().getAddressId(),paid_amount});
+                new String[]{"module", "action", "user_id", "product_id", "product_mapping_id", "quantity", "frequency_id", "duration_id", "subscription_date", "address_id", "paid_amount"},
+                new String[]{"plans", "insertUserPlan", PreferenceManager.getInstance().getUserId(), product_id, product_mapping_id, product_quantity, frequency_id, duration_id, fromDate,
+                        CGlobal.getCGlobalObject().getAddressId(), paid_amount});
         myAsyncTask.execute();
 
 
@@ -151,39 +152,57 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     public void backgroundProcessFinish(String from, String output) {
 
         CUtils.printLog(from, output, ConstantVariables.LOG_TYPE.ERROR);
-        if(from.equalsIgnoreCase("getUserDefaultAddress"))
-            parseAddress(output);
+        if (from.equalsIgnoreCase("getUserDefaultAddress")) {
+            if (output != null) {
+                parseAddress(output);
+            } else {
+                DialogManager.showDialog(ShowConfirmation.this, "Server Error Occurred! Try Again!");
+            }
+        }
         if(from.equalsIgnoreCase("insertUserPlan"))
-            parseValuesAfterInsertPlanOnServer(output);
+            if (output != null) {
+                parseValuesAfterInsertPlanOnServer(output);
+            } else {
+                DialogManager.showDialog(ShowConfirmation.this, "Server Error Occurred! Try Again!");
+            }
+
 
         if(from.equalsIgnoreCase("applyCouponCode"))
-            parseValidCoupon(output);
+            if (output != null) {
+                parseValidCoupon(output);
+            } else {
+                DialogManager.showDialog(ShowConfirmation.this, "Server Error Occurred! Try Again!");
+            }
+
     }
     private void parseValuesAfterInsertPlanOnServer(String addressList)
     {
-        try {
-            JSONObject jsonObject = new JSONObject(addressList);
-            if(jsonObject.getBoolean("result"))
-            {
-              //CUtils.showUserMessage(ShowConfirmation.this, "Thanks for subscription");
-                ivConfirmationScreen.setVisibility(View.VISIBLE);
-                ivConfirmationScreen.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(ShowConfirmation.this, Home.class));
-                        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
-                    }
-                });
+        if(addressList!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(addressList);
+                if (jsonObject.getBoolean("result")) {
+                    //CUtils.showUserMessage(ShowConfirmation.this, "Thanks for subscription");
+                    ivConfirmationScreen.setVisibility(View.VISIBLE);
+                    ivConfirmationScreen.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(ShowConfirmation.this, Home.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+                        }
+                    });
+
+                } else {
+                    DialogManager.showDialog(ShowConfirmation.this, "Sorry your order not placed! Try Again!");
+                    //CUtils.showUserMessage(ShowConfirmation.this, jsonObject.getString("msg"));
+                }
+
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
 
             }
-            else
-                CUtils.showUserMessage(ShowConfirmation.this,jsonObject.getString("msg"));
-
-        }
-        catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-
+        } else {
+            DialogManager.showDialog(ShowConfirmation.this, "Server Error Occurred! Try Again!");
         }
 
     }
@@ -280,7 +299,8 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
                 @Override
                 public void onClick(View v) {
                     if(txtViewAddress.getText().toString().equals(getString(R.string.deliver_at_default)))
-                        CUtils.showUserMessage(getApplicationContext(), "Please select your address to checkout.");
+                        DialogManager.showDialog(ShowConfirmation.this, "Address not found. Please set your address by clicking EDIT and then checkout.");
+                        //CUtils.showUserMessage(getApplicationContext(), "Please select your address to checkout.");
                     else
                         insertUserPlanOnsServer(paid_amount);
                 }
@@ -366,44 +386,46 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     }
 
     public void parseValidCoupon(String output) {
-        try {
-            JSONObject jsonObject = new JSONObject(output);
-            if(jsonObject.getBoolean("result")) {
-                jsonObject.getDouble("list_price");
-                jsonObject.getDouble("discount_price");
+        if(output!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(output);
+                if (jsonObject.getBoolean("result")) {
+                    jsonObject.getDouble("list_price");
+                    jsonObject.getDouble("discount_price");
 
-                jsonObject.getString("coupon_id");
-                jsonObject.getString("discount_type");
-                jsonObject.getString("discount");
+                    jsonObject.getString("coupon_id");
+                    jsonObject.getString("discount_type");
+                    jsonObject.getString("discount");
 
-                paidAmount = jsonObject.getDouble("gross_price");
+                    paidAmount = jsonObject.getDouble("gross_price");
 
-                lldiscount.setVisibility(View.VISIBLE);
-                llcoupon.setVisibility(View.GONE);
-                txtViewDurationPrice.setText("= Rs " + String.valueOf(paidAmount));
-                txtViewDiscountPrice.setText("= Rs "+jsonObject.getDouble("discount_price"));
+                    lldiscount.setVisibility(View.VISIBLE);
+                    llcoupon.setVisibility(View.GONE);
+                    txtViewDurationPrice.setText("= Rs " + String.valueOf(paidAmount));
+                    txtViewDiscountPrice.setText("= Rs " + jsonObject.getDouble("discount_price"));
 
-                ((Button)findViewById(R.id.butPayWithCash)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(txtViewAddress.getText().toString().equals(getString(R.string.deliver_at_default)))
-                            CUtils.showUserMessage(getApplicationContext(), "Please select your address to checkout.");
-                        else
-                            insertUserPlanOnsServer(String.valueOf(paidAmount));
-                    }
-                });
+                    ((Button) findViewById(R.id.butPayWithCash)).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (txtViewAddress.getText().toString().equals(getString(R.string.deliver_at_default)))
+                                DialogManager.showDialog(ShowConfirmation.this, "Address not found. Please set your address by clicking EDIT and then checkout.");
+                                //CUtils.showUserMessage(getApplicationContext(), "Please select your address to checkout.");
+                            else
+                                insertUserPlanOnsServer(String.valueOf(paidAmount));
+                        }
+                    });
+                } else {
+                    lldiscount.setVisibility(View.GONE);
+                    llcoupon.setVisibility(View.VISIBLE);
+                    CUtils.showUserMessage(ShowConfirmation.this, jsonObject.getString("msg"));
+                }
+
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
             }
-            else {
-                lldiscount.setVisibility(View.GONE);
-                llcoupon.setVisibility(View.VISIBLE);
-                CUtils.showUserMessage(ShowConfirmation.this, jsonObject.getString("msg"));
-            }
-
-        }
-        catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-
+        } else {
+            DialogManager.showDialog(ShowConfirmation.this, "Server Error Occurred! Try Again!");
         }
     }
 
