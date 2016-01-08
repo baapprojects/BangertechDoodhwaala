@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     // Client ID for a web server that will receive the auth code and exchange it for a
     // refresh token if offline access is requested.
-    private static final String WEB_CLIENT_ID = "930318643687-2masmltopj7mkliqt6643bcg1vujh9br.apps.googleusercontent.com";
+    private static final String WEB_CLIENT_ID = "580124821862-ulo0s86691v03filurhsvk3qnprfhk1d.apps.googleusercontent.com";
 
     // Base URL for your token exchange server, no trailing slash.
     private static final String SERVER_BASE_URL = "https://accounts.google.com/o/oauth2/token";

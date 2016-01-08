@@ -6,14 +6,6 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/ivCancellationScreen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/cancellation"
-        android:visibility="gone"/>
-
     <include
         android:id="@+id/toolbar"
         layout="@layout/app_bar_save"/>
@@ -47,7 +39,6 @@
                 android:id="@+id/imageViewProduct"
                 android:layout_width="@dimen/image_width_in_detail_screen"
                 android:layout_height="@dimen/image_height_in_detail_screen"
-                android:src="@drawable/nandini"
                 android:visibility="gone"/>
         </LinearLayout>
 

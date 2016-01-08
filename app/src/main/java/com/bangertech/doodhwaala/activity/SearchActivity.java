@@ -25,6 +25,7 @@ import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
+import com.bangertech.doodhwaala.utils.CUtils;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
 
 import org.json.JSONArray;
@@ -55,7 +56,7 @@ public class SearchActivity extends AppCompatActivity implements AsyncResponse,I
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //toolbar.setPadding(0, CUtils.getStatusBarHeight(PrivatePolicy.this), 0, 0);
+        //toolbar.setPadding(0, CUtils.getStatusBarHeight(SearchActivity.this), 0, 0);
         //getSupportActionBar().setTitle(data);
 
 

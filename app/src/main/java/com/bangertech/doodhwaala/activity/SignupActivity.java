@@ -91,7 +91,7 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // toolbar.setPadding(0, CUtils.getStatusBarHeight(SigninActivity.this), 0, 0);
+        //toolbar.setPadding(0, CUtils.getStatusBarHeight(SignupActivity.this), 0, 0);
         getSupportActionBar().setTitle("Sign up");
 
         tvSave = (Button) toolbar.findViewById(R.id.tvSave);

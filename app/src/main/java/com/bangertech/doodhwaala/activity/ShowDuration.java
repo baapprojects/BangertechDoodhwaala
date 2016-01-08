@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.bangertech.doodhwaala.beans.BeanAddress;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CUtils;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
@@ -46,29 +48,9 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
     }
     public void gotoContinueDuration(View view)
     {
+        fetchAddressesFromServer();
        /* String duration="",durationName="";*/
-        int size=radioGroupDuration.getChildCount();
-        int selectedIndex=-1;
-        for(int i=0;i<size;i++)
-            if(((RadioButton)radioGroupDuration.getChildAt(i)).isChecked())
-                selectedIndex=i;
-        if(selectedIndex>-1) {
-            try {
-                JSONObject obj = new JSONObject(previousValue);
-                obj.put("duration_id", bucketDuration.get(selectedIndex).getDurationId());
-                obj.put("duration_name",  bucketDuration.get(selectedIndex).getDurationName());
-                obj.put("duration_weightage",  bucketDuration.get(selectedIndex).getDurationWeightage());
 
-                startActivity(new Intent(ShowDuration.this, ShowConfirmation.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
-                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
-                finish();
-            } catch (Exception e) {
-
-            }
-        }
-        else
-            DialogManager.showDialog(ShowDuration.this, "Please select duration");
-            //CUtils.showUserMessage(this,"Please select duration");
 
     }
     private void fetchDurationsFromServer() {
@@ -143,7 +125,15 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
         }
 
     }
-
+    private void fetchAddressesFromServer()
+    {
+        MyAsynTaskManager  myAsyncTask=new MyAsynTaskManager();
+        myAsyncTask.delegate=this;
+        myAsyncTask.setupParamsAndUrl("showUserAddressList", ShowDuration.this, AppUrlList.ACTION_URL,
+                new String[]{"module", "action", "user_id"},
+                new String[]{"user", "fetchAddresses", PreferenceManager.getInstance().getUserId()});
+        myAsyncTask.execute();
+    }
 
     @Override
     public void backgroundProcessFinish(String from, String output) {
@@ -155,6 +145,12 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
                 DialogManager.showDialog(ShowDuration.this, "Server Error Occurred! Try Again!");
             }
             //CUtils.printLog("FREQUENCY",output, ConstantVariables.LOG_TYPE.ERROR);
+        }
+
+        if(from.equalsIgnoreCase("showUserAddressList")) {
+            if (output != null) {
+                parseAndFormateAddressList(output);
+            }
         }
 
     }
@@ -191,10 +187,76 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
         public void setDurationWeightage(String duration_weightage) {
             this.duration_weightage = duration_weightage;
         }
+    }
 
+    private void parseAndFormateAddressList(String addressList)
+    {
+        try {
+            JSONObject jsonObject = new JSONObject(addressList);
 
+            if(jsonObject.getBoolean("result")) {
+                int size=radioGroupDuration.getChildCount();
+                int selectedIndex=-1;
+                for(int i=0;i<size;i++)
+                    if(((RadioButton)radioGroupDuration.getChildAt(i)).isChecked())
+                        selectedIndex=i;
+                if(selectedIndex>-1) {
+                    try {
+                        JSONObject obj = new JSONObject(previousValue);
+                        obj.put("duration_id", bucketDuration.get(selectedIndex).getDurationId());
+                        obj.put("duration_name", bucketDuration.get(selectedIndex).getDurationName());
+                        obj.put("duration_weightage", bucketDuration.get(selectedIndex).getDurationWeightage());
 
+                        startActivity(new Intent(ShowDuration.this, ShowConfirmation.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
+                        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+                        finish();
 
+                    } catch (Exception e) {
+
+                    }
+                }
+                else
+                    DialogManager.showDialog(ShowDuration.this, "Please select duration");
+                //CUtils.showUserMessage(this,"Please select duration");
+            } else {
+
+                int size=radioGroupDuration.getChildCount();
+                int selectedIndex=-1;
+                for(int i=0;i<size;i++)
+                    if(((RadioButton)radioGroupDuration.getChildAt(i)).isChecked())
+                        selectedIndex=i;
+                if(selectedIndex>-1) {
+                    try {
+                        JSONObject obj = new JSONObject(previousValue);
+                        obj.put("duration_id", bucketDuration.get(selectedIndex).getDurationId());
+                        obj.put("duration_name", bucketDuration.get(selectedIndex).getDurationName());
+                        obj.put("duration_weightage", bucketDuration.get(selectedIndex).getDurationWeightage());
+
+                        startActivityForResult(new Intent(ShowDuration.this, AddEditAddress.class).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("first_address", "first_address").putExtras(getBundleForAddEditAddress(true)), ConstantVariables.SUB_ACTIVITY_ADD_EDIT_ADDRESS);
+                        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+                        finish();
+
+                    } catch (Exception e) {
+
+                    }
+
+                }
+
+            }
+        }
+        catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+
+        }
+
+    }
+
+    private Bundle getBundleForAddEditAddress(boolean isAdd)
+    {
+        Bundle bundle=new Bundle();
+        bundle.putBoolean("ADD_ADDRESS", isAdd);
+        return bundle;
     }
 
 

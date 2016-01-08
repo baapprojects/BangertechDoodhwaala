@@ -55,6 +55,7 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtered_by_filter_product);
         app_bar = (Toolbar) findViewById(R.id.app_bar);
+        //app_bar.setPadding(0, CUtils.getStatusBarHeight(FiltersAppliedByFilterProduct.this), 0, 0);
         llSelectedFilter = (LinearLayout) findViewById(R.id.llSelectedFilter);
         gridFiltersAppliedProductList = (GridView) findViewById(R.id.gridFiltersAppliedProductList);
 
@@ -83,7 +84,7 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
 
                 }
                      startActivityForResult(intent,ConstantVariables.SUB_ACTIVITY_FILTER_OPENED_ON_FILTERS_APPLIED);
-                    overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+                     overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             }
         });
 

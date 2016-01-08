@@ -58,7 +58,7 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
     private int webqty;
     private int durationPos, freqPos;
     private int qtyPos;
-    private ImageView ivCancellationScreen;
+
     private General general;
 
     @Override
@@ -70,14 +70,14 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
 
         textViewProductName=(TextView)findViewById(R.id.textViewProductName);
         imageViewProduct=(ImageView)findViewById(R.id.imageViewProduct);
-        ivCancellationScreen = (ImageView) findViewById(R.id.ivCancellationScreen);
+
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // toolbar.setPadding(0, CUtils.getStatusBarHeight(SigninActivity.this), 0, 0);
+        //toolbar.setPadding(0, CUtils.getStatusBarHeight(EditMyPlan.this), 0, 0);
         getSupportActionBar().setTitle("View plan");
 
         tvSave = (Button) toolbar.findViewById(R.id.tvSave);
@@ -388,14 +388,9 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
                if (jsonObject.getBoolean("result")) {
                    CUtils.printLog("cancelUserPlan-bijendra", output, ConstantVariables.LOG_TYPE.ERROR);
                    //CUtils.showUserMessage(EditMyPlan.this, "Plan Cancel Successfully");
-                   ivCancellationScreen.setVisibility(View.VISIBLE);
-                   ivCancellationScreen.setOnClickListener(new View.OnClickListener() {
-                       @Override
-                       public void onClick(View v) {
-                           startActivity(new Intent(EditMyPlan.this, Home.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                           overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
-                       }
-                   });
+                   startActivity(new Intent(EditMyPlan.this, CancelConfirmation.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                   overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+
 
                } else {
                    DialogManager.showDialog(EditMyPlan.this, "Failed to cancel your plan. Try again!");

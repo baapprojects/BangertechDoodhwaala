@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,8 +55,10 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
 
     private int selectedAddressIndex=0,
             newSelectedAddressIndex=0;
-
+    private boolean outPut = false;
     boolean isCalledFromConfirmationScreen=false;
+    private MenuItem action_edit_address;
+    private Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +75,8 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
         app_bar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(app_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(getString(R.string.addresses));
+        //app_bar.setPadding(0, CUtils.getStatusBarHeight(ShowAddress.this), 0, 0);
+        getSupportActionBar().setTitle(R.string.addresses);
         no_address = (TextView) findViewById(R.id.no_address);
         mRecyclerView= (RecyclerView)findViewById(R.id.my_recycler_view);
 
@@ -152,9 +156,26 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
         myAsyncTask.execute();
     }
 
-  @Override
+  /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_address_list, menu);
+        return true;
+    }*/
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
+        getMenuInflater().inflate(R.menu.menu_address_list, menu);
+        action_edit_address = menu.findItem(R.id.action_edit_address);
+        MenuItem action_add_address = menu.findItem(R.id.action_add_address);
+        if(outPut) {
+            action_edit_address.setVisible(true);
+            action_add_address.setVisible(true);
+
+        } else {
+            action_edit_address.setVisible(false);
+            action_add_address.setVisible(true);
+        }
         return true;
     }
 
@@ -169,9 +190,9 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
                 startActivityForResult(new Intent(ShowAddress.this, AddEditAddress.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtras(getBundleForAddEditAddress(false)), ConstantVariables.SUB_ACTIVITY_ADD_EDIT_ADDRESS);
                 overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
                 break;
-            case R.id.action_save_default_address://action_save_default_address
+            /*case R.id.action_save_default_address://action_save_default_address
                 checkToSaveDefaultAddressOnBack();
-                break;
+                break;*/
             case android.R.id.home:
                 checkToSaveDefaultAddressOnBack();
                 //onBackPressed();
@@ -200,8 +221,10 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
         try {
             JSONObject jsonObject = new JSONObject(addressList);
            /* if(jsonObject.getString("result").equalsIgnoreCase("true"))*/
+            outPut = jsonObject.getBoolean("result");
             if(jsonObject.getBoolean("result"))
             {
+               // action_edit_address.setVisible(true);
                 no_address.setVisibility(View.GONE);
                 mRecyclerView.setVisibility(View.VISIBLE);
                 listAddress.clear();
@@ -227,6 +250,7 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
                     }
                 }
             } else {
+                //action_edit_address.setVisible(false);
                 no_address.setVisibility(View.VISIBLE);
                 mRecyclerView.setVisibility(View.GONE);
             }
@@ -236,7 +260,7 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
             e.printStackTrace();
             isSuccess=false;
         }
-
+        invalidateOptionsMenu();
         return isSuccess;
     }
 
@@ -259,6 +283,7 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
            alertToSaveNewDefaultAddress();
         else
            this.finish();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
     }
     public void alertToSaveNewDefaultAddress() {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -268,8 +293,8 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
                         saveChangedDefaultAddressOnServer();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
-                        Toast.makeText(ShowAddress.this, "No Clicked",
-                                Toast.LENGTH_LONG).show();
+                        /*Toast.makeText(ShowAddress.this, "No Clicked",
+                                Toast.LENGTH_LONG).show();*/
                         ShowAddress.this.finish();
                         break;
                 }
@@ -292,6 +317,11 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
         return bundle;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        checkToSaveDefaultAddressOnBack();
+    }
 }
 
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DoodhWala</string>
+    <string name="app_name">Doodhwala</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_add">Add</string>
@@ -14,9 +14,9 @@
     <string name="title_activity_profile">ProfileActivity</string>
 
     <string name="add_address">Press \"+\" to add address.</string>
-    <string name="ok_btn">OK</string>
-    <string name="cancel">cancel</string>
-    <string name="logout">logout</string>
+    <string name="ok_btn">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="logout">Logout</string>
     <string name="logout_message">We\'re not good with break-ups! Are you sure you want to logout?</string>
     <string name="logout_title">Logout?</string>
     <string name="confirm_signin">An account already exists with this e-mail.</string>
@@ -25,6 +25,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_up">Sigh up</string>
     <string name="addresses">Addresses</string>
+    <string name="add_addresses">Add Address</string>
     <string name="order_history">Order History</string>
     <string name="filters">Filters</string>
     <string name="save">Save</string>
@@ -128,7 +129,7 @@
     <string-array name="FreqName">
         <item>Everyday</item>
         <item>Three times a week</item>
-        <item>Four weeks</item>
+        <item>Four times a week</item>
     </string-array>
 
 </resources>

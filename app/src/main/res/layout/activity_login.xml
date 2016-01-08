@@ -67,8 +67,9 @@
             android:layout_gravity="center"
             android:background="@drawable/googleplus_bar_s"
             android:gravity="center_vertical"
-            android:visibility="gone"
+            android:visibility="visible"
             android:stateListAnimator="@anim/button_elevation"/>
+
     </LinearLayout>
 
     <LinearLayout

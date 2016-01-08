@@ -211,28 +211,28 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                 productReco = jsonObjectProduct.getString("recommended_for");
 
                 //INITIALIZE PRODUCT  ATTRIBUTE
-                /*JSONObject jsonObjectProductAttribute=new JSONObject(jsonObjectProduct.getString("product_attributes"));
-                CUtils.printLog("attributes",jsonObjectProductAttribute.toString(), ConstantVariables.LOG_TYPE.ERROR);
-               *//* if (jsonObjectProductAttribute.getString("result").equalsIgnoreCase("true"))*//*
-                if (jsonObjectProductAttribute.getBoolean("result"))
+                JSONObject jsonObjectProductStickers=new JSONObject(jsonObjectProduct.getString("product_stickers"));
+                CUtils.printLog("attributes",jsonObjectProductStickers.toString(), ConstantVariables.LOG_TYPE.ERROR);
+               //* if (jsonObjectProductAttribute.getString("result").equalsIgnoreCase("true"))*//*
+                if (jsonObjectProductStickers.getBoolean("result"))
                 {
-                    JSONArray jsonArrayAttributes=new JSONArray(jsonObjectProductAttribute.getString("attributes"));
+                    JSONArray jsonArrayStickers=new JSONArray(jsonObjectProductStickers.getString("stickers"));
 
-                    if(jsonArrayAttributes!=null)
+                    if(jsonArrayStickers!=null)
                     {
                         bucketAttribute.clear();
                         BeanProductAttribute beanProductAttribute=null;
-                        int attributeSize=jsonArrayAttributes.length();
+                        int attributeSize=jsonArrayStickers.length();
                         JSONObject obj=null;
                         for(int index=0;index<attributeSize;index++)
                         {
-                            obj=jsonArrayAttributes.getJSONObject(index);
+                            obj=jsonArrayStickers.getJSONObject(index);
                             if(obj!=null)
                             {
                                 beanProductAttribute=new BeanProductAttribute();
-                                beanProductAttribute.setAttributeImage(obj.getString("image"));
-                                beanProductAttribute.setAttributeName(obj.getString("attribute_name"));
-                                beanProductAttribute.setAttributeType(obj.getString("attribute_type"));
+                                beanProductAttribute.setAttributeImage(obj.getString("sticker_image"));
+                                //beanProductAttribute.setAttributeName(obj.getString("attribute_name"));
+                                //beanProductAttribute.setAttributeType(obj.getString("attribute_type"));
                                 bucketAttribute.add(beanProductAttribute);
                             }
 
@@ -241,7 +241,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                     }
 
 
-                }*/
+                }
                     //INITIALIZE PACKAGING AND
                 JSONArray jsonArrayOptions=new JSONArray(jsonObjectProduct.getString("options"));
                 //CUtils.printLog("BIJEMDRA", jsonArrayOptions.toString(), ConstantVariables.LOG_TYPE.ERROR);

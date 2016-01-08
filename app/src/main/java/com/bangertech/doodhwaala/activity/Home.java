@@ -95,6 +95,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         // setSupportActionBar(mToolbar);
         mToolbar.setTitle("");
+        mToolbar.setPadding(0, CUtils.getStatusBarHeight(Home.this), 0, 0);
         //mToolbar.setMinimumHeight(CUtils.getStatusBarHeight(Home.this));
         mToolbar.setVisibility(View.GONE);
 

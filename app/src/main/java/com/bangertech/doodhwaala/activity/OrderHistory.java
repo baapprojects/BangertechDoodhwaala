@@ -51,6 +51,7 @@ public class OrderHistory extends AppCompatActivity implements AsyncResponse {
         tvBalance = (TextView) findViewById(R.id.tvBalance);
         app_bar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(app_bar);
+        //app_bar.setPadding(0, CUtils.getStatusBarHeight(OrderHistory.this), 0, 0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.order_history));
        // getSupportActionBar().setDisplayShowTitleEnabled(false);

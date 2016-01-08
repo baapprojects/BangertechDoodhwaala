@@ -107,12 +107,13 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
                         if(!TextUtils.isEmpty(selectedFilter))
                         {
                             Intent output = new Intent();
-                            output.putExtra(ConstantVariables.SELECTED_FILTER_KEY,selectedFilter);
+                            output.putExtra(ConstantVariables.SELECTED_FILTER_KEY, selectedFilter);
                             setResult(RESULT_OK, output);
                         }
                 else
                             setResult(RESULT_CANCELED);
                 FilterProduct.this.finish();
+                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
             }
         });

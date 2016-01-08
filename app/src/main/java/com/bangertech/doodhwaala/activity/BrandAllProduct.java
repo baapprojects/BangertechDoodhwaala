@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.utils.CUtils;
 
 /**
  * Created by annutech on 9/23/2015.
@@ -19,6 +20,7 @@ public class BrandAllProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brand_allproduct);
         app_bar = (Toolbar) findViewById(R.id.app_bar);
+        //app_bar.setPadding(0, CUtils.getStatusBarHeight(BrandAllProduct.this), 0, 0);
         setSupportActionBar(app_bar);
        
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

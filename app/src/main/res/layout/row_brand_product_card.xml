@@ -27,7 +27,6 @@
         android:id="@+id/imageViewProduct"
         android:layout_width="@dimen/image_width_in_list"
         android:layout_height="@dimen/image_height_in_list"
-        android:src="@drawable/nandini"
         />
 
     <TextView
@@ -38,7 +37,8 @@
         android:gravity="center_horizontal"
         android:textSize="12sp"
         android:textColor="@color/grey_product_name_color"
-        />
+        android:maxLines="1"
+        android:ellipsize="end"/>
     <TextView
         android:id="@+id/textViewProductPrice"
         android:layout_width="100dp"

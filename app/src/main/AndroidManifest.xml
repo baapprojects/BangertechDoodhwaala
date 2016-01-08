@@ -46,27 +46,36 @@
         <activity
             android:name=".activity.SignupActivity"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/MyRadioButtonThemeB"/>
+
         <activity
             android:name=".activity.SigninActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialThemeB" />
+            android:theme="@style/MyRadioButtonThemeB"/>
 
         <activity
             android:name=".activity.PrivatePolicy"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/MyRadioButtonThemeB"/>
 
         <activity
             android:name=".activity.TutorialScreens"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialThemeB"/>
 
         <activity
             android:name=".activity.SearchActivity"
-            android:screenOrientation="portrait" >
-        <!--<intent-filter>
-            <action android:name="android.intent.action.SEARCH" />
-        </intent-filter>-->
+            android:screenOrientation="portrait"
+            android:theme="@style/MyRadioButtonThemeB">
         </activity>
+
+        <activity
+            android:name=".activity.CheckoutConfirmation"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.CancelConfirmation"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".activity.MainActivity"
@@ -95,43 +104,44 @@
         <activity
             android:name=".activity.ShowAddress"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/MyRadioButtonThemeB"/>
         <activity
             android:name=".activity.Home"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
-            android:theme="@style/MyMaterialThemeB"/>
+            android:theme="@style/MyRadioButtonThemeB"/>
         <activity
             android:name=".activity.AddEditAddress"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/MyMaterialTheme.BaseB"/>
         <activity
             android:name=".activity.OrderHistory"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/MyRadioButtonThemeB"/>
         <activity
             android:name=".activity.FilterProduct"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/MyRadioButtonThemeB"/>
         <activity
             android:name=".activity.BrandAllProduct"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/MyRadioButtonThemeB"/>
         <activity
             android:name=".activity.FilteresAppliedByTagsAndProducts"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/MyMaterialTheme.BaseB"/>
         <activity
             android:name=".activity.FiltersAppliedByFilterProduct"
             android:screenOrientation="portrait"
-            />
-        <activity
-            android:name=".activity.ProductDetail"
-            android:screenOrientation="portrait"
             android:theme="@style/MyRadioButtonThemeB"/>
         <activity
-            android:name=".activity.ShowQuantity"
+            android:name=".activity.ProductDetail"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ShowQuantity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyRadioButtonThemeB"/>
         <activity
             android:name=".activity.ShowFrequency"
             android:screenOrientation="portrait"
@@ -147,7 +157,7 @@
         <activity
             android:name=".activity.EditMyPlan"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/MyRadioButtonThemeB"/>
 
     </application>
 

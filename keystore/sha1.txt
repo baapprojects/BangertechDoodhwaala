@@ -1,0 +1,34 @@
+Alias name: Doodhwala
+Creation date: Jan 6, 2016
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: CN=BangerTech Doodhwala, OU=Mobile Development, O=BangerTech, L=Bangalore
+, ST=Karnataka, C=IN
+Issuer: CN=BangerTech Doodhwala, OU=Mobile Development, O=BangerTech, L=Bangalor
+e, ST=Karnataka, C=IN
+Serial number: 2d58b9bc
+Valid from: Wed Jan 06 12:21:46 IST 2016 until: Sun Dec 30 12:21:46 IST 2040
+Certificate fingerprints:
+         MD5:  59:F4:41:A1:F9:5B:05:82:9E:8E:4C:DD:55:FB:6B:E5
+         SHA1: FD:08:39:D6:F3:5C:0E:A3:C9:2B:CE:A4:4A:35:7B:74:7A:6C:6C:D5
+         SHA256: C9:05:DF:D2:70:4D:D0:8F:2A:97:E1:9B:0C:87:D5:EE:2D:3C:EF:77:3A:
+A1:A4:72:93:51:BA:62:9A:FC:0A:81
+         Signature algorithm name: SHA256withRSA
+         Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: A6 40 1E BB 43 65 88 5B   11 99 85 67 55 D1 B4 8A  .@..Ce.[...gU...
+0010: D8 EA 95 CB                                        ....
+]
+]
+
+
+C:\Program Files\Java\jdk1.8.0_65\bin>
+
+
+

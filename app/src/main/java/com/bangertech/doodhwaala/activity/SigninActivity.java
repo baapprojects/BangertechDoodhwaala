@@ -82,7 +82,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-       // toolbar.setPadding(0, CUtils.getStatusBarHeight(SigninActivity.this), 0, 0);
+        //toolbar.setPadding(0, CUtils.getStatusBarHeight(SigninActivity.this), 0, 0);
         getSupportActionBar().setTitle("Sign in");
         btn_save = (Button) findViewById(R.id.btn_save);
 

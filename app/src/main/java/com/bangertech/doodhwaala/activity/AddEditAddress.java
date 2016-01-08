@@ -1,6 +1,7 @@
 package com.bangertech.doodhwaala.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -59,8 +60,8 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
     @TextRule(order = 2, minLength = 2, message = "Enter valid Building name with minimum 2 chars")
     private EditText editTextBuilding;
 
-    @Required(order = 3)
-    @TextRule(order = 4, minLength = 2, message = "Enter valid Street name with minimum 2 chars")
+    /*@Required(order = 3)
+    @TextRule(order = 4, minLength = 2, message = "Enter valid Street name with minimum 2 chars")*/
     private EditText editTextStreet;
 
     /*@Required(order = 8)
@@ -79,6 +80,7 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
     private String address_id="";
     private int localityIndex=0;
     private Validator validator;
+    private String previousValue = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +103,8 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
         setSupportActionBar(app_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_cancel);
-        getSupportActionBar().setTitle(R.string.addresses);
+        getSupportActionBar().setTitle(R.string.add_addresses);
+        //app_bar.setPadding(0, CUtils.getStatusBarHeight(AddEditAddress.this), 0, 0);
 
         ((Button) app_bar.findViewById(R.id.butSave)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +134,10 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
           //  CUtils.printLog("ADD_ADDRESS",getIntent().getExtras().toString(), ConstantVariables.LOG_TYPE.ERROR);
         if(!isNewAddress)
             address_id=getIntent().getExtras().getString("ADDRESS_ID");
+
+        if(getIntent().getStringExtra(ConstantVariables.SELECTED_USER_PLAN_KEY)!=null) {
+            previousValue=getIntent().getStringExtra(ConstantVariables.SELECTED_USER_PLAN_KEY);
+        }
 
         fetchCitiesAndLocalities();
 
@@ -199,10 +206,10 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
             editTextBuilding.setError(getString(R.string.please_enter_building_or_society_name));
             isValid=false;
         }
-        if(TextUtils.isEmpty(editTextStreet.getText().toString())) {
+        /*if(TextUtils.isEmpty(editTextStreet.getText().toString())) {
             editTextStreet.setError(getString(R.string.please_enter_street_details));
             isValid=false;
-        }
+        }*/
         /*if(TextUtils.isEmpty(editTextLandmark.getText().toString())) {
             editTextLandmark.setError(getString(R.string.please_enter_landmarks));
             isValid=false;
@@ -313,9 +320,20 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
                             Toast.makeText(AddEditAddress.this, getString(R.string.new_address_added_successfully), Toast.LENGTH_SHORT).show();
                         else
                             Toast.makeText(AddEditAddress.this, getString(R.string.address_updated_successfully), Toast.LENGTH_SHORT).show();
-
-                        setResult(RESULT_OK);
-                        AddEditAddress.this.finish();
+                        if(getIntent().getStringExtra("first_address")!=null) {
+                            setResult(RESULT_OK);
+                            if(previousValue!=null) {
+                                JSONObject obj = new JSONObject(previousValue);
+                                startActivity(new Intent(AddEditAddress.this, ShowConfirmation.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
+                                overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+                                finish();
+                            } else {
+                                Toast.makeText(AddEditAddress.this, "null", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            setResult(RESULT_OK);
+                            AddEditAddress.this.finish();
+                        }
                     } else
                         Toast.makeText(AddEditAddress.this, object.getString("msg"), Toast.LENGTH_SHORT).show();
 

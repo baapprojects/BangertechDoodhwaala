@@ -4,15 +4,6 @@
     android:background="@color/white"
     android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/globalNoResults"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="No Results Found"
-            android:layout_centerInParent="true"
-            android:visibility="gone"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -28,7 +19,7 @@
             android:layout_weight=".2"
             android:layout_gravity="left"
             android:src="@drawable/ic_cross_black"
-            />
+            android:background="?attr/selectableItemBackgroundBorderless"/>
         <HorizontalScrollView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,6 +41,15 @@
         android:layout_height="1dp"
         android:background="@color/gray"
         />
+
+    <TextView
+        android:id="@+id/globalNoResults"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="No Results Found."
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 
     <GridView
         android:id="@+id/gridFilteredTagList"
@@ -88,10 +88,11 @@
             android:columnWidth="70dp"
             android:stretchMode="columnWidth"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:scrollbars="vertical"
             android:background="@color/white"
-            android:verticalSpacing="10dp"
+            android:verticalSpacing="30dp"
+            android:horizontalSpacing="10dp"
             />
 
         <TextView

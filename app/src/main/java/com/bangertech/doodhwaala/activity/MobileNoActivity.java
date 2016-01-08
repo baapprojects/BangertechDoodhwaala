@@ -107,6 +107,7 @@ public class MobileNoActivity extends AppCompatActivity implements View.OnClickL
                 try {
                     JSONObject jsonObject = new JSONObject(output);
                     if (jsonObject.getBoolean("result")) {
+                        PreferenceManager.getInstance().setUserId(user_id);
                         Intent mainIntent = new Intent(mContext, Home.class);
                         mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mainIntent);

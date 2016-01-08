@@ -51,7 +51,7 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), OrderHistory.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-
+                getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             }
         });
         ((RelativeLayout) mRootView.findViewById(R.id.rlSupport)).setOnClickListener(new View.OnClickListener() {

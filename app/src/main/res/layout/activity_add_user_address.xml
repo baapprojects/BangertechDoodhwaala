@@ -18,8 +18,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp"
-
-        android:nestedScrollingEnabled="true">
+        android:scrollbars="vertical"
+        android:fitsSystemWindows="true">
 
         <Spinner
             android:id="@+id/spCity"

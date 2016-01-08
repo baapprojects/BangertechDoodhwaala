@@ -69,7 +69,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     private General general;
     private double  paidAmount;
 
-    private ImageView ivConfirmationScreen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +91,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
         txtViewDuration=(TextView)findViewById(R.id.txtViewDuration);
         txtViewDurationPrice=(TextView)findViewById(R.id.txtViewDurationPrice);
         txtViewAddress=(TextView)findViewById(R.id.txtViewAddress);
-        ivConfirmationScreen = (ImageView) findViewById(R.id.ivConfirmationScreen);
+
 
         validator = new Validator(this);
         validator.setValidationListener(this);
@@ -186,14 +186,10 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
                 JSONObject jsonObject = new JSONObject(addressList);
                 if (jsonObject.getBoolean("result")) {
                     //CUtils.showUserMessage(ShowConfirmation.this, "Thanks for subscription");
-                    ivConfirmationScreen.setVisibility(View.VISIBLE);
-                    ivConfirmationScreen.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            startActivity(new Intent(ShowConfirmation.this, Home.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
-                        }
-                    });
+
+                    startActivity(new Intent(ShowConfirmation.this, CheckoutConfirmation.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+
 
                 } else {
                     DialogManager.showDialog(ShowConfirmation.this, "Sorry your order not placed! Try Again!");
@@ -413,9 +409,10 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
                     ((Button) findViewById(R.id.butPayWithCash)).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if (txtViewAddress.getText().toString().equals(getString(R.string.deliver_at_default)))
+                            if (txtViewAddress.getText().toString().equals(getString(R.string.deliver_at_default))) {
                                 DialogManager.showDialog(ShowConfirmation.this, "Address not found. Please set your address by clicking EDIT and then checkout.");
                                 //CUtils.showUserMessage(getApplicationContext(), "Please select your address to checkout.");
+                            }
                             else {
                                 insertUserPlanOnsServer(String.valueOf(paidAmount), listPrice, discountPrice, coupon_applied, coupon_id, product_price);
                             }

@@ -5,13 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/ivConfirmationScreen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/confirmation"
-        android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -167,7 +160,6 @@
         android:id="@+id/imageViewProduct"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/nandini"
         android:layout_gravity="center"
         android:layout_margin="10dp" />
 

@@ -49,7 +49,7 @@ public class PrivatePolicy extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //toolbar.setPadding(0, CUtils.getStatusBarHeight(PrivatePolicy.this), 0, 0);
+       // toolbar.setPadding(0, CUtils.getStatusBarHeight(PrivatePolicy.this), 0, 0);
         getSupportActionBar().setTitle(data);
 
         webView = (WebView) findViewById(R.id.webView1);

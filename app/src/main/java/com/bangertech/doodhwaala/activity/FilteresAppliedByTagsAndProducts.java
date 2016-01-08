@@ -181,9 +181,8 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
         if(from.equalsIgnoreCase("fetchTagsandProducts")) {
             parseAndFormateFilteredTagList(output);
         }
-
-
     }
+
     private boolean parseAndFormateFilteredTagList(String productTypeList)
     {
         boolean isSuccess=true;
