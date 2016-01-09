@@ -127,9 +127,12 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
                             CGlobal.getCGlobalObject().setAddressId(listAddress.get(newSelectedAddressIndex).getAddressId());
                             setResult(RESULT_OK);
                             this.finish();
+                            overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
 
-                        } else
+                        } else {
                             this.finish();
+                            overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+                        }
 
 
                     } else
@@ -279,11 +282,13 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
 
     private void checkToSaveDefaultAddressOnBack()
     {
-       if(selectedAddressIndex!=newSelectedAddressIndex)
+       if(selectedAddressIndex!=newSelectedAddressIndex) {
            alertToSaveNewDefaultAddress();
-        else
+       }
+        else {
            this.finish();
-        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+           overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+       }
     }
     public void alertToSaveNewDefaultAddress() {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -296,6 +301,7 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
                         /*Toast.makeText(ShowAddress.this, "No Clicked",
                                 Toast.LENGTH_LONG).show();*/
                         ShowAddress.this.finish();
+                        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
                         break;
                 }
             }

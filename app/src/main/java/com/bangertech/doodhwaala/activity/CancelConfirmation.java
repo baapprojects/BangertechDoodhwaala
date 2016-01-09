@@ -35,4 +35,5 @@ public class CancelConfirmation extends AppCompatActivity {
         startActivity(new Intent(CancelConfirmation.this, Home.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
     }
+
 }

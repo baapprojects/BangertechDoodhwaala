@@ -71,4 +71,10 @@ public class TutorialScreens extends AppCompatActivity implements ViewPager.OnPa
 
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        super.onBackPressed();
+    }
 }

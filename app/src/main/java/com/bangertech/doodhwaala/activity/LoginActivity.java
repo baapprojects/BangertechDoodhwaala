@@ -1007,6 +1007,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onStop();
         FlurryAgent.onEndSession(mContext);
     }*/
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        super.onBackPressed();
+    }
 }
 
 

@@ -120,12 +120,22 @@
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="0dp">
+
+        <TextView
+            android:id="@+id/tvi_no_order"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="No delivery for this date."
+            android:gravity="center"
+            android:visibility="gone"/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/my_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:scrollbars="vertical"
+            android:visibility="visible"
             android:background="@color/white"/>
 
     </FrameLayout>

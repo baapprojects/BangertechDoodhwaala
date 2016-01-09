@@ -74,6 +74,7 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
     private Calendar calendar;
     private ImageView myMilkPauseTutorial, myMilkQuantityTutorial, myMilkResumeTutorial;
     private ImageView myMilkPending;
+    private TextView tvi_no_order;
     public static MyMilkFragment newInstance() {
         return new MyMilkFragment();
     }
@@ -104,6 +105,7 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view =inflater.inflate(R.layout.fragment_my_milk, container, false);
+        tvi_no_order = (TextView) view.findViewById(R.id.tvi_no_order);
         myMilkPending = (ImageView) view.findViewById(R.id.myMilkPending);
         myMilkPauseTutorial = (ImageView) view.findViewById(R.id.myMilkPauseTutorial);
         myMilkQuantityTutorial = (ImageView) view.findViewById(R.id.myMilkQuantityTutorial);
@@ -169,57 +171,69 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
             try {
                 JSONObject jsonObject = new JSONObject(output);
                 if (jsonObject.getBoolean("result")) {
-                    JSONArray jsonArrayProducts = new JSONArray(jsonObject.getString("products"));
                     isTomorrow = jsonObject.getBoolean("tomorrow");
                     isPreviousDate = jsonObject.getBoolean("previous_date");
                     isNextDate = jsonObject.getBoolean("next_date");
                     date_string = jsonObject.getString("date_string");
                     plan_date = jsonObject.getString("date");
-                    showChangeOrPausePlan = isShowChangeOrPausePlan();
-
-                    if(jsonObject.getBoolean("all_pending")) {
-                        myMilkPending.setVisibility(View.VISIBLE);
+                    if(jsonObject.getBoolean("no_plan_for_date")) {
+                        textViewDate.setText(date_string);
+                        tvi_no_order.setVisibility(View.VISIBLE);
+                        mRecyclerView.setVisibility(View.GONE);
                         Home.pager.setCurrentItem(1);
-
+                        showDateLabelHeading();
                     } else {
+                        tvi_no_order.setVisibility(View.GONE);
+                        mRecyclerView.setVisibility(View.VISIBLE);
+                        JSONArray jsonArrayProducts = new JSONArray(jsonObject.getString("products"));
+
+                        showChangeOrPausePlan = isShowChangeOrPausePlan();
                         myMilkPending.setVisibility(View.GONE);
                         if (!PreferenceManager.getInstance().getMyMilkTutorial()) {
                             pauseTutorial();
                         }
+                        if (jsonObject.getBoolean("all_pending")) {
+                            myMilkPending.setVisibility(View.VISIBLE);
+                            Home.pager.setCurrentItem(1);
 
-                        int size = jsonArrayProducts.length();
-                        if (size > 0) {
-                            JSONObject jsonObjectProduct = null;
+                        } else {
 
-                            for (int index = 0; index < size; index++) {
-                                jsonObjectProduct = jsonArrayProducts.getJSONObject(index);
 
-                                if (jsonObjectProduct != null) {
-                                    beanDayPlan = new BeanDayPlan();
-                                    if (jsonObjectProduct.getString("paused").equals(flagPause)) {
-                                        beanDayPlan.setFlagPaused("");
-                                    } else {
-                                        beanDayPlan.setFlagPaused(jsonObjectProduct.getString("paused"));
+                            int size = jsonArrayProducts.length();
+                            if (size > 0) {
+                                JSONObject jsonObjectProduct = null;
+
+                                for (int index = 0; index < size; index++) {
+                                    jsonObjectProduct = jsonArrayProducts.getJSONObject(index);
+
+                                    if (jsonObjectProduct != null) {
+                                        beanDayPlan = new BeanDayPlan();
+                                        if (jsonObjectProduct.getString("paused").equals(flagPause)) {
+                                            beanDayPlan.setFlagPaused("");
+                                        } else {
+                                            beanDayPlan.setFlagPaused(jsonObjectProduct.getString("paused"));
+                                        }
+                                        beanDayPlan.setPlanId(jsonObjectProduct.getString("plan_id"));
+                                        beanDayPlan.setProductName(jsonObjectProduct.getString("product_name"));
+                                        beanDayPlan.setQuantity(jsonObjectProduct.getString("quantity"));
+                                        beanDayPlan.setImage(jsonObjectProduct.getString("image"));
+                                        beanDayPlan.setPaused(jsonObjectProduct.getBoolean("paused"));
+                                        beanDayPlan.setDateId(jsonObjectProduct.getString("date_id"));
+                                        beanDayPlan.setFrequencyId(jsonObjectProduct.getString("frequency_id"));
+                                        beanDayPlan.setDateAvailable(jsonObjectProduct.getBoolean("date_assigned"));
+                                        beanDayPlan.setShowChangeOrPausePlan(showChangeOrPausePlan);
+                                        flagPause = jsonObjectProduct.getString("paused");
+                                        lstDayPlan.add(beanDayPlan);
                                     }
-                                    beanDayPlan.setPlanId(jsonObjectProduct.getString("plan_id"));
-                                    beanDayPlan.setProductName(jsonObjectProduct.getString("product_name"));
-                                    beanDayPlan.setQuantity(jsonObjectProduct.getString("quantity"));
-                                    beanDayPlan.setImage(jsonObjectProduct.getString("image"));
-                                    beanDayPlan.setPaused(jsonObjectProduct.getBoolean("paused"));
-                                    beanDayPlan.setDateId(jsonObjectProduct.getString("date_id"));
-                                    beanDayPlan.setFrequencyId(jsonObjectProduct.getString("frequency_id"));
-                                    beanDayPlan.setDateAvailable(jsonObjectProduct.getBoolean("date_assigned"));
-                                    beanDayPlan.setShowChangeOrPausePlan(showChangeOrPausePlan);
-                                    flagPause = jsonObjectProduct.getString("paused");
-                                    lstDayPlan.add(beanDayPlan);
                                 }
                             }
+                            Home.pager.setCurrentItem(1);
                         }
-                        Home.pager.setCurrentItem(1);
                     }
 
                 } else {
                     Home.pager.setCurrentItem(0);
+                    textViewDayHeading.setText("No Orders Placed");
                 }
                 //CUtils.showUserMessage(getActivity(), jsonObject.getString("msg"));
             } catch (Exception e) {
@@ -298,7 +312,7 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
 
                 if(todayCal.equals(calPlanDate)) {
                     textViewDayHeading.setVisibility(View.VISIBLE);
-                    textViewDayHeading.setText(""+getActivity().getResources().getString(R.string.today));
+                    //textViewDayHeading.setText(""+getActivity().getResources().getString(R.string.today));
                 }
                 else {
                     if (todayCal.after(calPlanDate)) {
@@ -307,7 +321,7 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                     }
                     else {
                         textViewDayHeading.setVisibility(View.GONE);
-                        textViewDayHeading.setText(""+getActivity().getResources().getString(R.string.next_day));
+                        //textViewDayHeading.setText(""+getActivity().getResources().getString(R.string.next_day));
                         if(isNextDate){
                             imageViewPrevious.setVisibility(View.VISIBLE);
                             imageViewNext.setVisibility(View.VISIBLE);
@@ -353,7 +367,10 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
                         // saveChangedDefaultAddressOnServer();
-                        ((Home)getActivity()).updatePauseOrResumePlanOnServer(lstDayPlan.get(index),index);
+                        ((Home)getActivity()).updatePauseOrResumePlanOnServer(lstDayPlan.get(index), index);
+                        if(!PreferenceManager.getInstance().getMyMilkResumeTutorial()) {
+                            resumeTutorial();
+                        }
                        // setPauseOrResumePlan(index);
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
@@ -366,9 +383,9 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(beanDayPlan.isPaused()?getResources().getString(R.string.do_you_want_to_resume_the_plan):
-                getResources().getString(R.string.do_you_want_to_pause_the_plan))
-                .setPositiveButton("Yes", dialogClickListener)
+        builder.setMessage(beanDayPlan.isPaused()?getResources().getString(R.string.do_you_want_to_resume_the_plan)+" from "+date_string+"?":
+                getResources().getString(R.string.do_you_want_to_pause_the_plan)+" from "+date_string+"?")
+        .setPositiveButton("Yes", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
     }
 
@@ -380,7 +397,6 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
     public void pauseTutorial() {
         myMilkPauseTutorial.setVisibility(View.VISIBLE);
         myMilkQuantityTutorial.setVisibility(View.GONE);
-        myMilkResumeTutorial.setVisibility(View.GONE);
 
         myMilkPauseTutorial.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -393,27 +409,24 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
     public void quantityTutorial() {
         myMilkPauseTutorial.setVisibility(View.GONE);
         myMilkQuantityTutorial.setVisibility(View.VISIBLE);
-        myMilkResumeTutorial.setVisibility(View.GONE);
 
         myMilkQuantityTutorial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resumeTutorial();
-            }
-        });
-    }
-
-    public void resumeTutorial() {
-        myMilkPauseTutorial.setVisibility(View.GONE);
-        myMilkQuantityTutorial.setVisibility(View.GONE);
-        myMilkResumeTutorial.setVisibility(View.VISIBLE);
-
-        myMilkResumeTutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PreferenceManager.getInstance().setMyMilkTutorial(true);
                 myMilkPauseTutorial.setVisibility(View.GONE);
                 myMilkQuantityTutorial.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    public void resumeTutorial() {
+        myMilkResumeTutorial.setVisibility(View.VISIBLE);
+
+        myMilkResumeTutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PreferenceManager.getInstance().setMyMilkResumeTutorial(true);
                 myMilkResumeTutorial.setVisibility(View.GONE);
             }
         });

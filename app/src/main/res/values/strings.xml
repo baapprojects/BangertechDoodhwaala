@@ -26,6 +26,7 @@
     <string name="sign_up">Sigh up</string>
     <string name="addresses">Addresses</string>
     <string name="add_addresses">Add Address</string>
+    <string name="edit_addresses">Edit Address</string>
     <string name="order_history">Order History</string>
     <string name="filters">Filters</string>
     <string name="save">Save</string>
@@ -47,13 +48,13 @@
     <string name="deliver_at">Deliver at:</string>
     <string name="deliver_at_default">Deliver at: Add your delivery address</string>
     <string name="edit">Edit</string>
-    <string name="tomorrow">Order for Tomorrow</string>
+    <string name="tomorrow">Deliveries for Tomorrow</string>
     <string name="today">Today</string>
     <string name="order_history_balance">Balance: </string>
     <string name="previous_day">Previous Day</string>
     <string name="next_day">Next Day</string>
-    <string name="do_you_want_to_pause_the_plan">Do you want to pause the plan ?</string>
-    <string name="do_you_want_to_resume_the_plan">Do you want to resume the plan ?</string>
+    <string name="do_you_want_to_pause_the_plan">Do you want to pause the plan</string>
+    <string name="do_you_want_to_resume_the_plan">Do you want to resume the plan</string>
     <string name="pause">Pause</string>
     <string name="active">Active</string>
     <string name="resume">Resume</string>

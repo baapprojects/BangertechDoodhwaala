@@ -1,8 +1,10 @@
 package com.bangertech.doodhwaala.activity;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -24,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bangertech.doodhwaala.adapter.ViewPagerAdapter;
+import com.bangertech.doodhwaala.application.DoodhwaalaApplication;
 import com.bangertech.doodhwaala.beans.BeanBrand;
 import com.bangertech.doodhwaala.beans.BeanDayPlan;
 import com.bangertech.doodhwaala.beans.BeanProduct;
@@ -33,6 +36,7 @@ import com.bangertech.doodhwaala.customcontrols.SlidingTabLayout;
 import com.bangertech.doodhwaala.fragment.MeFragment;
 import com.bangertech.doodhwaala.fragment.MilkbarFragment;
 import com.bangertech.doodhwaala.fragment.MyMilkFragment;
+import com.bangertech.doodhwaala.gcm.GcmIntentService;
 import com.bangertech.doodhwaala.general.General;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.DialogManager;
@@ -255,7 +259,13 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     @Override
     protected void onResume() {
         super.onResume();
-        //fetchProductType();
+        Home.this.registerReceiver(mMessageReceiver, new IntentFilter("unique_name"));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Home.this.unregisterReceiver(mMessageReceiver);
     }
 
     @Override
@@ -587,5 +597,15 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         myAsyncTask.execute();
     }
 
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
 
+            // Extract data included in the Intent
+            String message = intent.getStringExtra("message");
+
+            //do other stuff here
+            fetchProductType();
+        }
+    };
 }

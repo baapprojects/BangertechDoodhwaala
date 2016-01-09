@@ -74,6 +74,14 @@ public class PreferenceManager {
         DoodhwaalaApplication.getSharedPreferences().edit().putBoolean(AppConstants.TUT_MYMILK, flag).commit();
     }
 
+    public boolean getMyMilkResumeTutorial() {
+        return DoodhwaalaApplication.getSharedPreferences().getBoolean(AppConstants.TUT_RESUME_MYMILK, false);
+    }
+
+    public void setMyMilkResumeTutorial(boolean flag){
+        DoodhwaalaApplication.getSharedPreferences().edit().putBoolean(AppConstants.TUT_RESUME_MYMILK, flag).commit();
+    }
+
     public int getProductFilterPosition() {
         return DoodhwaalaApplication.getSharedPreferences().getInt(AppConstants.PRODUCT_FILTER_POSITION, -1);
     }

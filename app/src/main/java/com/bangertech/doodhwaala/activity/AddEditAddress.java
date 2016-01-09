@@ -82,6 +82,9 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
     private Validator validator;
     private String previousValue = null;
 
+    String euro = "\u20ac";
+    String pound = "\u00a3";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,7 +106,7 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
         setSupportActionBar(app_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_cancel);
-        getSupportActionBar().setTitle(R.string.add_addresses);
+
         //app_bar.setPadding(0, CUtils.getStatusBarHeight(AddEditAddress.this), 0, 0);
 
         ((Button) app_bar.findViewById(R.id.butSave)).setOnClickListener(new View.OnClickListener() {
@@ -132,8 +135,12 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
         bucketLocality.clear();
         isNewAddress=getIntent().getExtras().getBoolean("ADD_ADDRESS");
           //  CUtils.printLog("ADD_ADDRESS",getIntent().getExtras().toString(), ConstantVariables.LOG_TYPE.ERROR);
-        if(!isNewAddress)
-            address_id=getIntent().getExtras().getString("ADDRESS_ID");
+        if(!isNewAddress) {
+            address_id = getIntent().getExtras().getString("ADDRESS_ID");
+            getSupportActionBar().setTitle(R.string.edit_addresses);
+        } else {
+            getSupportActionBar().setTitle(R.string.add_addresses);
+        }
 
         if(getIntent().getStringExtra(ConstantVariables.SELECTED_USER_PLAN_KEY)!=null) {
             previousValue=getIntent().getStringExtra(ConstantVariables.SELECTED_USER_PLAN_KEY);
@@ -172,10 +179,10 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
                         "building_or_society_name","street_details","landmark","pincode"},
                 new String[]{"user", "addOrEditAddress",isNewAddress?"true":"false",address_id, PreferenceManager.getInstance().getUserId(),
                         bucketCityAndLocality.get(cityIndex).getCityId(),bucketLocality.get(localityIndex).getLocalityId(),
-                        editTextFlat.getText().toString(),
-                        editTextBuilding.getText().toString(),
-                        editTextStreet.getText().toString(),
-                        editTextLandmark.getText().toString(),
+                        editTextFlat.getText().toString().replaceAll("[^\\w\\s]", ""),
+                        editTextBuilding.getText().toString().replaceAll("[^\\w\\s]", ""),
+                        editTextStreet.getText().toString().replaceAll("[^\\w\\s]", ""),
+                        editTextLandmark.getText().toString().replaceAll("[^\\w\\s]", ""),
                         editTextPincode.getText().toString()});
         myAsyncTask.execute();
 
@@ -436,7 +443,8 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
 
     @Override
     public void onValidationSucceeded() {
-        if(editTextFlat.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
+        addEditCityOnServer();
+        /*if(editTextFlat.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
             if (editTextBuilding.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
 
                 if (editTextStreet.getText().toString().matches("^[a-zA-Z0-9_ ]*$")) {
@@ -445,20 +453,20 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
                         addEditCityOnServer();
                     } else {
                         editTextLandmark.requestFocus();
-                        editTextLandmark.setError("Enter alphanumeric chars only");
+                        editTextLandmark.setError("Enter alphabets and  numbers only");
                     }
                 } else {
                     editTextStreet.requestFocus();
-                    editTextStreet.setError("Enter alphanumeric chars only");
+                    editTextStreet.setError("Enter alphabets and  numbers only");
                 }
             } else {
                 editTextBuilding.requestFocus();
-                editTextBuilding.setError("Enter alphanumeric chars only");
+                editTextBuilding.setError("Enter alphabets and  numbers only");
             }
         } else {
             editTextFlat.requestFocus();
-            editTextFlat.setError("Enter alphanumeric chars only");
-        }
+            editTextFlat.setError("Enter alphabets and  numbers only");
+        }*/
 
 
     }
@@ -589,5 +597,10 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        super.onBackPressed();
+    }
 }

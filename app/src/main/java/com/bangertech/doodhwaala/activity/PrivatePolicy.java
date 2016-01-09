@@ -106,7 +106,7 @@ public class PrivatePolicy extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                    finish();
+                onBackPressed();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -117,6 +117,8 @@ public class PrivatePolicy extends AppCompatActivity {
        /* if(webView.canGoBack()) {
             webView.goBack();
         } */
+        finish();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
         super.onBackPressed();
     }
 }

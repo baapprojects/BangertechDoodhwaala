@@ -6,8 +6,14 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <permission android:name="com.bangertech.doodhwaala.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.bangertech.doodhwaala.permission.C2D_MESSAGE" />
 
+    <uses-permission
+        android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <application
         android:name=".application.DoodhwaalaApplication"
@@ -15,6 +21,21 @@
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
+        <receiver
+            android:name=".gcm.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.bangertech.doodhwaala" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".gcm.GcmIntentService" />
+
+
         <activity
             android:name=".activity.SplashScreen"
             android:label="@string/app_name"
@@ -46,17 +67,17 @@
         <activity
             android:name=".activity.SignupActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyRadioButtonThemeB"/>
+            android:theme="@style/MyMaterialThemeB"/>
 
         <activity
             android:name=".activity.SigninActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyRadioButtonThemeB"/>
+            android:theme="@style/MyMaterialThemeB"/>
 
         <activity
             android:name=".activity.PrivatePolicy"
             android:screenOrientation="portrait"
-            android:theme="@style/MyRadioButtonThemeB"/>
+            android:theme="@style/MyMaterialThemeB"/>
 
         <activity
             android:name=".activity.TutorialScreens"
@@ -66,7 +87,7 @@
         <activity
             android:name=".activity.SearchActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyRadioButtonThemeB">
+            android:theme="@style/MyMaterialThemeB">
         </activity>
 
         <activity
@@ -109,7 +130,7 @@
             android:name=".activity.Home"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
-            android:theme="@style/MyRadioButtonThemeB"/>
+            android:theme="@style/MyMaterialThemeB"/>
         <activity
             android:name=".activity.AddEditAddress"
             android:screenOrientation="portrait"
@@ -117,15 +138,15 @@
         <activity
             android:name=".activity.OrderHistory"
             android:screenOrientation="portrait"
-            android:theme="@style/MyRadioButtonThemeB"/>
+            android:theme="@style/MyMaterialThemeB"/>
         <activity
             android:name=".activity.FilterProduct"
             android:screenOrientation="portrait"
-            android:theme="@style/MyRadioButtonThemeB"/>
+            android:theme="@style/MyMaterialThemeB"/>
         <activity
             android:name=".activity.BrandAllProduct"
             android:screenOrientation="portrait"
-            android:theme="@style/MyRadioButtonThemeB"/>
+            android:theme="@style/MyMaterialThemeB"/>
         <activity
             android:name=".activity.FilteresAppliedByTagsAndProducts"
             android:screenOrientation="portrait"
@@ -133,7 +154,7 @@
         <activity
             android:name=".activity.FiltersAppliedByFilterProduct"
             android:screenOrientation="portrait"
-            android:theme="@style/MyRadioButtonThemeB"/>
+            android:theme="@style/MyMaterialThemeB"/>
         <activity
             android:name=".activity.ProductDetail"
             android:screenOrientation="portrait" />
@@ -157,7 +178,7 @@
         <activity
             android:name=".activity.EditMyPlan"
             android:screenOrientation="portrait"
-            android:theme="@style/MyRadioButtonThemeB"/>
+            android:theme="@style/MyMaterialThemeB"/>
 
     </application>
 

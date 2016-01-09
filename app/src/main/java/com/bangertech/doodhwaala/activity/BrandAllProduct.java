@@ -40,4 +40,11 @@ public class BrandAllProduct extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        super.onBackPressed();
+    }
 }

@@ -95,6 +95,7 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
                 startActivity(intent);
                 getActivity().finish();
+                getActivity().overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
                 Log.e("Bijendra", "Logout");
                 dialog.dismiss();
             }

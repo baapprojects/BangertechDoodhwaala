@@ -97,7 +97,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
         ic_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
 
@@ -699,6 +699,12 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                 this.image=this.image.replace("\\/","/");
         }
 
+    }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        super.onBackPressed();
     }
 }

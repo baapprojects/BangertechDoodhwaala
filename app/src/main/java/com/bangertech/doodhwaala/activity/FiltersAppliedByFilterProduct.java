@@ -173,7 +173,6 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
         switch (item.getItemId()) {
 
             case android.R.id.home:
-                PreferenceManager.getInstance().resetFilterPositions();
                 onBackPressed();
                 return true;
 
@@ -329,6 +328,8 @@ public class FiltersAppliedByFilterProduct extends AppCompatActivity implements 
 
     @Override
     public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
         PreferenceManager.getInstance().resetFilterPositions();
         super.onBackPressed();
     }

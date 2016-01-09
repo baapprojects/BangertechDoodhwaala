@@ -164,6 +164,10 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
         Spinner durationSpinner = (Spinner) findViewById(R.id.spduration);
         Spinner freqSpinner = (Spinner) findViewById(R.id.spfrequency);
         freqSpinner.setEnabled(false);
+        if(!frequency_id.equals("1")) {
+            qtySpinner.setEnabled(false);
+            durationSpinner.setEnabled(false);
+        }
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> qtyAdapter = ArrayAdapter.createFromResource(this,
@@ -423,4 +427,10 @@ public class EditMyPlan extends AppCompatActivity  implements AsyncResponse{
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        super.onBackPressed();
+    }
 }

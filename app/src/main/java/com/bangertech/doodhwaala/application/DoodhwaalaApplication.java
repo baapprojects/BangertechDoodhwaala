@@ -2,6 +2,7 @@ package com.bangertech.doodhwaala.application;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -80,6 +81,7 @@ public class DoodhwaalaApplication extends Application {
     public static synchronized DoodhwaalaApplication getInstance() {
         return mInstance;
     }
+
 
     @Override
     protected void attachBaseContext(Context base) {

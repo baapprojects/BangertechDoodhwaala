@@ -68,11 +68,11 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
                       beanDayPlan = this.lstDayPlan.get(position);
             holder.txtActiveOrPaused.setVisibility(View.GONE);
 
-            if(!lstDayPlan.get(position).getFrequencyId().equals("1")) {
+            /*if(!lstDayPlan.get(position).getFrequencyId().equals("1")) {
                 holder.ChangePlan.setEnabled(false);
             } else {
                 holder.ChangePlan.setEnabled(true);
-            }
+            }*/
 
             if(!TextUtils.isEmpty(lstDayPlan.get(position).getPlanId())) {
                 //fetchPlanDetailsFromServer(lstDayPlan.get(position).getPlanId());
@@ -148,8 +148,8 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
             } else {
                 holder.txtPaused.setVisibility(View.GONE);
                 holder.rlcounter.setVisibility(View.GONE);
-                holder.ChangePlan.setEnabled(false);
-                holder.PausePlan.setEnabled(false);
+                holder.ChangePlan.setEnabled(true);
+                holder.PausePlan.setEnabled(true);
                 holder.txtActiveOrPaused.setVisibility(View.VISIBLE);
             }
 

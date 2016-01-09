@@ -15,6 +15,9 @@ import android.util.Log;
 
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.activity.Home;
+import com.bangertech.doodhwaala.activity.LoginActivity;
+import com.bangertech.doodhwaala.activity.SplashScreen;
+import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 
@@ -64,6 +67,7 @@ public class GcmIntentService extends IntentService {
             if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) {
                 // Post notification of received message.
                 sendNotification(extras);
+                updateMyActivity(this, "unique_name");
                 Log.i(Tag, "Received: " + extras.toString());
             }
         }
@@ -83,19 +87,20 @@ public class GcmIntentService extends IntentService {
         mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, Home.class), 0);
+        /*contentIntent = PendingIntent.getActivity(this, 0,
+                new Intent(this, Home.class), 0);*/
 
-       /* if (login_adapter.toString().equals("[]"))
+
+        if (PreferenceManager.getInstance().getUserId()!=null)
         {
             contentIntent = PendingIntent.getActivity(this, 0,
-                    new Intent(this, UserFormActivity.class), 0);
+                    new Intent(this, Home.class), 0);
         }
         else
         {
             contentIntent = PendingIntent.getActivity(this, 0,
-                    new Intent(this, WelcomeActivity.class), 0);
-        }*/
+                    new Intent(this, LoginActivity.class), 0);
+        }
 
 
 
@@ -131,5 +136,16 @@ public class GcmIntentService extends IntentService {
                 .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE | Notification.DEFAULT_LIGHTS);
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+    }
+
+    public static void updateMyActivity(Context context, String message) {
+
+        Intent intent = new Intent("unique_name");
+
+        //put whatever data you want to send, if any
+        intent.putExtra("message", message);
+
+        //send broadcast
+        context.sendBroadcast(intent);
     }
 }

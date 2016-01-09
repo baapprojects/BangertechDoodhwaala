@@ -210,7 +210,6 @@ public class FilterProduct extends AppCompatActivity implements AsyncResponse {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                PreferenceManager.getInstance().resetFilterPositions();
                  onBackPressed();
                 return true;
 
@@ -570,6 +569,8 @@ private void parseChoosedFilterOption(String tag,boolean isChecked)
     @Override
     public void onBackPressed() {
         PreferenceManager.getInstance().resetFilterPositions();
+        finish();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
         super.onBackPressed();
     }
 }
