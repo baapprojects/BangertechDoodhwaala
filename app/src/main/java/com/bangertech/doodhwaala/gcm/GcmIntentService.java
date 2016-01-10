@@ -68,7 +68,12 @@ public class GcmIntentService extends IntentService {
                 // Post notification of received message.
                 sendNotification(extras);
                 updateMyActivity(this, "unique_name");
+                PreferenceManager.getInstance().setFlag(true);
+                /*Intent intent2 = new Intent(this, CheckService.class);
+                startService(intent2);*/
                 Log.i(Tag, "Received: " + extras.toString());
+            } else {
+                PreferenceManager.getInstance().setFlag(false);
             }
         }
         // Release the wake lock provided by the WakefulBroadcastReceiver.

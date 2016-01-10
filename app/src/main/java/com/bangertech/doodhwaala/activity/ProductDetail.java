@@ -1,6 +1,9 @@
 package com.bangertech.doodhwaala.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +25,7 @@ import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
+import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppUrlList;
 import com.bangertech.doodhwaala.utils.CUtils;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
@@ -53,6 +57,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
     private BeanPackagingAndQty  beanPackagingAndQtyDefault;
     private TextView txtViewPackaging, txtViewtitle, tviCurrency;
     private ImageView ic_close;
+    private Home refreshHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +75,8 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
         ic_close = (ImageView) findViewById(R.id.ic_close);
         txtViewtitleTwo = (TextView) findViewById(R.id.txtViewtitleTwo);
         txtViewRecoDesc = (TextView) findViewById(R.id.txtViewRecoDesc);
+
+        refreshHome = Home.newInstance();
 
 
         recyclerViewPackaging = (RecyclerView) findViewById(R.id.recyclerViewPackaging);
@@ -701,10 +708,14 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
 
     }
 
+
+
     @Override
     public void onBackPressed() {
         finish();
         overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
         super.onBackPressed();
     }
+
+
 }

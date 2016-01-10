@@ -1,5 +1,6 @@
 package com.bangertech.doodhwaala.activity;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -85,6 +86,11 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     private Toolbar mToolbar;
     private General general;
 
+    public static Home newInstance() {
+
+        return new Home();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,6 +157,11 @@ public class Home extends AppCompatActivity implements AsyncResponse {
             DialogManager.showDialog(Home.this, "Please Check your internet connection.");
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void addFilterProductTypeOnToolBar(BeanProductType beanProductType)
@@ -259,12 +270,17 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     @Override
     protected void onResume() {
         super.onResume();
+        if (PreferenceManager.getInstance().getFlag()) {
+            fetchProductType();
+            PreferenceManager.getInstance().setFlag(false);
+        }
         Home.this.registerReceiver(mMessageReceiver, new IntentFilter("unique_name"));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        PreferenceManager.getInstance().setFlag(false);
         Home.this.unregisterReceiver(mMessageReceiver);
     }
 
@@ -529,9 +545,8 @@ public class Home extends AppCompatActivity implements AsyncResponse {
 
     }
 
-    private void fetchProductType()
+    public void fetchProductType()
     {
-
         MyAsynTaskManager myAsyncTask=new MyAsynTaskManager();
         myAsyncTask.delegate=this;
         myAsyncTask.setupParamsAndUrl("fetchProductType", Home.this, AppUrlList.ACTION_URL,

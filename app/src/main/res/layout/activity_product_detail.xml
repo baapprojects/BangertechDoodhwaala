@@ -87,7 +87,7 @@
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:layout_centerHorizontal="true"
-                />
+                android:visibility="invisible"/>
 
         </RelativeLayout>
 

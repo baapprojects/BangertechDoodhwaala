@@ -112,4 +112,12 @@ public class PreferenceManager {
         DoodhwaalaApplication.getSharedPreferences().edit().putInt(AppConstants.PACKAGE_FILTER_POSITION, -1).commit();
     }
 
+    public boolean getFlag() {
+        return DoodhwaalaApplication.getSharedPreferences().getBoolean(AppConstants.FLAG, false);
+    }
+
+    public void setFlag(boolean flag){
+        DoodhwaalaApplication.getSharedPreferences().edit().putBoolean(AppConstants.FLAG, flag).commit();
+    }
+
 }

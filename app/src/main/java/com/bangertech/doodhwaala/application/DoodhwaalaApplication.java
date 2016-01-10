@@ -1,6 +1,7 @@
 package com.bangertech.doodhwaala.application;
 
 import android.app.Application;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +12,7 @@ import android.support.multidex.MultiDex;
 import android.util.Base64;
 import android.util.Log;
 
+import com.bangertech.doodhwaala.activity.Home;
 import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.bangertech.doodhwaala.utils.AppConstants;
 import com.bangertech.doodhwaala.manager.PreferenceManager;
@@ -27,6 +29,7 @@ public class DoodhwaalaApplication extends Application {
     public static Context mContext;
     public static boolean isUserLoggedIn = false;
     private static SharedPreferences mSharedPreferences;
+    public static int backgroundService = 20;
 
     @Override
     public void onCreate() {
@@ -88,4 +91,16 @@ public class DoodhwaalaApplication extends Application {
         super.attachBaseContext(base);
         MultiDex.install(this);
     }
+
+    public static BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            // Extract data included in the Intent
+            String message = intent.getStringExtra("message");
+
+            //do other stuff here
+            new Home().fetchProductType();
+        }
+    };
 }

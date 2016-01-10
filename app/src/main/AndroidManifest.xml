@@ -34,7 +34,7 @@
         </receiver>
 
         <service android:name=".gcm.GcmIntentService" />
-
+        <service android:name=".gcm.CheckService" />
 
         <activity
             android:name=".activity.SplashScreen"

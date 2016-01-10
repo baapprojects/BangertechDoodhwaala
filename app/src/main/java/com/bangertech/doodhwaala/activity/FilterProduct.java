@@ -573,5 +573,6 @@ private void parseChoosedFilterOption(String tag,boolean isChecked)
         overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
         super.onBackPressed();
     }
+
 }
 

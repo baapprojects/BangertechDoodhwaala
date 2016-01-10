@@ -82,9 +82,6 @@ public class AddEditAddress extends AppCompatActivity implements AsyncResponse, 
     private Validator validator;
     private String previousValue = null;
 
-    String euro = "\u20ac";
-    String pound = "\u00a3";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
