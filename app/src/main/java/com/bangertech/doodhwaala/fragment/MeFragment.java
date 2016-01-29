@@ -3,6 +3,7 @@ package com.bangertech.doodhwaala.fragment;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
@@ -59,6 +60,17 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
             public void onClick(View v) {
                 Helpshift.showConversation(getActivity());
                 getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+            }
+        });
+        ((RelativeLayout) mRootView.findViewById(R.id.rlRateUs)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String appPackageName = getActivity().getPackageName(); // getPackageName() from Context or Activity object
+                try {
+                    getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
             }
         });
         ((RelativeLayout) mRootView.findViewById(R.id.rlLogout)).setOnClickListener(new View.OnClickListener() {

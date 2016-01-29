@@ -216,6 +216,8 @@ public class FilteresAppliedByTagsAndProducts extends AppCompatActivity implemen
                             //gridFilterList.setAdapter(productTypeAdapter);
 
                         }
+                    } else {
+                        parseAndFormateFilteredProductList(productTypeList);
                     }
                     filteredTagAdapter.notifyDataSetChanged();
                     if (filteredTagList.size() > 0) {

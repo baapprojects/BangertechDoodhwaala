@@ -234,6 +234,7 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                 } else {
                     Home.pager.setCurrentItem(0);
                     textViewDayHeading.setText("No Orders Placed");
+                    textViewDate.setText("");
                 }
                 //CUtils.showUserMessage(getActivity(), jsonObject.getString("msg"));
             } catch (Exception e) {

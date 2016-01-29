@@ -39,6 +39,7 @@ import com.mobsandgeeks.saripaar.annotation.Required;
 import com.mobsandgeeks.saripaar.annotation.TextRule;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
@@ -59,6 +60,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     private String coupon_id = "";
     private String listPrice;
     private String discountPrice = "0.00";
+    private String previousValue="";
 
     @Required(order = 1)
     @TextRule(order = 2, minLength = 4, message = "Enter valid Coupon Code with minimum 4 chars")
@@ -68,7 +70,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     private Validator validator;
     private General general;
     private double  paidAmount;
-
+    private String default_address;
 
 
     @Override
@@ -146,7 +148,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
                 new String[]{"module", "action", "user_id", "product_id", "product_mapping_id", "quantity", "frequency_id", "duration_id", "subscription_date", "address_id",
                         "coupon_applied", "coupon_id", "list_price", "discount_price", "gross_price","price"},
                 new String[]{"plans", "insertUserPlan", PreferenceManager.getInstance().getUserId(), product_id, product_mapping_id, product_quantity, frequency_id, duration_id, fromDate,
-                        CGlobal.getCGlobalObject().getAddressId(),
+                        default_address,
                         coupon_applied,coupon_id,list_price,discount_price,paid_amount,product_price});
         myAsyncTask.execute();
 
@@ -224,6 +226,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
                             //if(obj.getString("address_id").equalsIgnoreCase(address_id))
                                 if(obj.getBoolean("default_address")){
                                 txtViewAddress.setText(getString(R.string.deliver_at)+obj.getString("address"));
+                                default_address = obj.getString("address_id");
                                 break;
                             }
 
@@ -454,8 +457,16 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
 
     @Override
     public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        previousValue=getIntent().getStringExtra(ConstantVariables.SELECTED_USER_PLAN_KEY);
+        try {
+            JSONObject obj = new JSONObject(previousValue);
+            startActivity(new Intent(ShowConfirmation.this, ShowDuration.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
+            finish();
+            overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         super.onBackPressed();
     }
 }

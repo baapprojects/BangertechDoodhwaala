@@ -261,8 +261,23 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
 
     @Override
     public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        int size=radioGroupDuration.getChildCount();
+        int selectedIndex=-1;
+        for(int i=0;i<size;i++)
+                selectedIndex=i;
+            try {
+                JSONObject obj = new JSONObject(previousValue);
+                obj.put("duration_id", bucketDuration.get(selectedIndex).getDurationId());
+                obj.put("duration_name", bucketDuration.get(selectedIndex).getDurationName());
+                obj.put("duration_weightage", bucketDuration.get(selectedIndex).getDurationWeightage());
+
+                startActivityForResult(new Intent(ShowDuration.this, ShowFrequency.class).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("first_address", "first_address").putExtras(getBundleForAddEditAddress(true)), ConstantVariables.SUB_ACTIVITY_ADD_EDIT_ADDRESS);
+                overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+                finish();
+
+            } catch (Exception e) {
+
+            }
         super.onBackPressed();
     }
 

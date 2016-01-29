@@ -9,7 +9,11 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -17,11 +21,14 @@ import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.activity.Home;
 import com.bangertech.doodhwaala.activity.LoginActivity;
 import com.bangertech.doodhwaala.activity.SplashScreen;
+import com.bangertech.doodhwaala.activity.TutorialScreens;
+import com.bangertech.doodhwaala.application.DoodhwaalaApplication;
 import com.bangertech.doodhwaala.manager.PreferenceManager;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 
 import java.util.List;
+import java.util.Random;
 //import com.mobello.couriernow.screens.HomeScreen;
 
 /**
@@ -47,12 +54,12 @@ public class GcmIntentService extends IntentService {
         super("GcmIntentService");
     }
 
-    private final String Tag = "GCM LEW";
+    private final String Tag = "GCM DOODHWALA";
 
     @Override
     protected void onHandleIntent(Intent intent) {
         context = GcmIntentService.this;
-        Bundle extras = intent.getExtras();
+        final Bundle extras = intent.getExtras();
         GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(this);
         // The getMessageType() intent parameter must be the intent you received
         // in your BroadcastReceiver.
@@ -67,13 +74,11 @@ public class GcmIntentService extends IntentService {
             if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) {
                 // Post notification of received message.
                 sendNotification(extras);
-                updateMyActivity(this, "unique_name");
-                PreferenceManager.getInstance().setFlag(true);
+                Log.i(Tag, "Received: " + extras.toString());
+
                 /*Intent intent2 = new Intent(this, CheckService.class);
                 startService(intent2);*/
-                Log.i(Tag, "Received: " + extras.toString());
-            } else {
-                PreferenceManager.getInstance().setFlag(false);
+
             }
         }
         // Release the wake lock provided by the WakefulBroadcastReceiver.
@@ -94,20 +99,32 @@ public class GcmIntentService extends IntentService {
 
         /*contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, Home.class), 0);*/
-
-
-        if (PreferenceManager.getInstance().getUserId()!=null)
-        {
-            contentIntent = PendingIntent.getActivity(this, 0,
-                    new Intent(this, Home.class), 0);
+        Intent notification;
+        if (PreferenceManager.getInstance().getUserId()!=null) {
+            System.out.println(" USER_ID DOODHWALA_A " + PreferenceManager.getInstance().getUserId());
+            updateMyActivity(this, "unique_name");
+            PreferenceManager.getInstance().setFlag(true);
+            notification = new Intent(this, Home.class);
+            notification.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP |
+                    Intent.FLAG_ACTIVITY_NEW_TASK);
+        } else {
+            System.out.println(" USER_ID DOODHWALA_B "+PreferenceManager.getInstance().getUserId());
+            PreferenceManager.getInstance().setFlag(false);
+            notification = new Intent(this, LoginActivity.class);
+            notification.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP |
+                    Intent.FLAG_ACTIVITY_NEW_TASK);
         }
-        else
-        {
-            contentIntent = PendingIntent.getActivity(this, 0,
-                    new Intent(this, LoginActivity.class), 0);
-        }
 
+        Random generator = new Random();
 
+        contentIntent = PendingIntent.getActivity(this, generator.nextInt(),
+                    notification, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        /*PendingIntent.getBroadcast(context, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT).cancel();*/
+        //contentIntent.cancel();
 
         /*NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
@@ -124,12 +141,14 @@ public class GcmIntentService extends IntentService {
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());*/
 
-        int count = 1;
-        int color = getResources().getColor(R.color.white);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.notification_icon);
+        int color = getResources().getColor(R.color.accentColor);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                 .setColor(color)
                         //.setSmallIcon(R.drawable.ic_launcher)
-                .setSmallIcon(R.mipmap.logo)
+                .setSmallIcon(R.drawable.notification_small_icon)
+                .setTicker(msg.get("message").toString())
+                .setLargeIcon(bm)
                 .setContentTitle(context.getString(R.string.app_name))
                         //.setNumber(Notification.C)
                 .setContentIntent(contentIntent)
@@ -152,5 +171,10 @@ public class GcmIntentService extends IntentService {
 
         //send broadcast
         context.sendBroadcast(intent);
+    }
+
+    private int getNotificationIcon() {
+        boolean useWhiteIcon = (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP);
+        return useWhiteIcon ? R.drawable.notification_icon : R.drawable.notification_icon;
     }
 }

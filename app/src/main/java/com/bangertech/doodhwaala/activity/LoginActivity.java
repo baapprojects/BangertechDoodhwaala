@@ -187,6 +187,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private String googleEmail, fbEmail;
     private Validator validator;
     private FileInputStream is;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -414,6 +415,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 new String[]{"user", "signInByGoogle", googleEmailId, name, googleId, gcm.registerGCM(), "1"});
         myAsyncTask.execute();
     }
+
     @Override
     public void backgroundProcessFinish(String from, String output) {
         String user_id, email_id, name, mobile, facebook_id, google_id, msg, flag;

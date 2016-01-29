@@ -14,9 +14,9 @@
     <string name="title_activity_profile">ProfileActivity</string>
 
     <string name="add_address">Press \"+\" to add address.</string>
-    <string name="ok_btn">Ok</string>
-    <string name="cancel">Cancel</string>
-    <string name="logout">Logout</string>
+    <string name="ok_btn">OK</string>
+    <string name="cancel">CANCEL</string>
+    <string name="logout">LOGOUT</string>
     <string name="logout_message">We\'re not good with break-ups! Are you sure you want to logout?</string>
     <string name="logout_title">Logout?</string>
     <string name="confirm_signin">An account already exists with this e-mail.</string>

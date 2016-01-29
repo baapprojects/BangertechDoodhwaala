@@ -313,14 +313,15 @@
         android:layout_gravity="center"
         android:background="@drawable/button"
         android:textAppearance="@android:style/TextAppearance.Small"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:visibility="gone"/>
     <Button
         android:id="@+id/butPayWithCash"
         android:layout_below="@+id/butPayOnline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="PAY WITH CASH"
+        android:text="CONFIRM PLAN"
         android:textColor="@color/white"
         android:layout_gravity="center"
         android:background="@drawable/button"

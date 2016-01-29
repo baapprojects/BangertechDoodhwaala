@@ -1,11 +1,16 @@
 package com.bangertech.doodhwaala.activity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -17,10 +22,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -85,7 +94,8 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     private int pauseOrResumeIndex=-1;
     private Toolbar mToolbar;
     private General general;
-
+    private String appVersionName;
+    private Activity mActivity;
     public static Home newInstance() {
 
         return new Home();
@@ -94,68 +104,82 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        general = new General();
-        lstBeanProductType=new ArrayList<BeanProductType>();
-        lstMostSellingProducts=new ArrayList<BeanBrand>();
-        lstBeanProductTypeOnToolBar=new ArrayList<BeanProductType>();
-        //INSTALLING HELPSHIFT SDK TO USE IN CHAT SUPPORT
-        Helpshift.install(getApplication(), ConstantVariables.ACCESS_KEY_HELP_SHIFT, "doodhwala.helpshift.com", ConstantVariables.APP_ID_HELP_SHIFT);
-        //END
-        setContentView(R.layout.lay_home);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        // setSupportActionBar(mToolbar);
-        mToolbar.setTitle("");
-        mToolbar.setPadding(0, CUtils.getStatusBarHeight(Home.this), 0, 0);
-        //mToolbar.setMinimumHeight(CUtils.getStatusBarHeight(Home.this));
-        mToolbar.setVisibility(View.GONE);
+        if(PreferenceManager.getInstance().getUserId()!=null) {
+            mActivity = Home.this;
+            PackageInfo pInfo = null;
+            try {
+                pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
 
-        //txtViewMilkBarOnToolbarTitle = (TextView) app_bar.findViewById(R.id.txtViewMilkBarOnToolbarTitle);
-        llFilterMilkBarOnToolbar = (LinearLayout)findViewById(R.id.llFilterMilkBarOnToolbar);
-        hsFilterMilkBarOnToolbar = (HorizontalScrollView) findViewById(R.id.hsFilterMilkBarOnToolbar);
+            appVersionName = pInfo.versionName;
 
-        // txtViewMilkBarOnToolbarTitle.setText(R.string.app_name);
+            // Toast.makeText(getApplicationContext(),"sai "+version,Toast.LENGTH_LONG).show();
+            general = new General();
+            lstBeanProductType=new ArrayList<BeanProductType>();
+            lstMostSellingProducts=new ArrayList<BeanBrand>();
+            lstBeanProductTypeOnToolBar=new ArrayList<BeanProductType>();
+            //INSTALLING HELPSHIFT SDK TO USE IN CHAT SUPPORT
+            Helpshift.install(getApplication(), ConstantVariables.ACCESS_KEY_HELP_SHIFT, "doodhwala.helpshift.com", ConstantVariables.APP_ID_HELP_SHIFT);
+            //END
+            setContentView(R.layout.lay_home);
+            mToolbar = (Toolbar) findViewById(R.id.toolbar);
+            // setSupportActionBar(mToolbar);
+            mToolbar.setTitle("");
+            mToolbar.setPadding(0, CUtils.getStatusBarHeight(Home.this), 0, 0);
+            //mToolbar.setMinimumHeight(CUtils.getStatusBarHeight(Home.this));
+            mToolbar.setVisibility(View.GONE);
 
-        // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
+            //txtViewMilkBarOnToolbarTitle = (TextView) app_bar.findViewById(R.id.txtViewMilkBarOnToolbarTitle);
+            llFilterMilkBarOnToolbar = (LinearLayout)findViewById(R.id.llFilterMilkBarOnToolbar);
+            hsFilterMilkBarOnToolbar = (HorizontalScrollView) findViewById(R.id.hsFilterMilkBarOnToolbar);
 
-        myPagerAdapter=new MyFragmentPagerAdapter(getSupportFragmentManager(),getResources().getStringArray(R.array.home_tab_array));
-        // Assigning ViewPager View and setting the adapter
-        pager = (CustomViewPager) findViewById(R.id.pager);
-        //pager.setAdapter(adapter);
-        pager.setPagingEnabled(true);
-        pager.setAdapter(myPagerAdapter);
+            // txtViewMilkBarOnToolbarTitle.setText(R.string.app_name);
 
-        // Assigning the Sliding Tab Layout View
-        slidingTabLayout = (SlidingTabLayout) findViewById(R.id.tabs);
-        slidingTabLayout.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
+            // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
 
+            myPagerAdapter=new MyFragmentPagerAdapter(getSupportFragmentManager(),getResources().getStringArray(R.array.home_tab_array));
+            // Assigning ViewPager View and setting the adapter
+            pager = (CustomViewPager) findViewById(R.id.pager);
+            //pager.setAdapter(adapter);
+            pager.setPagingEnabled(true);
+            pager.setAdapter(myPagerAdapter);
 
-        // Setting the ViewPager For the SlidingTabsLayout
-        slidingTabLayout.setViewPager(pager);
-
-
-       pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-           @Override
-           public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-           }
-
-           @Override
-           public void onPageSelected(int position) {
-               hideShowSearchOption(position);
-           }
-
-           @Override
-           public void onPageScrollStateChanged(int state) {
-
-           }
-       });
+            // Assigning the Sliding Tab Layout View
+            slidingTabLayout = (SlidingTabLayout) findViewById(R.id.tabs);
+            slidingTabLayout.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
 
 
-        if (general.isNetworkAvailable(Home.this)) {
-            fetchProductType();
+            // Setting the ViewPager For the SlidingTabsLayout
+            slidingTabLayout.setViewPager(pager);
+
+
+            pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    hideShowSearchOption(position);
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+
+
+            checkAppVersion();
         } else {
-            DialogManager.showDialog(Home.this, "Please Check your internet connection.");
+            Intent navigation = new Intent(this, LoginActivity.class);
+            navigation.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(navigation);
         }
+
 
     }
 
@@ -271,7 +295,14 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     protected void onResume() {
         super.onResume();
         if (PreferenceManager.getInstance().getFlag()) {
-            fetchProductType();
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    fetchProductType();
+                }
+            }, 500);
+
             PreferenceManager.getInstance().setFlag(false);
         }
         Home.this.registerReceiver(mMessageReceiver, new IntentFilter("unique_name"));
@@ -280,7 +311,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     @Override
     protected void onPause() {
         super.onPause();
-        PreferenceManager.getInstance().setFlag(false);
+        //PreferenceManager.getInstance().setFlag(false);
         Home.this.unregisterReceiver(mMessageReceiver);
     }
 
@@ -308,6 +339,35 @@ public class Home extends AppCompatActivity implements AsyncResponse {
 
     @Override
     public void backgroundProcessFinish(String from, final String output) {
+        if(from.equalsIgnoreCase("checkAppVersion")){
+            Log.i("AppVersionResult", output);
+            if(output!=null) {
+                try {
+                    JSONObject jsonObject = new JSONObject(output);
+                    if (jsonObject.getBoolean("result")) {
+                        Log.i("AppVersionResult", "No need to update");
+                        if (general.isNetworkAvailable(Home.this)) {
+                            fetchProductType();
+                        } else {
+                            DialogManager.showDialog(Home.this, "Please Check your internet connection.");
+                        }
+                    } else {
+                        if(jsonObject.getInt("forceUpgrade") == 1) {
+                            showDialogForceUpdate(mActivity, "Please upgrade to the latest version of Doodhwala to continue");
+                        }
+                        if(jsonObject.getInt("recommendUpgrade") == 1) {
+                            showDialogRecommendedUpdate(mActivity, "A new version of Doodhwala is available please press OK to update?");
+                        }
+
+                    }
+                } catch (Exception e) {
+                    // TODO: handle exception
+                    e.printStackTrace();
+                }
+            } else {
+                DialogManager.showDialog(mActivity, "Server Error Occurred! Try Again!");
+            }
+        }
         if(from.equalsIgnoreCase("fetchProductType")) {
             if (general.isNetworkAvailable(Home.this)) {
                 if(!parseAndFormateProductTypeList(output))
@@ -574,6 +634,15 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         myAsyncTask.execute();
     }
 
+    public void checkAppVersion() {
+        MyAsynTaskManager myAsyncTask=new MyAsynTaskManager();
+        myAsyncTask.delegate=this;
+        myAsyncTask.setupParamsAndUrl("checkAppVersion", mActivity, AppUrlList.ACTION_URL,
+                new String[]{"module", "action", "appVersion"},
+                new String[]{"user", "checkAppVersion", appVersionName});
+        myAsyncTask.execute();
+    }
+
     public void fetchPreviousOrNextDayMyPlan(String strDate,int moveIndex)
     {
        /* String _date=CUtils.getFormatedDateForMyPlan(strDate,moveIndex);
@@ -623,4 +692,112 @@ public class Home extends AppCompatActivity implements AsyncResponse {
             fetchProductType();
         }
     };
+
+    public void showDialogRecommendedUpdate(final Activity parentActivity, String message)
+    {
+
+
+//    	AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
+//    	builder.setMessage(message)
+//    		.setPositiveButton("Close", dialogClickListener)
+//    	    .show();
+
+        //customFont = Typeface.createFromAsset(parentActivity.getAssets(), "fonts/myriad.ttf");
+        final Dialog dialog = new Dialog(parentActivity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_alert_app_update_recommended_dialog);
+
+        dialog.setOnKeyListener(new Dialog.OnKeyListener() {
+
+            @Override
+            public boolean onKey(DialogInterface arg0, int keyCode,
+                                 KeyEvent event) {
+                // TODO Auto-generated method stub
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    finish();
+                    dialog.dismiss();
+                }
+                return true;
+            }
+        });
+
+        TextView msgText=(TextView)dialog.findViewById(R.id.body);
+        msgText.setText(message);
+        Button btn_ok=(Button)dialog.findViewById(R.id.btn_ok);
+        Button btn_cancel=(Button)dialog.findViewById(R.id.btn_cancel);
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String appPackageName = parentActivity.getPackageName(); // getPackageName() from Context or Activity object
+                try {
+                    parentActivity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    parentActivity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
+                parentActivity.finish();
+                dialog.dismiss();
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (general.isNetworkAvailable(Home.this)) {
+                    fetchProductType();
+                } else {
+                    DialogManager.showDialog(Home.this, "Please Check your internet connection.");
+                }
+                dialog.dismiss();
+            }
+        });
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+
+
+    }
+
+    public void showDialogForceUpdate(Activity parentActivity, String message)
+    {
+
+        //customFont = Typeface.createFromAsset(parentActivity.getAssets(), "fonts/myriad.ttf");
+        final Dialog dialog = new Dialog(parentActivity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_alert_app_update_force_dialog);
+
+        dialog.setOnKeyListener(new Dialog.OnKeyListener() {
+
+            @Override
+            public boolean onKey(DialogInterface arg0, int keyCode,
+                                 KeyEvent event) {
+                // TODO Auto-generated method stub
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    finish();
+                    dialog.dismiss();
+                }
+                return true;
+            }
+        });
+
+        TextView msgText=(TextView)dialog.findViewById(R.id.body);
+        msgText.setText(message);
+        Button btn_ok=(Button)dialog.findViewById(R.id.btn_ok);
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+
+    }
 }

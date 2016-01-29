@@ -308,7 +308,7 @@ public class ShowAddress  extends AppCompatActivity implements  AsyncResponse,IU
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Do you want to save, choosed default address ?")
+        builder.setMessage("Do you want to save new default address?")
                 .setPositiveButton("Yes", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
     }

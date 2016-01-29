@@ -153,7 +153,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                 JSONObject obj = new JSONObject();
                 obj.put("product_name",productName);
                 obj.put("product_id",productId);
-                obj.put("product_mapping_id",productMappingId);
+                obj.put("product_mapping_id",beanPackagingAndQtyDefault.getProductMappingId());
                 obj.put("quantity_id",beanPackagingAndQtyDefault.getQuantityId());
                 obj.put("product_price",beanPackagingAndQtyDefault.getPrice());
                 obj.put("product_image_url",beanPackagingAndQtyDefault.getProductImage());
@@ -218,9 +218,9 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                 productReco = jsonObjectProduct.getString("recommended_for");
 
                 //INITIALIZE PRODUCT  ATTRIBUTE
-                JSONObject jsonObjectProductStickers=new JSONObject(jsonObjectProduct.getString("product_stickers"));
+               /* JSONObject jsonObjectProductStickers=new JSONObject(jsonObjectProduct.getString("product_stickers"));
                 CUtils.printLog("attributes",jsonObjectProductStickers.toString(), ConstantVariables.LOG_TYPE.ERROR);
-               //* if (jsonObjectProductAttribute.getString("result").equalsIgnoreCase("true"))*//*
+               /*//* if (jsonObjectProductAttribute.getString("result").equalsIgnoreCase("true"))*//**//*
                 if (jsonObjectProductStickers.getBoolean("result"))
                 {
                     JSONArray jsonArrayStickers=new JSONArray(jsonObjectProductStickers.getString("stickers"));
@@ -248,7 +248,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                     }
 
 
-                }
+                }*/
                     //INITIALIZE PACKAGING AND
                 JSONArray jsonArrayOptions=new JSONArray(jsonObjectProduct.getString("options"));
                 //CUtils.printLog("BIJEMDRA", jsonArrayOptions.toString(), ConstantVariables.LOG_TYPE.ERROR);

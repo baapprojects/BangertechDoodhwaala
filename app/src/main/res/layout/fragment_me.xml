@@ -6,6 +6,18 @@
     android:orientation="vertical"
    >
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -109,6 +121,32 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rlRateUs"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:background="@drawable/ripple_grey"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/rate_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="60dp"
+                android:text="Rate us" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/rlLogout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -158,6 +196,7 @@
 
         </RelativeLayout>
     </LinearLayout>
+        </LinearLayout>
 
-
+    </ScrollView>
 </LinearLayout>

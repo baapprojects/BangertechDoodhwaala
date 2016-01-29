@@ -92,7 +92,7 @@ public class DoodhwaalaApplication extends Application {
         MultiDex.install(this);
     }
 
-    public static BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+    /*public static BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 
@@ -102,5 +102,5 @@ public class DoodhwaalaApplication extends Application {
             //do other stuff here
             new Home().fetchProductType();
         }
-    };
+    };*/
 }
