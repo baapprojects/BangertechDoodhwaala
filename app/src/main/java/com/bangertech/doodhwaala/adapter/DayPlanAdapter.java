@@ -96,10 +96,12 @@ public class DayPlanAdapter extends RecyclerView.Adapter<DayPlanViewHolder> impl
                     public void onClick(View v) {
                         gHolder = holder;
                         selectedQuantity = Integer.valueOf(holder.Quantity.getText().toString());
-                        selectedQuantity = selectedQuantity+1;
-                        holder.ivminus.setEnabled(false);
-                        holder.ivplus.setEnabled(false);
-                        updateQuantityDayPlan(lstDayPlan.get(position).getDateId(), selectedQuantity, lstDayPlan.get(position).getPlanId());
+                        if(selectedQuantity < 50) {
+                            selectedQuantity = selectedQuantity + 1;
+                            holder.ivminus.setEnabled(false);
+                            holder.ivplus.setEnabled(false);
+                            updateQuantityDayPlan(lstDayPlan.get(position).getDateId(), selectedQuantity, lstDayPlan.get(position).getPlanId());
+                        }
 
                     }
                 });

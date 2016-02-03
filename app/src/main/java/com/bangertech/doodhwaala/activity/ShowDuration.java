@@ -3,6 +3,7 @@ package com.bangertech.doodhwaala.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -18,6 +19,7 @@ import com.bangertech.doodhwaala.utils.CUtils;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -31,7 +33,7 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
     String previousValue="";
     private List<BeanDuration> bucketDuration=new ArrayList<BeanDuration>();
     private RadioGroup radioGroupDuration;
-
+    String durationId="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,16 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
         radioGroupDuration=(RadioGroup)findViewById(R.id.radioGroupDuration);
 
         previousValue=getIntent().getStringExtra(ConstantVariables.SELECTED_USER_PLAN_KEY);
+        if((!TextUtils.isEmpty(previousValue))) {
+
+            try {
+                JSONObject obj = new JSONObject(previousValue);
+                durationId=obj.getString("duration_id");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
         //CUtils.printLog("Duration_SELECTED_DETAIL", getIntent().getStringExtra("SELECTED_PRODUCT"), ConstantVariables.LOG_TYPE.ERROR);
         fetchDurationsFromServer();
 
@@ -115,13 +127,17 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
         {
 
             RadioButton radioButton = new RadioButton(this);
-            radioButton.setTextAppearance(this,android.R.style.TextAppearance_Medium);
+            radioButton.setTextAppearance(this, android.R.style.TextAppearance_Medium);
             radioButton.setPadding(10, 10, 10, 10);
             radioButton.setText(bucketDuration.get(index).getDurationName());
             radioButton.setTag(index);
 
             radioGroupDuration.addView(radioButton,index,rprms);
-
+            if(!durationId.equals("")) {
+                if (bucketDuration.get(index).getDurationId().equals(durationId)) {
+                    radioButton.setChecked(true);
+                }
+            }
         }
 
     }
@@ -264,10 +280,28 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
         int size=radioGroupDuration.getChildCount();
         int selectedIndex=-1;
         for(int i=0;i<size;i++)
+            /*if(((RadioButton)radioGroupDuration.getChildAt(i)).isChecked()) {
                 selectedIndex=i;
+        if(selectedIndex>-1) {
             try {
                 JSONObject obj = new JSONObject(previousValue);
                 obj.put("duration_id", bucketDuration.get(selectedIndex).getDurationId());
+                obj.put("duration_name", bucketDuration.get(selectedIndex).getDurationName());
+                obj.put("duration_weightage", bucketDuration.get(selectedIndex).getDurationWeightage());
+
+                startActivity(new Intent(ShowDuration.this, ShowFrequency.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
+                overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+                finish();
+
+            } catch (Exception e) {
+
+            }
+        }
+        } else*/ {
+                selectedIndex=i;
+            try {
+                JSONObject obj = new JSONObject(previousValue);
+                obj.put("duration_id", "");
                 obj.put("duration_name", bucketDuration.get(selectedIndex).getDurationName());
                 obj.put("duration_weightage", bucketDuration.get(selectedIndex).getDurationWeightage());
 
@@ -278,6 +312,7 @@ public class ShowDuration extends AppCompatActivity implements AsyncResponse {
             } catch (Exception e) {
 
             }
+        }
         super.onBackPressed();
     }
 

@@ -328,7 +328,7 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
 
     @Override
     public void backgroundProcessFinish(String from, String output) {
-        String user_id;
+        String user_id,share_referral_code,friend_referral_code,friend_id;
         if(from.equalsIgnoreCase("SignUp")){
 
             if(output!=null) {
@@ -336,7 +336,14 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
                     JSONObject jsonObject = new JSONObject(output);
                     user_id = jsonObject.getString("user_id");
 
+                    friend_id = jsonObject.getString("friend_id");
+                    share_referral_code = jsonObject.getString("share_referral_code");
+                    friend_referral_code = jsonObject.getString("friend_referral_code");
+                    // PreferenceManager.getInstance().setUserId(user_id);
 
+                    PreferenceManager.getInstance().setShareReferralCode(share_referral_code);
+                    PreferenceManager.getInstance().setFriendReferralCode(friend_referral_code);
+                    PreferenceManager.getInstance().setFriendReferralCode(friend_id);
 
                     if (jsonObject.getBoolean("result")) {
                         PreferenceManager.getInstance().setUserEmailId(txtEmailAddress.getText().toString());
@@ -347,7 +354,7 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
                         //PreferenceManager.getInstance().setUserId(jsonObject.getString("user_id"));
                         CGlobal.getCGlobalObject().setUserId(jsonObject.getString("user_id"));
                        // Intent mobileIntent = new Intent(mContext, ProfileActivity.class);
-                        Intent mobileIntent = new Intent(mContext, Home.class);
+                        Intent mobileIntent = new Intent(mContext, ReferralCodeActivity.class);
                         mobileIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mobileIntent);
                         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);

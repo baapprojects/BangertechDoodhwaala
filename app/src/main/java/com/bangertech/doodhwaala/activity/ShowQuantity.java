@@ -3,6 +3,7 @@ package com.bangertech.doodhwaala.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -12,6 +13,7 @@ import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.manager.AsyncResponse;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -24,6 +26,7 @@ public class ShowQuantity extends AppCompatActivity implements AsyncResponse {
     private int selectedQuantity=1;
     private TextView largeText;
     private TextView textViewQuantity;
+    private String productId, productMappingId;
     String previousValue="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,22 @@ public class ShowQuantity extends AppCompatActivity implements AsyncResponse {
         ivplus = (ImageView) findViewById(R.id.ivplus);
         largeText = (TextView) findViewById(R.id.largeText);
         textViewQuantity = (TextView) findViewById(R.id.textViewQuantity);
+
         previousValue=getIntent().getStringExtra(ConstantVariables.SELECTED_USER_PLAN_KEY);
+        productId=getIntent().getStringExtra(ConstantVariables.PRODUCT_ID_KEY);
+        productMappingId=getIntent().getStringExtra(ConstantVariables.PRODUCT_MAPPING_ID_KEY);
+        if((!TextUtils.isEmpty(previousValue))) {
+
+            try {
+                JSONObject obj = new JSONObject(previousValue);
+               selectedQuantity=obj.getInt("product_quantity");
+                textViewQuantity.setText(String.valueOf(selectedQuantity));
+                largeText.setText(String.valueOf(selectedQuantity));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
         ivminus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +66,9 @@ public class ShowQuantity extends AppCompatActivity implements AsyncResponse {
         ivplus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ++selectedQuantity;
+                if (selectedQuantity < 50) {
+                    ++selectedQuantity;
+                }
                 textViewQuantity.setText(String.valueOf(selectedQuantity));
                 largeText.setText(String.valueOf(selectedQuantity));
             }
@@ -78,8 +98,19 @@ public class ShowQuantity extends AppCompatActivity implements AsyncResponse {
 
     @Override
     public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        try {
+
+            JSONObject obj = new JSONObject(previousValue);
+            obj.put("product_quantity",String.valueOf(selectedQuantity));
+            startActivity(new Intent(ShowQuantity.this, ProductDetail.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
+            finish();
+            overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+        }
+        catch(Exception e)
+        {
+
+        }
+
         super.onBackPressed();
     }
 }

@@ -3,6 +3,7 @@ package com.bangertech.doodhwaala.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
@@ -19,6 +20,7 @@ import com.bangertech.doodhwaala.utils.CUtils;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ public class ShowFrequency  extends AppCompatActivity implements AsyncResponse {
     private List<BeanFrequency> bucketFrequency=new ArrayList<BeanFrequency>();
     private LinearLayout llquantity;
     String previousValue="";
+    String freqId="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,16 @@ public class ShowFrequency  extends AppCompatActivity implements AsyncResponse {
         llquantity = (LinearLayout) findViewById(R.id.llquantity);
         radioGroupFrequency=(RadioGroup)findViewById(R.id.radioGroupFrequency);
         previousValue=getIntent().getStringExtra(ConstantVariables.SELECTED_USER_PLAN_KEY);
+        if((!TextUtils.isEmpty(previousValue))) {
+
+            try {
+                JSONObject obj = new JSONObject(previousValue);
+                freqId=obj.getString("frequency_id");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
         //CUtils.printLog("SELECTED_DETAIL",getIntent().getStringExtra("SELECTED_PRODUCT"), ConstantVariables.LOG_TYPE.ERROR);
         /*llquantity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,8 +165,13 @@ public class ShowFrequency  extends AppCompatActivity implements AsyncResponse {
             radioButton.setTag(index);
 
             radioGroupFrequency.addView(radioButton,index,rprms);
-
+            if(!freqId.equals("")) {
+                if (bucketFrequency.get(index).getFrequencyId().equals(freqId)) {
+                    radioButton.setChecked(true);
+                }
+            }
         }
+
         //radioGroupFrequency.setLayoutParams(layoutParams);
 
     }
@@ -227,18 +245,35 @@ public class ShowFrequency  extends AppCompatActivity implements AsyncResponse {
         int size=radioGroupFrequency.getChildCount();
         int selectedIndex=-1;
         for(int i=0;i<size;i++)
+            /*if(((RadioButton)radioGroupFrequency.getChildAt(i)).isChecked()) {
+                selectedIndex = i;
+                if (selectedIndex > -1) {
+                    try {
+                        JSONObject obj = new JSONObject(previousValue);
+                        obj.put("frequency_id", bucketFrequency.get(selectedIndex).getFrequencyId());
+                        obj.put("frequency_name", bucketFrequency.get(selectedIndex).getFrequencyName());
+                        obj.put("frequency_days", bucketFrequency.get(selectedIndex).getNumberOfDays());
+
+                        startActivity(new Intent(ShowFrequency.this, ShowQuantity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
+                        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+                        finish();
+                    } catch (Exception e) {
+
+                    }
+                }
+            } else*/ {
                 selectedIndex=i;
-            try {
-                JSONObject obj = new JSONObject(previousValue);
-                obj.put("frequency_id", bucketFrequency.get(selectedIndex).getFrequencyId());
-                obj.put("frequency_name", bucketFrequency.get(selectedIndex).getFrequencyName());
-                obj.put("frequency_days", bucketFrequency.get(selectedIndex).getNumberOfDays());
+                try {
+                    JSONObject obj = new JSONObject(previousValue);
+                    obj.put("frequency_id", "");
+                    obj.put("frequency_name", bucketFrequency.get(selectedIndex).getFrequencyName());
+                    obj.put("frequency_days", bucketFrequency.get(selectedIndex).getNumberOfDays());
+                    startActivity(new Intent(ShowFrequency.this, ShowQuantity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
+                    overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+                    finish();
+                } catch (Exception e) {
 
-                startActivity(new Intent(ShowFrequency.this, ShowQuantity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(ConstantVariables.SELECTED_USER_PLAN_KEY, obj.toString()));
-                overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
-                finish();
-            } catch (Exception e) {
-
+                }
             }
         super.onBackPressed();
     }

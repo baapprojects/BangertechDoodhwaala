@@ -25,9 +25,11 @@ import com.bangertech.doodhwaala.activity.ProductDetail;
 import com.bangertech.doodhwaala.activity.SearchActivity;
 import com.bangertech.doodhwaala.adapter.MostSellingBrandAdapter;
 import com.bangertech.doodhwaala.beans.BeanBrand;
+import com.bangertech.doodhwaala.beans.BeanProduct;
 import com.bangertech.doodhwaala.beans.BeanProductType;
 import com.bangertech.doodhwaala.cinterfaces.IBrandAllProduct;
 import com.bangertech.doodhwaala.cinterfaces.ISelectedProduct;
+import com.bangertech.doodhwaala.manager.DialogManager;
 import com.bangertech.doodhwaala.manager.MyAsynTaskManager;
 import com.bangertech.doodhwaala.R;
 import com.bangertech.doodhwaala.manager.PreferenceManager;
@@ -44,8 +46,8 @@ import org.json.JSONObject;
 
 public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ implements IBrandAllProduct,ISelectedProduct {
 
-    private List<BeanProductType> lstBeanProductType=null;
-    private List<BeanBrand> lstProducts=null;
+    private List<BeanProductType> lstBeanProductType=new ArrayList<BeanProductType>();
+    private List<BeanBrand> lstProducts=new ArrayList<BeanBrand>();
     private MyAsynTaskManager myAsyncTask;
     private String userId="1";
     private GridView gridProductType;
@@ -57,7 +59,7 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
     private RecyclerView.LayoutManager mLayoutManager;
     private FloatingActionButton     fabFilterProduct;
     private ImageView searchProductType, milkStoreTutorial;
-
+    private List<BeanBrand> lstMostSellingProducts=new ArrayList<BeanBrand>();
     public static MilkbarFragment newInstance() {
 
         return new MilkbarFragment();
@@ -75,12 +77,13 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
 
     }
 
-    @Override
+    /*@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        lstBeanProductType=new ArrayList<BeanProductType>();
-        lstProducts=new ArrayList<BeanBrand>();
-    }
+
+
+
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -129,60 +132,46 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
              /*  Toast.makeText(getActivity(),"FAB clicked",Toast.LENGTH_SHORT).show();*/
             }
         });
+
+        if(this.lstBeanProductType.size()>0) {
+            productTypeAdapter = new ProductTypeAdapter(getActivity(),this,lstBeanProductType);
+            gridProductType.setAdapter(productTypeAdapter);
+            gridProductType.setVisibility(View.VISIBLE);
+        }
+
+        if (this.lstMostSellingProducts.size()>0)
+        {
+
+            mAdapter=new MostSellingBrandAdapter(getActivity(),this,lstMostSellingProducts);
+            mRecyclerView.setAdapter(mAdapter);
+            mRecyclerView.setVisibility(View.VISIBLE);
+        }
+
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if(gridProductType.getCount()==0)
-            initProductType();
+        //if(gridProductType.getCount()==0)
+            //initProductType();
         //initProducts();
 
     }
-public void reDrawFragment(List<BeanProductType> lstBeanProductType,List<BeanBrand> lstProducts)
-{
-    this.lstBeanProductType=lstBeanProductType;
-    this.lstProducts=lstProducts;
 
-   // Toast.makeText(getActivity(),String.valueOf(this.lstProducts.size()),Toast.LENGTH_SHORT).show();
-    initProductType();
-    //initProducts();
-}
+    public void reProductType(String output) {
+        parseAndFormateProductTypeList(output);
+    }
 
-  private void initProducts()
-  {
+    public void reDrawFragment(String output)
+    {
+    parseAndFormateMostSellingProductsList(output);
+    }
 
-      if (this.lstProducts.size()>0)
-      {
-
-          mAdapter=new MostSellingBrandAdapter(getActivity(),this,this.lstProducts);
-          mRecyclerView.setAdapter(mAdapter);
-          mRecyclerView.setVisibility(View.VISIBLE);
-      }
-     /* if (this.lstProducts.size()>0)
-          mRecyclerView.setAdapter(new BranProductsListAdapter());
-*/
-      //productsFragment.reDrawFragment(this.lstProducts.get(0));
- }
- private void initProductType()
- {
-
-     if(this.lstBeanProductType.size()>0) {
-         productTypeAdapter = new ProductTypeAdapter(getActivity(),this,this.lstBeanProductType);
-         gridProductType.setAdapter(productTypeAdapter);
-         gridProductType.setVisibility(View.VISIBLE);
-     }
-     initProducts();
- }
     private void setOnFilter(int position )
     {
 
         BeanProductType beanProductType=lstBeanProductType.get(position);
-      /*
-        ((Home) getActivity()).addFilterProductTypeOnToolBar(beanProductType);
-        lstBeanProductType.remove(position);
-        productTypeAdapter.notifyDataSetChanged();*/
 
         ((Home) getActivity()).gotoTagsAndProductsScreen(beanProductType);
 
@@ -285,6 +274,191 @@ public void reDrawFragment(List<BeanProductType> lstBeanProductType,List<BeanBra
             });
             return grid;
         }
+    }
+
+    private boolean parseAndFormateMostSellingProductsList(String mostSellingProducts)
+    {
+        boolean isSuccess = true;
+        if(mostSellingProducts!= null) {
+            try {
+                //Toast.makeText(this,mostSellingProducts,Toast.LENGTH_SHORT).show();
+                JSONObject jsonObject = new JSONObject(mostSellingProducts);
+                //if(jsonObject.getString("result").equalsIgnoreCase("true"))
+                    if (jsonObject.getBoolean("result")) {
+                        // Toast.makeText(this,"true",Toast.LENGTH_SHORT).show();
+
+                        lstMostSellingProducts.clear();
+                        JSONArray arrayBrand = jsonObject.getJSONArray("details");//BRAND
+
+                        if (arrayBrand.length() > 0) {
+                            BeanBrand beanBrand = null;
+                            JSONObject objJsonBrand = null;
+
+                            for (int brandIndex = 0; brandIndex < arrayBrand.length(); brandIndex++)//PARSING BRAND
+                            {
+                                JSONArray arrayProduct = null;
+
+                                // objJsonBrand=arrayBrand.getJSONObject(brandIndex);
+                                //HERE CALL BRAND FUNCTION
+                                //beanBrand=getParsedMostSellingBrand(objJsonBrand);
+                                beanBrand = getParsedMostSellingBrand(arrayBrand.getJSONObject(brandIndex));
+                                if (beanBrand != null)
+                                    lstMostSellingProducts.add(beanBrand);//ADDING BRAND OBJECT IN COLLECTION
+
+                            }
+
+                            if (this.lstMostSellingProducts.size() > 0) {
+
+                                mAdapter = new MostSellingBrandAdapter(getActivity(), this, lstMostSellingProducts);
+                                mRecyclerView.setAdapter(mAdapter);
+                                mRecyclerView.setVisibility(View.VISIBLE);
+                            }
+                        }
+
+                        JSONArray arrayPType = jsonObject.getJSONArray("product_types");//ProductType
+                        lstBeanProductType.clear();
+                        if (arrayPType.length() > 0) {
+                            BeanProductType beanProductType;
+                            JSONObject obj;
+                            for (int i = 0; i < arrayPType.length(); i++) {
+
+                                obj = arrayPType.getJSONObject(i);
+                                if (obj != null) {
+
+                                    beanProductType = new BeanProductType();
+                                    beanProductType.setTagId(obj.getString("tag_id"));
+                                    beanProductType.setTagName(obj.getString("tag_name"));
+                                    beanProductType.setTagType(obj.getString("tag_type"));
+                                    lstBeanProductType.add(beanProductType);
+
+                                }
+                            }
+                            if (this.lstBeanProductType.size() > 0) {
+                                productTypeAdapter = new ProductTypeAdapter(getActivity(), this, lstBeanProductType);
+                                gridProductType.setAdapter(productTypeAdapter);
+                                gridProductType.setVisibility(View.VISIBLE);
+                            }
+
+                            ((Home)getActivity()).fetchDayPlanFromServer("", 0);
+                        }
+                    }
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                isSuccess = false;
+            }
+            return isSuccess;
+        } else {
+            isSuccess = false;
+            DialogManager.showDialog(getActivity(), "Server Error Occurred! Try Again!");
+            return isSuccess;
+        }
+
+    }
+
+    private BeanBrand getParsedMostSellingBrand(JSONObject jsonBrand)
+    {
+        BeanBrand beanBrand=null;
+        try {
+            if (jsonBrand != null) {
+                beanBrand = new BeanBrand();
+                beanBrand.setBrandId(jsonBrand.getString("brand_id"));
+                beanBrand.setBrandType(jsonBrand.getString("brand_type"));
+                beanBrand.setBrandName(jsonBrand.getString("brand_name"));
+
+                JSONObject jsonProductsInformation=jsonBrand.getJSONObject("products_information");
+                if(jsonProductsInformation.getString("result").equalsIgnoreCase("true")) {
+                    JSONArray jsonProductsArray=jsonProductsInformation.getJSONArray("products");
+                    JSONObject objJsonProduct=null;
+                    BeanProduct beanProduct=null;
+
+                    for(int productIndex=0;productIndex<jsonProductsArray.length();productIndex++)//PARSING BRAND
+                    {
+                        beanProduct=getParsedMostSellingProduct(jsonProductsArray.getJSONObject(productIndex));
+                        if(beanProduct!=null)
+                            beanBrand.addProduct(beanProduct);
+                    }
+
+
+                }
+            }
+        }
+        catch(Exception e)
+        {
+
+        }
+
+        return beanBrand;
+
+    }
+
+    private BeanProduct getParsedMostSellingProduct(JSONObject jsonProduct)
+    {
+        BeanProduct beanProduct=null;
+        try {
+            if (jsonProduct != null) {
+                beanProduct = new BeanProduct();
+                beanProduct.setPrice(jsonProduct.getString("price"));
+                beanProduct.setProductId(jsonProduct.getString("product_id"));
+                beanProduct.setProductImage(jsonProduct.getString("product_image"));
+                beanProduct.setProductMappingId(jsonProduct.getString("product_mapping_id"));
+                beanProduct.setProductName(jsonProduct.getString("product_name"));
+                //beanBrand.addProduct(beanProduct);//ADDING PRODUCT VIN BRAND OBJECT
+
+            }
+        }
+        catch(Exception e)
+        {
+
+        }
+        return beanProduct;
+
+    }
+
+    private boolean parseAndFormateProductTypeList(String productTypeList)
+    {
+        boolean isSuccess=true;
+        if(productTypeList!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(productTypeList);
+                //if(jsonObject.getString("result").equalsIgnoreCase("true"))
+                if (jsonObject.getBoolean("result")) {
+
+                    lstBeanProductType.clear();
+                    JSONArray array = jsonObject.getJSONArray("product_types");
+                    if (array.length() > 0) {
+                        BeanProductType beanProductType;
+                        JSONObject obj;
+                        for (int i = 0; i < array.length(); i++) {
+
+                            obj = array.getJSONObject(i);
+                            if (obj != null) {
+
+                                beanProductType = new BeanProductType();
+                                beanProductType.setTagId(obj.getString("tag_id"));
+                                beanProductType.setTagName(obj.getString("tag_name"));
+                                beanProductType.setTagType(obj.getString("tag_type"));
+                                lstBeanProductType.add(beanProductType);
+
+                            }
+                        }
+                        if(this.lstBeanProductType.size()>0) {
+                            productTypeAdapter = new ProductTypeAdapter(getActivity(),this,lstBeanProductType);
+                            gridProductType.setAdapter(productTypeAdapter);
+                            gridProductType.setVisibility(View.VISIBLE);
+                        }
+
+
+                    }
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                isSuccess = false;
+            }
+        }
+
+        return isSuccess;
     }
 
 

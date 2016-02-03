@@ -32,7 +32,7 @@ public class CheckService extends Service {
         if (run) {
 // do what you want if the app is running
 //run actualize in your case
-        new Home().fetchProductType();
+        //new Home().fetchProductType();
         } else {
 //do whatever you want again if it's not
         }

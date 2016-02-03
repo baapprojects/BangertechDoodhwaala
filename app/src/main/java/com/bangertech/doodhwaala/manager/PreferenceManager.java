@@ -39,6 +39,33 @@ public class PreferenceManager {
         DoodhwaalaApplication.getSharedPreferences().edit().putString(AppConstants.USER_ID, UserId).commit();
     }
 
+    public String getShareReferralCode()
+    {
+        return DoodhwaalaApplication.getSharedPreferences().getString(AppConstants.REFERRAL_SHARE, null);
+    }
+
+    public void setShareReferralCode(String shareReferralCode){
+        DoodhwaalaApplication.getSharedPreferences().edit().putString(AppConstants.REFERRAL_SHARE, shareReferralCode).commit();
+    }
+
+    public String getFriendReferralCode()
+    {
+        return DoodhwaalaApplication.getSharedPreferences().getString(AppConstants.REFERRAL_FRIEND, null);
+    }
+
+    public void setFriendReferralCode(String friendReferralCode){
+        DoodhwaalaApplication.getSharedPreferences().edit().putString(AppConstants.REFERRAL_FRIEND, friendReferralCode).commit();
+    }
+
+    public String getFriendUserId()
+    {
+        return DoodhwaalaApplication.getSharedPreferences().getString(AppConstants.FRIEND_USER_ID, null);
+    }
+
+    public void setFriendUserId(String friendUserId){
+        DoodhwaalaApplication.getSharedPreferences().edit().putString(AppConstants.FRIEND_USER_ID, friendUserId).commit();
+    }
+
     public void setUserEmailId(String emailId){
         DoodhwaalaApplication.getSharedPreferences().edit().putString(AppConstants.USER_EMAILID, emailId).commit();
     }
@@ -111,6 +138,13 @@ public class PreferenceManager {
         DoodhwaalaApplication.getSharedPreferences().edit().putInt(AppConstants.BRAND_FILTER_POSITION, -1).commit();
         DoodhwaalaApplication.getSharedPreferences().edit().putInt(AppConstants.PACKAGE_FILTER_POSITION, -1).commit();
     }
+
+    public void resetReferralCode(){
+        DoodhwaalaApplication.getSharedPreferences().edit().putString(AppConstants.REFERRAL_SHARE, null).commit();
+        DoodhwaalaApplication.getSharedPreferences().edit().putString(AppConstants.REFERRAL_FRIEND, null).commit();
+        DoodhwaalaApplication.getSharedPreferences().edit().putString(AppConstants.FRIEND_USER_ID, null).commit();
+    }
+
 
     public boolean getFlag() {
         return DoodhwaalaApplication.getSharedPreferences().getBoolean(AppConstants.FLAG, false);

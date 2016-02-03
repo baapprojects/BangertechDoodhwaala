@@ -418,7 +418,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void backgroundProcessFinish(String from, String output) {
-        String user_id, email_id, name, mobile, facebook_id, google_id, msg, flag;
+        String user_id, email_id, name, mobile, facebook_id, google_id, msg, flag, friend_id, share_referral_code, friend_referral_code;
         if(from.equalsIgnoreCase("checkUser")){
             Log.i("Result", output);
             if(output!=null) {
@@ -477,8 +477,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     facebook_id = jsonObject.getString("facebook_id");
                     google_id = jsonObject.getString("google_id");
                     msg = jsonObject.getString("msg");
+                    friend_id = jsonObject.getString("friend_id");
+                    share_referral_code = jsonObject.getString("share_referral_code");
+                    friend_referral_code = jsonObject.getString("friend_referral_code");
                     // PreferenceManager.getInstance().setUserId(user_id);
 
+                    PreferenceManager.getInstance().setShareReferralCode(share_referral_code);
+                    PreferenceManager.getInstance().setFriendReferralCode(friend_referral_code);
+                    PreferenceManager.getInstance().setFriendReferralCode(friend_id);
 
                     if (jsonObject.getBoolean("result")) {
                         Intent mobileIntent = new Intent(mContext, MobileNoActivity.class);
@@ -526,7 +532,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     e.printStackTrace();
                 }
             } else {
-                DialogManager.showDialog(mActivity, "Server Error Occured! Try Again!");
+                DialogManager.showDialog(mActivity, "Server Error Occurred! Try Again!");
             }
         } else if(from.equalsIgnoreCase("googleLogin")){
             if(output!=null) {
@@ -539,8 +545,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     facebook_id = jsonObject.getString("facebook_id");
                     google_id = jsonObject.getString("google_id");
                     msg = jsonObject.getString("msg");
-                    //PreferenceManager.getInstance().setUserId(user_id);
+                    friend_id = jsonObject.getString("friend_id");
+                    share_referral_code = jsonObject.getString("share_referral_code");
+                    friend_referral_code = jsonObject.getString("friend_referral_code");
+                    // PreferenceManager.getInstance().setUserId(user_id);
 
+                    PreferenceManager.getInstance().setShareReferralCode(share_referral_code);
+                    PreferenceManager.getInstance().setFriendReferralCode(friend_referral_code);
+                    PreferenceManager.getInstance().setFriendReferralCode(friend_id);
 
                     if (jsonObject.getBoolean("result")) {
                         Intent mobileIntent = new Intent(mContext, MobileNoActivity.class);
@@ -560,9 +572,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         }
                         else {
                             if (msg.equals("failed")) {
-                                DialogManager.showDialog(mActivity, "Server Error Occured! Try Again!");
+                                DialogManager.showDialog(mActivity, "Server Error Occurred! Try Again!");
                             } else {
-
                                 PreferenceManager.getInstance().setUserEmailId(googleEmail);
                                 PreferenceManager.getInstance().setUserDetails
                                         (jsonObject.getString("user_id"), PreferenceManager.getInstance().getUserEmailId());
@@ -588,7 +599,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     e.printStackTrace();
                 }
             } else {
-                DialogManager.showDialog(mActivity, "Server Error Occured! Try Again!");
+                DialogManager.showDialog(mActivity, "Server Error Occurred! Try Again!");
             }
         }
     }

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/app_bar_common"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvifrienddiscount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/grey_product_name_color"
+                android:text="@string/friend_discount_text"/>
+
+            <TextView
+                android:id="@+id/tviyourdiscount"
+                android:layout_below="@+id/tvifrienddiscount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/grey_product_name_color"
+                android:text="@string/friend_order_discount_text"/>
+
+            <ImageView
+                android:id="@+id/ivoffer"
+                android:layout_below="@+id/tviyourdiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/off"/>
+
+            <TextView
+                android:id="@+id/delivery_details"
+                android:layout_below="@+id/ivoffer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:text="@string/delivery_valid"/>
+
+            <TextView
+                android:id="@+id/tvirefer_friend"
+                android:layout_below="@+id/delivery_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="Refer friend"/>
+
+            <View
+                android:id="@+id/view"
+                android:layout_below="@+id/tvirefer_friend"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/grey_edit_text_color"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_whats_app"
+                android:layout_below="@+id/view"
+                android:background="@drawable/ripple_grey"
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_whats_app_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/whatsapp_icon"/>
+
+                <TextView
+                    android:id="@+id/tvi_whatsapp"
+                    android:layout_toRightOf="@+id/iv_whats_app_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="Whatsapp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_messenger_app"
+                android:layout_below="@+id/rl_whats_app"
+                android:background="@drawable/ripple_grey"
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_messenger_app_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hike_icon"/>
+
+                <TextView
+                    android:id="@+id/tvi_hike"
+                    android:layout_toRightOf="@+id/iv_messenger_app_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="Hike"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_sms_app"
+                android:layout_below="@+id/rl_messenger_app"
+                android:background="@drawable/ripple_grey"
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_sms_app_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/message_icon"/>
+
+                <TextView
+                    android:id="@+id/tvi_sms"
+                    android:layout_toRightOf="@+id/iv_sms_app_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="SMS"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_mail_app"
+                android:layout_below="@+id/rl_sms_app"
+                android:background="@drawable/ripple_grey"
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_mail_app_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/mail_icon"/>
+
+                <TextView
+                    android:id="@+id/tvi_email"
+                    android:layout_toRightOf="@+id/iv_mail_app_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="E-mail"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

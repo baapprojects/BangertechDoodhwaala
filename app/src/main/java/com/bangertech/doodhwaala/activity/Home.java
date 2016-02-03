@@ -74,7 +74,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     public static CustomViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout slidingTabLayout;
-
+    private List<BeanProductType> lstBeanProductType=new ArrayList<BeanProductType>();
     int Numboftabs =3;
     private Toolbar app_bar;
     public MenuItem menuItemSearch=null;
@@ -85,8 +85,6 @@ public class Home extends AppCompatActivity implements AsyncResponse {
 
     private MyFragmentPagerAdapter myPagerAdapter;
 
-    private List<BeanProductType> lstBeanProductType=null;
-    private List<BeanBrand> lstMostSellingProducts=null;
     private List<BeanProductType> lstBeanProductTypeOnToolBar=null;
     private LinearLayout llFilterMilkBarOnToolbar;
     private TextView txtViewMilkBarOnToolbarTitle;
@@ -117,8 +115,6 @@ public class Home extends AppCompatActivity implements AsyncResponse {
 
             // Toast.makeText(getApplicationContext(),"sai "+version,Toast.LENGTH_LONG).show();
             general = new General();
-            lstBeanProductType=new ArrayList<BeanProductType>();
-            lstMostSellingProducts=new ArrayList<BeanBrand>();
             lstBeanProductTypeOnToolBar=new ArrayList<BeanProductType>();
             //INSTALLING HELPSHIFT SDK TO USE IN CHAT SUPPORT
             Helpshift.install(getApplication(), ConstantVariables.ACCESS_KEY_HELP_SHIFT, "doodhwala.helpshift.com", ConstantVariables.APP_ID_HELP_SHIFT);
@@ -294,15 +290,16 @@ public class Home extends AppCompatActivity implements AsyncResponse {
     @Override
     protected void onResume() {
         super.onResume();
+
         if (PreferenceManager.getInstance().getFlag()) {
-            final Handler handler = new Handler();
+           /* final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    fetchProductType();
+                    fetchMostSellingProducts();
                 }
-            }, 500);
-
+            }, 1000);*/
+            fetchMostSellingProducts();
             PreferenceManager.getInstance().setFlag(false);
         }
         Home.this.registerReceiver(mMessageReceiver, new IntentFilter("unique_name"));
@@ -347,7 +344,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
                     if (jsonObject.getBoolean("result")) {
                         Log.i("AppVersionResult", "No need to update");
                         if (general.isNetworkAvailable(Home.this)) {
-                            fetchProductType();
+                            fetchMostSellingProducts();
                         } else {
                             DialogManager.showDialog(Home.this, "Please Check your internet connection.");
                         }
@@ -368,7 +365,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
                 DialogManager.showDialog(mActivity, "Server Error Occurred! Try Again!");
             }
         }
-        if(from.equalsIgnoreCase("fetchProductType")) {
+        /*if(from.equalsIgnoreCase("fetchProductType")) {
             if (general.isNetworkAvailable(Home.this)) {
                 if(!parseAndFormateProductTypeList(output))
                     lstBeanProductType.clear();
@@ -377,15 +374,13 @@ public class Home extends AppCompatActivity implements AsyncResponse {
                 DialogManager.showDialog(Home.this, "Please Check your internet connection.");
             }
 
-        }
+        }*/
         if(from.equalsIgnoreCase("mostSellingProducts"))
         {
             if (general.isNetworkAvailable(Home.this)) {
-                if(!parseAndFormateMostSellingProductsList(output))
-                    lstMostSellingProducts.clear();
-
-                milkbarFragment.reDrawFragment(lstBeanProductType, lstMostSellingProducts);
-                fetchDayPlanFromServer("", 0);
+                if(output!=null)
+                milkbarFragment.reDrawFragment(output);
+                //fetchDayPlanFromServer("", 0);
             } else {
                 DialogManager.showDialog(Home.this, "Please Check your internet connection.");
             }
@@ -420,152 +415,9 @@ public class Home extends AppCompatActivity implements AsyncResponse {
                 DialogManager.showDialog(Home.this, "Please Check your internet connection.");
             }
             meFragment.reDrawFragment();
-            }
-
-
-    }
-
-
-    private boolean parseAndFormateProductTypeList(String productTypeList)
-    {
-        boolean isSuccess=true;
-        if(productTypeList!=null) {
-            try {
-                JSONObject jsonObject = new JSONObject(productTypeList);
-                //if(jsonObject.getString("result").equalsIgnoreCase("true"))
-                if (jsonObject.getBoolean("result")) {
-
-                    lstBeanProductType.clear();
-                    JSONArray array = jsonObject.getJSONArray("product_types");
-                    if (array.length() > 0) {
-                        BeanProductType beanProductType;
-                        JSONObject obj;
-                        for (int i = 0; i < array.length(); i++) {
-
-                            obj = array.getJSONObject(i);
-                            if (obj != null) {
-
-                                beanProductType = new BeanProductType();
-                                beanProductType.setTagId(obj.getString("tag_id"));
-                                beanProductType.setTagName(obj.getString("tag_name"));
-                                beanProductType.setTagType(obj.getString("tag_type"));
-                                lstBeanProductType.add(beanProductType);
-                            }
-                        }
-
-                    }
-                }
-            } catch (Exception e) {
-                // TODO: handle exception
-                e.printStackTrace();
-                isSuccess = false;
-            }
+            meFragment.reProductType();
         }
 
-        return isSuccess;
-    }
-    private boolean parseAndFormateMostSellingProductsList(String mostSellingProducts)
-    {
-        boolean isSuccess = true;
-        if(mostSellingProducts!= null) {
-            try {
-                //Toast.makeText(this,mostSellingProducts,Toast.LENGTH_SHORT).show();
-                JSONObject jsonObject = new JSONObject(mostSellingProducts);
-                //if(jsonObject.getString("result").equalsIgnoreCase("true"))
-                if (jsonObject.getBoolean("result")) {
-                    // Toast.makeText(this,"true",Toast.LENGTH_SHORT).show();
-
-                    lstMostSellingProducts.clear();
-                    JSONArray arrayBrand = jsonObject.getJSONArray("details");//BRAND
-
-                    if (arrayBrand.length() > 0) {
-                        BeanBrand beanBrand = null;
-                        JSONObject objJsonBrand = null;
-
-                        for (int brandIndex = 0; brandIndex < arrayBrand.length(); brandIndex++)//PARSING BRAND
-                        {
-                            JSONArray arrayProduct = null;
-
-                            // objJsonBrand=arrayBrand.getJSONObject(brandIndex);
-                            //HERE CALL BRAND FUNCTION
-                            //beanBrand=getParsedMostSellingBrand(objJsonBrand);
-                            beanBrand = getParsedMostSellingBrand(arrayBrand.getJSONObject(brandIndex));
-                            if (beanBrand != null)
-                                lstMostSellingProducts.add(beanBrand);//ADDING BRAND OBJECT IN COLLECTION
-
-                        }
-
-
-                    }
-                }
-            } catch (Exception e) {
-                // TODO: handle exception
-                e.printStackTrace();
-                isSuccess = false;
-            }
-            return isSuccess;
-        } else {
-            isSuccess = false;
-            DialogManager.showDialog(Home.this, "Server Error Occurred! Try Again!");
-            return isSuccess;
-        }
-
-    }
-
-    private BeanBrand getParsedMostSellingBrand(JSONObject jsonBrand)
-    {
-        BeanBrand beanBrand=null;
-        try {
-            if (jsonBrand != null) {
-                beanBrand = new BeanBrand();
-                beanBrand.setBrandId(jsonBrand.getString("brand_id"));
-                beanBrand.setBrandType(jsonBrand.getString("brand_type"));
-                beanBrand.setBrandName(jsonBrand.getString("brand_name"));
-
-                JSONObject jsonProductsInformation=jsonBrand.getJSONObject("products_information");
-                if(jsonProductsInformation.getString("result").equalsIgnoreCase("true")) {
-                    JSONArray jsonProductsArray=jsonProductsInformation.getJSONArray("products");
-                    JSONObject objJsonProduct=null;
-                    BeanProduct beanProduct=null;
-
-                    for(int productIndex=0;productIndex<jsonProductsArray.length();productIndex++)//PARSING BRAND
-                    {
-                        beanProduct=getParsedMostSellingProduct(jsonProductsArray.getJSONObject(productIndex));
-                        if(beanProduct!=null)
-                            beanBrand.addProduct(beanProduct);
-                    }
-
-
-                }
-            }
-        }
-        catch(Exception e)
-        {
-
-        }
-
-        return beanBrand;
-
-    }
-    private BeanProduct getParsedMostSellingProduct(JSONObject jsonProduct)
-    {
-        BeanProduct beanProduct=null;
-        try {
-            if (jsonProduct != null) {
-                beanProduct = new BeanProduct();
-                beanProduct.setPrice(jsonProduct.getString("price"));
-                beanProduct.setProductId(jsonProduct.getString("product_id"));
-                beanProduct.setProductImage(jsonProduct.getString("product_image"));
-                beanProduct.setProductMappingId(jsonProduct.getString("product_mapping_id"));
-                beanProduct.setProductName(jsonProduct.getString("product_name"));
-                //beanBrand.addProduct(beanProduct);//ADDING PRODUCT VIN BRAND OBJECT
-            }
-        }
-        catch(Exception e)
-        {
-
-        }
-        return beanProduct;
 
     }
 
@@ -605,7 +457,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
 
     }
 
-    public void fetchProductType()
+    /*public void fetchProductType()
     {
         MyAsynTaskManager myAsyncTask=new MyAsynTaskManager();
         myAsyncTask.delegate=this;
@@ -614,7 +466,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
                 new String[]{"products", "fetchProductType"});
         myAsyncTask.execute();
 
-    }
+    }*/
     private void fetchMostSellingProducts()
     {
         MyAsynTaskManager myAsyncTask=new MyAsynTaskManager();
@@ -624,7 +476,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
                 new String[]{"products", "mostSellingProducts"});
         myAsyncTask.execute();
     }
-    private void fetchDayPlanFromServer(String strDate,int moveIndex)
+    public void fetchDayPlanFromServer(String strDate,int moveIndex)
     {
         MyAsynTaskManager myAsyncTask = new MyAsynTaskManager();
         myAsyncTask.delegate = this;
@@ -689,7 +541,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
             String message = intent.getStringExtra("message");
 
             //do other stuff here
-            fetchProductType();
+            fetchMostSellingProducts();
         }
     };
 
@@ -744,7 +596,7 @@ public class Home extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View v) {
                 if (general.isNetworkAvailable(Home.this)) {
-                    fetchProductType();
+                    fetchMostSellingProducts();
                 } else {
                     DialogManager.showDialog(Home.this, "Please Check your internet connection.");
                 }
@@ -799,5 +651,45 @@ public class Home extends AppCompatActivity implements AsyncResponse {
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();
 
+    }
+
+    private boolean parseAndFormateProductTypeList(String productTypeList)
+    {
+        boolean isSuccess=true;
+        if(productTypeList!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(productTypeList);
+                //if(jsonObject.getString("result").equalsIgnoreCase("true"))
+                if (jsonObject.getBoolean("result")) {
+
+                    lstBeanProductType.clear();
+                    JSONArray array = jsonObject.getJSONArray("product_types");
+                    if (array.length() > 0) {
+                        BeanProductType beanProductType;
+                        JSONObject obj;
+                        for (int i = 0; i < array.length(); i++) {
+
+                            obj = array.getJSONObject(i);
+                            if (obj != null) {
+
+                                beanProductType = new BeanProductType();
+                                beanProductType.setTagId(obj.getString("tag_id"));
+                                beanProductType.setTagName(obj.getString("tag_name"));
+                                beanProductType.setTagType(obj.getString("tag_type"));
+                                lstBeanProductType.add(beanProductType);
+
+                            }
+                        }
+
+                    }
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                isSuccess = false;
+            }
+        }
+
+        return isSuccess;
     }
 }

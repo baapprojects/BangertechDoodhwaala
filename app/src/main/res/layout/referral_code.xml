@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/app_bar_save"/>
+
+    <ScrollView
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:isScrollContainer="false">
+
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/referral_text_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/grey_product_name_color"
+            android:text="@string/referral_text"/>
+
+        <TextView
+            android:id="@+id/delivery_places"
+            android:layout_below="@+id/referral_text_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/grey_product_name_color"
+            android:text="@string/delivery_details"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_referral_code_success"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvi_success_blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/accentColor"
+                android:text="REFERRAL CODE APPLIED"/>
+
+            <TextView
+                android:id="@+id/tvi_success_gray"
+                android:layout_below="@+id/tvi_success_blue"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/grey_product_name_color"
+                android:text="A 5% discount has been applied to your first order"/>
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/rl_referral_code"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_referral_code"
+                android:textSize="14sp"
+                android:padding="15dp"
+                android:singleLine="true"
+                android:maxLength="6"
+                android:inputType="textCapCharacters|textVisiblePassword"
+                android:hint="Enter referral code if any!"
+                android:background="@drawable/edit_text_border"
+                android:textColor="@color/grey_product_amount_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_apply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="APPLY"
+                android:elevation="5dp"
+                android:layout_toRightOf="@+id/et_referral_code"
+                android:background="@color/accentColor"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/delivery_places_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/delivery_details"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:background="@color/light_red_color"/>
+
+    </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

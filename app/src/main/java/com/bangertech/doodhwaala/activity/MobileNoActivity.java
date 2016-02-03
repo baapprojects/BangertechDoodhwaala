@@ -108,7 +108,7 @@ public class MobileNoActivity extends AppCompatActivity implements View.OnClickL
                     JSONObject jsonObject = new JSONObject(output);
                     if (jsonObject.getBoolean("result")) {
                         PreferenceManager.getInstance().setUserId(user_id);
-                        Intent mainIntent = new Intent(mContext, Home.class);
+                        Intent mainIntent = new Intent(mContext, ReferralCodeActivity.class);
                         mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mainIntent);
                         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
@@ -121,7 +121,7 @@ public class MobileNoActivity extends AppCompatActivity implements View.OnClickL
                     e.printStackTrace();
                 }
             } else {
-                DialogManager.showDialog(mActivity, "Server Error Occured! Try Again!");
+                DialogManager.showDialog(mActivity, "Server Error Occurred! Try Again!");
             }
         }
     }

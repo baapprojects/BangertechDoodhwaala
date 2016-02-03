@@ -16,4 +16,8 @@ public class AppConstants {
     public static final String BRAND_FILTER_POSITION = "brand_filter_position";
     public static final String PACKAGE_FILTER_POSITION = "package_filter_position";
     public static final String FLAG = "flag";
+    public static final String REFERRAL_SHARE = "referralShare";
+    public static final String REFERRAL_FRIEND = "referralFriend";
+    public static final String FRIEND_USER_ID = "friendUserId";
+    public static final String DELIVERY_PLACES = "deliveryplaces";
 }

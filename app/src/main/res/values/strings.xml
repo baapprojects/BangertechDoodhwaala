@@ -133,4 +133,10 @@
         <item>Four times a week</item>
     </string-array>
 
+    <string name="delivery_details">Delivery only to Indiranagar, Domlur, JeevanBhima &amp; Thippasandra</string>
+    <string name="referral_text">No more hassles! Choose a plan once and sit back and relax as we ensure you have a wonderful milk experience.</string>
+
+    <string name="friend_discount_text">Friend joins &amp; gets 5% off</string>
+    <string name="friend_order_discount_text">3 friends order &amp; you get 20% off</string>
+    <string name="delivery_valid">Valid only in Indiranagar, Domlur, JeevanBhima &amp; Thippasandra</string>
 </resources>

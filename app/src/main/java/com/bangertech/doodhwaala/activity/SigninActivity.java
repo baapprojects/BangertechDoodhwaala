@@ -196,6 +196,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void backgroundProcessFinish(String from, String output) {
+        String share_referral_code, friend_referral_code, friend_id;
         if(from.equalsIgnoreCase("SignIn")){
 
             if(output!=null) {
@@ -203,9 +204,15 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                     JSONObject jsonObject = new JSONObject(output);
 
                     if (jsonObject.getBoolean("result")) {
+                        friend_id = jsonObject.getString("friend_id");
+                        share_referral_code = jsonObject.getString("share_referral_code");
+                        friend_referral_code = jsonObject.getString("friend_referral_code");
+
+                        PreferenceManager.getInstance().setShareReferralCode(share_referral_code);
+                        PreferenceManager.getInstance().setFriendReferralCode(friend_referral_code);
+                        PreferenceManager.getInstance().setFriendReferralCode(friend_id);
                         PreferenceManager.getInstance().setUserEmailId(txtEmailAddress.getText().toString());
-                        PreferenceManager.getInstance().setUserDetails
-                                (jsonObject.getString("user_id"), PreferenceManager.getInstance().getUserEmailId());
+                        PreferenceManager.getInstance().setUserDetails(jsonObject.getString("user_id"), PreferenceManager.getInstance().getUserEmailId());
                         PreferenceManager.getInstance().setUserId(jsonObject.getString("user_id"));
                        // Intent mobileIntent = new Intent(mContext, ProfileActivity.class);
                         CGlobal.getCGlobalObject().setUserId(jsonObject.getString("user_id"));

@@ -31,6 +31,7 @@ import com.bangertech.doodhwaala.utils.CUtils;
 import com.bangertech.doodhwaala.utils.ConstantVariables;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
     private TextView txtViewPackaging, txtViewtitle, tviCurrency;
     private ImageView ic_close;
     private Home refreshHome;
-
+    String previousValue="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,27 +117,23 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
 
         productId=getIntent().getStringExtra(ConstantVariables.PRODUCT_ID_KEY);
         productMappingId=getIntent().getStringExtra(ConstantVariables.PRODUCT_MAPPING_ID_KEY);
-        if((!TextUtils.isEmpty(productId))&&(!TextUtils.isEmpty(productMappingId)))
-            fetchProductDetailFromServer(productId,productMappingId);
+        if((!TextUtils.isEmpty(productId))&&(!TextUtils.isEmpty(productMappingId))) {
+            fetchProductDetailFromServer(productId, productMappingId);
+        }
 
-        /*((Button) findViewById(R.id.butDecreaseQty)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(selectedQuantity>1) {
-                    --selectedQuantity;
-                    txtViewSelectedQuantity.setText(String.valueOf(selectedQuantity));
-                }
+        previousValue=getIntent().getStringExtra(ConstantVariables.SELECTED_USER_PLAN_KEY);
+        if((!TextUtils.isEmpty(previousValue))) {
+            try {
+                JSONObject obj = new JSONObject(previousValue);
+                productId = obj.getString("product_id");
+                productMappingId = obj.getString("product_mapping_id");
+                if((!TextUtils.isEmpty(productId))&&(!TextUtils.isEmpty(productMappingId)))
+                fetchProductDetailFromServer(productId, productMappingId);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
-            }
-        });
-        ((Button) findViewById(R.id.butIncreaseQty)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ++selectedQuantity;
-                txtViewSelectedQuantity.setText(String.valueOf(selectedQuantity));
-            }
-        });*/
-       // initForTesting();
 
         ((FloatingActionButton) findViewById(R.id.fabSubscribe)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +143,12 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchProductDetailFromServer(productId, productMappingId);
+    }
+
     public void gotoSubscribe(View view)
     {
         try {
@@ -153,6 +156,7 @@ public class ProductDetail extends AppCompatActivity implements AsyncResponse {
                 JSONObject obj = new JSONObject();
                 obj.put("product_name",productName);
                 obj.put("product_id",productId);
+                //obj.put("product_mapping_id",productMappingId);
                 obj.put("product_mapping_id",beanPackagingAndQtyDefault.getProductMappingId());
                 obj.put("quantity_id",beanPackagingAndQtyDefault.getQuantityId());
                 obj.put("product_price",beanPackagingAndQtyDefault.getPrice());

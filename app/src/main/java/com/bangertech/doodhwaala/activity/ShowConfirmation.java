@@ -58,6 +58,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     private Dialog dialog;
     private String coupon_applied = "0";
     private String coupon_id = "";
+    private String shared_referral_applied, shared_id, friend_referral_applied, referral_id, friend_id, applied_offer, list_price, discount_price, gross_price, frequency_price, quantity_price;
     private String listPrice;
     private String discountPrice = "0.00";
     private String previousValue="";
@@ -71,7 +72,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     private General general;
     private double  paidAmount;
     private String default_address;
-
+    private String freq_total_days;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +124,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
     @Override
     protected void onResume() {
         super.onResume();
-        fetchAddressFromServer();
+       // fetchAddressFromServer();
     }
 
     private void fetchAddressFromServer() {
@@ -138,7 +139,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
 
     }
 
-    private void insertUserPlanOnsServer(String paid_amount, String list_price, String discount_price, String coupon_applied, String coupon_id, String product_price) {
+    private void insertUserPlanOnsServer(String paid_amount, String list_price, String discount_price, String coupon_applied, String coupon_id, String product_price, String shared_referral_applied, String shared_id, String friend_referral_applied, String referral_id, String friend_id) {
         String fromDate= CUtils.formatMyDate(new Date());
        // CUtils.printLog("fromDate",fromDate, ConstantVariables.LOG_TYPE.ERROR);
 
@@ -146,10 +147,25 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
         myAsyncTask.delegate=this;
         myAsyncTask.setupParamsAndUrl("insertUserPlan", ShowConfirmation.this, AppUrlList.ACTION_URL,
                 new String[]{"module", "action", "user_id", "product_id", "product_mapping_id", "quantity", "frequency_id", "duration_id", "subscription_date", "address_id",
-                        "coupon_applied", "coupon_id", "list_price", "discount_price", "gross_price","price"},
-                new String[]{"plans", "insertUserPlan", PreferenceManager.getInstance().getUserId(), product_id, product_mapping_id, product_quantity, frequency_id, duration_id, fromDate,
-                        default_address,
-                        coupon_applied,coupon_id,list_price,discount_price,paid_amount,product_price});
+                        "coupon_applied", "coupon_id", "list_price", "discount_price", "gross_price","price",
+                        "shared_referral_applied", "shared_id", "friend_referral_applied", "referral_id", "friend_id"},
+                new String[]{"plans", "insertUserPlan", PreferenceManager.getInstance().getUserId(), product_id, product_mapping_id, product_quantity, frequency_id, duration_id, fromDate, default_address,
+                        coupon_applied,coupon_id,list_price,discount_price,paid_amount,product_price,
+                        shared_referral_applied,shared_id,friend_referral_applied,referral_id,friend_id});
+        myAsyncTask.execute();
+
+
+    }
+
+    private void checkOutCalculation() {
+        String fromDate= CUtils.formatMyDate(new Date());
+        // CUtils.printLog("fromDate",fromDate, ConstantVariables.LOG_TYPE.ERROR);
+
+        MyAsynTaskManager  myAsyncTask=new MyAsynTaskManager();
+        myAsyncTask.delegate=this;
+        myAsyncTask.setupParamsAndUrl("checkOutCalculation", ShowConfirmation.this, AppUrlList.ACTION_URL,
+                new String[]{"module", "action", "user_id", "price", "quantity", "frequency_id", "duration_id"},
+                new String[]{"products", "checkOutCalculation", PreferenceManager.getInstance().getUserId(), product_price, product_quantity, frequency_id, duration_id});
         myAsyncTask.execute();
 
 
@@ -179,7 +195,13 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
             } else {
                 DialogManager.showDialog(ShowConfirmation.this, "Server Error Occurred! Try Again!");
             }
-
+        if (from.equalsIgnoreCase("checkOutCalculation")) {
+            if (output != null) {
+                checkOutCalculations(output);
+            } else {
+                DialogManager.showDialog(ShowConfirmation.this, "Server Error Occurred! Try Again!");
+            }
+        }
     }
     private void parseValuesAfterInsertPlanOnServer(String addressList)
     {
@@ -209,6 +231,25 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
 
     }
 
+    public void checkOutCalculations(String output) {
+        if(output!=null) {
+            try {
+                JSONObject jsonObject = new JSONObject(output);
+                if (jsonObject.getBoolean("result")) {
+                    parametersOfCalculation(jsonObject);
+                } else {
+                    parametersOfCalculation(jsonObject);
+                }
+
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+        } else {
+            DialogManager.showDialog(ShowConfirmation.this, "Server Error Occurred! Try Again!");
+        }
+    }
+
     private void parseAddress(String addressList)
     {
           try {
@@ -227,6 +268,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
                                 if(obj.getBoolean("default_address")){
                                 txtViewAddress.setText(getString(R.string.deliver_at)+obj.getString("address"));
                                 default_address = obj.getString("address_id");
+                                checkOutCalculation();
                                 break;
                             }
 
@@ -285,13 +327,21 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
             txtViewProductPrice.setText("= Rs "+String.valueOf(dailyPrice));
            // double priceForAWeek=dailyPrice*daysForAWeek;
 
-            txtViewFrequency.setText(frequency_name);
+            if(frequency_id.equals("1")) {
+                freq_total_days = "7";
+            }else if(frequency_id.equals("2")) {
+                freq_total_days = "4";
+            } else if(frequency_id.equals("3")){
+                freq_total_days = "3";
+            }
+
+            txtViewFrequency.setText("Total per week (x"+freq_total_days+")");
 
             double frequencyPrice=dailyPrice*daysForAWeek;
             txtViewFrequencyPrice.setText("= Rs "+String.valueOf(frequencyPrice));
 
 
-            txtViewDuration.setText(duration_name);
+            txtViewDuration.setText("Total for "+duration_name);
            // double  paidAmount=frequencyPrice*Double.valueOf(duration);
             paidAmount=frequencyPrice* Double.valueOf(obj.getString("duration_weightage"));
             paid_amount=String.valueOf(paidAmount);
@@ -306,7 +356,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
                         //CUtils.showUserMessage(getApplicationContext(), "Please select your address to checkout.");
                     else {
                         listPrice = paid_amount;
-                        insertUserPlanOnsServer(paid_amount, listPrice, discountPrice, coupon_applied, coupon_id, product_price);
+                        insertUserPlanOnsServer(paid_amount, listPrice, discountPrice, coupon_applied, coupon_id, product_price, shared_referral_applied, shared_id, friend_referral_applied, referral_id, friend_id);
                     }
                 }
             });
@@ -417,7 +467,7 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
                                 //CUtils.showUserMessage(getApplicationContext(), "Please select your address to checkout.");
                             }
                             else {
-                                insertUserPlanOnsServer(String.valueOf(paidAmount), listPrice, discountPrice, coupon_applied, coupon_id, product_price);
+                                insertUserPlanOnsServer(String.valueOf(paidAmount), listPrice, discountPrice, coupon_applied, coupon_id, product_price, shared_referral_applied, shared_id, friend_referral_applied, referral_id, friend_id);
                             }
                         }
                     });
@@ -468,5 +518,48 @@ public class ShowConfirmation extends AppCompatActivity implements AsyncResponse
         }
 
         super.onBackPressed();
+    }
+
+    public void parametersOfCalculation(JSONObject jsonObject) {
+        try {
+            shared_referral_applied = jsonObject.getString("shared_referral_applied");
+            shared_id = jsonObject.getString("shared_id");
+            friend_referral_applied = jsonObject.getString("friend_referral_applied");
+            referral_id = jsonObject.getString("referral_id");
+            friend_id = jsonObject.getString("friend_id");
+            applied_offer = jsonObject.getString("applied_offer");
+            listPrice = jsonObject.getString("list_price");
+            discountPrice = jsonObject.getString("discount_price");
+            gross_price = jsonObject.getString("gross_price");
+            quantity_price = jsonObject.getString("quantity_price");
+            frequency_price = jsonObject.getString("frequency_price");
+
+            txtViewProductPrice.setText("= Rs "+quantity_price);
+            txtViewFrequencyPrice.setText("= Rs "+frequency_price);
+            txtViewDurationPrice.setText("= Rs " + gross_price);
+
+            if(applied_offer.equals("1")) {
+                lldiscount.setVisibility(View.VISIBLE);
+                llcoupon.setVisibility(View.GONE);
+                txtViewDiscountPrice.setText("= Rs "+discountPrice);
+            }
+
+            CUtils.downloadImageFromServer(ShowConfirmation.this, imageViewProduct, CUtils.getFormattedImage(product_image_url));
+            ((Button)findViewById(R.id.butPayWithCash)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(txtViewAddress.getText().toString().equals(getString(R.string.deliver_at_default)))
+                        DialogManager.showDialog(ShowConfirmation.this, "Address not found. Please set your address by clicking EDIT and then checkout.");
+                        //CUtils.showUserMessage(getApplicationContext(), "Please select your address to checkout.");
+                    else {
+                        listPrice = paid_amount;
+                        insertUserPlanOnsServer(gross_price, listPrice, discountPrice, coupon_applied, coupon_id, product_price, shared_referral_applied, shared_id, friend_referral_applied, referral_id, friend_id);
+                    }
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 
 import com.bangertech.doodhwaala.activity.LoginActivity;
 import com.bangertech.doodhwaala.activity.OrderHistory;
+import com.bangertech.doodhwaala.activity.ReferFriendActivity;
 import com.bangertech.doodhwaala.activity.ShowAddress;
 
 
@@ -62,6 +63,13 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
                 getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
             }
         });
+        ((RelativeLayout) mRootView.findViewById(R.id.rlReferFriend)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ReferFriendActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                getActivity().overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+            }
+        });
         ((RelativeLayout) mRootView.findViewById(R.id.rlRateUs)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +108,7 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
             public void onClick(View v) {
                 PreferenceManager.getInstance().resetFilterPositions();
                 PreferenceManager.getInstance().resetUserDetails();
+                PreferenceManager.getInstance().resetReferralCode();
                 DoodhwaalaApplication.isUserLoggedIn = false;
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -169,6 +178,11 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
     }*/
 
     public void reDrawFragment()
+    {
+
+    }
+
+    public void reProductType()
     {
 
     }

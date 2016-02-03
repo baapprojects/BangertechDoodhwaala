@@ -23,5 +23,6 @@
     <color name="grey_product_amount_color">#9b9b9b</color>
     <color name="light_background_color">#f7f7f7</color>
     <color name="subscription_grey_color">#363636</color>
+    <color name="light_red_color">#fa5c64</color>
 
 </resources>
