@@ -111,6 +111,7 @@ public class CUtils {
                 .load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);
+       // Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
         //CUtils.printLog("getProductImage", url, ConstantVariables.LOG_TYPE.ERROR);
     }
     public static int getStatusBarHeight(Activity activity) {

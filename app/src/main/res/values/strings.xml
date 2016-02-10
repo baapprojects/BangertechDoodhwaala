@@ -129,8 +129,8 @@
 
     <string-array name="FreqName">
         <item>Everyday</item>
-        <item>Three times a week</item>
         <item>Four times a week</item>
+        <item>Three times a week</item>
     </string-array>
 
     <string name="delivery_details">Delivery only to Indiranagar, Domlur, JeevanBhima &amp; Thippasandra</string>

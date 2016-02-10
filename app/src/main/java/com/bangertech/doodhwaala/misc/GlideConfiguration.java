@@ -10,7 +10,7 @@ import com.bumptech.glide.module.GlideModule;
 /**
  * Created by annutech on 10/5/2015.
  */
-public class GlideConfiguration implements GlideModule {
+public class GlideConfiguration implements com.bumptech.glide.module.GlideModule {
     @Override
     public void applyOptions(Context context, GlideBuilder builder) {
         // Apply options to the builder here.
