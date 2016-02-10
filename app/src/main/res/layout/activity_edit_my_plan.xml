@@ -114,7 +114,6 @@
             android:text="SAVE CHANGES"
             android:textColor="@color/white"
             android:layout_gravity="center"
-            android:background="@drawable/select_but_pink"
             android:textAppearance="@android:style/TextAppearance.Medium"
             android:onClick="gotoSaveChanges"
             android:visibility="gone"/>

@@ -164,6 +164,15 @@ public class ReferFriendActivity extends AppCompatActivity implements AsyncRespo
         myAsyncTask.execute();
     }
 
+    public void createSharedCodeForUser() {
+        MyAsynTaskManager myAsyncTask=new MyAsynTaskManager();
+        myAsyncTask.delegate=this;
+        myAsyncTask.setupParamsAndUrl("createSharedCodeForUser", ReferFriendActivity.this, AppUrlList.ACTION_URL,
+                new String[]{"module", "action", "user_id"},
+                new String[]{"user", "createSharedCodeForUser", PreferenceManager.getInstance().getUserId()});
+        myAsyncTask.execute();
+    }
+
     @Override
     public void backgroundProcessFinish(String from, String output) {
         if (from.equalsIgnoreCase("deliveryLocalities")) {
@@ -174,6 +183,30 @@ public class ReferFriendActivity extends AppCompatActivity implements AsyncRespo
                         delivery_details.setText("*Valid only in "+jsonObject.getString("delivery_localities"));
                     } else {
                         Toast.makeText(ReferFriendActivity.this, "Localities are not available", Toast.LENGTH_LONG).show();
+                    }
+                } catch (Exception e) {
+                    // TODO: handle exception
+                    e.printStackTrace();
+                }
+            } else {
+                DialogManager.showDialog(ReferFriendActivity.this, "Server Error Occurred! Try Again!");
+            }
+            if(PreferenceManager.getInstance().getShareReferralCode()==null || PreferenceManager.getInstance().getShareReferralCode().equals("")) {
+                createSharedCodeForUser();
+            }
+        }
+
+        if(from.equalsIgnoreCase("createSharedCodeForUser")) {
+            if(output!=null) {
+                try {
+                    JSONObject jsonObject = new JSONObject(output);
+                    if (jsonObject.getBoolean("result")) {
+                        String  share_referral_code = jsonObject.getString("share_referral_code");
+                        PreferenceManager.getInstance().setShareReferralCode(share_referral_code);
+                        inviteMessage = "Hey! I've been using Doodhwala for my morning milk subscription and it's awesome! Download it from Google Play on https://goo.gl/TPMYis and get 5% off with referral code: '" + PreferenceManager.getInstance().getShareReferralCode()+"'.";
+
+                    } else {
+                        //Toast.makeText(ReferFriendActivity.this, "Localities are not available", Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e) {
                     // TODO: handle exception

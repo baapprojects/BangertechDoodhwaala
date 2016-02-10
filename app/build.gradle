@@ -9,8 +9,8 @@ android {
         applicationId "com.bangertech.doodhwaala"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 5
-        versionName "1.4"
+        versionCode 6
+        versionName "1.5"
         multiDexEnabled true
 
     }
@@ -24,8 +24,8 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
-            shrinkResources true
+            minifyEnabled true
+            //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
@@ -50,6 +50,7 @@ dependencies {
     compile 'com.mobsandgeeks:android-saripaar:1.0.3'
     //compile 'org.robolectric:shadows-multidex:3.0'
     //compile 'com.android.support:multidex:1.0.0'
+    //compile 'com.helpshift:android-en-aar:4.2.0-support'
     compile project(':facebook')
     compile project(':helpshiftSdkAndroid')
     compile project(':libraries:viewPagerIndicator')

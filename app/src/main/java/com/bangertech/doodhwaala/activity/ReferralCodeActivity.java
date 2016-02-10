@@ -172,7 +172,7 @@ public class ReferralCodeActivity extends AppCompatActivity implements AsyncResp
                         friend_referral_code = jsonObject.getString("friend_referral_code");
 
                         PreferenceManager.getInstance().setFriendReferralCode(friend_referral_code);
-                        PreferenceManager.getInstance().setFriendReferralCode(friend_id);
+                        PreferenceManager.getInstance().setFriendUserId(friend_id);
                         rl_referral_code.setVisibility(View.GONE);
                         rl_referral_code_success.setVisibility(View.VISIBLE);
 

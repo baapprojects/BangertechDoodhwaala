@@ -343,7 +343,7 @@ public class SignupActivity extends AppCompatActivity implements  AsyncResponse,
 
                     PreferenceManager.getInstance().setShareReferralCode(share_referral_code);
                     PreferenceManager.getInstance().setFriendReferralCode(friend_referral_code);
-                    PreferenceManager.getInstance().setFriendReferralCode(friend_id);
+                    PreferenceManager.getInstance().setFriendUserId(friend_id);
 
                     if (jsonObject.getBoolean("result")) {
                         PreferenceManager.getInstance().setUserEmailId(txtEmailAddress.getText().toString());

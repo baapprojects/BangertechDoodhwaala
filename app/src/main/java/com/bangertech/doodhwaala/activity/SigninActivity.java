@@ -210,7 +210,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
 
                         PreferenceManager.getInstance().setShareReferralCode(share_referral_code);
                         PreferenceManager.getInstance().setFriendReferralCode(friend_referral_code);
-                        PreferenceManager.getInstance().setFriendReferralCode(friend_id);
+                        PreferenceManager.getInstance().setFriendUserId(friend_id);
                         PreferenceManager.getInstance().setUserEmailId(txtEmailAddress.getText().toString());
                         PreferenceManager.getInstance().setUserDetails(jsonObject.getString("user_id"), PreferenceManager.getInstance().getUserEmailId());
                         PreferenceManager.getInstance().setUserId(jsonObject.getString("user_id"));

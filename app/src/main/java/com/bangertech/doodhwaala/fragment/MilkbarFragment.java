@@ -146,7 +146,7 @@ public class MilkbarFragment extends Fragment /*implements AsyncResponse*/ imple
             mRecyclerView.setAdapter(mAdapter);
             mRecyclerView.setVisibility(View.VISIBLE);
         }
-
+        setRetainInstance(true);
         return view;
     }
 

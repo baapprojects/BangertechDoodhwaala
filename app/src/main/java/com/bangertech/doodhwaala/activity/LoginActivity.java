@@ -484,7 +484,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     PreferenceManager.getInstance().setShareReferralCode(share_referral_code);
                     PreferenceManager.getInstance().setFriendReferralCode(friend_referral_code);
-                    PreferenceManager.getInstance().setFriendReferralCode(friend_id);
+                    PreferenceManager.getInstance().setFriendUserId(friend_id);
 
                     if (jsonObject.getBoolean("result")) {
                         Intent mobileIntent = new Intent(mContext, MobileNoActivity.class);
@@ -552,7 +552,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     PreferenceManager.getInstance().setShareReferralCode(share_referral_code);
                     PreferenceManager.getInstance().setFriendReferralCode(friend_referral_code);
-                    PreferenceManager.getInstance().setFriendReferralCode(friend_id);
+                    PreferenceManager.getInstance().setFriendUserId(friend_id);
 
                     if (jsonObject.getBoolean("result")) {
                         Intent mobileIntent = new Intent(mContext, MobileNoActivity.class);

@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-in\\values-in.xml",
+        "outputFile": "D:\\DoodhwallaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-in\\values-in.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 111
                 },
                 "from": {
-                    "file": "D:\\Doodhwalla Workspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\values-in\\values-in.xml",
+                    "file": "D:\\DoodhwallaWorkspace\\BangertechDoodhwaala\\facebook\\build\\intermediates\\bundles\\debug\\res\\values-in\\values-in.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

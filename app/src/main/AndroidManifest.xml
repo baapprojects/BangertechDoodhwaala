@@ -128,11 +128,7 @@
         <meta-data android:name="com.bangertech.doodhwaala.misc.GlideConfiguration"
             android:value="GlideModule"/>
 
-        <activity
-            android:name=".activity.ProfileActivity"
-            android:label="@string/title_activity_profile"
-            android:screenOrientation="portrait"
-            />
+
         <activity
             android:name=".activity.ShowAddress"
             android:screenOrientation="portrait"

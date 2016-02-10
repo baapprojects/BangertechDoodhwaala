@@ -87,7 +87,7 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
                 customLogoutDialogbox(getActivity());
             }
         });
-
+        setRetainInstance(true);
         return mRootView;
     }
 
@@ -111,7 +111,6 @@ public class MeFragment extends Fragment /*implements View.OnClickListener*/{
                 PreferenceManager.getInstance().resetReferralCode();
                 DoodhwaalaApplication.isUserLoggedIn = false;
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("finish", true);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
                 startActivity(intent);

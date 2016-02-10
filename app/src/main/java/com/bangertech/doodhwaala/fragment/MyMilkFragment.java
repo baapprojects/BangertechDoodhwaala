@@ -157,7 +157,7 @@ public class MyMilkFragment extends Fragment implements IMyMilkDayPlan {
                 newFragment.show(getFragmentManager(), "datePicker");
             }
         });
-
+        setRetainInstance(true);
         return view;
     }
 
